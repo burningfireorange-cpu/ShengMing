@@ -853,20 +853,65 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .tic .cnt{position:absolute;top:26px;right:0;min-width:16px;height:16px;border-radius:8px;background:#2ec46a;color:#fff;font-size:10px;font-weight:900;display:grid;place-items:center;padding:0 3px;box-sizing:border-box}
 .ov.title .buffchip{position:absolute;top:calc(env(safe-area-inset-top,0px) + 62px);left:16px}
 .logo.tlogo2{flex:none;font-size:38px;line-height:1.1;margin:0}
-.tscene{position:relative;flex:1 1 0;min-height:150px;max-height:300px;width:100%;max-width:420px;display:flex;justify-content:center}
-.tscene canvas{height:100%;max-width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:16px;box-shadow:0 0 0 2px rgba(245,197,66,.5),0 10px 30px rgba(0,0,0,.55);cursor:pointer}
-.tsc{appearance:none;position:absolute;top:8px;font:inherit;font-size:11.5px;font-weight:900;color:#ffe9a0;background:rgba(14,6,26,.78);border:1.5px solid rgba(245,197,66,.7);border-radius:999px;padding:4px 10px;cursor:pointer;line-height:1.15;display:flex;flex-direction:column;align-items:center}
-.tsc small{font-size:9.5px;font-weight:700;color:var(--muted)}
-.tsc.tpl{left:calc(50% - min(50%, 200px) + 10px)}.tsc.god{right:calc(50% - min(50%, 200px) + 10px)}
-.tsc .ndot{position:absolute;top:-4px;right:-4px;width:11px;height:11px;border-radius:50%;background:#ff3b4e}
-.ov.title .tbot{flex:none;gap:7px}
-.trow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.ov.title{background:#0e061a;gap:6px}
+#tSceneCv{position:absolute;top:0;left:0;z-index:0;pointer-events:none;display:block}
+.ov.title>:not(#tSceneCv){position:relative;z-index:1}
+.ov.title .tlogo2{text-shadow:0 3px 0 #6a0a14,0 0 26px rgba(255,170,80,.45)}
+.tscene{flex:1 1 auto;min-height:190px;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tcaps{flex:none;width:100%;height:38px;margin-top:-6px}
+@media (max-height:640px){.ov.title .tscene{min-height:130px}.ov.title .logo.tlogo2{font-size:30px}.ov.title .tbot{gap:6px}.tplay #bStart{font-size:19px;padding-top:9px;padding-bottom:9px}.ov.title .wkbtn{padding:6px 12px}}
+@media (max-width:350px){.tplay #bStart{font-size:18px;letter-spacing:.02em}}
+.tcap{appearance:none;position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0;padding:2px 8px;border:0;background:none;font:inherit;color:#fff1cf;cursor:pointer;line-height:1.15;white-space:nowrap;text-shadow:0 1px 0 #000,0 0 8px rgba(0,0,0,.9)}
+.tcap b{font-size:14px;font-weight:900}.tcap small{font-size:10.5px;font-weight:700;color:#d9c6e6}
+.tcap small em{font-style:normal;margin-left:4px;padding:0 5px;border-radius:999px;background:#d7263d;color:#fff;font-weight:900;text-shadow:none}
+.tcap .ndot{position:absolute;top:0;right:-4px;width:9px;height:9px;border-radius:50%;background:#ff3b4e;box-shadow:0 0 0 2px #1a0b24}
+.ov.title .tbot{flex:none;gap:8px;max-width:400px}
+.tplay{display:flex;gap:8px;width:100%;align-items:stretch}
+.tplay #bStart{flex:2 1 0;min-width:0;margin:0}.tplay .nrbtn{flex:1 1 0;min-width:0;margin:0;padding:8px 4px;font-size:14.5px;line-height:1.2;white-space:nowrap;letter-spacing:0;background:linear-gradient(#5a1424,#33081a);color:#ffe9c8;border:1.5px solid rgba(255,140,140,.55)}
+.tplay .nrbtn small,.tplay #bStart small{display:block;font-size:11px;font-weight:700;opacity:.85;letter-spacing:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tplay .nrbtn{overflow:hidden}
 .ov.title .lvpill{margin:0 auto}
 @media (max-width:390px){.ticons{gap:3px}.tic{width:43px}.tic i{width:35px;height:35px;font-size:16px;border-radius:10px}.tic span{font-size:9px;max-width:46px}.ov.title .twallet{padding:4px 7px}.ov.title .twallet b{font-size:12.5px}.ov.title .twallet span{font-size:10px}}
 @media (max-width:340px){.ov.title .twallet .lbl{display:none}.tic{width:38px}.tic i{width:31px;height:31px;font-size:14px}.logo.tlogo2{font-size:30px}}
 /* ---------- 眾神 hero menu ---------- */
 .ov.gods{background:radial-gradient(ellipse at 50% 25%,#3a0c2a,#0e061a 72%)}
-#godCv{width:100%;max-width:420px;aspect-ratio:12/7;height:auto;border-radius:16px;box-shadow:0 0 0 2px rgba(245,197,66,.45)}
+.gdstage{position:relative;width:100%;max-width:420px}
+#godCv{display:block;width:100%;aspect-ratio:4/3;height:auto;border-radius:14px;box-shadow:0 0 0 2px rgba(245,197,66,.45),0 10px 30px rgba(0,0,0,.5)}
+.gdbody{width:100%;display:flex;flex-direction:column;gap:8px;text-align:left}
+.gdbody .tptabs{margin:0}.gdbody .tptabs button{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15;cursor:pointer;font:inherit;font-weight:900;font-size:13px}
+.gdbody .tptabs button small{font-size:10.5px;font-weight:700;opacity:.8}.gdbody .tptabs button em{position:absolute;top:-6px;right:-4px;font-style:normal;min-width:18px;height:18px;border-radius:9px;background:#d7263d;color:#fff;font-size:11px;display:grid;place-items:center;padding:0 4px;box-shadow:0 0 0 2px #1a0b24;animation:pulse 1.2s infinite}
+.gdbody .tptabs button.go{color:#2a0410;background:linear-gradient(#ffe27a,#f5b52a);border-color:#ffd23f}
+.gdbody .tpinfo .gpill{margin-top:8px;width:100%;font-size:13px;padding:8px}
+.gdbody .gsk{font-size:12px;color:#ffd86a;font-weight:800}
+.gods .dock .row{display:flex;gap:8px;width:100%}.gods .dock .row .btn{flex:1;min-width:0}
+/* ---------- new run: mode, difficulty, ascension ---------- */
+.nrgod{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.3);border:1px solid rgba(245,197,66,.3);text-align:left}
+.nrgod .gg{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:21px;font-weight:900;color:#fff;background:var(--gc);box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.nrgod div{flex:1;min-width:0;display:flex;flex-direction:column}.nrgod b{font-size:16px}.nrgod small{font-size:11.5px;color:var(--muted)}
+.nrsec{width:100%;text-align:left;font-size:12px;font-weight:900;letter-spacing:.08em;color:#ffd86a;margin:2px 0 -4px}
+.nrmode{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.nrm{appearance:none;font:inherit;color:#f3e6c8;white-space:normal;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 8px;border-radius:14px;border:2px solid rgba(255,255,255,.14);background:rgba(0,0,0,.3);cursor:pointer;text-align:center}
+.nrm .gg{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:900;color:#ffe9a0;background:linear-gradient(#c4283c,#6b1220);box-shadow:0 0 0 2px #f5c542}
+.nrm.team .gg{background:linear-gradient(#2a8a4a,#14502a)}
+.nrm b{font-size:14px}.nrm small{font-size:11px;line-height:1.3;color:var(--muted)}
+.nrm.on{border-color:var(--gold);background:rgba(245,197,66,.12);box-shadow:0 0 14px rgba(245,197,66,.35)}
+.nrdiff{display:flex;flex-direction:column;gap:6px;width:100%}
+.nrd{appearance:none;font:inherit;color:#f3e6c8;white-space:normal;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;border:2px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28);cursor:pointer;text-align:left;position:relative}
+.nrd .dg{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:17px;font-weight:900;color:#1a0610;background:var(--dc);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.nrd .db{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.nrd .dn{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}.nrd .dn b{font-size:15px;color:var(--dc)}.nrd .dn span{font-size:11.5px;color:var(--muted)}
+.nrd .fl{display:flex;gap:2px}.nrd .fl i{width:11px;height:5px;border-radius:2px;background:rgba(255,255,255,.14)}.nrd .fl i.on{background:var(--dc);box-shadow:0 0 5px var(--dc)}
+.nrd .ds{display:flex;gap:4px;flex-wrap:wrap}.nrd .ds span{font-size:10.5px;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.07);color:#e8dcf0;white-space:nowrap}.nrd .ds span.rw{background:rgba(245,197,66,.16);color:#ffe27a;font-weight:800}
+.nrd.on{border-color:var(--dc);background:rgba(255,255,255,.07);box-shadow:0 0 14px color-mix(in srgb,var(--dc) 45%,transparent)}
+.nrd.on::after{content:'✓';position:absolute;top:6px;right:10px;font-weight:900;color:var(--dc)}
+@keyframes nrShake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}.nrd.shake{animation:nrShake .35s}
+.nrd.lock{cursor:default;opacity:.62}.nrd.lock .dg{background:#3a2c44;color:#9a8aa8}.nrd.lock .dn b{color:#b8a8c4}.nrd .lk{font-size:11px;color:#ff9a8a;font-weight:700}
+.nrasc{width:100%}.nrasc:empty{display:none}
+.nra{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:rgba(255,90,110,.08);border:1px solid rgba(255,90,110,.45);text-align:left}
+.nra .ah{display:flex;align-items:center;gap:8px}.nra .ah b{flex:1;font-size:14px;color:#ff9aa8}.nra .ah .stp{display:flex;align-items:center;gap:6px}
+.nra .stp button{appearance:none;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,154,168,.7);background:rgba(0,0,0,.3);color:#ffd0d6;font:inherit;font-size:18px;font-weight:900;cursor:pointer}.nra .stp button:disabled{opacity:.35}
+.nra .stp span{min-width:44px;text-align:center;font-weight:900;color:#fff1cf}.nra ul{margin:0;padding-left:18px;font-size:11.5px;line-height:1.45;color:#f0d8de}.nra .rw{font-size:12px;color:#ffe27a;font-weight:800}
+.nrwarn{width:100%;font-size:12px;line-height:1.4;color:#ffd0a0;padding:8px 10px;border-radius:12px;background:rgba(255,154,90,.1);border:1px solid rgba(255,154,90,.45);text-align:left}
+
 .gdinfo{width:100%;display:flex;flex-direction:column;gap:6px;text-align:left}
 .gdinfo .gh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.gdinfo .gh b{font-size:22px;font-weight:900}.gdinfo .gh small{font-size:12px;color:var(--muted)}
 .gdinfo .ds{font-size:12.5px;line-height:1.45;color:#e8dcf0}
@@ -1062,7 +1107,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 .dock>.btn:not(.sm){width:100%;max-width:380px}
 .dock .btn small{display:block;font-size:11px;font-weight:700;letter-spacing:0;opacity:.85;margin-top:1px}
 #ovMenu .mset{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}#ovMenu .mset .btn{min-width:0;padding:10px 6px;font-size:14px}
-@media (max-height:720px){#godCv{width:auto;max-height:150px}.ov:has(> .panel > .dock) h2{font-size:26px}.ov:has(> .panel > .dock) > .panel{gap:10px}}
+@media (max-height:720px){.ov:has(> .panel > .dock) h2{font-size:26px}.ov:has(> .panel > .dock) > .panel{gap:10px}}
 #dfCards .dcard:has(.pfgain) .pfl{display:none}
 #dfCards .pfgain{margin-top:4px;padding-top:5px}
 .dock .dfrow{flex-wrap:nowrap;gap:8px}.dock .dfrow .btn.big{flex:1;min-width:0}
@@ -1147,6 +1192,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 <div id="stage"><canvas id="game"></canvas></div>
 
 <div id="ovTitle" class="ov title">
+  <canvas id="tSceneCv" width="400" height="400"></canvas>
   <div class="ttop">
     <div class="twallet" id="titleWallet"></div>
     <div class="ticons">
@@ -1158,18 +1204,11 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
   </div>
   <span class="buffchip" id="buffChip" hidden></span>
   <h1 class="logo tlogo2">神明彈珠台</h1>
-  <div class="tscene" id="tScene">
-    <canvas id="tSceneCv" width="800" height="600"></canvas>
-    <button class="tsc tpl" id="bSceneTpl"></button>
-    <button class="tsc god" id="bSceneGod"></button>
-  </div>
+  <div class="tscene" id="tScene"></div>
+  <div class="tcaps" id="tCaps"><button class="tcap god" id="bSceneGod"></button><button class="tcap tpl" id="bSceneTpl"></button></div>
   <div class="tbot">
-    <button class="lvpill" id="bTal"></button>
-    <button class="btn red big" id="bStart"></button>
+    <div class="tplay"><button class="btn red big" id="bStart"></button><button class="btn nrbtn" id="bNewRun" hidden></button></div>
     <button class="btn gold wkbtn" id="bWeek"><span class="wkic">遶</span><span class="wkt2"><b data-bi="每週遶境|Wochen-Prozession">每週遶境</b><small id="wkSub"></small></span><b class="ndot" id="wkDot" hidden></b></button>
-    <button class="btn ghost sm" id="bNewRun" hidden></button>
-    <div class="trow"><button class="diffpill" id="bDiff"></button><button class="diffpill team" id="bTeam"><b>同</b> <span data-bi="好友同遊|Mit Freunden">好友同遊</span> ▸</button><button class="diffpill asc" id="bAsc" hidden></button></div>
-    <div class="best" id="best"></div>
     <nav class="tnav">
       <button id="bTitleTemple"><i>廟</i><span data-t="navTemple"></span><b class="ndot" id="tplDot" hidden></b></button>
       <button id="bTitleGods" class="talnav"><i>神</i><span data-bi="眾神|Götter">眾神</span><b class="ndot" id="talDot" hidden></b></button>
@@ -1180,13 +1219,30 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
   </div>
 </div>
 
-<div id="ovGods" class="ov gods" hidden>
+<div id="ovGods" class="ov tpl gods" hidden>
   <div class="panel">
-    <div class="tphead"><h2>眾神 · Götter</h2><button class="ibtn x" id="bGodsX" aria-label="close">✕</button></div>
-    <canvas id="godCv" width="720" height="420"></canvas>
-    <div class="gdinfo" id="gdInfo"></div>
-    <div class="gdgrid" id="gdGrid"></div>
-    <div class="dock"><button class="btn red big" id="bGodPick"></button></div>
+    <div class="tphead"><h2 id="gdH">神明 · Gottheit</h2><button class="ibtn x" id="bGodsX" aria-label="close">✕</button></div>
+    <div class="tpwal" id="gdWal"></div>
+    <div class="gdstage"><canvas id="godCv" width="800" height="600"></canvas>
+      <div class="t3ui top"><button class="t3c" id="gdSwitch"></button><span class="t3sp"></span></div></div>
+    <div class="tstage" id="gdStage"></div>
+    <div class="gdgrid" id="gdGrid" hidden></div>
+    <div class="gdbody" id="gdInfo"></div>
+    <div class="dock" id="gdDock"><button class="btn" id="bGodsBack"></button></div>
+  </div>
+</div>
+
+<div id="ovNewRun" class="ov tpl nrun" hidden>
+  <div class="panel">
+    <div class="tphead"><h2 id="nrH"></h2><button class="ibtn x" id="bNrX" aria-label="close">✕</button></div>
+    <div class="nrgod" id="nrGod"></div>
+    <div class="nrsec" id="nrSecMode"></div>
+    <div class="nrmode" id="nrMode"></div>
+    <div class="nrsec" id="nrSecDiff"></div>
+    <div class="nrdiff" id="nrDiff"></div>
+    <div class="nrasc" id="nrAsc"></div>
+    <div class="nrwarn" id="nrWarn" hidden></div>
+    <div class="dock"><button class="btn red big" id="bNrGo"></button></div>
   </div>
 </div>
 
@@ -7335,22 +7391,19 @@ const heroIds = () => Object.keys(HEROES);
 function setTitleHero(id) { TITLE_HERO = id; LKT = resolveLook(Object.assign({}, LOOK_DEF, LOOK || {}, { hero: id })); if (ownsHero(id) && LOOK && LOOK.hero !== id) setLook(Object.assign({}, LOOK, { hero: id })); renderTitle(); }
 function renderTitle() {
   const id = TITLE_HERO || (LOOK || LOOK_DEF).hero, h = HEROES[id], own = ownsHero(id), save = store.get('run21', null);
-  const TL = templeLevel(); $('bSceneTpl').innerHTML = `${L2('廟', 'Tempel')}・${L2(...tplStageName(tplStage(TL)))}<small>${L2(`修建 ${TL}/${templeMax()}`, `Ausbau ${TL}/${templeMax()}`)}</small>${templeCanBuild() ? '<b class="ndot"></b>' : ''}`;
-  $('bSceneGod').innerHTML = `<span style="color:${h.col}">${nm(h)}</span><small>${L2('換神明 ▸', 'Gott wechseln ▸')}</small>`;
-  $('tplDot').hidden = !templeCanBuild();
-  if (save) { $('bStart').innerHTML = `${t('cont')}<small>${nm(HEROES[save.hero])} · ${stageLabel(save)}</small>`; $('bNewRun').hidden = false; $('bNewRun').textContent = L2('新的一輪', 'Neuer Lauf'); }
-  else { $('bStart').innerHTML = h.soon ? L2('即將推出', 'Kommt bald') : own ? t('start') : h.limited ? L2('🔒 看看首儲禮', '🔒 Erstkauf-Geschenk ansehen') : L2(`🔒 解鎖${h.zh}`, `🔒 ${h.de} freischalten`); $('bNewRun').hidden = true; }
+  const TL = templeLevel(), I = lvInfo(godOf(id).tot), fp = own ? freePts(id) : 0, canB = templeCanBuild();
+  // the two name plates under the god and the temple (the scene itself is the button)
+  $('bSceneGod').innerHTML = `<b style="color:${h.col}">${nm(h)}</b><small>Lv ${I.lv}${fp ? `<em>${fp}</em>` : ''}</small>`;
+  $('bSceneTpl').innerHTML = `<b>${L2(...tplStageName(tplStage(TL)))}</b><small>${L2(`修建 ${TL}/${templeMax()}`, `Ausbau ${TL}/${templeMax()}`)}</small>${canB ? '<i class="ndot"></i>' : ''}`;
+  $('tplDot').hidden = !canB;
+  const D = DIFFS[Math.min(SEL_DIFF, diffMax())], setLbl = `${L2(D.zh, D.de)} · ${store.get('nrMode', 'solo') === 'team' ? L2('好友同遊', 'mit Freunden') : L2('獨自', 'allein')}`;
+  if (save) { $('bStart').innerHTML = `${t('cont')}<small>${nm(HEROES[save.hero])} · ${stageLabel(save)}</small>`; $('bNewRun').hidden = false; $('bNewRun').innerHTML = `${L2('新的一輪', 'Neuer Lauf')}<small>${L2('選難度', 'Einstellen')} ▸</small>`; }
+  else { $('bStart').innerHTML = h.soon ? L2('即將推出', 'Kommt bald') : own ? `${t('start')}<small>${store.get('tutDone') ? setLbl + ' ▸' : L2('第一次：先看教學', 'Zum ersten Mal: mit Einführung')}</small>` : h.limited ? L2('🔒 看看首儲禮', '🔒 Erstkauf-Geschenk ansehen') : L2(`🔒 解鎖${h.zh}`, `🔒 ${h.de} freischalten`); $('bNewRun').hidden = true; }
   $('bStart').disabled = !save && !!h.soon;
-  const A = ascOf(id); $('bAsc').hidden = !A.max; $('bAsc').innerHTML = `${L2('天劫', 'Aufstieg')} <b>${A.sel}</b>/${A.max}${A.sel ? ` <span>${L2(...ASC[A.sel])}</span>` : ` <span>${L2('關閉', 'aus')}</span>`} ▸`;
-  const D = DIFFS[SEL_DIFF]; $('bDiff').innerHTML = `${L2('難度', 'Stufe')}：<b style="color:${D.col}">${L2(D.zh, D.de)}</b> <span>${L2(D.szh, D.sde)} · ${L2('獎勵', 'Belohnung')} ×${D.rew}</span> ▸`;
   $('titleWallet').innerHTML = `<span><span class="hbi"></span><b>${fmt(HB)}</b> <em class="lbl">${L2('紅包', 'Hongbao')}</em></span><span><i class="cn"></i><b>${fmt(CRED)}</b> <em class="lbl">${L2('香油錢', 'Opfergeld')}</em></span>`;
   $('dailyDot').hidden = !dailyReady(); renderTitleIcons();
   { const w = WKS(), left = Object.keys(WK_MODES).filter(k => !WK_MODES[k].soon && !w.used[k]).length; $('wkSub').textContent = left ? L2(`本週還有 ${left} 次・${weekLeft()}`, `${left}× diese Woche · ${weekLeft()}`) : L2(`本週打完了・${weekLeft()}`, `Diese Woche erledigt · ${weekLeft()}`); $('wkDot').hidden = !left; }
-  const I = lvInfo(godOf(id).tot), fp = ownsHero(id) ? freePts(id) : 0, asc = ascOf(id);
-  $('bTal').hidden = !!h.soon;
-  $('bTal').innerHTML = `<b class="lv">Lv ${I.lv}</b><span class="xpb"><i style="width:${Math.round(I.k * 100)}%"></i></span>${asc.max ? `<span class="ascp">${L2('劫', 'Asc')} ${asc.sel}/${asc.max}</span>` : ''}<span class="tl">${L2('天賦樹', 'Talente')}${fp ? `<em>${fp}</em>` : ''} ▸</span>`;
   $('talDot').hidden = !PROTO_GODS.some(anyAffordable);
-  const b = store.get('best', null); $('best').textContent = b && b.s >= 0 ? `${t('best')}：${b.label}　${t('besthit')}：${fmt(b.hit || 0)}` : '';
 }
 function showTitle() {
   if (TREE_RESET) { TREE_RESET = false; setTimeout(() => toast(L2('<b>天賦樹改版了！</b><br>神明現在有等級，點數已全部退回，可以重新修煉。', '<b>Neue Talentbäume!</b><br>Gottheiten haben jetzt Stufen – alle Punkte wurden erstattet.'), 5200), 900); }
@@ -7358,70 +7411,119 @@ function showTitle() {
   if (!TITLE_HERO) TITLE_HERO = (LOOK || LOOK_DEF).hero; if (!HEROES[TITLE_HERO] || HEROES[TITLE_HERO].soon) TITLE_HERO = 'taizi'; setTitleHero(TITLE_HERO);
   applyLang(); show('ovTitle'); titleSceneStart();
 }
-/* the title shows your own temple with your god standing in front of it */
-const TSC = { on: false, jump: 0 };
+/* the title shows your own temple with your god standing in front of it — full width, behind the whole menu; the ground ends on the bottom edge of #tScene */
+const TSC = { on: false, jump: 0, fr: 0, m: null };
 function titleSceneStart() { if (!TSC.on) { TSC.on = true; requestAnimationFrame(titleSceneLoop); } }
+function titleLayout() {
+  const ov = $('ovTitle'), sc = $('tScene'), W = ov.clientWidth || 390, yB = sc.offsetTop + sc.offsetHeight, S = tplStage(templeLevel());
+  const cw = [285, 300, 320, 335, 350, 365, 385, 400, 400][Math.min(8, S)], s = Math.max(W / 400, Math.min(W / cw, yB / 250)); // small shrine: zoom in; big temple: show it all
+  const cx = Math.min(200, 30 + 400 * (W / s / 400) / 2); // keep the god's side of the picture in view
+  return { W, yB, H: yB + 44, s, ox: W / 2 - cx * s, oy: yB - 300 * s };
+}
 function titleSceneLoop() {
   if ($('ovTitle').hidden) { TSC.on = false; return; }
-  const c = $('tSceneCv'), g = c.getContext('2d'), now = performance.now() / 1000;
-  g.setTransform(c.width / 400, 0, 0, c.height / 300, 0, 0);
+  requestAnimationFrame(titleSceneLoop);
+  if ((TSC.fr = (TSC.fr + 1) % 2) && TSC.m) return; // 30 fps is plenty for the title
+  const c = $('tSceneCv'), M = titleLayout(), dpr = Math.min(window.devicePixelRatio || 1, 2), now = performance.now() / 1000;
+  const pw = Math.round(M.W * dpr), ph = Math.round(M.H * dpr);
+  if (c.width !== pw || c.height !== ph) { c.width = pw; c.height = ph; c.style.width = M.W + 'px'; c.style.height = M.H + 'px'; }
+  const g = c.getContext('2d'); TSC.m = M;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const SK = tcResolve(TCOS.sel).sky || ['#120726', '#3b1150', '#7a2050'];
+  g.fillStyle = SK[0]; g.fillRect(0, 0, M.W, M.H);
+  if (M.oy > 0) for (let i = 0; i < 60; i++) { const x = (i * 97.3) % M.W, y = (i * 61.7) % M.oy; g.fillStyle = `rgba(255,240,210,${0.2 + 0.35 * Math.abs(Math.sin(now * 1.1 + i))})`; g.fillRect(x, y, 1.3, 1.3); } // the sky goes on above the picture
+  g.setTransform(dpr * M.s, 0, 0, dpr * M.s, dpr * M.ox, dpr * M.oy);
   drawTempleScene(g, { U: TEMPLE, L: templeLevel(), t: now });
-  TSC.jump = Math.max(0, TSC.jump - 1 / 30);
-  const keep = X; X = g; g.save(); g.translate(92, 298); g.scale(1.1, 1.1);
+  TSC.jump = Math.max(0, TSC.jump - 1 / 15);
+  const keep = X; X = g; g.save(); g.translate(92, 296); g.scale(1.1, 1.1);
   g.save(); g.globalCompositeOperation = 'lighter'; tC(g, 0, -50, 46, `rgba(255,200,110,${0.1 + Math.sin(now * 2) * 0.03})`); g.restore();
   try { drawHero(null, 0, 0, now, Math.sin(Math.min(1, TSC.jump) * Math.PI) * 18, 0, LKT || LK); } catch (e) {}
   g.restore(); X = keep;
-  requestAnimationFrame(titleSceneLoop);
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const gt = g.createLinearGradient(0, 0, 0, 96); gt.addColorStop(0, 'rgba(14,6,26,.6)'); gt.addColorStop(1, 'rgba(14,6,26,0)'); g.fillStyle = gt; g.fillRect(0, 0, M.W, 96); // wallet & logo stay readable
+  const gb = g.createLinearGradient(0, M.yB - 26, 0, M.H); gb.addColorStop(0, 'rgba(14,6,26,0)'); gb.addColorStop(0.45, 'rgba(14,6,26,.8)'); gb.addColorStop(1, '#0e061a'); g.fillStyle = gb; g.fillRect(0, M.yB - 26, M.W, M.H - M.yB + 26); // ground fades into the menu
+  const eg = $('bSceneGod'), et = $('bSceneTpl'), gw = eg.offsetWidth / 2, tw = et.offsetWidth / 2, cap = (el, v) => { v = Math.round(v) + 'px'; if (el.style.left !== v) el.style.left = v; };
+  const gx = Math.max(gw + 6, M.ox + 92 * M.s), tx = Math.min(M.W - tw - 6, Math.max(M.ox + 214 * M.s, gx + gw + tw + 14)); // name plates under god and temple, never on top of each other
+  cap(eg, gx); cap(et, tx);
 }
 const templeCanBuild = () => { const XH = xianghuo(); return UPGS.some(u => { const k = upg(u.id) + 1; return k <= u.mx && XH >= upgReq(u, k) && CRED >= upgCost(u, k); }); };
-$('tSceneCv').onclick = e => { const r = e.currentTarget.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * 400; if (x < 170) { TSC.jump = 1; SFX.sheng(); openGods(); } else openTemple(); };
+const titleGod = () => { TSC.jump = 1; SFX.sheng(); setTimeout(() => { if (!$('ovTitle').hidden) openGods(); }, 170); };
+$('tScene').onclick = e => { const M = TSC.m; if (!M) return; const r = $('ovTitle').getBoundingClientRect(), x = (e.clientX - r.left - M.ox) / M.s; if (x < 150) titleGod(); else openTemple(); };
 $('bSceneTpl').onclick = () => openTemple();
-$('bSceneGod').onclick = () => openGods();
+$('bSceneGod').onclick = () => titleGod();
 $('bTitleGods').onclick = () => { auInit(); auResume(); openGods(); };
 
 /* ---------- 眾神: choose your god, see levels, talents, cultivation pills ---------- */
 let GD = null;
 const PILL = { hb: 30, xp: 500 };
-function openGods(sel) {
-  GD = { sel: sel || TITLE_HERO || (LOOK || LOOK_DEF).hero, anim: GD && GD.anim }; hide('ovTitle'); renderGods(); show('ovGods'); $('ovGods').scrollTop = 0;
+function openGods(sel, o = {}) {
+  const cur = TITLE_HERO || (LOOK || LOOK_DEF).hero;
+  GD = { sel: sel || cur, pick: !!o.pick || (!!sel && sel !== cur), back: o.back || null, backOnPick: !!o.backOnPick, anim: GD && GD.anim };
+  hide('ovTitle'); renderGods(); show('ovGods'); $('ovGods').scrollTop = 0;
   if (!GD.anim) { GD.anim = true; const loop = () => { if (!GD || $('ovGods').hidden) { if (GD) GD.anim = false; return; } drawGodCv(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
 }
-function drawGodCv() {
-  const c = $('godCv'), g = c.getContext('2d'), now = performance.now() / 1000, h = HEROES[GD.sel];
-  g.setTransform(c.width / 400, 0, 0, c.height / 233, 0, 0);
-  const bg = g.createRadialGradient(200, 120, 10, 200, 120, 240); bg.addColorStop(0, h.col); bg.addColorStop(0.45, '#3a0c2a'); bg.addColorStop(1, '#0e061a'); g.fillStyle = bg; g.fillRect(0, 0, 400, 233);
-  g.save(); g.globalAlpha = 0.12; tT(g, h.glyph, 200, 112, 190, '#fff'); g.restore();
-  for (let i = 0; i < 24; i++) { const ph = (now * 0.12 + i * 0.041) % 1; g.fillStyle = `rgba(255,230,160,${0.5 * (1 - ph)})`; g.fillRect(40 + (i * 53) % 320, 220 - ph * 200, 2, 2); }
-  tR(g, 0, 206, 400, 27, 'rgba(0,0,0,.35)');
-  const look = resolveLook(Object.assign({}, LOOK_DEF, LOOK || {}, { hero: GD.sel }));
-  const keep = X; X = g; g.save(); g.translate(200, 212); g.scale(1.25, 1.25); if (!playable(GD.sel) || !ownsHero(GD.sel)) g.globalAlpha = 0.55;
+const gdShown = () => (GD.pick ? GD.sel : TITLE_HERO || (LOOK || LOOK_DEF).hero);
+function drawGodCv() { // the god on a small altar platform, big — the counterpart of the temple view
+  const c = $('godCv'), g = c.getContext('2d'), now = performance.now() / 1000, id = gdShown(), h = HEROES[id];
+  g.setTransform(c.width / 400, 0, 0, c.height / 300, 0, 0);
+  const bg = g.createRadialGradient(200, 150, 10, 200, 150, 260); bg.addColorStop(0, h.col); bg.addColorStop(0.42, '#3a0c2a'); bg.addColorStop(1, '#0e061a'); g.fillStyle = bg; g.fillRect(0, 0, 400, 300);
+  g.save(); g.globalAlpha = 0.11; tT(g, h.glyph, 200, 132, 250, '#fff'); g.restore();
+  for (let i = 0; i < 28; i++) { const ph = (now * 0.12 + i * 0.037) % 1; g.fillStyle = `rgba(255,230,160,${0.5 * (1 - ph)})`; g.fillRect(30 + (i * 53) % 340, 290 - ph * 270, 2, 2); }
+  g.save(); g.globalCompositeOperation = 'lighter'; const lg = g.createRadialGradient(200, 270, 4, 200, 270, 120); lg.addColorStop(0, 'rgba(255,200,110,.32)'); lg.addColorStop(1, 'rgba(255,200,110,0)'); g.fillStyle = lg; g.fillRect(60, 160, 280, 140); g.restore();
+  g.fillStyle = '#5a1420'; g.beginPath(); g.ellipse(200, 280, 96, 16, 0, 0, 6.2832); g.fill(); g.fillStyle = '#8a1e28'; g.beginPath(); g.ellipse(200, 276, 92, 13, 0, 0, 6.2832); g.fill();
+  g.strokeStyle = '#f5c542'; g.lineWidth = 2; g.beginPath(); g.ellipse(200, 276, 92, 13, 0, 0, 6.2832); g.stroke();
+  const look = resolveLook(Object.assign({}, LOOK_DEF, LOOK || {}, { hero: id })), dim = !playable(id) || !ownsHero(id);
+  const keep = X; X = g; g.save(); g.translate(200, 276); g.scale(1.7, 1.7); if (dim) g.globalAlpha = 0.5;
   try { drawHero(null, 0, 0, now, 0, 0, look); } catch (e) {}
   g.restore(); X = keep;
+  if (dim) { g.save(); g.globalAlpha = 0.9; tT(g, h.soon ? '⏳' : '🔒', 352, 40, 30, '#fff'); g.restore(); }
 }
 function renderGods() {
-  const id = GD.sel, h = HEROES[id], own = ownsHero(id), soon = !!h.soon, I = lvInfo(godOf(id).tot), fp = own ? freePts(id) : 0, cur = (TITLE_HERO || (LOOK || LOOK_DEF).hero) === id, A = ascOf(id);
-  $('gdInfo').innerHTML = `<div class="gh"><b style="color:${h.col}">${nm(h)}</b>${h.szh ? `<small>${L2(h.szh, h.sde)}</small>` : ''}</div>
-    <div class="ds">${soon ? L2('即將推出：每個月會有新的神明下凡。', 'Kommt bald: Jeden Monat steigt eine neue Gottheit herab.') : L2(h.dzh, h.dde)}${!own && !soon ? `<br><b style="color:#ffd23f">${h.limited ? L2('🔒 首儲禮第 3 天限定', '🔒 Erstkauf-Geschenk, Tag 3') : `🔒 ${fmt(h.price[0])} ${L2('香油錢', 'Opfergeld')} / ${h.price[1]} ${L2('紅包', 'Hongbao')}`}</b>` : ''}</div>
-    ${soon ? '' : `<div class="lvr"><b>Lv ${I.lv}</b><span class="xpb"><i style="width:${Math.round(I.k * 100)}%"></i></span><small>${I.lv >= LV_MAX ? L2('滿級', 'Max') : `${fmt(I.cur)}/${fmt(I.need)}`}</small></div>
-    <div class="acts"><button class="btn ghost" id="gdTree">${L2('天賦樹', 'Talentbaum')}${fp ? ` <em style="font-style:normal;background:#d7263d;color:#fff;border-radius:999px;padding:0 6px">${fp}</em>` : ''} ▸</button>${own && I.lv < LV_MAX ? `<button class="btn ghost" id="gdPill">${L2('修為丹', 'Pille')} +${PILL.xp} ${hbIc(PILL.hb)}</button>` : ''}</div>
-    ${A.max ? `<div class="ds" style="color:#ffb0bc">${L2(`天劫 ${A.sel}/${A.max}（在首頁切換）`, `Aufstieg ${A.sel}/${A.max} (auf dem Startbildschirm wählbar)`)}</div>` : ''}`}`;
-  $('gdGrid').innerHTML = heroIds().map(k => { const H = HEROES[k], o = ownsHero(k), s2 = !!H.soon, L = s2 ? 0 : godLv(k), isCur = (TITLE_HERO || (LOOK || LOOK_DEF).hero) === k;
-    return `<button class="gdc${k === id ? ' on' : ''}${isCur ? ' cur' : ''}${s2 ? ' soon' : !o ? ' lock' : ''}" data-g="${k}"><span class="gg" style="--gc:${H.col}">${H.glyph}</span><b>${nm(H)}</b><small>${s2 ? L2('即將推出', 'Bald') : !o ? '🔒' : `Lv ${L}`}</small></button>`; }).join('');
-  const bp = $('bGodPick'); bp.disabled = soon || (own && cur);
-  bp.innerHTML = soon ? L2('即將推出', 'Kommt bald') : !own ? (h.limited ? L2('🔒 看看首儲禮', '🔒 Erstkauf-Geschenk ansehen') : L2(`🔒 解鎖${h.zh}`, `🔒 ${h.de} freischalten`)) : cur ? L2('✓ 已經是這位', '✓ Ausgewählt') : L2('選這位神明', 'Diese Gottheit wählen');
-  const tr = $('gdTree'); if (tr) tr.onclick = () => { openTree(id); TR.back = () => openGods(id); hide('ovGods'); };
-  const pl = $('gdPill'); if (pl) pl.onclick = () => buyPill(id);
+  const cur = TITLE_HERO || (LOOK || LOOK_DEF).hero, id = gdShown(), h = HEROES[id], own = ownsHero(id), soon = !!h.soon, I = lvInfo(godOf(id).tot), fp = own ? freePts(id) : 0, A = ascOf(id);
+  $('gdH').textContent = GD.pick ? L2('換神明', 'Gott wechseln') : L2('神明', 'Gottheit');
+  $('gdWal').hidden = soon;
+  $('gdWal').innerHTML = `<div class="w"><b>Lv ${I.lv}</b>${I.lv >= LV_MAX ? L2('滿級', 'Höchste Stufe') : `${fmt(I.cur)}/${fmt(I.need)} ${L2('修為', 'Kultivierung')}`}</div><div class="w hb"><b>${fp}</b>${L2('天賦點', 'Talentpunkte frei')}</div><div class="w xh">${A.max ? `<b>劫 ${A.sel}/${A.max}</b>${L2('天劫', 'Aufstieg')}` : `<b>劫 —</b>${L2('贏一輪就解鎖天劫', 'Aufstieg: nach 1. Sieg')}`}</div>`;
+  $('gdSwitch').innerHTML = GD.pick ? `✕ ${L2('不換了', 'Abbrechen')}` : `⇄ ${L2('換神明', 'Gott wechseln')}`;
+  $('gdStage').innerHTML = `<b style="color:${h.col}">${nm(h)}</b>${h.szh ? `<span>${L2(h.szh, h.sde)}</span>` : ''}` + (soon ? '' : `<span class="xpb"><i style="width:${Math.round(I.k * 100)}%"></i></span><small>${I.lv >= LV_MAX ? L2('滿級了！', 'Höchste Stufe erreicht!') : L2(`再 ${fmt(I.need - I.cur)} 修為 → Lv ${I.lv + 1}・每一級一個天賦點`, `noch ${fmt(I.need - I.cur)} Kultivierung → Lv ${I.lv + 1} · jede Stufe = 1 Talentpunkt`)}</small>`);
+  $('gdGrid').hidden = !GD.pick;
+  if (GD.pick) $('gdGrid').innerHTML = heroIds().map(k => { const H = HEROES[k], o = ownsHero(k), s2 = !!H.soon, L = s2 ? 0 : godLv(k);
+    return `<button class="gdc${k === id ? ' on' : ''}${k === cur ? ' cur' : ''}${s2 ? ' soon' : !o ? ' lock' : ''}" data-g="${k}"><span class="gg" style="--gc:${H.col}">${H.glyph}</span><b>${nm(H)}</b><small>${s2 ? L2('即將推出', 'Bald') : !o ? '🔒' : `Lv ${L}`}</small></button>`; }).join('');
+  let b = '';
+  if (!GD.pick) b += `<div class="tptabs"><button class="go" id="gdTree">${L2('天賦樹', 'Talentbaum')}<small>${L2('戰鬥加成', 'Kampf-Boni')}</small>${fp ? `<em>${fp}</em>` : ''}</button><button id="gdLook">${L2('外觀', 'Aussehen')}<small>${L2('只是好看', 'nur Optik')}</small></button></div>`;
+  b += `<div class="tpinfo">${soon ? L2('即將推出：每個月會有新的神明下凡。', 'Kommt bald: Jeden Monat steigt eine neue Gottheit herab.') : L2(h.dzh, h.dde)}`
+    + (!own && !soon ? `<br><b>${h.limited ? L2('🔒 首儲禮第 3 天限定', '🔒 Erstkauf-Geschenk, Tag 3') : `🔒 ${fmt(h.price[0])} ${L2('香油錢', 'Opfergeld')} / ${h.price[1]} ${L2('紅包', 'Hongbao')}`}</b>` : '')
+    + (!GD.pick && A.max ? `<div class="gsk">${L2(`天劫 ${A.sel}/${A.max}：開新的一輪時選`, `Aufstieg ${A.sel}/${A.max} – stellst du beim neuen Lauf ein`)}</div>` : '')
+    + (!GD.pick && own && I.lv < LV_MAX ? `<button class="btn ghost gpill" id="gdPill">${L2('修為丹', 'Kultivierungspille')} +${PILL.xp} · ${hbIc(PILL.hb)}</button>` : '') + `</div>`;
+  $('gdInfo').innerHTML = b;
+  if (GD.pick) $('gdDock').innerHTML = `<div class="row"><button class="btn" id="gdCancel">${L2('取消', 'Abbrechen')}</button><button class="btn red" id="bGodPick" ${soon || (own && id === cur) ? 'disabled' : ''}>${soon ? L2('即將推出', 'Kommt bald') : !own ? (h.limited ? L2('🔒 看首儲禮', '🔒 Erstkauf ansehen') : L2(`🔒 解鎖`, `🔒 Freischalten`)) : id === cur ? L2('✓ 已經是這位', '✓ Ausgewählt') : L2('選這位神明', 'Diese wählen')}</button></div>`;
+  else $('gdDock').innerHTML = `<button class="btn" id="bGodsBack">${L2('返回', 'Zurück')}</button>`;
 }
+function closeGods() { const bk = GD && GD.back; hide('ovGods'); if (GD) GD.pick = false; if (bk) bk(); else showTitle(); }
+function godPick() {
+  const id = GD.sel, h = HEROES[id]; if (h.soon) return;
+  if (!ownsHero(id)) { hide('ovGods'); openShop(h.limited ? 'fr' : 'gods', () => openGods(id, { pick: true, back: GD.back, backOnPick: GD.backOnPick })); if (!h.limited) { COS.L.hero = id; COS.tryHero = id; cosChanged(false); renderShop(); } return; }
+  setTitleHero(id); SFX.sheng(); GD.pick = false;
+  if (GD.backOnPick) { closeGods(); return; }
+  renderGods();
+}
+$('ovGods').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || b.disabled || !GD) return; const cur = TITLE_HERO || (LOOK || LOOK_DEF).hero;
+  if (b.dataset.g) { GD.sel = b.dataset.g; SFX.wood(); renderGods(); return; }
+  switch (b.id) {
+    case 'gdSwitch': SFX.wood(); if (GD.pick && GD.backOnPick) { closeGods(); return; } GD.pick = !GD.pick; GD.sel = cur; renderGods(); break;
+    case 'gdCancel': SFX.wood(); if (GD.backOnPick) { closeGods(); return; } GD.pick = false; GD.sel = cur; renderGods(); break;
+    case 'bGodPick': godPick(); break;
+    case 'gdTree': { const id = cur, bk = GD.back; hide('ovGods'); openTree(id); TR.back = () => openGods(id, { back: bk }); SFX.wood(); break; }
+    case 'gdLook': { const bk = GD.back; hide('ovGods'); openShop('ward', () => openGods(null, { back: bk }), { only: 1 }); SFX.wood(); break; }
+    case 'gdPill': buyPill(cur); break;
+    case 'bGodsBack': case 'bGodsX': closeGods(); break;
+  }
+});
 function buyPill(id) {
   ask('丹', L2('修為丹', 'Kultivierungspille'), L2(`<b>${nm(HEROES[id])}</b> 馬上得到 <b>${PILL.xp}</b> 修為。`, `<b>${nm(HEROES[id])}</b> bekommt sofort <b>${PILL.xp}</b> Kultivierung.`), [
     { label: `${L2('買', 'Kaufen')} ${hbIc(PILL.hb)}`, cls: 'red', fn: () => { if (HB < PILL.hb) { toast(L2('紅包不夠：去商店看看', 'Nicht genug Hongbao – schau in den Laden'), 2200); return; } HB -= PILL.hb; saveWallet(); const G = godOf(id), l0 = lvInfo(G.tot).lv; G.tot = (G.tot || 0) + PILL.xp; saveGods(); const l1 = lvInfo(G.tot).lv; if (l1 > l0) levelUpFx(id, l1); else { SFX.sheng(); toast(`+${PILL.xp} ${L2('修為', 'Kultivierung')}`, 1600); } renderGods(); } },
     { label: t('cancel') }]);
 }
-$('gdGrid').addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b || !GD) return; GD.sel = b.dataset.g; SFX.wood(); renderGods(); });
-$('bGodPick').onclick = () => { const id = GD.sel, h = HEROES[id]; if (h.soon) return; if (!ownsHero(id)) { hide('ovGods'); openShop(h.limited ? 'fr' : 'gods', () => openGods(id)); if (!h.limited) { COS.L.hero = id; COS.tryHero = id; cosChanged(false); renderShop(); } return; } setTitleHero(id); SFX.sheng(); hide('ovGods'); showTitle(); };
-$('bGodsX').onclick = () => { hide('ovGods'); showTitle(); };
-$('bAsc').onclick = () => { const id = TITLE_HERO || (LOOK || LOOK_DEF).hero, A = ascOf(id); A.sel = (A.sel + 1) % (A.max + 1); saveGods(); SFX.wood(); renderTitle(); if (A.sel) toast(`<b>${L2(`天劫 ${A.sel}`, `Aufstieg ${A.sel}`)}</b><br>${[...Array(A.sel)].map((_, i) => L2(...ASC[i + 1])).join('<br>')}<br><span style="color:#ffd23f">${L2(`修為、香油錢 +${A.sel * 10}%`, `Kultivierung & Opfergeld +${A.sel * 10} %`)}</span>`, 3600); };
-$('bDiff').onclick = () => { SEL_DIFF = (SEL_DIFF + 1) % (diffMax() + 1); store.set('diff', SEL_DIFF); SFX.wood(); renderTitle(); };
 function goNewRun() {
   const id = TITLE_HERO || (LOOK || LOOK_DEF).hero;
   if (HEROES[id].soon) { toast(L2(`${HEROES[id].zh}即將推出！`, `${HEROES[id].de} kommt bald!`)); return; }
@@ -7429,8 +7531,42 @@ function goNewRun() {
   if (!LOOK) setLook(Object.assign({}, LOOK_DEF, { hero: id })); else if (LOOK.hero !== id) setLook(Object.assign({}, LOOK, { hero: id }));
   store.del('run21'); startNew();
 }
-$('bStart').onclick = () => { auInit(); auResume(); musicStart(); if (store.get('run21', null)) contRun(); else goNewRun(); };
-$('bNewRun').onclick = () => { auInit(); auResume(); musicStart(); goNewRun(); };
+$('bStart').onclick = () => { auInit(); auResume(); musicStart(); if (store.get('run21', null)) contRun(); else openNewRun(); };
+$('bNewRun').onclick = () => { auInit(); auResume(); musicStart(); openNewRun(); };
+/* ---------- 新的一輪: alone or with friends, difficulty (locked ones shown too), ascension ---------- */
+function openNewRun() {
+  const id = TITLE_HERO || (LOOK || LOOK_DEF).hero;
+  if (HEROES[id].soon || !ownsHero(id) || !store.get('tutDone')) { hide('ovNewRun'); goNewRun(); return; } // locked god → unlock first; very first run → straight into the tutorial
+  hide('ovTitle'); renderNewRun(); show('ovNewRun'); $('ovNewRun').scrollTop = 0;
+}
+function renderNewRun() {
+  const id = TITLE_HERO || (LOOK || LOOK_DEF).hero, h = HEROES[id], I = lvInfo(godOf(id).tot), A = ascOf(id), dm = diffMax(), save = store.get('run21', null), team = store.get('nrMode', 'solo') === 'team';
+  if (SEL_DIFF > dm) SEL_DIFF = dm;
+  const xs = v => (LANG === 'de' ? String(v).replace('.', ',') : String(v)), pc = v => Math.round(v * 100) + (LANG === 'de' ? ' %' : '%');
+  $('nrH').textContent = L2('新的一輪', 'Neuer Lauf');
+  $('nrGod').innerHTML = `<span class="gg" style="--gc:${h.col}">${h.glyph}</span><div><b style="color:${h.col}">${nm(h)}</b><small>Lv ${I.lv}${h.szh ? ' · ' + L2(h.szh, h.sde) : ''}</small></div><button class="btn sm ghost" id="nrGodSw">⇄ ${L2('換神明', 'Wechseln')}</button>`;
+  $('nrSecMode').textContent = L2('怎麼玩', 'SPIELWEISE');
+  $('nrMode').innerHTML = [['solo', '獨', '獨自除妖', 'Allein', '自己一個人，隨時可以暫停。', 'Nur du – jederzeit pausieren und später weiterspielen.'], ['team', '同', '好友同遊', 'Mit Freunden', '2–4 位神明走同一條路，各拿各的寶。', '2–4 Götter, gleiche Route & Dämonen, jeder bekommt eigene Beute.']]
+    .map(([k, g, z, d, sz, sd]) => `<button class="nrm ${k}${(k === 'team') === team ? ' on' : ''}" data-m="${k}"><span class="gg">${g}</span><b>${L2(z, d)}</b><small>${L2(sz, sd)}</small></button>`).join('');
+  $('nrSecDiff').textContent = L2('難度', 'SCHWIERIGKEIT');
+  $('nrDiff').innerHTML = DIFFS.map((D, i) => { const lock = i > dm, on = i === SEL_DIFF, pips = DIFFS.map((_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('');
+    const how = i === dm + 1 ? L2(`在「${DIFFS[i - 1].zh}」打完第 2 章就解鎖`, `Freischalten: Kapitel 2 auf „${DIFFS[i - 1].de}“ schaffen`) : L2(`先解鎖「${DIFFS[i - 1] ? DIFFS[i - 1].zh : ''}」`, `Erst „${DIFFS[i - 1] ? DIFFS[i - 1].de : ''}“ freischalten`);
+    return `<button class="nrd${on ? ' on' : ''}${lock ? ' lock' : ''}" data-d="${i}" style="--dc:${D.col}"><span class="dg">${lock ? '🔒' : D.zh}</span><div class="db"><div class="dn"><b>${L2(D.zh, D.de)}</b><span>${L2(D.szh, D.sde)}</span><span class="fl">${pips}</span></div>`
+      + (lock ? `<div class="lk">🔒 ${how}</div>` : `<div class="ds"><span>${L2('妖怪血量', 'Dämonen-Leben')} ${pc(D.hp)}</span><span>${L2('妖怪攻擊', 'Angriff')} ${pc(D.atk)}</span><span class="rw">${L2('獎勵', 'Belohnung')} ×${xs(D.rew)}</span></div>`) + `</div></button>`; }).join('');
+  $('nrAsc').innerHTML = !team && A.max ? `<div class="nra"><div class="ah"><b>${L2('天劫', 'Aufstieg')}</b><div class="stp"><button data-asc="-1" ${A.sel ? '' : 'disabled'}>−</button><span>${A.sel}/${A.max}</span><button data-asc="1" ${A.sel < A.max ? '' : 'disabled'}>＋</button></div></div>`
+    + `<ul>${A.sel ? [...Array(A.sel)].map((_, i) => `<li>${L2(...ASC[i + 1])}</li>`).join('') : `<li>${L2('關閉：照平常打', 'Aus – ganz normal spielen')}</li>`}</ul>${A.sel ? `<div class="rw">${L2(`修為、香油錢 +${A.sel * 10}%`, `Kultivierung & Opfergeld +${A.sel * 10} %`)}</div>` : ''}</div>` : '';
+  const w = $('nrWarn'); w.hidden = !(save && !team); if (save) w.innerHTML = `⚠ ${L2('你現在的這一輪會結束：', 'Dein laufender Lauf wird dabei beendet:')} <b>${nm(HEROES[save.hero])} · ${stageLabel(save)}</b>`;
+  $('bNrGo').innerHTML = team ? `${L2('開大廳', 'Lobby öffnen')}<small>${L2('邀請好友一起除妖', 'Freunde einladen')}</small>` : t('start');
+}
+$('ovNewRun').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || b.disabled) return; const id = TITLE_HERO || (LOOK || LOOK_DEF).hero;
+  if (b.dataset.m) { store.set('nrMode', b.dataset.m); SFX.wood(); renderNewRun(); return; }
+  if (b.dataset.d) { const d = +b.dataset.d; if (d > diffMax()) { SFX.nudge && SFX.nudge(); b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); return; } SEL_DIFF = d; store.set('diff', d); SFX.wood(); renderNewRun(); return; }
+  if (b.dataset.asc) { const A = ascOf(id); A.sel = Math.max(0, Math.min(A.max, A.sel + +b.dataset.asc)); saveGods(); SFX.wood(); renderNewRun(); return; }
+  if (b.id === 'nrGodSw') { hide('ovNewRun'); openGods(null, { pick: true, back: openNewRun, backOnPick: true }); SFX.wood(); return; }
+  if (b.id === 'bNrX') { hide('ovNewRun'); showTitle(); return; }
+  if (b.id === 'bNrGo') { hide('ovNewRun'); if (store.get('nrMode', 'solo') === 'team') { SFX.wood(); openTeam('run', id); } else goNewRun(); }
+});
 function newCoopRun(hero, coop, diff) { // a normal run with friends: same route & demons for the whole team, everybody's own loot
   if (!LOOK || LOOK.hero !== hero) setLook(Object.assign({}, LOOK || LOOK_DEF, { hero }));
   newRun(hero, diff, { coop: true }); run.coop = coop; coopStartRun();
@@ -7438,7 +7574,6 @@ function newCoopRun(hero, coop, diff) { // a normal run with friends: same route
   showBanner(L2('一起除妖', 'Zusammen auf Dämonenjagd'), coop.players.map(p => p.name).join(' · '), '#7dffb0', 1.8);
   startGift();
 }
-$('bTeam').onclick = () => { auInit(); auResume(); musicStart(); SFX.wood(); const id = TITLE_HERO || (LOOK || LOOK_DEF).hero; openTeam('run', ownsHero(id) ? id : 'taizi'); };
 function startGift() { run.pend = { type: 'gift', offers: giftOffers() }; saveRun(); B = makeDemo(); openPick({ kind: 'gift', offers: run.pend.offers, title: L2('開局禮物', 'Startgeschenk'), sub: L2('選一樣帶上路', 'Wähle eins für unterwegs'), then: () => { run.pend = null; saveRun(); enterStage(); } }); }
 function startNew() {
   newRun((LOOK || LOOK_DEF).hero, SEL_DIFF); buildBackdrops(); hide('ovTitle'); hide('ovEnd'); TITLE_HERO = null;
@@ -7575,7 +7710,6 @@ $('trReset').onclick = () => { if (!TR) return; const h = TR.h, c = respecCost(h
     { label: L2('重置', 'Zurücksetzen'), cls: 'red', fn: () => { if (c) { CRED -= c; saveWallet(); } respec(h); TR.sel = null; SFX.wood(); renderTree(); } }, { label: t('cancel') }]); };
 $('trResetH').onclick = () => {};
 $('trDone').onclick = () => { hide('ovTree'); const back = TR && TR.back; TR = null; if (back) back(); else showTitle(); };
-$('bTal').onclick = () => { auInit(); auResume(); openTree(TITLE_HERO || (LOOK || LOOK_DEF).hero); SFX.wood(); };
 
 /* ---------- events (one tap, then on) ---------- */
 let EV = null;
@@ -8914,9 +9048,9 @@ const WARD_CATS = [['robe', '服裝', 'Gewand'], ['head', '飾品', 'Kopfschmuck
 const UNEQUIP = { robe: 'r_god', head: 'h_none', eyes: 'e_god', feet: 'f_def', aura: 'a_none' };
 let COS = null; // shop + wardrobe state (COS.L = what the preview shows, COS.base = what is equipped)
 const SHOP = { get on() { return !!COS; } };
-function openShop(tab, onDone) {
+function openShop(tab, onDone, o = {}) { // o.only: opened from the god screen as its 外觀 page (no shop tabs)
   const L = Object.assign({}, LOOK_DEF, LOOK || {});
-  COS = { tab: tab || (frDone() ? 'hb' : 'fr'), L, base: Object.assign({}, L), cat: 'robe', onDone, lkP: resolveLook(L), boardCv: null, tryId: null, tryHero: null };
+  COS = { tab: tab || (frDone() ? 'hb' : 'fr'), L, base: Object.assign({}, L), cat: 'robe', onDone, lkP: resolveLook(L), boardCv: null, tryId: null, tryHero: null, only: !!o.only };
   COS.boardCv = drawBoardBg(COS.lkP); hide('ovTitle'); renderShop(); show('ovCos'); $('ovCos').scrollTop = 0;
 }
 function openCos(setup, onDone, cat) { openShop(cat === 'hero' ? 'gods' : 'ward', onDone); }
@@ -8925,7 +9059,8 @@ function rarLabel(r) { const n = RARN[r]; return `<span class="rar r${r}">${L2(n
 const hbIc = (n, cls = '') => `<span class="hbi ${cls}"></span>${fmt(n)}`;
 function renderShop() {
   if (!COS) return; const T = COS.tab;
-  $('cosH').textContent = L2('遊戲商城', 'Shop');
+  const only = COS.only && T === 'ward';
+  $('cosH').textContent = only ? L2('外觀', 'Aussehen') : L2('遊戲商城', 'Shop'); $('shTabs').hidden = only;
   $('shWallet').innerHTML = `<button class="wc hb" id="wHB">${hbIc(HB)}<em>＋</em></button><span class="wc cr">● ${fmt(CRED)}</span>`;
   $('wHB').onclick = () => { COS.tab = 'hb'; renderShop(); };
   const tabs = [['fr', frDone() ? '首儲 ✓' : '首儲禮', 'Erstkauf'], ['pass', '月卡', 'Monatspass'], ['hb', '紅包', 'Hongbao'], ['ward', '衣櫥', 'Garderobe'], ['gods', '神明', 'Gottheiten']];
