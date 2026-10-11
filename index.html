@@ -2577,7 +2577,7 @@ const RULES = [
   ['修為・天賦樹', 'Kultivierung & Talente', '每位神明自己累積修為。天賦樹會解鎖新的法寶和法器，放進這位神明的寶庫。', 'Jede Gottheit sammelt eigene Kultivierung. Ihr Talentbaum schaltet neue Kugeln und Talismane für ihren Pool frei.'],
   ['道（流派）', 'Pfade', '每顆法寶和法器都屬於一兩條道（火、連、福、財、護、力、球、夢）。同一條道有 3 件就覺醒、6 件大成，給你一直有效的好處。詳見「道」分頁。', 'Jede Kugel und jeder Talisman gehört zu ein bis zwei Pfaden (Feuer, Kette, Glück, Reichtum, Schutz, Kraft, Kugelregen, Traum). 3 verschiedene Stücke erwecken einen Pfad, 6 meistern ihn – ein Bonus für den ganzen Lauf. Mehr im Reiter „Pfade“.'],
   ['岔路', 'Weggabelungen', '打完一些妖怪後可以選路：厲鬼比較危險，但有法器和兩倍的金；普通妖怪比較安全；奇遇什麼都可能發生。', 'Nach manchen Kämpfen wählst du den Weg: Elite ist gefährlicher, gibt aber Talismane und doppelt Münzen; ein normaler Kampf ist sicherer; ein Ereignis kann alles sein.'],
-  ['彈珠台的機關', 'Das Brett', '台上有大鼓（會把球彈開，+3 功德）、風車（把球打到旁邊，+2）和底部兩邊的彈弓（掉下來的球會被彈回去兩次，+4）。每打 10 次神力 +1。', 'Auf dem Brett stehen Trommeln (schleudern die Kugel weg, +3 Verdienst), Windräder (schlagen sie zur Seite, +2) und unten zwei Schleudern (werfen eine fallende Kugel zweimal zurück, +4). Alle 10 Treffer gibt es +1 Segen.'],
+  ['彈珠台的機關', 'Das Brett', '台上有大鼓（會把球彈開，+3 功德）、八卦輪（轉動的八卦盤，把球打到旁邊，+2）和底部兩邊的彈弓（掉下來的球會被彈回去兩次，+4）。每打 10 次神力 +1。', 'Auf dem Brett stehen Trommeln (schleudern die Kugel weg, +3 Verdienst), Bagua-Räder (drehende Bagua-Scheiben, schlagen sie zur Seite, +2) und unten zwei Schleudern (werfen eine fallende Kugel zweimal zurück, +4). Alle 10 Treffer gibt es +1 Segen.'],
   ['特別的法器', 'Besondere Talismane', '有時候法器會發光：金箔 +25 功德、彩繪 +4 神力、琉璃神力 ×1.5，最稀有的虛影不佔法器台的位子。', 'Manchmal glänzt ein Talisman: Goldfolie +25 Verdienst, Bemalt +4 Segen, Glasur Segen ×1,5 – und ganz selten Geisterhaft: belegt keinen Altarplatz.'],
 ];
 /* ================= 神格: every god levels up (1–60) with 修為; each level gives one 天賦點 for its own talent tree =================
@@ -3277,7 +3277,8 @@ function drawShi(q, t) { // 石獅子 bumper
   circ(q.x - 4, q.y - 2, 2, '#2a1a10'); circ(q.x + 4, q.y - 2, 2, '#2a1a10'); rr(q.x - 4, q.y + 3, 8, 3, 1.5, '#d7263d');
 }
 
-/* ---------- pachinko furniture: drums, windmills, kickers ---------- */
+/* ---------- pachinko furniture: drums, bagua wheels, kickers ---------- */
+const BAGUA = [7, 3, 2, 4, 0, 6, 5, 1]; // 先天八卦 round the plate: 乾 巽 坎 艮 坤 震 離 兌 (each one faces its opposite)
 function drawFurniture(t) {
   for (const f of B.furn || []) {
     f.flash = Math.max(0, f.flash - 0.05); f.a += f.spin / 60; f.spin = Math.sign(f.spin) * Math.max(2.2, Math.abs(f.spin) * 0.985);
@@ -3289,10 +3290,20 @@ function drawFurniture(t) {
       X.strokeStyle = '#f5c542'; X.lineWidth = 2; X.beginPath(); X.arc(0, 0, f.r, 0, 6.28); X.stroke();
       for (let k = 0; k < 8; k++) { const a = k / 8 * 6.28; circ(Math.cos(a) * (f.r - 1.5), Math.sin(a) * (f.r - 1.5), 1.2, '#ffe9a0'); }
       txt('鼓', 0, 0.5, 10, '#b3161e');
-    } else {
+    } else { // 八卦輪: a lacquered bagua plate from the temple door, spinning; its eight gilded corners whack the ball aside
+      const R = f.r + 1, sp = Math.min(1, Math.abs(f.spin) / 10), oct = (r, o = 0.5) => { const P = []; for (let k = 0; k < 8; k++) { const a = (k + o) / 8 * 6.2832; P.push(Math.cos(a) * r, Math.sin(a) * r); } return P; };
+      poly(oct(R).map((v, i) => v + (i % 2 ? 2 : 0)), 'rgba(0,0,0,.42)');
+      if (sp > 0.3) { X.save(); X.globalCompositeOperation = 'lighter'; X.strokeStyle = `rgba(255,214,110,${(sp - 0.3) * 0.55})`; X.lineWidth = 3; X.beginPath(); X.arc(0, 0, R + 1, 0, 6.28); X.stroke(); X.restore(); } // fast spin: a golden blur
       X.rotate(f.a);
-      for (let k = 0; k < 4; k++) { X.rotate(Math.PI / 2); poly([0, -2, f.r + 1, -6, f.r + 2, 3, 0, 3], ['#ff5a7a', '#ffd23f', '#5ab8ff', '#7dffb0'][k]); }
-      circ(0, 0, 4, '#fff1cf'); circ(0, 0, 2, '#b3161e');
+      poly(oct(R), '#c99a2a'); poly(oct(R - 1), '#f5c542'); poly(oct(R - 2.4), '#3a0d14'); poly(oct(R - 3.2), '#4e1018');
+      X.strokeStyle = '#f5c542'; X.lineWidth = 1.25;
+      for (let k = 0; k < 8; k++) { X.save(); X.rotate(k / 8 * 6.2832 + Math.PI / 2); const g = BAGUA[k]; // three lines per trigram, solid (yang) or broken (yin)
+        for (let l = 0; l < 3; l++) { const y = -(R - 4.6 - l * 2.15), hw = 0.39 * -y; X.beginPath(); if (g >> l & 1) { X.moveTo(-hw, y); X.lineTo(hw, y); } else { X.moveTo(-hw, y); X.lineTo(-0.7, y); X.moveTo(0.7, y); X.lineTo(hw, y); } X.stroke(); }
+        X.restore(); }
+      for (let k = 0; k < 8; k++) { const a = (k + 0.5) / 8 * 6.2832; circ(Math.cos(a) * (R - 0.6), Math.sin(a) * (R - 0.6), 1.35, '#fff2b0'); }
+      const t = 4.4; circ(0, 0, t + 0.9, '#f5c542'); // 太極 in the middle
+      X.fillStyle = '#fff1cf'; X.beginPath(); X.arc(0, 0, t, -Math.PI / 2, Math.PI / 2); X.fill(); X.fillStyle = '#b3161e'; X.beginPath(); X.arc(0, 0, t, Math.PI / 2, Math.PI * 1.5); X.fill();
+      circ(0, -t / 2, t / 2, '#b3161e'); circ(0, t / 2, t / 2, '#fff1cf'); circ(0, -t / 2, 0.85, '#fff1cf'); circ(0, t / 2, 0.85, '#b3161e');
     }
     X.restore();
   }
@@ -4520,7 +4531,7 @@ function makeDemo() {
 
 /* ---------- the board: a fixed layout per fight; every turn popped pegs grow back and specials are dealt again ---------- */
 function mkPeg(x, y) { return { x, y, r: 8, type: 'n', hit: false, hp: 1, alive: true, flash: 0, born: 0, popT: 0, cool: 0, fuse: 0, ore: 0, burn: 0 }; }
-/* pachinko furniture: drums (bumpers), windmills (spinners) and two kickers at the bottom that throw a falling ball back up */
+/* pachinko furniture: drums (bumpers), bagua wheels (spinners) and two kickers at the bottom that throw a falling ball back up */
 const KICKERS = [{ x: BD.l + 30, y: GRID.y0 - 62, dir: 1 }, { x: BD.r - 30, y: GRID.y0 - 62, dir: -1 }];
 function genFurniture() {
   const F = [], ok = (x, y, r) => F.every(f => Math.hypot(f.x - x, f.y - y) > f.r + r + 34) && KICKERS.every(k => Math.hypot(k.x - x, k.y - y) > 60) && (B.lions || []).every(q => Math.hypot(q.x - x, q.y - y) > 50);
@@ -5539,15 +5550,15 @@ function furnHit(o, f, demo) {
   const dx = o.x - f.x, dy = o.y - f.y, d = Math.hypot(dx, dy) || 1, nx = dx / d, ny = dy / d;
   if (f.type === 'drum') { // bumper: always throws the ball away hard
     const sp = Math.max(520, Math.hypot(o.vx, o.vy) * 1.05); o.vx = nx * sp; o.vy = ny * sp - 40;
-  } else { // windmill: the blades whack the ball sideways
+  } else { // 八卦輪: the spinning plate whacks the ball sideways
     o.vx += -ny * f.spin * 120; o.vy += nx * f.spin * 120; f.spin = Math.sign(f.spin) * Math.min(14, Math.abs(f.spin) + 2.5);
   }
   f.flash = 1;
   if (demo || !B.shot || f.cd > B.pt) return; f.cd = B.pt + 0.12; f.n++;
   const S = B.shot, v = f.type === 'drum' ? 3 : 2; S.chips += v; S.hits++; S.bumps = (S.bumps || 0) + 1;
-  hitNum(f.x, f.y - f.r - 6, v, f.type === 'drum' ? '#ff9a5a' : '#7fe8ff', true);
-  FX.push({ type: 'ring', x: f.x, y: f.y, r: f.r + 16, life: 0.3, max: 0.3, col: f.type === 'drum' ? '#ffb070' : '#9ff5ff' });
-  burst(f.x, f.y, 8, f.type === 'drum' ? '#ffd23f' : '#9ff5ff', 200); if (f.type === 'drum') SFX.drum ? SFX.drum() : SFX.nudge(); else tone(660 + Math.min(14, S.hits) * 40, 0.06, 'triangle', 0.05);
+  hitNum(f.x, f.y - f.r - 6, v, f.type === 'drum' ? '#ff9a5a' : '#ffe9a0', true);
+  FX.push({ type: 'ring', x: f.x, y: f.y, r: f.r + 16, life: 0.3, max: 0.3, col: f.type === 'drum' ? '#ffb070' : '#fff2b0' });
+  burst(f.x, f.y, 8, f.type === 'drum' ? '#ffd23f' : '#fff2b0', 200); if (f.type === 'drum') SFX.drum ? SFX.drum() : SFX.nudge(); else tone(660 + Math.min(14, S.hits) * 40, 0.06, 'triangle', 0.05);
   shake(f.type === 'drum' ? 3 : 1.5); feverAdd(2); comboWord(S);
 }
 function kickerHit(o, k, demo) { // 彈弓: a falling ball is thrown back up into the pegs (twice per ball)
