@@ -313,11 +313,6 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .tnav button{position:relative}.tnav .ndot{position:absolute;top:0;right:calc(50% - 22px);width:11px;height:11px;border-radius:50%;background:#ff3b4e;box-shadow:0 0 0 2px #1a0b24}
 .tnav .talnav i{background:linear-gradient(#3a2a6a,#1c1240);color:#ffe08a;border-color:#b79cff}
 .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}.moregrid .btn{min-width:0;font-size:14px}
-.ov.tut{z-index:30;background:radial-gradient(circle at 50% 30%,rgba(60,14,40,.97),rgba(10,4,18,.98))}.ov.tut .panel{gap:8px}
-#tutCv{width:min(320px,84vw);aspect-ratio:640/560;border-radius:16px;background:#1d0b22;border:2px solid rgba(245,197,66,.35);box-shadow:0 8px 30px rgba(0,0,0,.5)}
-.tutstep{font-size:12px;color:var(--muted);letter-spacing:.1em}.ov.tut h2{margin:2px 0 0}.ov.tut .tag{min-height:4.4em;margin:0;line-height:1.5}.ov.tut .tag b{color:#ffe08a}
-.tutdots{display:flex;gap:6px}.tutdots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2)}.tutdots i.on{background:#ffd23f;box-shadow:0 0 6px #ffd23f}
-.tutbtns{display:flex;gap:10px;width:100%;justify-content:center}.tutbtns .btn{flex:1;max-width:170px}
 .moregrid i{font-style:normal;margin-right:4px}
 .logo.chap{font-size:72px}
 /* ---------- v8: route ---------- */
@@ -890,22 +885,26 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 /* ---------- the chapter map ---------- */
 .ov.map{padding:0;gap:0;background:radial-gradient(ellipse at 50% 30%,#2a0c26,#0e061a 75%);overflow:hidden}
 .mpwrap0{display:flex;flex-direction:column;height:100%;width:100%;max-width:460px;margin:0 auto;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px calc(env(safe-area-inset-bottom,0px) + 10px)}
-.mphead{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mpt{display:flex;flex-direction:column;min-width:0}.mpt b{font-size:20px;font-weight:900;color:var(--gold);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mpt span{font-size:12px;color:var(--muted)}
-.mpst{flex:none;display:flex;gap:6px;font-size:13px;font-weight:900}.mpst span{padding:4px 9px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid rgba(245,197,66,.3);color:#fff1cf;white-space:nowrap}.mpst .coins{color:#ffd23f}
+.mphead{flex:none;display:flex;flex-direction:column;gap:2px}.mph{font-size:21px;font-weight:900;color:var(--gold);line-height:1.15;text-shadow:0 2px 0 #6a0a14}.mprow{display:flex;align-items:center;justify-content:space-between;gap:8px}.mprow>span{font-size:12px;color:var(--muted);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpt{display:flex;flex-direction:column;min-width:0}.mpt b{font-size:18px;font-weight:900;color:var(--gold);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mpt span{font-size:12px;color:var(--muted)}
+.mpst{flex:none;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:900}.mpst span{padding:4px 7px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid rgba(245,197,66,.3);color:#fff1cf;white-space:nowrap}.mpst .coins{color:#ffd23f}
 .mpnotes{flex:none;display:flex;flex-direction:column;gap:3px;margin-top:6px}.mpnotes:empty{display:none}.mpnotes .note{font-size:12px;line-height:1.35;color:#ffe9a0;padding:5px 9px;border-radius:10px;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.25)}.mpnotes .note.cz{color:#ffb0bc;background:rgba(255,60,90,.1);border-color:rgba(255,90,110,.4)}
-.mpscroll{flex:1 1 auto;min-height:0;overflow-y:auto;margin:8px -12px 0;padding:0 12px;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent);-webkit-mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+.mpscroll{flex:1 1 auto;min-height:0;overflow-y:auto;margin:8px -12px 0;padding:0 12px;border-radius:6px;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent);-webkit-mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent)}
 #mpSvg{display:block;width:100%;height:auto;margin:0 auto;max-width:400px;font-family:var(--font)}
 #mpSvg .nd{cursor:default}#mpSvg .nd.go{cursor:pointer}
 #mpSvg .nd.go .pulse{animation:mpPulse 1.3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes mpPulse{50%{transform:scale(1.18);opacity:.35}}
 #mpSvg .ed.next{stroke-dasharray:6 5;animation:mpDash 1s linear infinite}@keyframes mpDash{to{stroke-dashoffset:-11}}
-.mpinfo{flex:none;margin-top:8px;padding:9px 11px;border-radius:14px;background:rgba(0,0,0,.4);border:1.5px solid rgba(245,197,66,.3);min-height:58px;text-align:left}
-.mpinfo .sel{display:flex;align-items:center;gap:10px}.mpinfo .sel .g{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:21px;font-weight:900;color:var(--nc);background:#1a0410;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb,var(--nc) 45%,transparent)}
+.mpinfo{position:relative;flex:none;margin-top:8px;padding:9px 12px;border-radius:14px;background:linear-gradient(#3a1028,#200818);border:1.5px solid rgba(245,197,66,.6);box-shadow:0 0 0 3px rgba(196,40,60,.3),0 8px 22px rgba(0,0,0,.45);min-height:58px;text-align:left}
+.mpinfo::before,.mpinfo::after{content:'';position:absolute;top:-6px;width:11px;height:11px;border-radius:50%;background:#c4283c;border:1.5px solid #f5c542}.mpinfo::before{left:-6px}.mpinfo::after{right:-6px}
+.mphelp{appearance:none;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(245,197,66,.7);background:rgba(14,6,26,.7);color:#ffe9a0;font:inherit;font-weight:900;font-size:15px;cursor:pointer;padding:0}
+#mpSvg .bob{animation:mpBob 1.6s ease-in-out infinite}@keyframes mpBob{50%{transform:translateY(-3px)}}
+#mpSvg .mpcloud{animation:mpDrift 9s ease-in-out infinite alternate}@keyframes mpDrift{to{transform:translateX(14px)}}
+.mpinfo .sel{display:flex;align-items:center;gap:10px}.mpinfo .sel .g{flex:none;display:grid;place-items:center;filter:drop-shadow(0 0 8px color-mix(in srgb,var(--nc) 55%,transparent))}
 .mpinfo .sel b{font-size:16px;color:var(--nc)}.mpinfo .sel div{display:flex;flex-direction:column;gap:2px}.mpinfo .sel small{font-size:12px;line-height:1.35;color:#eadcf2}.mpinfo .sel small.cz{color:#ff9aa8;font-weight:800}
 .mpinfo .hint{font-size:12.5px;font-weight:800;color:#ffe9a0;margin-bottom:5px}
 .mpleg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 10px}.mpleg span{display:flex;align-items:center;gap:6px;font-size:11px;color:#d9c8e6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mpleg i{flex:none;font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;color:var(--nc);border:1.5px solid var(--nc);background:#1a0410}
+.mpleg span svg{flex:none}
 .mpbtns{flex:none;display:flex;gap:8px;margin-top:8px}.mpbtns .btn{margin:0}.mpbtns #mpBag{flex:1 1 0;min-width:0;font-size:14px;padding:10px 6px}.mpbtns #mpGo{flex:2 1 0;min-width:0;font-size:18px}
 /* ---------- new run: mode, difficulty, ascension ---------- */
 .nrgod{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.3);border:1px solid rgba(245,197,66,.3);text-align:left}
@@ -988,11 +987,29 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .swrow .btn small{font-size:10.5px;opacity:.85}
 .dcard .ttile.art{width:48px;height:48px}
 
-.tutcard{position:relative;box-sizing:border-box;width:calc(100% - 16px);max-width:360px;padding:12px 14px 12px;border-radius:16px;background:linear-gradient(#3a1028,#200818);border:1.5px solid rgba(245,197,66,.6);box-shadow:0 0 0 4px rgba(196,40,60,.35),0 10px 28px rgba(0,0,0,.5)}
+.ov.tut{z-index:30;padding:0;gap:0;background:radial-gradient(ellipse at 50% 26%,#4a0c26,#12051c 62%,#08030e)}
+.tutwrap{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:420px;min-height:100%;margin:0 auto;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px calc(env(safe-area-inset-bottom,0px) + 14px)}
+.tuthead{display:flex;align-items:center;gap:8px;width:100%}
+.tutchip{display:flex;align-items:center;gap:7px;min-width:0;font-size:13px;font-weight:900;color:#ffe9a0;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tutchip i{font-style:normal;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:15px;color:#1a0410;background:var(--tc);box-shadow:0 0 12px color-mix(in srgb,var(--tc) 60%,transparent)}
+.tutstep{margin-left:auto;flex:none;white-space:nowrap;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.04em}
+.tutskip{flex:none;appearance:none;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.25);color:#c9b8d9;font:inherit;font-size:12px;font-weight:800;border-radius:999px;padding:5px 11px;cursor:pointer}
+.tutstage{position:relative;width:100%;border-radius:18px;padding:5px;background:linear-gradient(135deg,#f5c542,#a8740a 40%,#f5c542 60%,#8a5a10);box-shadow:0 0 0 3px rgba(196,40,60,.45),0 14px 34px rgba(0,0,0,.6)}
+.tutstage::before,.tutstage::after{content:'';position:absolute;top:-6px;width:13px;height:13px;border-radius:50%;background:#c4283c;border:2px solid #f5c542;z-index:2}.tutstage::before{left:-6px}.tutstage::after{right:-6px}
+#tutCv{display:block;width:100%;aspect-ratio:640/560;height:auto;border-radius:13px;background:#1d0b22;cursor:pointer}
+.tutdots{display:flex;gap:5px;width:100%;justify-content:center}.tutdots i{flex:1;max-width:38px;height:5px;border-radius:3px;background:rgba(255,255,255,.15)}.tutdots i.done{background:rgba(245,197,66,.55)}.tutdots i.on{background:#ffd23f;box-shadow:0 0 8px #ffd23f}
+.ov.tut .tag{min-height:4.5em;margin:0;line-height:1.5}.ov.tut .tag b{color:#ffe08a}
+.tutbtns{display:flex;gap:10px;width:100%;margin-top:auto}.tutbtns .btn{margin:0}.tutbtns #tutBack{flex:1 1 0;min-width:0;font-size:15px}.tutbtns #tutNext{flex:2 1 0;min-width:0}
+.tutmenu{display:flex;flex-direction:column;gap:10px;width:100%;max-width:420px;margin:0 auto;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 18px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.tmh{display:flex;flex-direction:column;gap:2px;margin-bottom:4px}.tmh b{font-size:28px;font-weight:900;color:var(--gold)}.tmh small{font-size:13px;color:var(--muted)}
+.tmc{appearance:none;font:inherit;color:#f3e6c8;display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;border:2px solid color-mix(in srgb,var(--tc) 70%,transparent);background:linear-gradient(90deg,rgba(44,20,56,.95),rgba(24,10,34,.95));cursor:pointer;text-align:left}
+.tmc i{flex:none;font-style:normal;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:900;color:#1a0410;background:var(--tc);box-shadow:0 0 14px color-mix(in srgb,var(--tc) 55%,transparent)}
+.tmc span{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.tmc b{font-size:17px;color:var(--tc)}.tmc small{font-size:12px;color:#d9c8e6;line-height:1.3}.tmc em{flex:none;font-style:normal;font-size:11px;font-weight:800;color:var(--muted)}
+.tmc:active{transform:scale(.98)}.tutmenu #tmBack{margin-top:6px}
+.tphelp{appearance:none;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(245,197,66,.7);background:rgba(14,6,26,.6);color:#ffe9a0;font:inherit;font-weight:900;font-size:17px;cursor:pointer;padding:0;margin-left:auto;margin-right:8px}
+.tutcard{position:relative;box-sizing:border-box;width:calc(100% - 16px);max-width:360px;}.tutwrap .tutcard{width:100%;max-width:none;padding:12px 14px 12px;border-radius:16px;background:linear-gradient(#3a1028,#200818);border:1.5px solid rgba(245,197,66,.6);box-shadow:0 0 0 4px rgba(196,40,60,.35),0 10px 28px rgba(0,0,0,.5)}
 .tutcard::before,.tutcard::after{content:'';position:absolute;top:-7px;width:14px;height:14px;border-radius:50%;background:#c4283c;border:2px solid #f5c542}
 .tutcard::before{left:-7px}.tutcard::after{right:-7px}
 .tutcard h2{font-size:22px;margin:0 0 6px}.tutcard .tag{font-size:13.5px;text-align:left;max-width:none;margin:0}
-#tutCv{border:none!important;box-shadow:0 0 0 2px rgba(245,197,66,.25),0 10px 30px rgba(0,0,0,.6)!important}
 
 .chapE{margin:6px auto 4px;padding:10px 14px;border-radius:14px;background:linear-gradient(#3a1a08,#200c06);border:1.5px solid #ffcf8a;box-shadow:0 0 18px rgba(255,180,90,.35);display:flex;flex-direction:column;align-items:center;gap:3px;max-width:300px;animation:chapEpop .6s cubic-bezier(.2,1.6,.4,1) both .25s}
 .chapE b{color:#ffcf8a;font-size:15px}.chapE span{color:#fff1cf;font-size:13px}
@@ -1259,7 +1276,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 
 <div id="ovGods" class="ov tpl gods" hidden>
   <div class="panel">
-    <div class="tphead"><h2 id="gdH">神明 · Gottheit</h2><button class="ibtn x" id="bGodsX" aria-label="close">✕</button></div>
+    <div class="tphead"><h2 id="gdH">神明 · Gottheit</h2><button class="tphelp" id="gdHelp" aria-label="?">?</button><button class="ibtn x" id="bGodsX" aria-label="close">✕</button></div>
     <div class="tpwal" id="gdWal"></div>
     <div class="gdstage"><canvas id="godCv" width="800" height="600"></canvas>
       <div class="t3ui top"><button class="t3c" id="gdSwitch"></button><span class="t3sp"></span></div></div>
@@ -1346,6 +1363,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
     <div class="mset">
       <button class="btn ghost" id="bLang2">中文 ⇄ Deutsch</button>
       <button class="btn ghost" id="bMenuCodex">圖鑑 · Kodex</button>
+      <button class="btn ghost" id="bMenuTut">教學 · Anleitung</button>
       <button class="btn ghost" id="bSnd2"></button>
       <button class="btn ghost" id="bMus2"></button>
     </div>
@@ -1414,7 +1432,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 
 <div id="ovMap" class="ov map" hidden>
   <div class="mpwrap0">
-    <div class="mphead"><div class="mpt"><b id="mpH"></b><span id="mpS"></span></div><div class="mpst" id="mpSt"></div></div>
+    <div class="mphead"><b class="mph" id="mpH"></b><div class="mprow"><span id="mpS"></span><div class="mpst" id="mpSt"></div></div></div>
     <div class="mpnotes" id="mpNotes"></div>
     <div class="mpscroll" id="mpScroll"><svg id="mpSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
     <div class="mpinfo" id="mpInfo"></div>
@@ -1469,14 +1487,14 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 </div>
 
 <div id="ovTut" class="ov tut" hidden>
-  <div class="panel">
-    <div class="tutstep" id="tutStep"></div>
-    <canvas id="tutCv" width="640" height="560"></canvas>
-    <div class="tutcard"><h2 id="tutH"></h2><p class="tag" id="tutT"></p></div>
+  <div class="tutwrap" id="tutWrap">
+    <div class="tuthead"><span class="tutchip" id="tutChip"></span><span class="tutstep" id="tutStep"></span><button class="tutskip" id="tutSkip"></button></div>
+    <div class="tutstage"><canvas id="tutCv" width="640" height="560"></canvas></div>
     <div class="tutdots" id="tutDots"></div>
-    <div class="dock"><div class="row tutbtns"><button class="btn ghost" id="tutBack"></button><button class="btn red" id="tutNext"></button></div>
-    <button class="btn ghost sm" id="tutSkip"></button></div>
+    <div class="tutcard"><h2 id="tutH"></h2><p class="tag" id="tutT"></p></div>
+    <div class="tutbtns"><button class="btn ghost" id="tutBack"></button><button class="btn red" id="tutNext"></button></div>
   </div>
+  <div class="tutmenu" id="tutMenu" hidden></div>
 </div>
 
 <div id="ovMore" class="ov" hidden>
@@ -1561,7 +1579,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 </div>
 <div id="ovTemple" class="ov tpl" hidden>
   <div class="panel">
-    <div class="tphead"><h2>廟宇修建 · Tempel</h2><button class="ibtn x" id="bTempleX2" aria-label="close">✕</button></div>
+    <div class="tphead"><h2>廟宇修建 · Tempel</h2><button class="tphelp" id="tpHelp" aria-label="?">?</button><button class="ibtn x" id="bTempleX2" aria-label="close">✕</button></div>
     <div class="tpwal" id="tpWal"></div>
     <div class="t3wrap">
       <canvas id="templeCv" width="800" height="600"></canvas>
@@ -2766,7 +2784,7 @@ for (const h in TREE) TREE[h].forEach(nd => { nd.cost = ROW_COST[nd.r]; nd.lv = 
 const treeNode = (h, id) => TREE[h].find(n => n.id === id);
 const rankOf = (h, nd) => godOf(h).t[nd.id] || 0;
 const spentPts = h => TREE[h] ? TREE[h].reduce((a, nd) => a + rankOf(h, nd) * nd.cost, 0) : 0;
-const freePts = h => godLv(h) - spentPts(h);
+const freePts = h => Math.max(0, godLv(h) - 1 - spentPts(h)); // the first point comes with the first level-up
 const reqOK = (h, nd) => !nd.req.length || nd.req.some(id => rankOf(h, treeNode(h, id)) > 0);
 const exOK = (h, nd) => !nd.ex || !godOf(h).t[nd.ex];
 const canLearn = (h, nd) => ownsHero(h) && godLv(h) >= nd.lv && rankOf(h, nd) < nd.max && reqOK(h, nd) && exOK(h, nd) && freePts(h) >= nd.cost;
@@ -4519,6 +4537,17 @@ const ROUTE_D = {
   f: ['煉丹爐：免費把一顆球的效果煉進另一顆。', 'Gratis: einen Effekt von einer Kugel auf eine andere übertragen.'],
   boss: ['頭目：這一章的主人。', 'Der Herr dieses Kapitels.'],
 };
+/* the silhouette of each kind of stop (SVG path, centred, radius r) – used by the map and the tutorial */
+function nodePath(t, r) {
+  const P = (pts) => 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('L') + 'Z', ring = (n, f) => { const a = []; for (let i = 0; i < n; i++) { const th = i / n * Math.PI * 2 - Math.PI / 2, k = f(th, i); a.push([Math.cos(th) * r * k, Math.sin(th) * r * k]); } return a; };
+  if (t === 'e') return P(ring(20, (th, i) => (i % 2 ? 0.86 : 1.16))); // a flaming burst
+  if (t === 'q') return P(ring(64, th => 1 + 0.11 * Math.cos(th * 7))); // an auspicious cloud
+  if (t === 'm') return `M${-r * 0.42},${-r * 1.05}h${r * 0.84}v${r * 0.2}h${-r * 0.84}Z M${-r * 1.02},0a${r * 1.02},${r * 0.86} 0 1 0 ${r * 2.04},0a${r * 1.02},${r * 0.86} 0 1 0 ${-r * 2.04},0Z M${-r * 0.42},${r * 0.85}h${r * 0.84}v${r * 0.2}h${-r * 0.84}Z`; // a paper lantern
+  if (t === 'r') return P([[-r * 1.18, -r * 0.12], [-r * 0.9, -r * 0.42], [0, -r * 1.02], [r * 0.9, -r * 0.42], [r * 1.18, -r * 0.12], [r * 0.8, -r * 0.18], [r * 0.8, r * 0.9], [-r * 0.8, r * 0.9], [-r * 0.8, -r * 0.18]]); // a temple roof
+  if (t === 'f') return `M${-r * 1.08},${-r * 0.42}L${r * 1.08},${-r * 0.42}L${r * 0.92},${-r * 0.22}Q${r * 0.92},${r * 0.7} 0,${r * 0.8}Q${-r * 0.92},${r * 0.7} ${-r * 0.92},${-r * 0.22}Z M${-r * 0.62},${r * 0.62}l${-r * 0.16},${r * 0.42}h${r * 0.2}l${r * 0.12},${-r * 0.3}Z M${r * 0.62},${r * 0.62}l${r * 0.16},${r * 0.42}h${-r * 0.2}l${-r * 0.12},${-r * 0.3}Z`; // a cauldron
+  if (t === 'boss') return P([[-r * 1.15, -r * 0.2], [-r * 1.05, -r * 1.25], [-r * 0.62, -r * 0.62], [0, -r * 0.82], [r * 0.62, -r * 0.62], [r * 1.05, -r * 1.25], [r * 1.15, -r * 0.2], [r * 0.9, r * 0.75], [0, r * 1.05], [-r * 0.9, r * 0.75]]); // a horned demon mask
+  return P(ring(8, () => 1.05)); // a coin-like octagon for a fight
+}
 /* ---------- the chapter map (Slay the Spire): 12 floors, several roads, you choose where to go ---------- */
 const MAP_ROWS = 12;
 const mapOn = (r = run) => !!(r && r.mapv && !r.weekly && !r.coop && r.ch < 3);
@@ -7258,45 +7287,80 @@ let MP = null;
 function openMap(cfg) {
   const f = cfg.road ? run.st + 1 : run.st;
   MP = Object.assign({}, cfg, { f, sel: null }); const R = mapReach(run, f); if (R.length === 1) MP.sel = R[0];
-  B = B && !B.demo ? B : makeDemo(); paused = true; renderMap(); show('ovMap');
+  B = B && !B.demo ? B : makeDemo(); paused = true; renderMap(); show('ovMap'); tutOnce('map');
   requestAnimationFrame(() => { const sc = $('mpScroll'), el = $('mpSvg').querySelector('.nd.go'); if (el) { const r = el.getBoundingClientRect(), r0 = sc.getBoundingClientRect(); sc.scrollTop += r.top - r0.top - sc.clientHeight * 0.62; } });
 }
+const MAPBG = [ // per chapter: sky colours and what stands at the start
+  { a: '#2c0c34', b: '#10061a', fog: '#ff7ad0', land: 'city' }, { a: '#0d2a1c', b: '#06100c', fog: '#7dffb0', land: 'pines' }, { a: '#2e0a14', b: '#0c0408', fog: '#ff6a5a', land: 'graves' }];
 function renderMap() {
-  const M = mapOf(run), P = pathOf(run), f = MP.f, N = M.length, reach = mapReach(run, f), info = MP.info || {};
+  const M = mapOf(run), P = pathOf(run), f = MP.f, N = M.length, reach = mapReach(run, f), info = MP.info || {}, Z = MAPBG[Math.min(run.ch, 2)], H0 = HEROES[run.hero] || HEROES.taizi;
   $('mpH').textContent = MP.road ? (info.title || t('win')) : f === 0 ? L2('選一條路', 'Wähle deinen Weg') : L2('下一站去哪？', 'Wohin als Nächstes?');
   $('mpS').textContent = `${chName()} · ${L2(`第 ${f + 1}/${N} 站`, `Etappe ${f + 1}/${N}`)}`;
-  $('mpSt').innerHTML = `<span>♥ ${run.hp}/${run.maxhp}</span><span class="coins">● ${fmt(run.coins)}</span>`;
+  $('mpSt').innerHTML = `<span>♥ ${run.hp}/${run.maxhp}</span><span class="coins">● ${fmt(run.coins)}</span><button class="mphelp" id="mpHelp" aria-label="?">?</button>`;
   $('mpNotes').innerHTML = (info.notes || []).map(n => `<div class="note">${n}</div>`).join('');
-  // the drawing: floor 0 at the bottom, the boss on top
-  const W = 340, rowH = 62, top = 46, H = top + (N - 1) * rowH + 40, X0 = c => 52 + c * 78, pos = (fl, n) => [fl === N - 1 ? W / 2 : X0(n.c) + n.j * 9, top + (N - 1 - fl) * rowH + (fl === N - 1 ? 0 : n.j * 5)];
-  let ed = '', nd = '';
+  // layout: floor 0 at the bottom, the boss on top under the chapter's plaque
+  const W = 340, rowH = 64, top = 92, H = top + (N - 1) * rowH + 78, X0 = c => 52 + c * 78, pos = (fl, n) => [fl === N - 1 ? W / 2 : X0(n.c) + n.j * 9, top + (N - 1 - fl) * rowH + (fl === N - 1 ? 0 : n.j * 5)];
+  let sd = (run.mseed || 7) % 9973 + run.ch * 131; const rnd2 = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
+  // ----- the scroll: night sky, drifting lucky clouds, a skyline / forest / graveyard at the start, the boss's lair on top
+  let bg = `<defs><linearGradient id="mpSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${Z.b}"/><stop offset=".55" stop-color="${Z.a}"/><stop offset="1" stop-color="${Z.b}"/></linearGradient>`
+    + `<radialGradient id="mpLair" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff2a3a" stop-opacity=".55"/><stop offset="1" stop-color="#ff2a3a" stop-opacity="0"/></radialGradient>`
+    + Object.keys(ROUTE_T).map(k => `<radialGradient id="mg_${k}" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="${mixHex(ROUTE_T[k].col, '#ffffff', 0.45)}"/><stop offset=".55" stop-color="${ROUTE_T[k].col}"/><stop offset="1" stop-color="${mixHex(ROUTE_T[k].col, '#000000', 0.5)}"/></radialGradient>`).join('')
+    + `<filter id="mpBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter></defs>`
+    + `<rect x="0" y="0" width="${W}" height="${H}" fill="url(#mpSky)"/>`;
+  for (let i = 0; i < 26; i++) bg += `<circle cx="${(rnd2() * W).toFixed(0)}" cy="${(rnd2() * H * 0.8).toFixed(0)}" r="${(0.6 + rnd2() * 1.1).toFixed(1)}" fill="#fff6dc" opacity="${(0.25 + rnd2() * 0.4).toFixed(2)}"/>`; // stars
+  for (let i = 0; i < 9; i++) { const x = 20 + rnd2() * (W - 60), y = 70 + rnd2() * (H - 220), s = 0.7 + rnd2() * 0.9; bg += `<g transform="translate(${x.toFixed(0)} ${y.toFixed(0)}) scale(${s.toFixed(2)})"><path class="mpcloud" style="animation-delay:-${(rnd2() * 9).toFixed(1)}s" d="M0,0c6,-9 20,-8 21,1c1,7 -8,9 -11,3c-2,-4 3,-6 5,-3M21,1c4,-6 14,-5 15,1c0,5 -6,6 -8,2" fill="none" stroke="${Z.fog}" stroke-width="1.6" stroke-linecap="round" opacity=".16"/></g>`; }
+  bg += `<ellipse cx="${W / 2}" cy="${top}" rx="150" ry="70" fill="url(#mpLair)"/>`; // the boss glows on the horizon
+  { const gy = H - 6; let d = `M0,${gy}`; // the land where the chapter starts
+    if (Z.land === 'city') { for (let x = 0; x < W; x += 22) { const h = 18 + ((x * 37) % 30); d += `L${x},${gy - h}L${x + 20},${gy - h}`; } d += `L${W},${gy}Z`; bg += `<path d="${d}" fill="#14061e"/>`; for (let x = 4; x < W; x += 22) for (let k = 0; k < 3; k++) if ((x + k * 7) % 3) bg += `<rect x="${x + 3 + k * 5}" y="${gy - 12 - ((x * 37) % 30) + 14 + k * 3}" width="2.5" height="3" fill="#ffcf7a" opacity=".55"/>`;
+      let lan = ''; for (let x = 12; x < W; x += 28) lan += `<circle cx="${x}" cy="${gy - 40 + Math.sin(x * 0.05) * 5}" r="3.2" fill="#ff4a3a"/><circle cx="${x}" cy="${gy - 40 + Math.sin(x * 0.05) * 5}" r="7" fill="#ff6a3a" opacity=".18"/>`; bg += `<path d="M0,${gy - 44}Q${W / 2},${gy - 28} ${W},${gy - 44}" stroke="#5a2a3a" stroke-width="1" fill="none"/>` + lan; }
+    else if (Z.land === 'pines') { for (let x = -10; x < W + 10; x += 16) { const h = 26 + ((x * 53) % 24); d += `L${x},${gy - 6}L${x + 8},${gy - h}L${x + 16},${gy - 6}`; } d += `L${W},${gy}Z`; bg += `<path d="${d}" fill="#071a10"/>`; }
+    else { for (let x = 6; x < W; x += 30) { const h = 14 + ((x * 29) % 12); d += `L${x},${gy}L${x},${gy - h + 6}Q${x + 9},${gy - h - 6} ${x + 18},${gy - h + 6}L${x + 18},${gy}`; } d += `L${W},${gy}Z`; bg += `<path d="${d}" fill="#1a060c"/>`; }
+  }
+  bg += `<g opacity=".55"><line x1="7" y1="0" x2="7" y2="${H}" stroke="#f5c542" stroke-width="1.2"/><line x1="11" y1="0" x2="11" y2="${H}" stroke="#f5c542" stroke-width=".5"/><line x1="${W - 7}" y1="0" x2="${W - 7}" y2="${H}" stroke="#f5c542" stroke-width="1.2"/><line x1="${W - 11}" y1="0" x2="${W - 11}" y2="${H}" stroke="#f5c542" stroke-width=".5"/>`;
+  for (let y = 60; y < H; y += 120) bg += `<rect x="5" y="${y}" width="8" height="8" transform="rotate(45 9 ${y + 4})" fill="#c4283c" stroke="#f5c542" stroke-width=".8"/><rect x="${W - 13}" y="${y}" width="8" height="8" transform="rotate(45 ${W - 9} ${y + 4})" fill="#c4283c" stroke="#f5c542" stroke-width=".8"/>`;
+  bg += `</g>`;
+  // the chapter's plaque, hanging above the boss
+  bg += `<g transform="translate(${W / 2} 30)"><line x1="-46" y1="-30" x2="-38" y2="-12" stroke="#a8740a" stroke-width="1.2"/><line x1="46" y1="-30" x2="38" y2="-12" stroke="#a8740a" stroke-width="1.2"/><rect x="-66" y="-13" width="132" height="27" rx="5" fill="#6a1018" stroke="#f5c542" stroke-width="2"/><rect x="-61" y="-9" width="122" height="19" rx="3" fill="none" stroke="#f5c542" stroke-width=".6" opacity=".7"/><text x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="900" fill="#ffe9a0">${L2(`第${'一二三四'[Math.min(run.ch, 3)]}章・`, `Kapitel ${run.ch + 1} · `)}${chName()}</text></g>`;
+  // ----- roads: stepping stones; your road in gold; where you can go next glows
+  let ed = '', glow = '';
   for (let fl = 0; fl < N - 1; fl++) M[fl].forEach((n, i) => { const [x1, y1] = pos(fl, n);
     for (const j of n.next) { const [x2, y2] = pos(fl + 1, M[fl + 1][j]), taken = P[fl] === i && P[fl + 1] === j, next = fl === f - 1 && P[fl] === i && reach.includes(j), sel = next && MP.sel === j;
-      ed += `<line class="ed${next ? ' next' : ''}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${taken ? '#f5c542' : sel ? '#fff1cf' : next ? '#ffe9a0' : 'rgba(245,197,66,.22)'}" stroke-width="${taken ? 3.5 : next ? 2.5 : 1.6}" ${taken || next ? '' : 'stroke-dasharray="2 5"'} stroke-linecap="round"/>`; } });
+      if (taken) { glow += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#ffb347" stroke-width="8" stroke-linecap="round"/>`; ed += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#ffd86a" stroke-width="3" stroke-linecap="round"/>`; }
+      else if (next) ed += `<line class="ed next" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${sel ? '#ffffff' : '#fff1cf'}" stroke-width="${sel ? 3.2 : 2.4}" stroke-linecap="round"/>`;
+      else ed += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${fl < f ? 'rgba(245,197,66,.14)' : 'rgba(245,197,66,.42)'}" stroke-width="3.4" stroke-dasharray="0.1 8" stroke-linecap="round"/>`; } });
+  // ----- the stops: each kind has its own shape
+  let nd = '', halo = '';
   M.forEach((row, fl) => row.forEach((n, i) => {
-    const [x, y] = pos(fl, n), T = ROUTE_T[n.t], boss = n.t === 'boss', r = boss ? 25 : 16, done = P[fl] === i && fl < f, past = fl < f && P[fl] !== i, go = fl === f && reach.includes(i), sel = go && MP.sel === i;
-    const cz = (n.t === 'e' || boss) && fl >= f ? cursesAt(run.ch, fl, n.t) : [], here = MP.road && fl === f - 1 && P[fl] === i;
-    nd += `<g class="nd${go ? ' go' : ''}" data-i="${i}" data-f="${fl}" opacity="${past ? 0.28 : fl > f && !boss ? 0.78 : 1}">`
-      + (go ? `<circle class="pulse" cx="${x}" cy="${y}" r="${r + 6}" fill="none" stroke="${T.col}" stroke-width="2.5"/>` : '')
-      + (sel ? `<circle cx="${x}" cy="${y}" r="${r + 9}" fill="none" stroke="#fff1cf" stroke-width="2.5"/>` : '')
-      + `<circle cx="${x}" cy="${y}" r="${sel ? r + 3 : r}" fill="${done ? T.col : '#1a0812'}" stroke="${T.col}" stroke-width="${go ? 3 : 2}"/>`
-      + `<text x="${x}" y="${y + 0.5}" text-anchor="middle" dominant-baseline="central" font-size="${boss ? 24 : 15}" font-weight="900" fill="${done ? '#1a0410' : T.col}">${T.g}</text>`
-      + (done ? `<circle cx="${x + r - 3}" cy="${y - r + 3}" r="6" fill="#1a0410" stroke="#7dffb0" stroke-width="1.5"/><text x="${x + r - 3}" y="${y - r + 3.5}" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="900" fill="#7dffb0">✓</text>` : '')
-      + (cz.length ? `<rect x="${x + r - 8}" y="${y - r - 7}" width="16" height="12" rx="4" fill="#b3001e"/><text x="${x + r}" y="${y - r - 0.5}" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#ffd0d8">煞</text>` : '')
-      + (here ? `<text x="${x - r - 10}" y="${y + 1}" text-anchor="middle" dominant-baseline="central" font-size="13">📍</text>` : '')
-      + `</g>`; }));
-  const svg = $('mpSvg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.innerHTML = ed + nd;
+    const [x, y] = pos(fl, n), T = ROUTE_T[n.t], boss = n.t === 'boss', r = boss ? 23 : 15, done = P[fl] === i && fl < f, past = fl < f && P[fl] !== i, go = fl === f && reach.includes(i), sel = go && MP.sel === i;
+    const cz = (n.t === 'e' || boss) && fl >= f ? cursesAt(run.ch, fl, n.t) : [], d = nodePath(n.t, sel ? r * 1.18 : r);
+    if (go) halo += `<circle cx="${x}" cy="${y}" r="${r + 9}" fill="${T.col}" opacity=".45"/>`;
+    const fill = done || go || boss ? `url(#mg_${n.t})` : '#1c0a16', stroke = done || go ? '#f5c542' : T.col, txtc = done || go || boss ? '#fff6e0' : T.col;
+    nd += `<g class="nd${go ? ' go' : ''}" data-i="${i}" data-f="${fl}" opacity="${past ? 0.24 : fl > f && !boss ? 0.86 : 1}"><g class="${go ? 'bob' : ''}" style="${go ? `animation-delay:-${(i * 0.37).toFixed(2)}s` : ''}">`
+      + (go ? `<g transform="translate(${x} ${y})"><path class="pulse" d="${nodePath(n.t, r + 5)}" fill="none" stroke="${T.col}" stroke-width="2.4"/></g>` : '')
+      + (sel ? `<path d="${nodePath(n.t, r * 1.18 + 7)}" transform="translate(${x} ${y})" fill="none" stroke="#fff6e0" stroke-width="2.2"/>` : '')
+      + `<path d="${d}" transform="translate(${x} ${y})" fill="${fill}" stroke="${stroke}" stroke-width="${go || done ? 2.4 : 1.8}" stroke-linejoin="round"/>`
+      + `<text x="${x}" y="${y + (n.t === 'r' ? 3 : n.t === 'f' ? -1 : 0.5)}" text-anchor="middle" dominant-baseline="central" font-size="${boss ? 22 : n.t === 'm' ? 13 : 14}" font-weight="900" fill="${txtc}" stroke="rgba(30,6,16,.8)" stroke-width="${done || go || boss ? 2.6 : 0}" paint-order="stroke">${T.g}</text>`
+      + (done ? `<circle cx="${x + r - 2}" cy="${y - r + 2}" r="6" fill="#1a0410" stroke="#7dffb0" stroke-width="1.5"/><text x="${x + r - 2}" y="${y - r + 2.5}" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="900" fill="#7dffb0">✓</text>` : '')
+      + (cz.length ? `<rect x="${x + r - 8}" y="${y - r - 8}" width="16" height="12" rx="4" fill="#b3001e" stroke="#ffd0d8" stroke-width=".6"/><text x="${x + r}" y="${y - r - 1.5}" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#ffd0d8">煞</text>` : '')
+      + `</g></g>`; }));
+  // ----- where you stand: your god's seal
+  const here = f > 0 && P[f - 1] != null ? pos(f - 1, M[f - 1][P[f - 1]]) : [W / 2, top + (N - 1) * rowH + 46];
+  const me = `<g transform="translate(${here[0] - (f > 0 ? 27 : 0)} ${here[1] + (f > 0 ? 0 : 6)})"><circle r="12" fill="${H0.col}" stroke="#fff1cf" stroke-width="2"/><text y="0.5" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="900" fill="#fff">${H0.glyph}</text></g>`
+    + (f === 0 ? `<text x="${W / 2}" y="${here[1] + 26}" text-anchor="middle" font-size="10" font-weight="900" fill="#ffe9a0" opacity=".8">${L2('起點', 'Start')}</text>` : '');
+  const svg = $('mpSvg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = bg + `<g filter="url(#mpBlur)" opacity=".55">${glow}${halo}</g>` + ed + nd + me;
   // what is selected, or the legend
-  const ib = $('mpInfo');
+  const ib = $('mpInfo'), icon = (k, s = 20) => `<svg viewBox="-16 -16 32 32" width="${s}" height="${s}"><path d="${nodePath(k, 11)}" fill="url(#mg_${k})" stroke="#f5c542" stroke-width="1.4"/><text y="0.5" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="900" fill="#fff6e0" stroke="rgba(30,6,16,.8)" stroke-width="2" paint-order="stroke">${ROUTE_T[k].g}</text></svg>`;
   if (MP.sel != null) { const n = M[f][MP.sel], T = ROUTE_T[n.t], cz = n.t === 'e' || n.t === 'boss' ? cursesAt(run.ch, f, n.t) : [];
-    ib.innerHTML = `<div class="sel" style="--nc:${T.col}"><span class="g">${T.g}</span><div><b>${L2(T.zh, T.de)}</b><small>${L2(...ROUTE_D[n.t])}</small>${cz.length ? `<small class="cz">${L2('煞', 'Fluch')}：${cz.map(id => `${nm(CURSES[id])} – ${curseDesc(id)}`).join('・')}</small>` : ''}</div></div>`; }
-  else ib.innerHTML = `<div class="hint">${L2('點一個發光的地方', 'Tippe auf ein leuchtendes Feld')}</div><div class="mpleg">${['b', 'e', 'q', 'm', 'r', 'f'].map(k => `<span style="--nc:${ROUTE_T[k].col}"><i>${ROUTE_T[k].g}</i>${L2(ROUTE_T[k].zh, ROUTE_T[k].de)}</span>`).join('')}</div>`;
+    ib.innerHTML = `<div class="sel" style="--nc:${T.col}"><span class="g">${icon(n.t, 44)}</span><div><b>${L2(T.zh, T.de)}</b><small>${L2(...ROUTE_D[n.t])}</small>${cz.length ? `<small class="cz">${L2('煞', 'Fluch')}：${cz.map(id => `${nm(CURSES[id])} – ${curseDesc(id)}`).join('・')}</small>` : ''}</div></div>`; }
+  else ib.innerHTML = `<div class="hint">${L2('點一個發光的地方', 'Tippe auf ein leuchtendes Feld')}</div><div class="mpleg">${['b', 'e', 'q', 'm', 'r', 'f'].map(k => `<span>${icon(k)}${L2(ROUTE_T[k].zh, ROUTE_T[k].de)}</span>`).join('')}</div>`;
   $('mpBag').innerHTML = `${L2('法寶袋', 'Beutel')} · ${run.bag.length}`;
   const go = $('mpGo'); go.disabled = MP.sel == null; go.innerHTML = MP.sel == null ? L2('先選一站', 'Feld wählen') : `${L2('出發', 'Los')}：${L2(ROUTE_T[M[f][MP.sel].t].zh, ROUTE_T[M[f][MP.sel].t].de)} ▶`;
 }
 $('mpSvg').addEventListener('click', e => { const g = e.target.closest('.nd.go'); if (!g || !MP) return; const i = +g.dataset.i; if (MP.sel === i) { $('mpGo').click(); return; } MP.sel = i; SFX.wood(); renderMap(); });
 $('mpGo').onclick = () => { if (!MP || MP.sel == null) return; const C = MP; pathOf(run)[C.f] = C.sel; MP = null; hide('ovMap'); paused = false; SFX.sheng(); saveRun(); if (C.road) { run.pend = null; advance(); } else enterStage(); };
 $('mpBag').onclick = () => { if (!MP) return; const C = MP; hide('ovMap'); openBagView(() => openMap(C)); };
+$('mpSt').addEventListener('click', e => { if (e.target.closest('#mpHelp')) { SFX.wood(); openTut('map'); } });
 
 function chapterCard() {
   const C = CHAPTERS[Math.min(run.ch, CHAPTERS.length - 1)];
@@ -7578,6 +7642,9 @@ function openMenu() { if (!run) return; paused = true; renderMenu(); $('bQuit').
 $('bQuit').onclick = () => { hide('ovMenu'); paused = false; if (run && run.coop) coopEnd(); saveRun(); ['ovJiao', 'ovKit', 'ovMk', 'ovRoad', 'ovChest', 'ovEvent', 'ovChap', 'ovDraft', 'ovAsk', 'ovVow'].forEach(hide); KIT = null; MK = null; PK = null; showTitle(); };
 $('bResume').onclick = () => { hide('ovMenu'); paused = !$('ovKit').hidden || !$('ovMk').hidden || !$('ovRoad').hidden || !$('ovJiao').hidden || !$('ovDraft').hidden || !$('ovAsk').hidden || !$('ovEvent').hidden; };
 $('bMenuCodex').onclick = () => openCodex();
+$('bMenuTut').onclick = () => openTutMenu(() => {});
+$('tpHelp').onclick = () => { SFX.wood(); openTut('temple'); };
+$('gdHelp').onclick = () => { SFX.wood(); openTut('god'); };
 $('bGiveup').onclick = () => { hide('ovMenu'); paused = false; if (run && run.coop) coopEnd(); if (run && run.weekly) { finishWeekly(false); return; } recordBest(); store.del('run21'); ['ovJiao', 'ovKit', 'ovMk', 'ovRoad', 'ovChest', 'ovEvent', 'ovChap', 'ovDraft', 'ovAsk', 'ovVow'].forEach(hide); KIT = null; MK = null; PK = null; showTitle(); };
 function xpLine() {
   if (!run || !HEROES[run.hero]) return ''; const h = HEROES[run.hero], I = lvInfo(godOf(run.hero).tot), can = anyAffordable(run.hero);
@@ -7660,7 +7727,7 @@ const PILL = { hb: 30, xp: 500 };
 function openGods(sel, o = {}) {
   const cur = TITLE_HERO || (LOOK || LOOK_DEF).hero;
   GD = { sel: sel || cur, pick: !!o.pick || (!!sel && sel !== cur), back: o.back || null, backOnPick: !!o.backOnPick, anim: GD && GD.anim };
-  hide('ovTitle'); renderGods(); show('ovGods'); $('ovGods').scrollTop = 0;
+  hide('ovTitle'); renderGods(); show('ovGods'); $('ovGods').scrollTop = 0; if (!GD.pick && store.get('runsDone', 0) >= 1) tutOnce('god');
   if (!GD.anim) { GD.anim = true; const loop = () => { if (!GD || $('ovGods').hidden) { if (GD) GD.anim = false; return; } drawGodCv(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
 }
 const gdShown = () => (GD.pick ? GD.sel : TITLE_HERO || (LOOK || LOOK_DEF).hero);
@@ -7816,7 +7883,7 @@ const trPos = nd => { // each tree has its own silhouette
   if (nd.h === 'taizi') return r < 6 ? { x: 180 + c * (38 + r * 4), y } : { x: 180 + c * (r === 8 ? 44 : 62), y: y - Math.abs(c) * (r === 8 ? 4 : 16) }; // stem, then the open flower
   return { x: 180 + c * (r < 6 ? 46 : 60) + (r >= 6 ? (r - 5) * 8 : 0), y }; // shaft, then blade
 };
-function openTree(h) { if (!TREE[h]) h = 'taizi'; TR = { h, sel: null }; hide('ovTitle'); hide('ovEnd'); renderTree(); show('ovTree'); $('ovTree').scrollTop = 0; tipTree();
+function openTree(h) { if (!TREE[h]) h = 'taizi'; TR = { h, sel: null }; hide('ovTitle'); hide('ovEnd'); renderTree(); show('ovTree'); $('ovTree').scrollTop = 0; if (store.get('runsDone', 0) >= 1 && tutOnce('god')) return; tipTree();
   if (!TR.anim) { TR.anim = true; const loop = () => { if (!TR || $('ovTree').hidden) { if (TR) TR.anim = false; return; } drawTreeCv(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); } }
 function tipTree() { const seen = store.get('tips', {}); if (seen.tree5) return; seen.tree5 = 1; store.set('tips', seen); setTimeout(() => toast(L2('<b>天賦樹</b>：玩這位神明會累積<b>修為</b>，每升一級得到一個<b>天賦點</b>。從下面往上修煉；越上面的天賦要更高等級、更多點。最上面兩個<b>化身</b>只能選一個。', '<b>Talentbaum</b>: Mit dieser Gottheit sammelst du <b>Kultivierung</b>; jede Stufe gibt einen <b>Talentpunkt</b>. Von unten nach oben lernen – weiter oben braucht es höhere Stufen und mehr Punkte. Von den zwei <b>Avataren</b> ganz oben wählst du einen.'), 6500), 300); }
 function renderTree() {
@@ -7946,7 +8013,7 @@ function eventResult(res) {
 
 /* ---------- temple upgrades (廟宇修建) ---------- */
 let TPLA = { on: false, fx: null, parts: [], stage: 0 };
-function openTemple() { renderTemple(); hide('ovTitle'); show('ovTemple'); T3V.init(); TPLA.stage = tplStage(templeLevel()); if (!TPLA.on) { TPLA.on = true; requestAnimationFrame(templeLoop); } }
+function openTemple() { renderTemple(); hide('ovTitle'); show('ovTemple'); tutOnce('temple'); T3V.init(); TPLA.stage = tplStage(templeLevel()); if (!TPLA.on) { TPLA.on = true; requestAnimationFrame(templeLoop); } }
 function templeLoop() {
   if ($('ovTemple').hidden) { TPLA.on = false; return; }
   if (T3V.ok) { try { T3V.frame(); } catch (e) { console.error(e); } requestAnimationFrame(templeLoop); return; }
@@ -8089,6 +8156,7 @@ function runSummaryHTML() {
     <div class="bigscore"><span>${L2('分數', 'Punkte')}</span>${fmt(runScore())}<small style="color:${D.col}">${L2(D.zh, D.de)} ×${D.rew}</small></div>` + earnedLine() + xpLine();
 }
 async function finishRun() {
+  store.set('runsDone', store.get('runsDone', 0) + 1);
   const entry = { look: lookTag(LOOK || LOOK_DEF), name: store.get('pname', '') || L2('無名信徒', 'Namenloser Pilger'), city: store.get('pcity', ''), score: runScore(), hero: run.hero, diff: run.diff, reach: stageLabel(), bestHit: run.bestHit, kills: run.kills, won: !!run.won, at: Date.now() };
   if (run.submitted) return; run.submitted = true;
   const eh = store.get('earnHist', []); eh.push(run.credEarned || 0); store.set('earnHist', eh.slice(-5));
@@ -8176,7 +8244,6 @@ $('bStoreX').onclick = () => { hide('ovStore'); showTitle(); };
 $('bTitleDaily').onclick = () => openDaily();
 
 /* ---------- 教學 tutorial: short animated steps (back / next / skip); replay under 更多 ---------- */
-let TUT = null;
 const TG2 = { // tiny drawing kit for the tutorial canvas (logical 320 × 280)
   peg(g, x, y, lit) { g.fillStyle = lit ? '#fff3a8' : '#d9a441'; g.beginPath(); g.arc(x, y, 6, 0, 6.28); g.fill(); g.fillStyle = lit ? '#ffe36a' : '#b9862c'; g.beginPath(); g.arc(x, y, 4.4, 0, 6.28); g.fill(); g.fillStyle = '#4a2a0a'; g.fillRect(x - 1.8, y - 1.8, 3.6, 3.6); },
   red(g, x, y, lit) { g.fillStyle = lit ? '#ff7088' : '#e3263b'; g.beginPath(); g.arc(x, y, 7, 0, 6.28); g.fill(); TG2.t(g, '福', x, y + 0.5, 8, '#ffdf6a'); },
@@ -8214,7 +8281,7 @@ TG2.orb = (g, x, y, n, max) => { g.fillStyle = n ? '#c2401d' : '#3a2a4a'; g.begi
 TG2.intent = (g, x, y, s, col) => { g.fillStyle = 'rgba(120,0,20,.85)'; g.beginPath(); g.roundRect(x - 26, y - 9, 52, 18, 9); g.fill(); TG2.t(g, s, x, y + 0.5, 11, col || '#fff1cf'); };
 TG2.talArt = (g, x, y, id, s = 30) => { try { g.drawImage(talCard(id), x - s / 2, y - s / 2, s, s); } catch (e) {} };
 TG2.tal = (g, x, y, glyph, rar, n) => { const id = Object.keys(TALIS).find(k => TALIS[k].g === glyph); if (id) { TG2.talArt(g, x, y, id, 32); return; } g.fillStyle = rar === 3 ? '#f5b52a' : rar === 2 ? '#7fb0e8' : '#d8c4a0'; g.beginPath(); g.roundRect(x - 15, y - 15, 30, 30, 6); g.fill(); g.strokeStyle = LR[rar][2]; g.lineWidth = 2; g.stroke(); TG2.t(g, glyph, x, y + 0.5, 16, '#5a0a14'); if (n) { g.fillStyle = '#1a0410'; g.beginPath(); g.roundRect(x + 4, y + 7, 15, 11, 5); g.fill(); TG2.t(g, String(n), x + 11.5, y + 12.5, 8, '#ffd23f'); } };
-const TUT_STEPS = [
+const TUT_OLD = [ // the first tutorial's slides – some live on in the new chapters (tut.js)
   { h: ['瞄準・發射', 'Zielen & schießen'], t: ['點一顆法寶，<b>拖曳瞄準、放開發射</b>。彈珠碰到的每一顆釘都給<b>功德</b>，打過的釘會消失。', 'Kugel antippen, <b>ziehen zum Zielen, loslassen zum Schießen</b>. Jeder getroffene Stift gibt <b>Verdienst</b> und verschwindet danach.'],
     P: 3.4, d(g, t) {
       const pegs = [[150, 80], [118, 122], [146, 166], [112, 206], [150, 244], [210, 110], [240, 160], [80, 90], [200, 200], [260, 230], [60, 170]];
@@ -8340,33 +8407,6 @@ const TUT_STEPS = [
       TG2.t(g, L2('天賦樹', 'Talentbaum'), 230, 248, 12, '#ffe08a');
     } },
 ];
-function openTut(after) {
-  TUT = { i: 0, t0: performance.now(), after }; paused = true; show('ovTut'); renderTut();
-  const loop = now => { if (!TUT) return; drawTut((now - TUT.t0) / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
-}
-function renderTut() {
-  const S = TUT_STEPS[TUT.i], n = TUT_STEPS.length; TUT.t0 = performance.now();
-  $('tutStep').textContent = `${TUT.i + 1} / ${n}`; $('tutH').textContent = L2(...S.h); $('tutT').innerHTML = L2(...S.t);
-  $('tutDots').innerHTML = TUT_STEPS.map((_, i) => `<i class="${i === TUT.i ? 'on' : ''}"></i>`).join('');
-  $('tutBack').textContent = L2('◀ 上一步', '◀ Zurück'); $('tutBack').disabled = TUT.i === 0;
-  $('tutNext').textContent = TUT.i === n - 1 ? L2('開始！', 'Los geht’s!') : L2('下一步 ▶', 'Weiter ▶'); $('tutSkip').textContent = L2('跳過教學', 'Überspringen');
-}
-function drawTut(t) {
-  const c = $('tutCv'), g = c.getContext('2d'), S = TUT_STEPS[TUT.i];
-  g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height); g.setTransform(2, 0, 0, 2, 0, 0);
-  // a little stage: the real board texture, lanterns, a gold frame
-  if (BG.board) { g.drawImage(BG.board, 0, 0, BG.board.width, BG.board.height * 0.62, 0, 0, 320, 280); } else { const gr = g.createLinearGradient(0, 0, 0, 280); gr.addColorStop(0, '#2b0818'); gr.addColorStop(1, '#170412'); g.fillStyle = gr; g.fillRect(0, 0, 320, 280); }
-  const vg = g.createRadialGradient(160, 140, 60, 160, 140, 220); vg.addColorStop(0, 'rgba(20,4,16,.25)'); vg.addColorStop(1, 'rgba(20,4,16,.8)'); g.fillStyle = vg; g.fillRect(0, 0, 320, 280);
-  for (let i = 0; i < 14; i++) { const ph = (t * 0.15 + i * 0.07) % 1; g.fillStyle = `rgba(255,220,140,${0.4 * (1 - ph)})`; g.fillRect((i * 53) % 320, 280 - ph * 280, 1.6, 1.6); }
-  try { S.d(g, t % S.P); } catch (e) { /* a drawing glitch must never block the tutorial */ }
-  g.strokeStyle = '#f5c542'; g.lineWidth = 2; g.strokeRect(5, 5, 310, 270); g.strokeStyle = 'rgba(245,197,66,.4)'; g.lineWidth = 1; g.strokeRect(10, 10, 300, 260);
-  for (const [x, y] of [[5, 5], [315, 5], [5, 275], [315, 275]]) { g.fillStyle = '#c4283c'; g.beginPath(); g.arc(x, y, 6, 0, 6.28); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.5; g.stroke(); }
-}
-function closeTut() { if (!TUT) return; const a = TUT.after; TUT = null; hide('ovTut'); paused = false; store.set('tutDone', 1); if (a) a(); }
-$('tutNext').onclick = () => { SFX.wood(); if (TUT.i >= TUT_STEPS.length - 1) return closeTut(); TUT.i++; renderTut(); };
-$('tutBack').onclick = () => { if (TUT.i > 0) { SFX.wood(); TUT.i--; renderTut(); } };
-$('tutSkip').onclick = () => closeTut();
-$('bMoreTut').onclick = () => { hide('ovMore'); openTut(() => { renderMore(); show('ovMore'); }); };
 
 /* ---------- loop & boot ---------- */
 function resize() {
@@ -9438,6 +9478,244 @@ $('bTitleStore').onclick = () => { auInit(); auResume(); openShop(); };
 /* ---------- boot (last, after every module is loaded) ---------- */
 try { window.claude?.hot?.snapshot?.(() => ({ run })); } catch (e) {}
 window.claude?.hot?.ready ? window.claude.hot.ready(boot) : boot(window.claude?.hot?.data ?? {});
+/* ================= 教學 Tutorials: four short chapters, each shown where you need it =================
+   fight: before your very first fight · map: the first time the chapter map opens · god: the first visit to your god after a finished run
+   temple: the first visit to the temple. All four live under 「更多 → 教學」, and a ? on each screen opens its own chapter again.
+   The slides are drawn with the real game art (pegs, cards, demons, your god, the temple, the talent tree). */
+const withX = (g, fn) => { const k = X; X = g; try { fn(); } finally { X = k; } };
+const tPeg = (x, y, type = 'n', hit = false) => ({ x, y, r: 8, type, hit, hp: 1, alive: true, flash: 0, born: 1, popT: 0, cool: 0, fuse: 0, ore: 0, burn: 0 });
+const tEnemy = id => ({ id, def: ENEMIES[id], seed: 1.7 });
+const tBall = id => (BALLS[id] ? { uid: -1, id, up: 0 } : null);
+const ease = k => (k = clamp(k, 0, 1), k * k * (3 - 2 * k));
+function tPegs(g, list, t, lit) { withX(g, () => list.forEach((p, i) => drawPeg(tPeg(p[0], p[1], p[2] || 'n', lit ? lit(i) : false), t))); }
+function tEnemyAt(g, id, x, y, s, t, o = {}) { const e = tEnemy(id); if (!e.def) return; withX(g, () => { X.save(); X.translate(x - (o.lunge || 0) * 40, y); const sz = s * (e.def.sz || 1), pu = o.pump || 0; X.scale(sz * (1 + pu * 0.12), sz * (1 + pu * 0.16)); drawEnemyArt(e, t); X.restore(); }); }
+function tGod(g, x, y, s, t, jump = 0, lk) { withX(g, () => { X.save(); X.translate(x, y); X.scale(s, s); try { drawHero(null, 0, 0, t, jump, 0, lk || LK); } catch (e) {} X.restore(); }); }
+function tCard(g, id, x, y, s, t, o = {}) { const b = tBall(id); if (!b) return; withX(g, () => { X.save(); X.translate(x, y); X.scale(s, s); drawCard(b, -CARD_W / 2, -CARD_H / 2, CARD_W, CARD_H, o); X.restore(); }); }
+function tOrb(g, x, y, n, max) { const gr = g.createRadialGradient(x - 4, y - 5, 2, x, y, 16); gr.addColorStop(0, n ? '#ffe9a0' : '#8a7a9a'); gr.addColorStop(1, n ? '#c2401d' : '#3a2a4a'); g.fillStyle = gr; g.beginPath(); g.arc(x, y, 16, 0, 6.28); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 2; g.stroke(); TG2.t(g, `${n}/${max}`, x, y - 1, 11, '#fff', '#4a1408'); TG2.t(g, L2('香', 'Energie'), x, y + 9, LANG === 'de' ? 5.5 : 7, '#ffe9a0'); }
+function tYinyang(g, x, y, r) { g.fillStyle = '#f5c542'; g.beginPath(); g.arc(x, y, r + 2, 0, 6.28); g.fill(); g.fillStyle = '#fff1cf'; g.beginPath(); g.arc(x, y, r, -Math.PI / 2, Math.PI / 2); g.fill(); g.fillStyle = '#1a0a14'; g.beginPath(); g.arc(x, y, r, Math.PI / 2, Math.PI * 1.5); g.fill(); g.beginPath(); g.arc(x, y - r / 2, r / 2, 0, 6.28); g.fill(); g.fillStyle = '#fff1cf'; g.beginPath(); g.arc(x, y + r / 2, r / 2, 0, 6.28); g.fill(); }
+function tFinger(g, x, y, press) { // a fingertip: a soft white dot, a ripple when it presses
+  g.save(); g.translate(x, y); g.fillStyle = 'rgba(0,0,0,.35)'; g.beginPath(); g.arc(2, 3, 10, 0, 6.28); g.fill();
+  g.fillStyle = press ? '#ffffff' : 'rgba(255,255,255,.85)'; g.beginPath(); g.arc(0, 0, press ? 8 : 9.5, 0, 6.28); g.fill(); g.strokeStyle = '#ffd23f'; g.lineWidth = 2; g.stroke();
+  if (press) { g.globalAlpha = 0.7; g.strokeStyle = '#fff1cf'; g.lineWidth = 2; g.beginPath(); g.arc(0, 0, 16, 0, 6.28); g.stroke(); }
+  g.restore();
+}
+function tPop(g, s, x, y, k, col = '#ffe27a', size = 16) { if (k < 0 || k > 1) return; g.save(); g.globalAlpha = 1 - k * k; TG2.t(g, s, x, y - k * 18, size * (k < 0.15 ? 0.6 + k * 2.7 : 1), col, '#2a0410'); g.restore(); }
+function tNode(g, k, x, y, r, st = 'go') { // a map stop in its own shape (same shapes as the map)
+  const T = ROUTE_T[k], p = new Path2D(nodePath(k, r));
+  g.save(); g.translate(x, y);
+  if (st === 'go') { const gr = g.createRadialGradient(-r * 0.3, -r * 0.35, 1, 0, 0, r * 1.3); gr.addColorStop(0, mixHex(T.col, '#ffffff', 0.45)); gr.addColorStop(0.55, T.col); gr.addColorStop(1, mixHex(T.col, '#000000', 0.5)); g.fillStyle = gr; } else g.fillStyle = '#1c0a16';
+  g.fill(p); g.lineWidth = st === 'go' ? 2.2 : 1.6; g.strokeStyle = st === 'go' ? '#f5c542' : T.col; g.lineJoin = 'round'; g.stroke(p);
+  TG2.t(g, T.g, 0, k === 'r' ? 3 : k === 'f' ? -1 : 0.5, r * 0.95, st === 'go' ? '#fff6e0' : T.col, st === 'go' ? 'rgba(30,6,16,.8)' : null);
+  g.restore();
+}
+/* a temple level → a plausible set of upgrades (spread evenly), for the growth animation */
+function tplU(L) { const U = {}; let n = 0, guard = 0; while (n < L && guard++ < 200) for (const u of UPGS) { if (n >= L) break; if ((U[u.id] || 0) < u.mx) { U[u.id] = (U[u.id] || 0) + 1; n++; } } return U; }
+const tOld = de => TUT_OLD.find(s => s.h[1] === de);
+const tRe = (de, txt) => { const o = tOld(de); return o ? Object.assign({}, o, { t: txt }) : null; }; // an old slide's drawing with a shorter text
+
+const TUTS = {
+  fight: { g: '戰', col: '#ff6b7d', h: ['戰鬥', 'Kampf'], s: ['瞄準、傷害、香、符紙、妖怪', 'Zielen, Schaden, Energie, Sofort-Karten, Dämonen'], steps: [
+    { h: ['瞄準・發射', 'Zielen & schießen'], t: ['點一顆法寶，<b>往上拖瞄準、放開發射</b>。打到的每一顆釘都給<b>功德</b>，打過的釘會消失。', 'Kugel antippen, <b>nach oben ziehen zum Zielen, loslassen zum Schießen</b>. Jeder getroffene Stift gibt <b>Verdienst</b> und verschwindet.'],
+      P: 3.8, d(g, t) {
+        const pegs = [[150, 92], [118, 130], [146, 168], [112, 206], [150, 244], [212, 118], [244, 164], [84, 102], [206, 206], [262, 234], [60, 172], [186, 152], [94, 250], [250, 96]];
+        const path = [[160, 36], [150, 92], [118, 130], [146, 168], [112, 206], [150, 244], [138, 300]], k = (t - 1.3) / 1.9, a = t < 1.3 ? Math.PI / 2 + Math.sin(t * 2.6) * 0.45 : Math.PI / 2 + 0.11;
+        const hitN = k <= 0 ? 0 : Math.floor(clamp(k, 0, 1) * 5.2);
+        tPegs(g, pegs, t, i => i < hitN); tYinyang(g, 160, 30, 9);
+        if (t < 1.3) { g.fillStyle = '#fff1cf'; for (let i = 1; i < 10; i++) { g.globalAlpha = 1 - i / 11; g.beginPath(); g.arc(160 + Math.cos(a) * i * 13, 36 + Math.sin(a) * i * 13, 2.1, 0, 6.28); g.fill(); } g.globalAlpha = 1; tFinger(g, 160 + Math.cos(a) * 120, 36 + Math.sin(a) * 120, true); }
+        else if (k < 1) { const [bx, by] = TG2.path(path, k), d = BALLS.nianzhu; withX(g, () => drawShape(d.sh, bx, by, 8, d.col, d.glyph, t)); }
+        for (let i = 0; i < hitN; i++) tPop(g, '+2', pegs[i][0] + 14, pegs[i][1] - 10, (k * 5.2 - i) / 1.6, '#9ff5e0', 12);
+        g.fillStyle = 'rgba(8,40,36,.85)'; g.beginPath(); g.roundRect(14, 254, 104, 20, 10); g.fill(); TG2.t(g, `${L2('功德', 'Verdienst')} ${hitN * 2}`, 66, 264.5, 12, '#9ff5e0');
+      } },
+    { h: ['功德 × 神力 = 傷害', 'Verdienst × Segen = Schaden'], t: ['紅色<b>福</b>釘給<b>神力</b>。打完一發：<b>功德 × 神力</b> = 打在妖怪身上的傷害。', 'Rote <b>福</b>-Stifte geben <b>Segen</b>. Nach dem Schuss: <b>Verdienst × Segen</b> = Schaden am Dämon.'],
+      P: 4, d(g, t) {
+        const pegs = [[62, 78], [102, 116], [62, 154], [102, 192], [76, 232, 'red']], k = clamp(t / 1.7, 0, 1), hits = Math.floor(k * 5.3), path = [[52, 30], [62, 78], [102, 116], [62, 154], [102, 192], [76, 232], [86, 290]];
+        tPegs(g, pegs, t, i => i < hits);
+        if (k < 1) { const [x, y] = TG2.path(path, k), d = BALLS.nianzhu; withX(g, () => drawShape(d.sh, x, y, 8, d.col, d.glyph, t)); }
+        const m = 2 * Math.min(4, hits), pw = hits >= 5 ? 2 : 1, dmg = m * pw, f = clamp((t - 2.1) / 0.6, 0, 1), hit = t > 2.7;
+        g.fillStyle = 'rgba(8,48,44,.9)'; g.beginPath(); g.roundRect(140, 30, 70, 44, 8); g.fill(); g.fillStyle = 'rgba(90,10,26,.9)'; g.beginPath(); g.roundRect(232, 30, 70, 44, 8); g.fill();
+        TG2.t(g, L2('功德', 'Verdienst'), 175, 42, 9, '#9ff5e0'); TG2.t(g, String(m), 175, 61, 18, '#fff'); TG2.t(g, '×', 221, 53, 15, '#fff'); TG2.t(g, L2('神力', 'Segen'), 267, 42, 9, '#ffb3c0'); TG2.t(g, String(pw), 267, 61, 18, '#fff');
+        if (hits >= 5) tPop(g, `${L2('神力', 'Segen')} +1`, 120, 222, (t - 1.6) / 1.4, '#ff6b7d', 12);
+        tEnemyAt(g, 'xiaogui', 236, 246, 0.95, t, { pump: hit ? Math.max(0, 1 - (t - 2.7) * 3) * -0.4 : 0 });
+        const hp = 1 - (hit ? dmg / 40 : 0); g.fillStyle = 'rgba(10,4,16,.85)'; g.fillRect(212, 160, 48, 6); g.fillStyle = '#e3263b'; g.fillRect(212, 160, 48 * hp, 6);
+        if (t > 2.1 && t < 3.6) TG2.t(g, String(dmg), lerp(222, 238, f), lerp(84, 150, f), 18 + 12 * (1 - f), '#ffe27a', '#8f0e1f');
+      } },
+    { h: ['香：每回合打好幾發', 'Energie: mehrere Schüsse pro Zug'], t: ['每回合有 <b>3 支香</b>、抽 <b>5 顆</b>法寶。卡片左上角是要幾支香。香用完就按<b>結束回合</b>，輪到妖怪。', 'Jeder Zug: <b>3 Energie</b> und <b>5 Kugeln</b> auf der Hand. Oben links auf der Karte steht, was sie kostet. Energie leer → <b>Zug beenden</b>, dann sind die Dämonen dran.'],
+      P: 4.6, d(g, t) {
+        const H = ['nianzhu', 'hufu', 'nianzhu', 'hufu', 'huojian'].filter(id => BALLS[id]), order = [0, 1, 4], step = Math.min(3, Math.floor(t / 1.05)), used = order.slice(0, step);
+        const cost = id => BALLS[id].cost || 0, e = 3 - used.reduce((a, i) => a + cost(H[i]), 0);
+        tOrb(g, 30, 222, Math.max(0, e), 3);
+        H.forEach((id, i) => { if (used.includes(i)) return; const play = step < 3 && order[step] === i && (t % 1.05) > 0.45; tCard(g, id, 84 + i * 48, 226 - (play ? 8 : 0), 0.74, t, { on: play, dim: cost(id) > e }); });
+        if (step < 3 && (t % 1.05) > 0.45) { const i = order[step], k = ((t % 1.05) - 0.45) / 0.6, d = BALLS[H[i]]; withX(g, () => drawShape(d.sh, lerp(84 + i * 48, 160, k), lerp(190, 40, ease(k)), 8, d.col, d.glyph, t)); }
+        tYinyang(g, 160, 30, 9);
+        if (step === 3) { g.fillStyle = `rgba(255,200,80,${0.35 + Math.sin(t * 8) * 0.2})`; g.beginPath(); g.roundRect(6, 246, 50, 28, 8); g.fill(); g.fillStyle = '#8f1424'; g.beginPath(); g.roundRect(9, 249, 44, 22, 6); g.fill(); TG2.t(g, L2('結束', 'Zug'), 31, 256, 8.5, '#fff1cf'); TG2.t(g, L2('回合', 'beenden'), 31, 265, 8.5, '#fff1cf'); }
+        TG2.t(g, [L2('念珠：1 支香', 'Gebetsperle: 1 Energie'), L2('護符：1 支香', 'Schutzperle: 1 Energie'), L2('火尖槍：最後 1 支', 'Feuerlanze: die letzte'), L2('香用完了 → 結束回合', 'Energie leer → Zug beenden')][step], 160, 116, 13, '#ffe08a', '#1a0410');
+      } },
+    { h: ['符紙：即時施放', 'Sofort-Karten'], t: ['寫著「<b>即時施放</b>」的是<b>符紙</b>：它<b>不會發射</b>。點一下看說明，再點一下就馬上生效，然後燒掉。', 'Karten mit „<b>SOFORT</b>“ sind Talismane: Sie werden <b>nicht geschossen</b>. Einmal tippen = lesen, nochmal tippen = sie wirken sofort und verbrennen.'],
+      P: 4.4, d(g, t) {
+        const id = Object.keys(BALLS).find(k => isCast(BALLS[k]) && cardOK(BALLS[k]) && !BALLS[k].god && BALLS[k].t === 'pow') || 'nianzhu', d = BALLS[id];
+        const tap1 = t > 0.8, tap2 = t > 2, burn = clamp((t - 2) / 0.9, 0, 1);
+        tGod(g, 64, 250, 0.72, t, tap2 && t < 2.6 ? Math.sin((t - 2) / 0.6 * Math.PI) * 10 : 0);
+        if (tap2) { g.save(); g.globalCompositeOperation = 'lighter'; const a = Math.max(0, 1 - (t - 2) / 1.6); const gr = g.createRadialGradient(64, 214, 4, 64, 214, 56); gr.addColorStop(0, `rgba(255,200,90,${0.55 * a})`); gr.addColorStop(1, 'rgba(255,200,90,0)'); g.fillStyle = gr; g.fillRect(0, 150, 140, 130); g.restore(); tPop(g, `✦ ${nm(d)}`, 64, 150, (t - 2.1) / 1.6, '#ffe9a0', 13); }
+        if (burn < 1) { g.save(); g.globalAlpha = 1 - burn; tCard(g, id, 214, 150 - burn * 30, 1.35 - burn * 0.3, t, { on: tap1 }); g.restore(); }
+        if (burn > 0 && burn < 1) for (let i = 0; i < 14; i++) { const a = i * 2.4, r = burn * 70; g.fillStyle = i % 2 ? '#ffb347' : d.col; g.globalAlpha = 1 - burn; g.fillRect(214 + Math.cos(a) * r, 150 + Math.sin(a) * r * 0.7 - burn * 30, 4, 3); g.globalAlpha = 1; }
+        if (tap1 && !tap2) { g.fillStyle = 'rgba(14,6,26,.94)'; g.beginPath(); g.roundRect(120, 34, 190, 28, 8); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.2; g.stroke(); TG2.t(g, L2('即時：不用發射・再點一下', 'Sofort-Karte: kein Schuss · nochmal tippen'), 215, 48, 8.5, '#ffd23f'); }
+        if (t < 2.2) tFinger(g, 228, 196, (t > 0.7 && t < 0.95) || (t > 1.9 && t < 2.15));
+        TG2.t(g, tap2 ? L2('不用發射，已經生效！', 'Gewirkt – ganz ohne Schuss!') : '', 200, 262, 12, '#7dffb0', '#06281e');
+      } },
+    { h: ['看懂妖怪要做什麼', 'Was der Dämon vorhat'], t: ['妖怪頭上寫著<b>下一回合要做什麼</b>：<b>攻擊</b>、<b>舉盾</b>、<b>變強</b>或<b>下咒</b>。攻擊要用<b>護體</b>擋！', 'Über dem Dämon steht, <b>was er als Nächstes tut</b>: <b>angreifen</b>, <b>Schild heben</b>, <b>stärker werden</b> oder <b>verfluchen</b>. Gegen Angriffe hilft <b>Schild</b>.'],
+      P: 5.6, d(g, t) {
+        const q = Math.floor(t / 1.4), u = (t % 1.4) / 1.4, ph = Math.sin(clamp((u - 0.25) / 0.6, 0, 1) * Math.PI), K = ['atk', 'guard', 'buff', 'hex'][q];
+        const lab = [[L2('⚔ 攻擊 8', '⚔ Angriff 8'), '#ff8a8a'], [L2('◈ 舉盾', '◈ Schild'), '#9fd3ff'], [L2('▲ 變強', '▲ Stärker'), '#ff7a5a'], [L2('✧ 下咒：弱', '✧ Fluch: Schwach'), '#c08aff']][q];
+        tGod(g, 70, 238, 0.7, t, 0);
+        if (K === 'atk' && u > 0.1) { g.save(); g.translate(40, 178); withX(g, () => drawShieldBadge(0, 0, 8, 0.85)); g.restore(); }
+        tEnemyAt(g, 'hu', 238, 238, 0.95, t, { lunge: K === 'atk' ? ph * 1.6 : K === 'hex' ? -0.3 * ph : K === 'guard' ? -0.2 * ph : 0, pump: K === 'buff' ? ph : 0 });
+        if (K === 'guard') { g.save(); g.globalCompositeOperation = 'lighter'; const a = ph; g.fillStyle = `rgba(110,180,255,${0.25 * a})`; g.strokeStyle = `rgba(185,225,255,${0.9 * a})`; g.lineWidth = 3; g.beginPath(); g.ellipse(214, 196, 26 * (0.4 + 0.6 * a), 50, 0, Math.PI / 2, Math.PI * 1.5); g.closePath(); g.fill(); g.stroke(); g.restore(); }
+        if (K === 'buff') { g.save(); g.globalCompositeOperation = 'lighter'; g.strokeStyle = '#ff5a3a'; g.lineWidth = 3; g.lineCap = 'round'; for (let i = 0; i < 3; i++) { const kk = (u * 1.4 + i * 0.25) % 1, y = 220 - kk * 110, x = 222 + (i - 1) * 18; g.globalAlpha = Math.sin(kk * Math.PI); g.beginPath(); g.moveTo(x - 7, y + 4); g.lineTo(x, y - 3); g.lineTo(x + 7, y + 4); g.stroke(); } g.restore(); }
+        if (K === 'hex' && u > 0.35 && u < 0.85) { const k = (u - 0.35) / 0.5, x = lerp(212, 76, k), y = lerp(190, 200, k) - Math.sin(k * Math.PI) * 40; g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = 'rgba(192,138,255,.4)'; g.beginPath(); g.arc(x, y, 11, 0, 6.28); g.fill(); g.fillStyle = '#c08aff'; g.beginPath(); g.arc(x, y, 6, 0, 6.28); g.fill(); g.fillStyle = '#fff'; g.beginPath(); g.arc(x, y, 2.5, 0, 6.28); g.fill(); g.restore(); }
+        if (K === 'atk' && u > 0.5 && u < 0.95) { g.save(); g.translate(96, 150); g.rotate(-0.12); TG2.t(g, L2('擋下了！', 'Geblockt!'), 0, 0, 18, '#7dffc8', '#06281e'); g.restore(); }
+        g.fillStyle = 'rgba(30,8,20,.92)'; g.beginPath(); g.roundRect(176, 102, 124, 22, 11); g.fill(); g.strokeStyle = lab[1]; g.lineWidth = 1.5; g.stroke(); TG2.t(g, lab[0], 238, 113.5, 11, lab[1]);
+        for (let i = 0; i < 4; i++) { g.fillStyle = i === q ? '#ffd23f' : 'rgba(255,255,255,.2)'; g.beginPath(); g.arc(136 + i * 16, 30, 4, 0, 6.28); g.fill(); }
+      } },
+    tRe('Talismane: von links nach rechts', ['每打完一發，<b>法器從左到右</b>生效：先「加」再「乘」最划算。順序可以在法寶袋裡調。', 'Nach jedem Schuss wirken deine <b>Talismane von links nach rechts</b>: erst addieren, dann multiplizieren. Die Reihenfolge änderst du im Beutel.']),
+    tRe('Pfade: dein Stil', ['法寶和法器都有<b>道</b>的記號。同一條道 <b>3 件覺醒、6 件大成</b>，整輪都有好處。', 'Kugeln und Talismane tragen das Zeichen eines <b>Pfads</b>. <b>3 gleiche erwecken</b> ihn, <b>6 meistern</b> ihn – ein Bonus für den ganzen Lauf.']),
+    tRe('Volle Glücksleiste: Die Götter kommen!', ['打到釘、掉進洞、法器生效，<b>香火</b>就漲。滿了就轉輪：<b>降駕升一階</b>，這場戰鬥傷害越來越高！', 'Treffer, Kugeln im Loch und Talismane füllen die <b>Glücksleiste</b>. Ist sie voll, drehen die Walzen: der <b>Götter-Rausch</b> steigt eine Stufe – mehr Schaden für den ganzen Kampf.']),
+  ].filter(Boolean) },
+  map: { g: '路', col: '#c08aff', h: ['地圖', 'Weg-Karte'], s: ['自己選路、每一站做什麼', 'Den Weg wählen – was jede Station tut'], steps: [
+    { h: ['自己選路', 'Wähle deinen Weg'], t: ['每一章是一張地圖，最上面是<b>頭目</b>。點一個<b>發光</b>的地方，看看那裡有什麼，再按<b>出發</b>。', 'Jedes Kapitel ist eine Karte, oben wartet der <b>Boss</b>. Tippe ein <b>leuchtendes</b> Feld an, lies, was dort passiert – und dann <b>Los</b>.'],
+      P: 5, d(g, t) {
+        const R = [['b', 'b', 'b'], ['q', 'b', 'm'], ['e', 'f', 'q'], ['r', 'b', 'e'], ['boss']], pick = [1, 2, 1, 0, 0], X0 = [96, 160, 224], step = Math.min(5, Math.floor(t / 0.9));
+        const pos = (f, i) => [f === 4 ? 160 : X0[i] + ((f * 7 + i * 13) % 9) - 4, 248 - f * 52];
+        g.fillStyle = 'rgba(255,42,58,.12)'; g.beginPath(); g.ellipse(160, 40, 110, 40, 0, 0, 6.28); g.fill();
+        for (let f = 0; f < 4; f++) R[f].forEach((_, i) => { const [x1, y1] = pos(f, i); (f === 3 ? [0] : [i - 1, i, i + 1].filter(j => j >= 0 && j < 3)).forEach(j => { const [x2, y2] = pos(f + 1, j), taken = f < step - 1 && pick[f] === i && pick[f + 1] === j; g.strokeStyle = taken ? '#ffd86a' : 'rgba(245,197,66,.4)'; g.lineWidth = taken ? 3 : 3; g.setLineDash(taken ? [] : [0.1, 8]); g.lineCap = 'round'; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); g.setLineDash([]); }); });
+        R.forEach((row, f) => row.forEach((k, i) => { const [x, y] = pos(f, i), done = f < step && pick[f] === i, go = f === step && (f === 0 || Math.abs(i - pick[f - 1]) <= 1 || f === 4); g.globalAlpha = f < step && !done ? 0.3 : 1; tNode(g, k, x, y + (go ? Math.sin(t * 4 + i) * 2 : 0), k === 'boss' ? 20 : 13, done || go ? 'go' : 'off'); g.globalAlpha = 1;
+          if (go) { g.save(); g.translate(x, y); g.strokeStyle = ROUTE_T[k].col; g.globalAlpha = 0.5 + Math.sin(t * 6) * 0.3; g.lineWidth = 2; g.stroke(new Path2D(nodePath(k, (k === 'boss' ? 20 : 13) + 6))); g.restore(); } }));
+        if (step < 5) { const f = Math.min(step, 4), [x, y] = pos(f, f === 4 ? 0 : pick[f]); tFinger(g, x + 6, y + 6, (t % 0.9) > 0.55); }
+        const me = step > 0 ? pos(step - 1, step - 1 === 4 ? 0 : pick[step - 1]) : [160, 276], H0 = HEROES[(LOOK || LOOK_DEF).hero] || HEROES.taizi; g.fillStyle = H0.col; g.beginPath(); g.arc(me[0] - 22, me[1], 9, 0, 6.28); g.fill(); g.strokeStyle = '#fff1cf'; g.lineWidth = 1.5; g.stroke(); TG2.t(g, H0.glyph, me[0] - 22, me[1] + 0.5, 9, '#fff');
+      } },
+    { h: ['每一站只做一件事', 'Jede Station, eine Aufgabe'], t: ['<b>戰</b> 妖怪・<b>厲</b> 危險但寶多・<b>？</b> 奇遇・<b>市</b> 買東西、送走法寶・<b>廟</b> 休息或開光・<b>煉</b> 免費煉丹。', '<b>戰</b> Kampf · <b>厲</b> Elite (gefährlich, viel Beute) · <b>？</b> Ereignis · <b>市</b> Markt: kaufen & entfernen · <b>廟</b> Tempel: ausruhen oder weihen · <b>煉</b> Schmiede: gratis verschmelzen.'],
+      P: 7.2, d(g, t) {
+        const K = ['b', 'e', 'q', 'm', 'r', 'f'], q = Math.floor(t / 1.2) % 6, u = (t % 1.2) / 1.2, k = K[q], T = ROUTE_T[k];
+        K.forEach((kk, i) => { const x = 50 + i * 44; g.globalAlpha = i === q ? 1 : 0.45; tNode(g, kk, x, 236, i === q ? 15 : 12, i === q ? 'go' : 'off'); g.globalAlpha = 1; });
+        g.save(); g.translate(160, 92); const z = 1 + Math.sin(Math.min(1, u * 3) * Math.PI) * 0.12; g.scale(z, z); g.shadowColor = T.col; g.shadowBlur = 20; tNode(g, k, 0, 0, 34, 'go'); g.restore();
+        TG2.t(g, L2(T.zh, T.de), 160, 150, 18, T.col, '#1a0410');
+        const txt0 = L2(...ROUTE_D[k]), words = txt0.split(LANG === 'de' ? ' ' : ''), lines = ['']; g.font = `900 11px ${FONT}`;
+        for (const w of words) { const s2 = lines[lines.length - 1] + (lines[lines.length - 1] && LANG === 'de' ? ' ' : '') + w; if (g.measureText(s2).width > 260 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = s2; }
+        lines.slice(0, 3).forEach((l, i) => TG2.t(g, l, 160, 176 + i * 15, 11, '#eadcf2'));
+      } },
+  ] },
+  god: { g: '神', col: '#ffd23f', h: ['神明', 'Gottheit'], s: ['修為、天賦樹、外觀、天劫', 'Kultivierung, Talentbaum, Aussehen, Aufstieg'], steps: [
+    { h: ['修為：神明會升級', 'Kultivierung: dein Gott steigt auf'], t: ['每過一關、每打完一章都得到<b>修為</b>。神明每升一級，就多<b>一個天賦點</b>。打完一輪再去分配！', 'Jede Etappe und jedes Kapitel bringt <b>Kultivierung</b>. Jede neue Stufe deines Gottes = <b>1 Talentpunkt</b>. Verteilt wird nach dem Lauf.'],
+      P: 4.2, d(g, t) {
+        const lv = 1 + Math.floor(t / 1.4), k = (t % 1.4) / 1.4, up = k > 0.82;
+        g.save(); g.globalCompositeOperation = 'lighter'; const gr = g.createRadialGradient(160, 170, 10, 160, 170, 110); gr.addColorStop(0, `rgba(255,200,90,${up ? 0.45 : 0.18})`); gr.addColorStop(1, 'rgba(255,200,90,0)'); g.fillStyle = gr; g.fillRect(40, 60, 240, 220); g.restore();
+        tGod(g, 160, 222, 1.25, t, up ? Math.sin((k - 0.82) / 0.18 * Math.PI) * 14 : 0);
+        for (let i = 0; i < 4; i++) { const kk = (k * 1.2 + i * 0.22) % 1; g.globalAlpha = Math.sin(kk * Math.PI) * 0.9; TG2.t(g, `+${[12, 20, 4, 30][i]}`, 270 - kk * 70, 150 + i * 18 - kk * 10, 10, '#ffe9a0', '#2a0410'); g.globalAlpha = 1; }
+        g.fillStyle = 'rgba(10,4,16,.85)'; g.beginPath(); g.roundRect(70, 246, 180, 12, 6); g.fill(); const gr2 = g.createLinearGradient(70, 0, 250, 0); gr2.addColorStop(0, '#f5b52a'); gr2.addColorStop(1, '#ffe27a'); g.fillStyle = gr2; g.beginPath(); g.roundRect(70, 246, 180 * Math.min(1, k / 0.82), 12, 6); g.fill();
+        TG2.t(g, `Lv ${up ? lv + 1 : lv}`, 160, 268, 12, '#ffd23f', '#2a0410');
+        if (up) { g.save(); g.translate(160, 84); const z = 1 + (1 - (k - 0.82) / 0.18) * 0.4; g.scale(z, z); g.fillStyle = '#d7263d'; g.beginPath(); g.roundRect(-62, -14, 124, 28, 14); g.fill(); g.strokeStyle = '#ffd23f'; g.lineWidth = 2; g.stroke(); TG2.t(g, L2('＋1 天賦點', '+1 Talentpunkt'), 0, 1, 12, '#fff'); g.restore(); }
+      } },
+    { h: ['天賦樹會一直長', 'Der Talentbaum wächst'], t: ['等級越高，開越上面的天賦。最上面有兩個<b>化身</b>，只能選一個——那是這位神明的<b>終極型態</b>。', 'Je höher die Stufe, desto weiter oben öffnet sich der Baum. Ganz oben warten zwei <b>Avatare</b> – du wählst einen: die <b>Endform</b> deines Gottes.'],
+      P: 6.4, d(g, t) {
+        const h = TREE[(LOOK || LOOK_DEF).hero] ? (LOOK || LOOK_DEF).hero : 'taizi', N = TREE[h], TH = TREE_THEME[h], col = TH.col, lv = Math.min(LV_MAX, Math.floor(1 + Math.pow(clamp(t / 4.6, 0, 1), 1.25) * (LV_MAX - 1)));
+        const P = nd => [64 + nd.c * 48, 262 - nd.r * 28], open = nd => lv >= nd.lv, since = nd => { const tt = Math.pow((nd.lv - 1) / (LV_MAX - 1), 1 / 1.25) * 4.6; return t - tt; };
+        const gr = g.createLinearGradient(0, 280, 0, 0); gr.addColorStop(0, TH.bg[1]); gr.addColorStop(1, TH.bg[0]); g.globalAlpha = 0.7; g.fillStyle = gr; g.fillRect(14, 14, 292, 252); g.globalAlpha = 1;
+        g.save(); g.globalAlpha = 0.07; TG2.t(g, HEROES[h].glyph, 160, 140, 190, '#fff'); g.restore();
+        for (const nd of N) for (const rid of nd.req) { const pr = N.find(x => x.id === rid); if (!pr || !open(pr)) continue; const [x1, y1] = P(pr), [x2, y2] = P(nd), k = open(nd) ? clamp(since(nd) / 0.35, 0, 1) : 0; if (!k) continue; g.strokeStyle = col; g.globalAlpha = 0.75; g.lineWidth = 2.5; g.lineCap = 'round'; g.beginPath(); g.moveTo(x1, y1); g.lineTo(lerp(x1, x2, k), lerp(y1, y2, k)); g.stroke(); g.globalAlpha = 1; }
+        for (const nd of N) { const [x, y] = P(nd), on = open(nd), s = on ? clamp(since(nd) / 0.3, 0, 1) : 0, cap = nd.r === 8, rr = cap ? 14 : 10.5;
+          g.fillStyle = on ? (cap ? '#3a1028' : '#1a0812') : 'rgba(255,255,255,.05)'; g.strokeStyle = on ? (cap ? '#ffd23f' : col) : 'rgba(255,255,255,.15)'; g.lineWidth = on ? 2 : 1;
+          g.beginPath(); g.arc(x, y, rr * (on ? 0.6 + 0.4 * ease(s) + (s < 1 ? Math.sin(s * Math.PI) * 0.25 : 0) : 1), 0, 6.28); g.fill(); g.stroke();
+          if (on) TG2.t(g, nd.g, x, y + 0.5, cap ? 12 : 9.5, cap ? '#ffe27a' : '#fff1cf');
+          if (on && s > 0 && s < 1) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - s; g.fillStyle = col; g.beginPath(); g.arc(x, y, rr + 10 * s, 0, 6.28); g.fill(); g.restore(); }
+          if (cap && on && t > 4.8) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 0.35 + Math.sin(t * 6) * 0.2; g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(x, y, rr + 8, 0, 6.28); g.fill(); g.restore(); } }
+        for (let r = 0; r < 9; r++) { const y = 262 - r * 28, on = lv >= ROW_LV[r]; TG2.t(g, `Lv ${ROW_LV[r]}`, 290, y + 0.5, 8, on ? '#ffe9a0' : 'rgba(255,255,255,.25)'); }
+        g.fillStyle = 'rgba(14,6,26,.9)'; g.beginPath(); g.roundRect(18, 20, 74, 24, 12); g.fill(); g.strokeStyle = '#ffd23f'; g.lineWidth = 1.5; g.stroke(); TG2.t(g, `Lv ${lv}`, 55, 32.5, 13, '#ffd23f');
+        if (t > 4.9) { g.save(); g.translate(160, 18); TG2.t(g, L2('化身：二選一！', 'Avatar: wähle einen!'), 0, 0, 12, '#ffe27a', '#2a0410'); g.restore(); }
+      } },
+    { h: ['外觀與天劫', 'Aussehen & Aufstieg'], t: ['在<b>外觀</b>換衣服、坐騎、光環——只是好看。贏過一輪之後會開<b>天劫</b>：更難，但修為和香油錢更多。', 'Unter <b>Aussehen</b> wechselst du Gewand, Reittier, Aura – nur Optik. Nach dem ersten Sieg öffnet sich der <b>Aufstieg</b>: härter, dafür mehr Kultivierung und Opfergeld.'],
+      P: 5.2, d(g, t) {
+        const looks = [{}, { robe: 'r_jade', head: 'h_crown', aura: 'a_spark' }, { robe: 'r_navy', head: 'h_halo', feet: 'f_cloud', aura: 'a_lantern' }, { robe: 'r_neon', head: 'h_flame', feet: 'f_dragon', aura: 'a_rainbow' }];
+        const q = Math.floor(t / 1.3) % 4, k = (t % 1.3) / 1.3, lk = resolveLook(Object.assign({}, LOOK_DEF, LOOK || {}, looks[q]));
+        tGod(g, 110, 232, 1.15, t, k < 0.15 ? Math.sin(k / 0.15 * Math.PI) * 10 : 0, lk);
+        if (k < 0.2) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k / 0.2; g.fillStyle = '#fff6c8'; g.beginPath(); g.arc(110, 170, 60, 0, 6.28); g.fill(); g.restore(); }
+        TG2.t(g, L2('外觀', 'Aussehen'), 110, 40, 13, '#ffe9a0', '#2a0410');
+        const A = Math.min(10, Math.floor(t / 0.45)); g.fillStyle = 'rgba(40,6,16,.9)'; g.beginPath(); g.roundRect(196, 64, 104, 150, 12); g.fill(); g.strokeStyle = 'rgba(255,90,110,.7)'; g.lineWidth = 1.5; g.stroke();
+        TG2.t(g, L2('天劫', 'Aufstieg'), 248, 82, 12, '#ff9aa8'); TG2.t(g, `${A}/10`, 248, 112, 26, '#fff1cf', '#5a0a1a');
+        for (let i = 0; i < 10; i++) { const x = 210 + (i % 5) * 19, y = 146 + Math.floor(i / 5) * 18; g.fillStyle = i < A ? '#ff5a6e' : 'rgba(255,255,255,.12)'; g.beginPath(); g.moveTo(x, y - 7); g.quadraticCurveTo(x + 6, y, x, y + 6); g.quadraticCurveTo(x - 6, y, x, y - 7); g.fill(); }
+        TG2.t(g, `${L2('獎勵', 'Belohnung')} +${A * 10}%`, 248, 200, 10.5, '#ffe27a');
+      } },
+    tRe('Jede Gottheit spielt anders', ['每位神明玩法都不一樣：<b>土地公</b>養礦、<b>媽祖</b>漲潮、<b>三太子</b>放火、<b>關公</b>暴擊。', 'Jede Gottheit spielt anders: der <b>Erdgott</b> lässt Erz wachsen, <b>Mazu</b> die Flut steigen, der <b>Techno-Prinz</b> setzt Stifte in Brand, <b>Guan Gong</b> trifft kritisch.']),
+  ].filter(Boolean) },
+  temple: { g: '廟', col: '#ff9a5a', h: ['廟宇', 'Tempel'], s: ['香油錢、修廟、戰鬥加成', 'Opfergeld, Ausbau, Kampf-Boni'], steps: [
+    { h: ['香油錢・香火', 'Opfergeld & Weihrauch'], t: ['每一輪都帶回<b>香油錢</b>。修廟要香油錢，也要夠多的<b>香火</b>：香火＝<b>所有神明等級加起來</b>。', 'Jeder Lauf bringt <b>Opfergeld</b>. Ein Ausbau kostet Opfergeld und braucht genug <b>Weihrauch</b> – das ist die <b>Summe aller Götter-Stufen</b>.'],
+      P: 4.4, d(g, t) {
+        const k = clamp(t / 2.4, 0, 1), cred = Math.round(ease(k) * 240), built = t > 2.9;
+        g.save(); g.translate(0, 18); g.scale(0.62, 0.62); g.translate(98, 92); drawTempleScene(g, { U: tplU(built ? 4 : 2), L: built ? 4 : 2, t }); g.restore();
+        for (let i = 0; i < 8; i++) { const kk = (t * 0.9 + i * 0.13) % 1; if (t > 2.6) break; g.globalAlpha = Math.sin(kk * Math.PI); g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(lerp(40 + i * 30, 160, kk), lerp(272, 200, kk) - Math.sin(kk * Math.PI) * 30, 4, 0, 6.28); g.fill(); g.strokeStyle = '#a8740a'; g.lineWidth = 1; g.stroke(); g.globalAlpha = 1; }
+        const box = (x, lbl, val, col) => { g.fillStyle = 'rgba(14,6,26,.9)'; g.beginPath(); g.roundRect(x, 22, 96, 38, 10); g.fill(); g.strokeStyle = col; g.lineWidth = 1.5; g.stroke(); TG2.t(g, val, x + 48, 36, 15, col); TG2.t(g, lbl, x + 48, 52, 8.5, '#d9c8e6'); };
+        box(40, L2('香油錢', 'Opfergeld'), `● ${cred}`, '#ffd23f'); box(184, L2('香火・神明等級', 'Weihrauch · Stufen'), `香 ${Math.min(9, 1 + Math.floor(t * 2))}`, '#ff9a5a');
+        if (built) { tPop(g, L2('修好了！', 'Ausgebaut!'), 160, 120, (t - 2.9) / 1.4, '#7dffb0', 18); }
+      } },
+    { h: ['你的廟會一直長大', 'Dein Tempel wächst'], t: ['從<b>路邊小祠</b>一路修到<b>天下第一廟</b>：八十多次修建，每一次都看得到。朋友也能來參觀！', 'Vom <b>Straßenschrein</b> bis zum <b>Ersten Tempel des Landes</b>: über 80 Ausbauten – jeder ist zu sehen. Freunde können ihn besuchen!'],
+      P: 7.4, d(g, t) {
+        const mx = templeMax(), L = Math.min(mx, Math.round(Math.pow(clamp(t / 6, 0, 1), 1.15) * mx)), S = tplStage(L), prevS = tplStage(Math.max(0, Math.round(Math.pow(clamp((t - 0.25) / 6, 0, 1), 1.15) * mx)));
+        g.save(); g.translate(0, 6); g.scale(0.8, 0.8); g.translate(0, 34); drawTempleScene(g, { U: tplU(L), L, t }); g.restore();
+        if (S !== prevS) { g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = 'rgba(255,230,160,.35)'; g.fillRect(14, 14, 292, 252); g.restore(); }
+        g.fillStyle = 'rgba(14,6,26,.88)'; g.beginPath(); g.roundRect(60, 16, 200, 40, 12); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.5; g.stroke();
+        TG2.t(g, L2(...tplStageName(S)), 160, 31, 13, '#ffe27a'); TG2.t(g, L2(`修建 ${L}/${mx}`, `Ausbau ${L}/${mx}`), 160, 47, 9, '#d9c8e6');
+        for (let i = 0; i < 9; i++) { g.fillStyle = i <= S ? '#ffd23f' : 'rgba(255,255,255,.18)'; g.beginPath(); g.arc(96 + i * 16, 266, i === S ? 4.5 : 3, 0, 6.28); g.fill(); }
+      } },
+    { h: ['修建＝戰鬥加成', 'Ausbau = Kampf-Boni'], t: ['每一次修建都是<b>永久的加成</b>：更多血、更多金、開局更強……<b>廟飾</b>只改外觀。還可以<b>拍照</b>分享！', 'Jeder Ausbau ist ein <b>dauerhafter Bonus</b>: mehr Leben, mehr Münzen, ein stärkerer Start … <b>Schmuck</b> ändert nur das Aussehen. Und du kannst <b>Fotos</b> machen!'],
+      P: 5, d(g, t) {
+        const us = UPGS.slice(0, 4);
+        us.forEach((u, i) => { const k = clamp((t - 0.3 - i * 0.55) / 0.35, 0, 1); if (!k) return; const y = 34 + i * 40; g.globalAlpha = k; g.fillStyle = 'rgba(30,10,40,.92)'; g.beginPath(); g.roundRect(18 + (1 - k) * 30, y, 170, 32, 8); g.fill(); g.strokeStyle = 'rgba(245,197,66,.55)'; g.lineWidth = 1.2; g.stroke();
+          TG2.t(g, u.glyph, 36 + (1 - k) * 30, y + 16, 14, '#ffd23f'); g.font = `900 9.5px ${FONT}`; g.textAlign = 'left'; g.fillStyle = '#fff1cf'; g.fillText(nm(u), 52 + (1 - k) * 30, y + 11); g.fillStyle = '#7dffb0'; g.font = `800 8.5px ${FONT}`; let tx = L2(...(u.step || u.mx === 1 ? u.t(1) : u.t(upgVal(u, 1)))); while (tx.length > 4 && g.measureText(tx).width > 128) tx = tx.slice(0, -2) + '…'; g.fillText(tx, 52 + (1 - k) * 30, y + 24); g.textAlign = 'center'; g.globalAlpha = 1; });
+        const ph = clamp((t - 2.8) / 0.4, 0, 1); if (ph > 0) { g.save(); g.translate(250, 150); g.rotate(0.08 - 0.06 * ph); g.globalAlpha = ph; g.fillStyle = '#fff8ec'; g.fillRect(-56, -70, 112, 136); g.save(); g.beginPath(); g.rect(-50, -64, 100, 100); g.clip(); g.translate(-50, -64); g.scale(0.25, 0.333); drawTempleScene(g, { U: tplU(40), L: 40, t }); g.restore(); TG2.t(g, '神彈宮', 0, 52, 10, '#5a1018'); g.restore();
+          if (t < 3.3) { g.save(); g.globalAlpha = 1 - (t - 2.8) / 0.5; g.fillStyle = '#fff'; g.fillRect(14, 14, 292, 252); g.restore(); } }
+      } },
+  ] },
+};
+let TUT = null;
+const tutSeen = k => !!store.get('tuts', {})[k] || (k === 'fight' && !!store.get('tutDone'));
+function markTut(k) { const s = store.get('tuts', {}); s[k] = 1; store.set('tuts', s); if (k === 'fight') store.set('tutDone', 1); }
+function tutOnce(k) { if (tutSeen(k) || TUT || window.__bot) return false; openTut(k); return true; } // the contextual first-time trigger
+function openTut(k, after) {
+  if (typeof k === 'function') { after = k; k = 'fight'; } if (!TUTS[k]) k = 'fight';
+  const wasLoop = !!TUT; TUT = { k, i: 0, t0: performance.now(), after, wasP: paused }; paused = true;
+  $('tutMenu').hidden = true; $('tutWrap').hidden = false; show('ovTut'); renderTut();
+  if (!wasLoop) { const loop = now => { if (!TUT) return; if (!$('tutWrap').hidden) drawTut((now - TUT.t0) / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+}
+function renderTut() {
+  const C = TUTS[TUT.k], S = C.steps[TUT.i], n = C.steps.length; TUT.t0 = performance.now();
+  $('tutChip').innerHTML = `<i style="--tc:${C.col}">${C.g}</i>${L2('教學', 'Anleitung')} · ${L2(...C.h)}`; $('tutStep').textContent = `${TUT.i + 1} / ${n}`;
+  $('tutH').textContent = L2(...S.h); $('tutT').innerHTML = L2(...S.t);
+  $('tutDots').innerHTML = C.steps.map((_, i) => `<i class="${i < TUT.i ? 'done' : i === TUT.i ? 'on' : ''}"></i>`).join('');
+  $('tutBack').textContent = L2('◀ 上一步', '◀ Zurück'); $('tutBack').disabled = TUT.i === 0;
+  $('tutNext').textContent = TUT.i === n - 1 ? (TUT.k === 'fight' && !tutSeen('fight') ? L2('開始！', 'Los geht’s!') : L2('懂了 ✓', 'Verstanden ✓')) : L2('下一步 ▶', 'Weiter ▶');
+  $('tutSkip').textContent = L2('跳過', 'Überspringen');
+}
+function drawTut(t) {
+  const c = $('tutCv'), g = c.getContext('2d'), S = TUTS[TUT.k].steps[TUT.i];
+  g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height); g.setTransform(c.width / 320, 0, 0, c.height / 280, 0, 0);
+  if (BG.board && TUT.k === 'fight') g.drawImage(BG.board, 0, 0, BG.board.width, BG.board.height * 0.62, 0, 0, 320, 280);
+  else { const C = TUTS[TUT.k], gr = g.createRadialGradient(160, 130, 10, 160, 140, 230); gr.addColorStop(0, mixHex(C.col, '#2a0820', 0.82)); gr.addColorStop(1, '#0e0418'); g.fillStyle = gr; g.fillRect(0, 0, 320, 280); }
+  const vg = g.createRadialGradient(160, 140, 80, 160, 140, 220); vg.addColorStop(0, 'rgba(14,4,20,0)'); vg.addColorStop(1, 'rgba(14,4,20,.55)'); g.fillStyle = vg; g.fillRect(0, 0, 320, 280);
+  for (let i = 0; i < 16; i++) { const ph = (t * 0.13 + i * 0.065) % 1; g.fillStyle = `rgba(255,220,140,${0.35 * (1 - ph)})`; g.fillRect((i * 53) % 320, 280 - ph * 280, 1.6, 1.6); }
+  try { S.d(g, t % S.P); } catch (e) { if (!drawTut.warned) { drawTut.warned = 1; console.warn('tut', e); } } // a drawing glitch must never block the tutorial
+}
+function closeTut() { if (!TUT) return; const T = TUT; TUT = null; markTut(T.k); hide('ovTut'); paused = T.wasP; if (T.after) T.after(); }
+$('tutNext').onclick = () => { if (!TUT) return; SFX.wood(); if (TUT.i >= TUTS[TUT.k].steps.length - 1) return closeTut(); TUT.i++; renderTut(); };
+$('tutBack').onclick = () => { if (TUT && TUT.i > 0) { SFX.wood(); TUT.i--; renderTut(); } };
+$('tutSkip').onclick = () => closeTut();
+$('tutCv').onclick = () => $('tutNext').click(); // tapping the picture goes on, too
+/* 教學 menu: all four chapters to look up again */
+function openTutMenu(back) {
+  const m = $('tutMenu'); $('tutWrap').hidden = true; m.hidden = false; show('ovTut');
+  m.innerHTML = `<div class="tmh"><b>${L2('教學', 'Anleitung')}</b><small>${L2('想再看一次？選一章。', 'Nochmal nachschauen? Wähle ein Kapitel.')}</small></div>`
+    + Object.entries(TUTS).map(([k, C]) => `<button class="tmc" data-k="${k}" style="--tc:${C.col}"><i>${C.g}</i><span><b>${L2(...C.h)}</b><small>${L2(...C.s)}</small></span><em>${C.steps.length} ${L2('頁', 'Bilder')}${tutSeen(k) ? ' · ✓' : ''}</em></button>`).join('')
+    + `<button class="btn" id="tmBack">${L2('返回', 'Zurück')}</button>`;
+  m.onclick = e => { const b = e.target.closest('button'); if (!b) return; SFX.wood(); if (b.id === 'tmBack') { hide('ovTut'); m.hidden = true; $('tutWrap').hidden = false; if (back) back(); return; } if (b.dataset.k) openTut(b.dataset.k, () => openTutMenu(back)); };
+}
+$('bMoreTut').onclick = () => { hide('ovMore'); openTutMenu(() => { renderMore(); show('ovMore'); }); };
 /* ================= T3 — a small WebGL2 engine for the 3D temple =================
    Geometry is generated in code and batched per (part tag × texture), so a whole temple is ~40 draw calls.
    Scene pass (PBR-ish, sun shadow map, up to 8 point lights, fog, optional toon ramp) → post pass
