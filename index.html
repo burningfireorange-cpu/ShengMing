@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#f3e8d2">
 </head>
 <body>
-<title>神明彈珠台水彩版</title>
+<title>神明彈珠台</title>
 <style>
 /* Layout: one fixed stage canvas (400×780 portrait world, letterboxed) + DOM overlays for menus.
    Single dark visual world on purpose: temple lacquer red, gold leaf, jade, night-market neon. */
@@ -1224,6 +1224,39 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
 .gbtn{width:100%;max-width:320px;font-size:20px;animation:gIn .5s 1.1s both,gPulse 1.6s ease-in-out 1.8s infinite}
 .gbtn small{display:block;font-size:11px;font-weight:700;opacity:.85;letter-spacing:0}
 @keyframes gPulse{50%{transform:scale(1.05)}}
+/* ---------- 每日福袋: 30-day check-in calendar ---------- */
+.tic.fb i{background:linear-gradient(#eba278,#cc5e67);border-color:#805f42}
+.ov.dbag{background:radial-gradient(ellipse at 50% 20%,#f4e4d8,#f7e2e1 70%)}
+.dbag .panel{gap:10px;max-width:420px}
+.dbtop{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:118px}
+.dbtop .bagstage{flex:none;transform:scale(.72);margin:-18px -14px}
+.dbres{display:flex;flex-direction:column;gap:3px;text-align:left;font-size:15px;font-weight:900;color:var(--paper);min-width:0}.dbres:empty{display:none}
+.dbres b{font-size:12px;color:var(--gold-t);letter-spacing:.08em}.dbres small{font-size:11px;font-weight:700;color:var(--muted)}
+.dbgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;width:100%}
+.dbc{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px 4px;border-radius:10px;background:rgba(255,255,255,0.05);border:1.5px solid rgba(128,95,66,0.263);min-width:0}
+.dbc .dbd{font-size:10px;font-weight:900;color:var(--muted);line-height:1}
+.dbc small{font-size:9px;font-weight:800;color:var(--paper);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:flex;align-items:center;gap:1px}
+.dbc small .hbi{width:8px;height:10px;margin-right:1px}.dbc small .cn{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e3c373;margin-right:1px}
+.dbi{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-size:13px;font-weight:900;font-style:normal;color:#524232}
+.dbi.cr{background:linear-gradient(#d3af6c,#e1ceb2)}.dbi.hb{background:linear-gradient(#ee8e95,#e5b9b6)}.dbi.tp{background:linear-gradient(#cfa3f1,#986bc2)}.dbi.it{background:linear-gradient(#f0db98,#cdaa64);color:#47331f;box-shadow:0 0 0 2px var(--rc)}
+.dbc.k-hb{border-color:rgba(128,95,66,0.63)}.dbc.k-item{border-color:#805f42;background:rgba(234,203,113,0.12)}.dbc.k-tp{border-color:rgba(128,95,66,0.578)}
+.dbc.future{opacity:.62}
+.dbc.today{border-color:#805f42;background:rgba(234,203,113,0.16);animation:dbPulse 1.2s ease-in-out infinite}
+@keyframes dbPulse{50%{box-shadow:0 0 0 3px rgba(128,95,66,0.367),0 0 14px rgba(128,95,66,0.525)}}
+.dbc.done{opacity:.8}.dbc.done .dbi{filter:grayscale(.5) opacity(.6)}
+.dbc em{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:22px;font-weight:900;color:#22774e;text-shadow:0 1px 0 rgba(251,248,244,0.32);transform:rotate(-12deg)}
+.dbc.pop{animation:dbPop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes dbPop{from{transform:scale(1.35)}}
+.dbold:empty{display:none}
+#dbGo small{display:flex;align-items:center;justify-content:center;gap:2px}
+#dbGo small .hbi{width:9px;height:11px}#dbGo small .cn{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e3c373}
+@media (max-width:360px){.dbc small{font-size:8px}.dbi{width:20px;height:20px;font-size:11px}}
+/* a friend's temple: 3D, their god in front */
+.tvbox{position:relative;width:100%;max-width:420px;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#f6e0df;box-shadow:0 0 0 2px rgba(128,95,66,0.525),0 10px 30px rgba(101,72,52,0.144)}
+#tvCv{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.tvcap{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;pointer-events:none;text-shadow:0 1px 0 rgba(251,248,244,0.8),0 0 8px rgba(251,248,244,0.68)}
+.tvcap b{font-size:15px;font-weight:900}.tvcap small{display:block;font-size:11px;font-weight:700;color:#523233}.tvcap .r{text-align:right}
+.tvhint{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;font-weight:800;color:#524232;background:rgba(247,226,225,0.55);border-radius:999px;padding:3px 10px;white-space:nowrap;pointer-events:none;transition:opacity .6s}
 
 /* ===== cozy test branch: palette ===== */
 :root{
@@ -1233,7 +1266,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
   --gold-t:#a26a12; --red-t:#c2463a; --jade-t:#2c8a6c; --violet-t:#7357b0;
   color-scheme:light;
 }
-/* ===== cozy test branch: hand-made touches on top of the automatic re-colouring (cozify.py) ===== */
+/* ===== the watercolour look: hand-made touches on top of the automatic re-colouring (cozify.py) ===== */
 html,body{background:#f3e8d2}
 body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background:var(--paperTex) repeat,radial-gradient(ellipse at 50% 45%,rgba(255,255,255,0) 58%,rgba(150,110,70,.1));mix-blend-mode:multiply;opacity:.5}
 /* the title logo: a coral sticker with a white cut edge and a soft brown drop */
@@ -1378,8 +1411,6 @@ h2{text-shadow:0 2px 0 #fffaf0,0 3px 6px rgba(120,80,50,.18)}
 .tab{color:#7a6050;background:#fff7e8;border:1.5px solid rgba(122,90,68,.35)}
 .tab.on{color:#4a2a1e;background:linear-gradient(#ffd9a6,#f6b07c);border-color:#9a654a}
 .wcard .wnew{position:absolute;top:4px;left:4px;font-size:9.5px;font-weight:900;color:#fff;background:#6cc2a2;border-radius:6px;padding:0 5px;z-index:1;letter-spacing:.04em}
-/* test-version chip under the logo */
-.czver{flex:none;margin-top:-6px;font-size:11px;font-weight:900;letter-spacing:.08em;color:#fff;background:#6cc2a2;border:1.5px solid #2c8a6c;border-radius:999px;padding:1px 10px;box-shadow:0 2px 0 rgba(44,138,108,.35)}
 </style>
 
 <div id="stage"><canvas id="game"></canvas></div>
@@ -1389,6 +1420,7 @@ h2{text-shadow:0 2px 0 #fffaf0,0 3px 6px rgba(120,80,50,.18)}
   <div class="ttop">
     <div class="twallet" id="titleWallet"></div>
     <div class="ticons">
+      <button class="tic fb" id="bDBag" aria-label="每日福袋" data-al="每日福袋|Tägliche Glückstasche"><i>福</i><span data-bi="福袋|Tasche">福袋</span><b class="dot" id="dbDot" hidden></b></button>
       <button class="tic" id="bTitleDaily" aria-label="今日運勢" data-al="今日運勢|Tagesorakel"><i>籤</i><span data-bi="運勢|Orakel">運勢</span><b class="dot" id="dailyDot"></b></button>
       <button class="tic fr" id="bFR" aria-label="首儲禮" data-al="首儲禮|Erstkauf-Geschenk"><i>禮</i><span data-bi="首儲|Angebot">首儲</span><b class="dot"></b></button>
       <button class="tic pass" id="bPassI" aria-label="月卡" data-al="月卡|Monatskarte"><i>月</i><span data-bi="月卡|Monat">月卡</span><b class="dot"></b></button>
@@ -1397,7 +1429,6 @@ h2{text-shadow:0 2px 0 #fffaf0,0 3px 6px rgba(120,80,50,.18)}
   </div>
   <span class="buffchip" id="buffChip" hidden></span>
   <h1 class="logo tlogo2">神明彈珠台</h1>
-  <span class="czver" data-bi="水彩測試版|Aquarell-Testversion">水彩測試版</span>
   <div class="tscene" id="tScene"></div>
   <div class="tcaps" id="tCaps"><button class="tcap god" id="bSceneGod"></button><button class="tcap tpl" id="bSceneTpl"></button></div>
   <div class="tbot">
@@ -1473,6 +1504,16 @@ h2{text-shadow:0 2px 0 #fffaf0,0 3px 6px rgba(120,80,50,.18)}
   </div>
 </div>
 
+<div id="ovDBag" class="ov dbag" hidden>
+  <div class="panel">
+    <div class="tphead"><h2 data-bi="每日福袋|Tägliche Glückstasche">每日福袋</h2><button class="ibtn x" id="dbX" aria-label="close">✕</button></div>
+    <div class="sub" id="dbSub"></div>
+    <div class="dbtop"><div class="bagstage"><div class="bag" id="dbBag"><span>福</span></div></div><div class="dbres" id="dbRes"></div></div>
+    <button class="btn red big" id="dbGo"></button>
+    <div class="dbgrid" id="dbGrid"></div>
+    <div class="dbold" id="dbOld"></div>
+  </div>
+</div>
 <div id="ovBag" class="ov" hidden>
   <div class="panel">
     <h2>福袋 · Glückstasche</h2>
@@ -1832,7 +1873,7 @@ h2{text-shadow:0 2px 0 #fffaf0,0 3px 6px rgba(120,80,50,.18)}
 <div id="ovTplView" class="ov tpl" hidden>
   <div class="panel">
     <h2 id="tvH"></h2>
-    <canvas id="tvCv" width="800" height="600" style="width:100%;max-width:420px;aspect-ratio:4/3;height:auto;border-radius:14px;box-shadow:0 0 0 2px rgba(245,197,66,.5)"></canvas>
+    <div class="tvbox" id="tvBox"><canvas id="tvCv" width="420" height="560"></canvas><div class="tvcap" id="tvCap"></div><div class="tvhint" id="tvHint">⟲ 拖曳轉一轉 · Ziehen zum Drehen</div></div>
     <div class="sub" id="tvS"></div>
     <div class="dock"><button class="btn" id="tvX">返回 · Zurück</button></div>
   </div>
@@ -1906,7 +1947,10 @@ const fmtX = x => { const r = Math.round(x * 10) / 10, s = Number.isInteger(r) ?
 const ROMAN = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ'];
 
 const SLOT = (/[?&]slot=([1-9])/.exec(location.search) || [])[1] || ''; // test: ?slot=2 is a second player on the same device
-const SP = SLOT ? `sbtc${SLOT}_` : 'sbtc_'; // test branch (cozy art): own save, never touches the live version's data
+const SP = SLOT ? `sbt${SLOT}_` : 'sbt_';
+try { // the watercolour test version saved under sbtc_: on a device without a main save, bring that progress over once
+  if (!SLOT && localStorage.getItem('sbt_look') == null && localStorage.getItem('sbtc_look') != null) { const ks = []; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith('sbtc_')) ks.push(k); } for (const k of ks) localStorage.setItem('sbt_' + k.slice(5), localStorage.getItem(k)); }
+} catch (e) {}
 const store = {
   get(k, d) { try { const v = localStorage.getItem(SP + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(SP + k, JSON.stringify(v)); } catch (e) {} },
@@ -2931,7 +2975,7 @@ for (const h in TREE) TREE[h].forEach(nd => { nd.cost = ROW_COST[nd.r]; nd.lv = 
 const treeNode = (h, id) => TREE[h].find(n => n.id === id);
 const rankOf = (h, nd) => godOf(h).t[nd.id] || 0;
 const spentPts = h => TREE[h] ? TREE[h].reduce((a, nd) => a + rankOf(h, nd) * nd.cost, 0) : 0;
-const freePts = h => Math.max(0, godLv(h) - 1 - spentPts(h)); // the first point comes with the first level-up
+const freePts = h => Math.max(0, godLv(h) - 1 + (godOf(h).bp || 0) - spentPts(h)); // the first point comes with the first level-up; bp = bonus points from the daily bag
 const reqOK = (h, nd) => !nd.req.length || nd.req.some(id => rankOf(h, treeNode(h, id)) > 0);
 const exOK = (h, nd) => !nd.ex || !godOf(h).t[nd.ex];
 const canLearn = (h, nd) => ownsHero(h) && godLv(h) >= nd.lv && rankOf(h, nd) < nd.max && reqOK(h, nd) && exOK(h, nd) && freePts(h) >= nd.cost;
@@ -5663,7 +5707,7 @@ function killEnemy(e) {
   const c = Math.round((e.def.boss ? 0 : ri(2, 4)) * (hasV('gold') ? 1.5 : 1)); if (c) gainCoins(c);
   if (hasT('gongde')) { tcAdd('gongde'); talBumpId('gongde', '+1', '#ff6bd6'); }
   earn(e.def.boss ? 30 : 2);
-  if (e.def.boss || Math.random() < 0.06) { BAGS++; run.bagsEarned = (run.bagsEarned || 0) + 1; saveWallet(); floatText(e.x, e.y - 140, L2('福袋！', 'Glückstasche!'), '#ff5a7a', 16); SFX.sheng(); }
+  if (e.def.boss || Math.random() < 0.06) { const v = e.def.boss ? 60 : 25; earn(v); floatText(e.x, e.y - 140, L2(`福氣 +${v}`, `Segen +${v}`), '#ffd23f', 16); SFX.sheng(); } // 福袋 now come from the daily calendar
   burst(e.x, e.y - 40, 30, '#ffd23f', 300, 'paper'); burst(e.x, e.y - 40, 16, '#7fd1ff', 200); SFX.coin();
 }
 
@@ -7803,7 +7847,7 @@ function openBag() { $('bagRes').innerHTML = ''; $('bagEl').className = 'bag'; r
 function renderBagBtns() {
   $('bagCount').textContent = L2(`你有 ${BAGS} 個福袋`, `Du hast ${BAGS} Glückstaschen`);
   $('bBagOpen').disabled = BAGS < 1; $('bBagOpen').textContent = L2('打開福袋', 'Öffnen');
-  $('bBagBuy').textContent = L2(`${BAG_PRICE} 香油錢`, `${BAG_PRICE} Opfergeld`); $('bBagBuy').disabled = CRED < BAG_PRICE;
+  $('bBagBuy').hidden = true; $('bBagBuyY').hidden = true; // bags are not for sale any more: one a day from the calendar
   $('bBagBuyY').textContent = L2(`${BAG_HB} 紅包`, `${BAG_HB} Hongbao`); $('bBagBuyY').disabled = HB < BAG_HB;
   $('bagOdds').textContent = L2('機率：普通 60%・稀有 28%・罕見 10%・傳說 2%　重複會換成香油錢', 'Chancen: Normal 60 % · Selten 28 % · Episch 10 % · Legendär 2 % – Doppelte werden zu Opfergeld');
 }
@@ -7897,7 +7941,7 @@ function renderTitle() {
   else { $('bStart').innerHTML = h.soon ? L2('即將推出', 'Kommt bald') : own ? `${t('start')}<small>${store.get('tutDone') ? setLbl + ' ▸' : L2('第一次：先看教學', 'Zum ersten Mal: mit Einführung')}</small>` : h.limited ? L2('🔒 看看首儲禮', '🔒 Erstkauf-Geschenk ansehen') : L2(`🔒 解鎖${h.zh}`, `🔒 ${h.de} freischalten`); $('bNewRun').hidden = true; }
   $('bStart').disabled = !save && !!h.soon;
   $('titleWallet').innerHTML = `<span><span class="hbi"></span><b>${fmt(HB)}</b> <em class="lbl">${L2('紅包', 'Hongbao')}</em></span><span><i class="cn"></i><b>${fmt(CRED)}</b> <em class="lbl">${L2('香油錢', 'Opfergeld')}</em></span>`;
-  $('dailyDot').hidden = !dailyReady(); renderTitleIcons();
+  $('dailyDot').hidden = !dailyReady(); renderTitleIcons(); dbagDot();
   { const w = WKS(), left = Object.keys(WK_MODES).filter(k => !WK_MODES[k].soon && !w.used[k]).length; $('wkSub').textContent = left ? L2(`本週還有 ${left} 次・${weekLeft()}`, `${left}× diese Woche · ${weekLeft()}`) : L2(`本週打完了・${weekLeft()}`, `Diese Woche erledigt · ${weekLeft()}`); $('wkDot').hidden = !left; }
   $('talDot').hidden = !PROTO_GODS.some(anyAffordable);
 }
@@ -7913,7 +7957,14 @@ function showTitle() {
 const TSC = { on: false, jump: 0, fr: 0, m: null, d3: 0, k3: 0, wait: 0, ft: [], tl: 0, gc: null };
 const t3TitlePref = () => store.get('t3title', 'on'); // on | off | slow (auto-off) | force (no speed check)
 const t3v = () => { try { return T3V; } catch (e) { return null; } }; // t3dui.js loads after this file
-function titleSceneStart() { if (!TSC.on) { TSC.on = true; requestAnimationFrame(titleSceneLoop); } title3dTry(); }
+function titleSceneStart() { if (!TSC.on) { TSC.on = true; TSC.t0 = performance.now(); requestAnimationFrame(titleSceneLoop); } title3dTry(); }
+const title3dWanted = () => /^(on|force)$/.test(t3TitlePref()) && !!t3v() && !(T3V.V.tried && !T3V.ok) && !TSC.dead;
+function titleSkyBg(g, M) { // what the 3D temple fades in on: the sky of the chosen time of day — never a 2D temple flashing up first
+  const K = T3V.TOD[T3V.period()].dome, gr = g.createLinearGradient(0, 0, 0, M.H); gr.addColorStop(0, K.top); gr.addColorStop(0.5, K.mid); gr.addColorStop(0.8, K.hor); gr.addColorStop(1, K.low || K.hor);
+  g.fillStyle = gr; g.fillRect(0, 0, M.W, M.H);
+  const per = T3V.period(), gc = per === 'night' ? '42,20,32' : per === 'dusk' ? '110,62,58' : '201,154,120', gg = g.createLinearGradient(0, M.yB - 90, 0, M.yB); // a soft courtyard for the god to stand on
+  gg.addColorStop(0, `rgba(${gc},0)`); gg.addColorStop(1, `rgba(${gc},.95)`); g.fillStyle = gg; g.fillRect(0, M.yB - 90, M.W, M.H - M.yB + 90);
+}
 function title3dTry() {
   if (TSC.dead || !/^(on|force)$/.test(t3TitlePref()) || !t3v() || (T3V.V.tried && !T3V.ok) || TSC.wait) return;
   if (TSC.d3 && T3V.V.mode === 'title') return;
@@ -7955,32 +8006,35 @@ function titleSceneLoop() {
   } else { TSC.k3 = 0; title3dTry(); }
   const k3 = d3 ? TSC.k3 * TSC.k3 * (3 - 2 * TSC.k3) : 0;
   g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, M.W, M.H);
+  const bgOnly = title3dWanted() && (d3 || performance.now() - (TSC.t0 || 0) < 4500); // 3D on its way: sky only (after 4.5 s without 3D the 2D temple steps in)
   if (k3 < 1) { // the 2D picture (and the cross-fade into 3D)
     g.globalAlpha = 1 - k3;
+    if (bgOnly) titleSkyBg(g, M); else {
     const SK = tcResolve(TCOS.sel).sky || ['#a9d6ec', '#d8eef0', '#fbefd9'], dayS = !tcResolve(TCOS.sel).sky; // cozy test branch: day sky
     if (dayS) COZY.raw++; g.fillStyle = SK[0]; g.fillRect(0, 0, M.W, M.H); if (dayS) COZY.raw--;
     if (M.oy > 0 && !dayS) for (let i = 0; i < 60; i++) { const x = (i * 97.3) % M.W, y = (i * 61.7) % M.oy; g.fillStyle = `rgba(255,240,210,${0.2 + 0.35 * Math.abs(Math.sin(now * 1.1 + i))})`; g.fillRect(x, y, 1.3, 1.3); } // the sky goes on above the picture
     g.setTransform(dpr * M.s, 0, 0, dpr * M.s, dpr * M.ox, dpr * M.oy);
     drawTempleScene(g, { U: TEMPLE, L: templeLevel(), t: now });
+    }
     g.setTransform(dpr, 0, 0, dpr, 0, 0); g.globalAlpha = 1;
   }
   // the god: drawn on its own little layer so it can take the 3D light (night blue, dusk warm)
   TSC.jump = Math.max(0, TSC.jump - 1 / 15);
-  const A = titleGodAt(M, false), Bp = titleGodAt(M, true), G = k3 > 0 ? { x: A.x + (Bp.x - A.x) * k3, y: A.y + (Bp.y - A.y) * k3, s: A.s + (Bp.s - A.s) * k3 } : A; TSC.god = G;
+  const A = titleGodAt(M, false), Bp = titleGodAt(M, true), G = bgOnly ? Bp : k3 > 0 ? { x: A.x + (Bp.x - A.x) * k3, y: A.y + (Bp.y - A.y) * k3, s: A.s + (Bp.s - A.s) * k3 } : A; TSC.god = G;
   const gc = TSC.gc || (TSC.gc = document.createElement('canvas')), bw = 160, bh = 200, gw2 = Math.ceil(bw * G.s * dpr), gh2 = Math.ceil(bh * G.s * dpr);
   if (gc.width !== gw2 || gc.height !== gh2) { gc.width = gw2; gc.height = gh2; }
   const q = gc.getContext('2d'); q.setTransform(1, 0, 0, 1, 0, 0); q.clearRect(0, 0, gw2, gh2); q.setTransform(dpr * G.s, 0, 0, dpr * G.s, dpr * G.s * bw / 2, dpr * G.s * (bh - 26));
   const keep = X; X = q;
   try { drawHero(null, 0, 0, now, Math.sin(Math.min(1, TSC.jump) * Math.PI) * 18, 0, LKT || LK); } catch (e) {}
   X = keep;
-  if (k3 > 0) { const per = T3V.period(), tint = per === 'night' ? 'rgba(46,34,120,.22)' : per === 'dusk' ? 'rgba(255,120,60,.13)' : ''; if (tint) { q.setTransform(1, 0, 0, 1, 0, 0); q.globalCompositeOperation = 'source-atop'; q.globalAlpha = k3; q.fillStyle = tint; q.fillRect(0, 0, gw2, gh2); q.globalCompositeOperation = 'source-over'; q.globalAlpha = 1; } }
+  if (k3 > 0 || bgOnly) { const per = T3V.period(), tint = per === 'night' ? 'rgba(46,34,120,.22)' : per === 'dusk' ? 'rgba(255,120,60,.13)' : ''; if (tint) { q.setTransform(1, 0, 0, 1, 0, 0); q.globalCompositeOperation = 'source-atop'; q.globalAlpha = bgOnly ? 1 : k3; q.fillStyle = tint; q.fillRect(0, 0, gw2, gh2); q.globalCompositeOperation = 'source-over'; q.globalAlpha = 1; } }
   g.save(); g.globalCompositeOperation = 'lighter'; const gr = g.createRadialGradient(G.x, G.y - 50 * G.s, 0, G.x, G.y - 50 * G.s, 58 * G.s); gr.addColorStop(0, `rgba(255,200,110,${0.16 + Math.sin(now * 2) * 0.04})`); gr.addColorStop(1, 'rgba(255,200,110,0)'); g.fillStyle = gr; g.fillRect(G.x - 60 * G.s, G.y - 110 * G.s, 120 * G.s, 120 * G.s); g.restore();
-  if (k3 > 0) { g.save(); g.globalAlpha = 0.45 * k3; g.fillStyle = '#000'; g.beginPath(); g.ellipse(G.x, G.y + 2 * G.s, 30 * G.s, 7 * G.s, 0, 0, 6.29); g.fill(); g.restore(); } // a soft contact shadow on the 3D ground
+  if (k3 > 0 || bgOnly) { g.save(); g.globalAlpha = 0.45 * (bgOnly ? 1 : k3); g.fillStyle = '#000'; g.beginPath(); g.ellipse(G.x, G.y + 2 * G.s, 30 * G.s, 7 * G.s, 0, 0, 6.29); g.fill(); g.restore(); } // a soft contact shadow on the 3D ground
   g.drawImage(gc, G.x - bw / 2 * G.s, G.y - (bh - 26) * G.s, bw * G.s, bh * G.s);
   const gt = g.createLinearGradient(0, 0, 0, 96); gt.addColorStop(0, 'rgba(14,6,26,.6)'); gt.addColorStop(1, 'rgba(14,6,26,0)'); g.fillStyle = gt; g.fillRect(0, 0, M.W, 96); // wallet & logo stay readable
   const gb = g.createLinearGradient(0, M.yB - 26, 0, M.H); gb.addColorStop(0, 'rgba(14,6,26,0)'); gb.addColorStop(0.45, 'rgba(14,6,26,.8)'); gb.addColorStop(1, '#0e061a'); g.fillStyle = gb; g.fillRect(0, M.yB - 26, M.W, M.H - M.yB + 26); // ground fades into the menu
   const eg = $('bSceneGod'), et = $('bSceneTpl'), gw = eg.offsetWidth / 2, tw = et.offsetWidth / 2, cap = (el, v) => { v = Math.round(v) + 'px'; if (el.style.left !== v) el.style.left = v; };
-  let tc = M.ox + 214 * M.s; if (k3 > 0) { const f = T3V.V.R && T3V.V.R.focus, p = f && T3V.project([f.at[0], 0, f.at[2]]); if (p) tc = tc + (p[0] - tc) * k3; }
+  let tc = bgOnly && !k3 ? M.W * 0.62 : M.ox + 214 * M.s; if (k3 > 0) { const f = T3V.V.R && T3V.V.R.focus, p = f && T3V.project([f.at[0], 0, f.at[2]]); if (p) tc = tc + (p[0] - tc) * k3; }
   const gx = Math.max(gw + 6, G.x), tx = Math.min(M.W - tw - 6, Math.max(tc, gx + gw + tw + 14)); // name plates under god and temple, never on top of each other
   cap(eg, gx); cap(et, tx);
 }
@@ -8133,13 +8187,13 @@ function contRun(saved) {
 $('bTitleMore').onclick = () => { renderMore(); show('ovMore'); };
 function renderMore() {
   $('bSnd').textContent = t(AU.on ? 'sndOn' : 'sndOff'); $('bMus').textContent = t(AU.mus ? 'musOn' : 'musOff');
-  $('bMoreBag').innerHTML = `${L2('福袋', 'Glückstaschen')} ×${BAGS}`;
+  $('bMoreBag').innerHTML = L2('每日福袋', 'Tägliche Tasche') + (dbagReady() ? ' ●' : '');
   const p3 = t3TitlePref(), on3 = p3 === 'on' || p3 === 'force'; $('bMore3d').innerHTML = on3 ? L2('首頁 3D：開', '3D-Startbild: An') : p3 === 'slow' ? L2('首頁 3D：關（太慢）', '3D-Startbild: Aus (zu langsam)') : L2('首頁 3D：關', '3D-Startbild: Aus');
   $('bMore3d').hidden = !t3v() || (T3V.V.tried && !T3V.ok);
 }
 $('bMore3d').onclick = () => { const p3 = t3TitlePref(); if (p3 === 'on' || p3 === 'force') title3dOff('off'); else { store.set('t3title', p3 === 'slow' ? 'force' : 'on'); if (T3V.V) T3V.V.tdpr = 1.4; titleSceneStart(); } SFX.wood && SFX.wood(); renderMore(); };
 $('bMoreX').onclick = () => { hide('ovMore'); renderTitle(); };
-$('bMoreBag').onclick = () => { hide('ovMore'); openBag(); };
+$('bMoreBag').onclick = () => { hide('ovMore'); openDailyBag(); };
 $('bMoreCodex').onclick = () => { hide('ovMore'); openCodex(); };
 $('bMoreAch').onclick = () => openStore();
 $('bMoreName').onclick = () => { hide('ovMore'); openName(() => showTitle()); };
@@ -8497,9 +8551,9 @@ $('bDraw').onclick = () => {
   setTimeout(() => {
     let r = Math.random() * 100, F = FORTUNES[0]; for (const f of FORTUNES) { if (r < f[0]) { F = f; break; } r -= f[0]; }
     const c = F[3], y = F[4], bags = F[5];
-    earnRaw(c); BAGS += bags; saveWallet();
+    const cb = c + bags * 60; earnRaw(cb); saveWallet(); // 福袋 come from the daily calendar now: a lucky draw pays 香油錢 instead
     $('dCyl').className = 'dcyl'; $('dStick').className = 'dstick up'; $('dStick').innerHTML = [...F[1]].map(c => `<span>${c}</span>`).join('');
-    $('dRes').innerHTML = `<b>${L2(F[1], F[2])}！</b><br>+${c} ${L2('香油錢', 'Opfergeld')}${bags ? `・+${bags} ${L2('福袋', 'Glückstasche')}` : ''}`;
+    $('dRes').innerHTML = `<b>${L2(F[1], F[2])}！</b><br>+${cb} ${L2('香油錢', 'Opfergeld')}`;
     F[0] <= 10 && F[3] >= 200 ? (SFX.suona([[12, 0.12], [14, 0.12], [17, 0.5]]), SFX.crackle(0.8)) : SFX.sheng();
     $('bDraw').textContent = L2('明天再來', 'Morgen wieder');
   }, 900);
@@ -8801,6 +8855,7 @@ function weekReward(tier, mode) { // what a finished attempt pays out
   const m = WK_MODES[mode].mul, R = { cred: 0, bags: 0, hb: 0 };
   for (let i = 0; i < tier; i++) { R.cred += WK_TIERS[i].cred; R.bags += WK_TIERS[i].bags; R.hb += WK_TIERS[i].hb; }
   R.cred = Math.round(R.cred * m); R.hb = Math.round(R.hb * m); if (mode !== 'solo' && tier >= 2) R.bags += 1;
+  R.cred += R.bags * 60; R.bags = 0; // 福袋 come from the daily calendar now: the procession pays them as 香油錢
   return R;
 }
 /* this week's record on this device */
@@ -8969,7 +9024,7 @@ function netReady() {
 function netPresence() {
   if (NET.st !== 'on') return; const h = (LOOK || LOOK_DEF).hero;
   const w = typeof WKS === 'function' ? WKS() : null, wb = w ? Math.max(0, ...Object.values(w.best).map(r => r.tier)) : 0;
-  mqPublish(`${NS}/p/${NET.code}`, { on: 1, n: netName(), g: h, lv: godLv(h), busy: NET.lobby ? 1 : run && run.coop && !run.coop.gone ? 2 : 0, wb, wi: weekIdx(), tp: tplCompact(), t: Date.now() }, true);
+  mqPublish(`${NS}/p/${NET.code}`, { on: 1, n: netName(), g: h, lv: godLv(h), busy: NET.lobby ? 1 : run && run.coop && !run.coop.gone ? 2 : 0, wb, wi: weekIdx(), tp: tplCompact(), lk: Object.assign(lookTag(Object.assign({}, LOOK_DEF, LOOK || {})), { skin: (LOOK || LOOK_DEF).skin }), bg: store.get('t3bg', 'town'), t: Date.now() }, true);
 }
 function netSend(to, msg) { msg.f = NET.code; msg.n = netName(); mqPublish(`${NS}/u/${to}`, msg, false); }
 function netIncoming(topic, msg) {
@@ -8977,7 +9032,7 @@ function netIncoming(topic, msg) {
     if (msg && msg.f && msg.f !== NET.code) { const isNew = !NET.fr[msg.f]; netAddFriend(msg.f, msg.n, true, true); if (isNew) toast(L2(`<b>${escapeHTML(msg.n)}</b> 透過你的邀請加你好友了！`, `<b>${escapeHTML(msg.n)}</b> hat deine Einladung angenommen!`), 2600); }
     if (msg) mqPublish(topic, '', true); return; }
   if (topic.startsWith(`${NS}/p/`)) { const c = topic.slice(NS.length + 3); if (!NET.fr[c]) { if (run && run.coop && run.coop.players.some(p => p.code === c)) NET.pres[c] = msg || { on: 0 }; return; } /* team mates who are not your friends: only their online state */ const was = netOnline(c); NET.pres[c] = msg || { on: 0 };
-    if (msg && msg.n) { NET.fr[c].name = msg.n; NET.fr[c].god = msg.g; NET.fr[c].lv = msg.lv; if (msg.tp) NET.fr[c].tp = msg.tp; saveFriends(); }
+    if (msg && msg.n) { NET.fr[c].name = msg.n; NET.fr[c].god = msg.g; NET.fr[c].lv = msg.lv; if (msg.tp) NET.fr[c].tp = msg.tp; if (msg.lk) NET.fr[c].lk = msg.lk; if (msg.bg) NET.fr[c].bg = msg.bg; saveFriends(); }
     if (!was && netOnline(c) && NET.seen) toast(`<b>${escapeHTML(NET.fr[c].name)}</b> ${L2('上線了', 'ist online')}`, 1600);
     netUI(); return; }
   if (!msg || !msg.t || !msg.f || msg.f === NET.code) return;
@@ -9067,7 +9122,7 @@ $('frMe').addEventListener('click', e => {
 $('frList').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b || b.disabled) return;
   if (b.dataset.inv) lobbyInvite(b.dataset.inv);
-  else if (b.dataset.tpv) { const F = NET.fr[b.dataset.tpv]; openTplView(F.name || b.dataset.tpv, F.tp, () => { show('ovFriends'); renderFriends(); }); }
+  else if (b.dataset.tpv) { const F = NET.fr[b.dataset.tpv]; openTplView(F.name || b.dataset.tpv, F.tp, () => { show('ovFriends'); renderFriends(); }, F); }
   else if (b.dataset.del) { const c = b.dataset.del; ask('友', L2('刪除好友？', 'Freund entfernen?'), escapeHTML(NET.fr[c].name || c), [{ label: L2('刪除', 'Entfernen'), cls: 'red', fn: () => { delete NET.fr[c]; saveFriends(); renderFriends(); } }, { label: t('cancel') }]); }
 });
 $('frBack').onclick = () => { hide('ovFriends'); if (FRUI.mode === 'invite') openWeek(); else showTitle(); };
@@ -9178,7 +9233,7 @@ $('lbGods').addEventListener('click', e => { const b = e.target.closest('.wkgod'
 $('lbInv').addEventListener('click', e => { const b = e.target.closest('[data-inv]'); if (!b || b.disabled) return; lobbyInvite(b.dataset.inv); });
 $('lbSlots').addEventListener('click', e => {
   const k = e.target.closest('[data-kick]'); if (k) { const L = NET.lobby; if (!L || L.host !== NET.code) return; netSend(k.dataset.kick, { t: 'lobBye', id: L.id }); L.players = L.players.filter(p => p.code !== k.dataset.kick); lobbyBroadcast(); return; }
-  const t2 = e.target.closest('[data-tpl]'); if (t2) { const L = NET.lobby, p = L && L.players.find(q => q.code === t2.dataset.tpl); if (p) openTplView(p.name, p.code === NET.code ? tplCompact() : p.tp, () => openLobby()); }
+  const t2 = e.target.closest('[data-tpl]'); if (t2) { const L = NET.lobby, p = L && L.players.find(q => q.code === t2.dataset.tpl); if (p) openTplView(p.name, p.code === NET.code ? tplCompact() : p.tp, () => openLobby(), p.code === NET.code ? { god: (LOOK || LOOK_DEF).hero, lv: godLv((LOOK || LOOK_DEF).hero), lk: LOOK } : (NET.fr[p.code] || { god: p.god, lv: p.lv })); }
 });
 $('lbReady').onclick = () => { SFX.wood(); lobbySet(null, !(NET.lobby && NET.lobby.ready)); };
 $('lbLeave').onclick = () => lobbyClose(false);
@@ -9192,15 +9247,40 @@ function lobbyStart(players, seed, diff) {
   netPresence();
 }
 
-/* ---------- look at somebody's temple ---------- */
-const TPV = { on: false, tp: null };
-function openTplView(name, tp, back) {
-  TPV.tp = tp || {}; TPV.back = back; hide('ovLobby'); hide('ovFriends');
+/* ---------- look at somebody's temple: their 3D temple (same canvas as ours), their god in front, their scenery ---------- */
+const TPV = { on: false, tp: null, d3: 0, k: 0 };
+function openTplView(name, tp, back, F) {
+  TPV.tp = tp || {}; TPV.back = back; TPV.F = F || {}; hide('ovLobby'); hide('ovFriends');
   $('tvH').textContent = L2(`${name} 的廟`, `${name}s Tempel`); const L = tplLv(TPV.tp);
   $('tvS').innerHTML = `<b>${L2(...tplStageName(tplStage(L)))}</b>・${L2(`修建 ${L}/${templeMax()}`, `Ausbau ${L}/${templeMax()}`)}`;
-  show('ovTplView'); if (!TPV.on) { TPV.on = true; const loop = () => { if ($('ovTplView').hidden) { TPV.on = false; return; } const c = $('tvCv'), g = c.getContext('2d'); g.setTransform(c.width / 400, 0, 0, c.height / 300, 0, 0); drawTempleScene(g, { U: TPV.tp, L: tplLv(TPV.tp), t: performance.now() / 1000 }); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  const id = (TPV.F.lk && TPV.F.lk.hero) || TPV.F.god || 'taizi', H = HEROES[id] || HEROES.taizi;
+  TPV.look = resolveLook(Object.assign({}, LOOK_DEF, TPV.F.lk || {}, { hero: HEROES[id] ? id : 'taizi' }));
+  $('tvCap').innerHTML = `<div><b style="color:${H.col}">${nm(H)}</b><small>Lv ${TPV.F.lv || 1}</small></div><div class="r"><b>${L2(...tplStageName(tplStage(L)))}</b><small>${L2(`修建 ${L}`, `Ausbau ${L}`)}</small></div>`;
+  $('tvHint').style.opacity = 1; setTimeout(() => { $('tvHint').style.opacity = 0; }, 3500);
+  show('ovTplView'); TPV.k = 0; TPV.t0 = performance.now();
+  const U = Object.fromEntries(Object.entries(TPV.tp).filter(([k]) => k !== '_c'));
+  TPV.d3 = 0; try { if (typeof T3V !== 'undefined' && T3V.showGuest($('tvBox'), $('tvCv'), { U, sel: TPV.tp._c || {}, L, bg: TPV.F.bg })) TPV.d3 = 1; } catch (e) { TPV.d3 = 0; }
+  if (!TPV.on) { TPV.on = true; requestAnimationFrame(tvLoop); }
 }
-$('tvX').onclick = () => { hide('ovTplView'); const b = TPV.back; TPV.back = null; if (b) b(); };
+function tvLoop() {
+  if ($('ovTplView').hidden) { TPV.on = false; if (TPV.d3) { TPV.d3 = 0; try { T3V.hideGuest(); } catch (e) {} } return; }
+  requestAnimationFrame(tvLoop);
+  const box = $('tvBox'), W = box.clientWidth || 360, Hh = box.clientHeight || 480, c = $('tvCv'), dpr = Math.min(2, devicePixelRatio || 1), now = performance.now() / 1000;
+  if (c.width !== Math.round(W * dpr) || c.height !== Math.round(Hh * dpr)) { c.width = Math.round(W * dpr); c.height = Math.round(Hh * dpr); }
+  const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, Hh);
+  let d3 = false; if (TPV.d3) { try { d3 = T3V.guestFrame({ sx: 0.09, sy: 0.1, z: 0.74 }); } catch (e) { console.error(e); TPV.d3 = 0; try { T3V.hideGuest(); } catch (e2) {} } }
+  if (d3) TPV.k = Math.min(1, TPV.k + 0.08);
+  const k = TPV.k * TPV.k * (3 - 2 * TPV.k);
+  if (k < 1) { g.globalAlpha = 1 - k;
+    if (TPV.d3) { const K = T3V.TOD[T3V.period()].dome, gr = g.createLinearGradient(0, 0, 0, Hh); gr.addColorStop(0, K.top); gr.addColorStop(0.55, K.mid); gr.addColorStop(1, K.hor); g.fillStyle = gr; g.fillRect(0, 0, W, Hh); } // 3D on its way: just the sky, then the temple fades in
+    else { const s = Math.max(W / 400, Hh / 330); g.save(); g.translate(W / 2 - 200 * s, Hh - 310 * s); g.scale(s, s); drawTempleScene(g, { U: TPV.tp, L: tplLv(TPV.tp), t: now }); g.restore(); } // no WebGL: the painted temple
+    g.globalAlpha = 1; }
+  const gs = Math.min(W / 250, Hh / 330), gx = Math.max(60 * gs, W * 0.22), gy = Hh - 44; // their god, big in the foreground
+  g.save(); g.globalAlpha = 0.4; g.fillStyle = '#000'; g.beginPath(); g.ellipse(gx, gy + 2, 30 * gs, 7 * gs, 0, 0, 6.29); g.fill(); g.restore();
+  const keep = X; X = g; g.save(); g.translate(gx, gy); g.scale(gs, gs); try { drawHero(null, 0, 0, now, 0, 0, TPV.look); } catch (e) {} g.restore(); X = keep;
+  const gb = g.createLinearGradient(0, Hh - 70, 0, Hh); gb.addColorStop(0, 'rgba(14,6,26,0)'); gb.addColorStop(1, 'rgba(14,6,26,.75)'); g.fillStyle = gb; g.fillRect(0, Hh - 70, W, 70); // the name plates stay readable
+}
+$('tvX').onclick = () => { hide('ovTplView'); if (TPV.d3) { TPV.d3 = 0; try { T3V.hideGuest(); } catch (e) {} } const b = TPV.back; TPV.back = null; if (b) b(); };
 /* ================= 一起遶境: 2–4 gods, one fight, one shared life =================
    Everybody plays their turn at the same time on their own board. The host keeps the demons (HP, block, statuses) and the
    team's life and shield: every other player sends what they change (hits, shield, heals, damage taken) and gets the
@@ -9452,8 +9532,8 @@ function renderCoopWait() {
   txt(B.phase === 'ewait' ? L2('等隊友的妖怪回合…', 'Warte auf dein Team …') : L2('等隊友結束回合…', 'Warte auf dein Team …'), 200, 416, 13, '#fff1cf');
   txt(left ? L2(`還有 ${left} 位在出手`, `${left} ${left > 1 ? 'spielen' : 'spielt'} noch`) : L2('大家都結束了', 'Alle sind fertig'), 200, 434, 10, '#9ff5e0'); X.globalAlpha = 1;
 }
-/* ================= 測試版 · 治癒系手繪水彩 (cozy hand-drawn watercolour) =================
-   Test branch only — the live build stays the dark night market. Three layers turn every canvas into warm watercolour paper
+/* ================= 治癒系手繪水彩 (cozy hand-drawn watercolour): the game's look =================
+   The art code underneath was painted for a dark night market; three layers turn every canvas into warm watercolour paper
    without touching the game logic:
    1. colour grading of every 2D-canvas colour (fill / stroke / shadow / gradient stops): night purple & black → warm cocoa ink,
       neon → pastel; additive glows become soft 'screen' glows; light text always gets a brown ink outline (readable on paper)
@@ -9667,6 +9747,83 @@ function cozyPaper() {
   } catch (e) {}
 }
 cozyPaper();
+/* ================= 每日福袋: one lucky bag a day — a 30-day check-in calendar =================
+   Day 7 / 14 / 21 / 28: 5 紅包 · day 30: an item from the shop (the month's prize, shown from day 1)
+   days 3 / 10 / 17 / 24: +1 talent point for the god you play · every other day: 香油錢 for the temple.
+   The calendar counts check-ins, not dates: a missed day is never lost. A new bag is ready every day at 00:00 Taiwan time.
+   (Everything here is a function declaration on purpose: the title calls dbagDot() while the boot is still running.) */
+function dbagN() { return 30; }
+function dbagDay() { return Math.floor((Date.now() + 8 * 3600e3) / 864e5); } // calendar day in Taiwan time
+function dbagState() {
+  const s = store.get('dbag', null) || { n: 0, last: -1, cyc: 0, item: null };
+  if (s.n >= dbagN() && s.last !== dbagDay()) { s.n = 0; s.cyc++; s.item = null; } // the month is full: a new calendar starts with the next bag
+  if (!s.item || !COSM_BY[s.item]) { const it = dbagPickItem(s.cyc); s.item = it ? it.id : 'none'; store.set('dbag', s); }
+  return s;
+}
+function dbagReady() { return dbagState().last !== dbagDay(); }
+function dbagPickItem(cyc) { // a rare-or-better look you do not own yet, fixed for the whole month
+  const pool = Object.values(COSM_BY).filter(c => !c.free && !c.lim && c.rar >= 3 && ['robe', 'head', 'eyes', 'feet', 'aura'].includes(c.cat) && !owns(c.id));
+  if (!pool.length) return null; return pool[((cyc + 1) * 2654435761 >>> 0) % pool.length];
+}
+function dbagReward(d, s) {
+  if (d === 30) return s.item && s.item !== 'none' ? { k: 'item', id: s.item } : { k: 'hb', v: 30 };
+  if (d % 7 === 0) return { k: 'hb', v: 5 };
+  if ([3, 10, 17, 24].includes(d)) return { k: 'tp', v: 1 };
+  return { k: 'cred', v: [60, 80, 100, 120, 150][Math.floor((d - 1) / 7)] };
+}
+function dbagGrant(R) {
+  const h = (LOOK || LOOK_DEF).hero;
+  if (R.k === 'cred') CRED += R.v;
+  else if (R.k === 'hb') HB += R.v;
+  else if (R.k === 'tp') { const g = godOf(h); g.bp = (g.bp || 0) + R.v; saveGods(); R.god = h; }
+  else if (R.k === 'item') { if (owns(R.id)) { HB += 30; R.dup = 1; } else OWN[R.id] = 1; }
+  saveWallet();
+}
+function dbagClaim() {
+  if (!dbagReady()) return null; const s = dbagState();
+  s.n++; s.last = dbagDay(); const R = dbagReward(s.n, s); R.d = s.n; dbagGrant(R); store.set('dbag', s); return R;
+}
+function dbagLabel(R, long) {
+  if (R.k === 'cred') return `<i class="cn"></i>${R.v}${long ? ' ' + L2('香油錢', 'Opfergeld') : ''}`;
+  if (R.k === 'hb') return `<span class="hbi"></span>×${R.v}${long ? ' ' + L2('紅包', 'Hongbao') : ''}`;
+  if (R.k === 'tp') return long ? L2(`天賦點 +1（${nm(HEROES[R.god || (LOOK || LOOK_DEF).hero])}）`, `+1 Talentpunkt (${nm(HEROES[R.god || (LOOK || LOOK_DEF).hero])})`) : L2('天賦 +1', 'Talent +1');
+  const it = COSM_BY[R.id]; return long ? `${nm(it)}${R.dup ? L2('（已有 → 紅包 30）', ' (schon da → 30 Hongbao)') : ''}` : L2('外觀', 'Look');
+}
+function dbagIcon(R) {
+  if (R.k === 'cred') return '<b class="dbi cr">香</b>';
+  if (R.k === 'hb') return '<b class="dbi hb">紅</b>';
+  if (R.k === 'tp') return '<b class="dbi tp">點</b>';
+  const it = COSM_BY[R.id]; return `<b class="dbi it" style="--rc:${RARN[it.rar][2]}">${(typeof COS_IC !== 'undefined' && COS_IC[it.id]) || ({ robe: '衣', head: '冠', eyes: '鏡', feet: '騎', aura: '光' })[it.cat] || '寶'}</b>`;
+}
+function dbagDot() { const d = document.getElementById('dbDot'); if (d) d.hidden = !dbagReady(); }
+function openDailyBag() {
+  if (typeof auInit === 'function') { auInit(); auResume(); }
+  hide('ovMore'); renderDailyBag(); $('dbRes').innerHTML = ''; $('dbBag').className = 'bag'; show('ovDBag'); $('ovDBag').scrollTop = 0;
+}
+function renderDailyBag(fresh) {
+  const s = dbagState(), rdy = dbagReady(), next = rdy ? s.n + 1 : s.n, it = s.item && s.item !== 'none' ? COSM_BY[s.item] : null;
+  $('dbSub').innerHTML = L2(`每天 00:00（台灣時間）可以領一個。<b>第 7、14、21、28 天</b>送 5 紅包，<b>第 30 天</b>送商城外觀${it ? `：<b>${nm(it)}</b>` : ''}。漏掉的日子不會不見。`,
+    `Jeden Tag um 0 Uhr (Taiwan) eine Tasche. <b>Tag 7, 14, 21, 28</b>: 5 Hongbao, <b>Tag 30</b>: ein Shop-Look${it ? `: <b>${nm(it)}</b>` : ''}. Verpasste Tage verfallen nicht.`);
+  $('dbGo').disabled = !rdy; $('dbGo').innerHTML = rdy ? `${L2(`領取第 ${next} 天的福袋`, `Tasche von Tag ${next} öffnen`)}<small>${dbagLabel(dbagReward(next, s), true)}</small>` : `${L2('今天領過了', 'Heute schon geöffnet')}<small>${L2('明天 00:00 再來', 'Morgen ab 0 Uhr wieder')}</small>`;
+  let h = ''; for (let d = 1; d <= dbagN(); d++) { const R = dbagReward(d, s), done = d <= s.n, today = rdy && d === next, cls = done ? 'done' : today ? 'today' : 'future';
+    h += `<div class="dbc ${cls} k-${R.k}${fresh && d === s.n ? ' pop' : ''}"><span class="dbd">${d}</span>${dbagIcon(R)}<small>${dbagLabel(R)}</small>${done ? '<em>✓</em>' : ''}</div>`; }
+  $('dbGrid').innerHTML = h;
+  $('dbOld').innerHTML = BAGS > 0 ? `<button class="btn ghost sm" id="dbOldGo">${L2(`還有 ${BAGS} 個舊福袋：打開`, `Noch ${BAGS} alte Glückstaschen: öffnen`)}</button>` : '';
+  if ($('dbOldGo')) $('dbOldGo').onclick = () => { hide('ovDBag'); openBag(); };
+  dbagDot();
+}
+function dbagGo() {
+  if (!dbagReady()) return; $('dbGo').disabled = true; const el = $('dbBag'); el.className = 'bag shake'; SFX.wood();
+  setTimeout(() => {
+    const R = dbagClaim(); if (!R) return; el.className = `bag open r${R.k === 'item' ? 4 : R.k === 'hb' ? 3 : R.k === 'tp' ? 2 : 1}`;
+    (R.k === 'item' ? () => { SFX.suona([[10, 0.14], [12, 0.14], [14, 0.14], [17, 0.6]]); SFX.crackle(1.2); } : R.k === 'hb' ? () => { SFX.win(); SFX.coin(); } : R.k === 'tp' ? () => SFX.sheng() : () => SFX.coin())();
+    $('dbRes').innerHTML = `<b>${L2(`第 ${R.d} 天`, `Tag ${R.d}`)}</b>${dbagLabel(R, true)}${R.k === 'tp' ? `<small>${L2('到「眾神 → 天賦樹」使用', 'Im Talentbaum einsetzen')}</small>` : R.k === 'item' ? `<small>${L2('已放進衣櫥', 'Liegt in deiner Garderobe')}</small>` : ''}`;
+    renderDailyBag(true); if (typeof renderTitle === 'function' && !$('ovTitle').hidden) renderTitle();
+  }, 750);
+}
+document.getElementById('dbGo').onclick = () => dbagGo();
+document.getElementById('dbX').onclick = () => { hide('ovDBag'); if (!$('ovTitle').hidden) renderTitle(); };
+document.getElementById('bDBag').onclick = () => openDailyBag();
 /* ================= 遊戲商城 — 紅包 (paid currency), in-app purchase flow, 首儲禮, 月卡 =================
    Architecture (kept 1:1 with a real store build):
      Pay.*  = the platform SDK step (iOS StoreKit / Google Play Billing / web checkout) → returns a signed receipt
@@ -10177,7 +10334,7 @@ const TUTS = {
         if (tap2) { g.save(); g.globalCompositeOperation = 'lighter'; const a = Math.max(0, 1 - (t - 2) / 1.6); const gr = g.createRadialGradient(64, 214, 4, 64, 214, 56); gr.addColorStop(0, `rgba(255,200,90,${0.55 * a})`); gr.addColorStop(1, 'rgba(255,200,90,0)'); g.fillStyle = gr; g.fillRect(0, 150, 140, 130); g.restore(); tPop(g, `✦ ${nm(d)}`, 64, 150, (t - 2.1) / 1.6, '#ffe9a0', 13); }
         if (burn < 1) { g.save(); g.globalAlpha = 1 - burn; tCard(g, id, 214, 150 - burn * 30, 1.35 - burn * 0.3, t, { on: tap1 }); g.restore(); }
         if (burn > 0 && burn < 1) for (let i = 0; i < 14; i++) { const a = i * 2.4, r = burn * 70; g.fillStyle = i % 2 ? '#ffb347' : d.col; g.globalAlpha = 1 - burn; g.fillRect(214 + Math.cos(a) * r, 150 + Math.sin(a) * r * 0.7 - burn * 30, 4, 3); g.globalAlpha = 1; }
-        if (tap1 && !tap2) { g.fillStyle = 'rgba(14,6,26,.94)'; g.beginPath(); g.roundRect(120, 34, 190, 28, 8); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.2; g.stroke(); TG2.t(g, L2('即時：不用發射・再點一下', 'Sofort-Karte: kein Schuss · nochmal tippen'), 215, 48, 8.5, '#ffd23f'); }
+        if (tap1 && !tap2) { g.fillStyle = 'rgba(92,64,48,.94)'; g.beginPath(); g.roundRect(120, 34, 190, 28, 8); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.2; g.stroke(); TG2.t(g, L2('即時：不用發射・再點一下', 'Sofort-Karte: kein Schuss · nochmal tippen'), 215, 48, 8.5, '#ffd23f'); }
         if (t < 2.2) tFinger(g, 228, 196, (t > 0.7 && t < 0.95) || (t > 1.9 && t < 2.15));
         TG2.t(g, tap2 ? L2('不用發射，已經生效！', 'Gewirkt – ganz ohne Schuss!') : '', 200, 262, 12, '#7dffb0', '#06281e');
       } },
@@ -10247,7 +10404,7 @@ const TUTS = {
           if (on && s > 0 && s < 1) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - s; g.fillStyle = col; g.beginPath(); g.arc(x, y, rr + 10 * s, 0, 6.28); g.fill(); g.restore(); }
           if (cap && on && t > 4.8) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 0.35 + Math.sin(t * 6) * 0.2; g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(x, y, rr + 8, 0, 6.28); g.fill(); g.restore(); } }
         for (let r = 0; r < 9; r++) { const y = 262 - r * 28, on = lv >= ROW_LV[r]; TG2.t(g, `Lv ${ROW_LV[r]}`, 290, y + 0.5, 8, on ? '#ffe9a0' : 'rgba(255,255,255,.25)'); }
-        g.fillStyle = 'rgba(14,6,26,.9)'; g.beginPath(); g.roundRect(18, 20, 74, 24, 12); g.fill(); g.strokeStyle = '#ffd23f'; g.lineWidth = 1.5; g.stroke(); TG2.t(g, `Lv ${lv}`, 55, 32.5, 13, '#ffd23f');
+        g.fillStyle = 'rgba(92,64,48,.9)'; g.beginPath(); g.roundRect(18, 20, 74, 24, 12); g.fill(); g.strokeStyle = '#ffd23f'; g.lineWidth = 1.5; g.stroke(); TG2.t(g, `Lv ${lv}`, 55, 32.5, 13, '#ffd23f');
         if (t > 4.9) { g.save(); g.translate(160, 18); TG2.t(g, L2('化身：二選一！', 'Avatar: wähle einen!'), 0, 0, 12, '#ffe27a', '#2a0410'); g.restore(); }
       } },
     { h: ['外觀與天劫', 'Aussehen & Aufstieg'], t: ['在<b>外觀</b>換衣服、坐騎、光環——只是好看。贏過一輪之後會開<b>天劫</b>：更難，但修為和香油錢更多。', 'Unter <b>Aussehen</b> wechselst du Gewand, Reittier, Aura – nur Optik. Nach dem ersten Sieg öffnet sich der <b>Aufstieg</b>: härter, dafür mehr Kultivierung und Opfergeld.'],
@@ -10257,7 +10414,7 @@ const TUTS = {
         tGod(g, 110, 232, 1.15, t, k < 0.15 ? Math.sin(k / 0.15 * Math.PI) * 10 : 0, lk);
         if (k < 0.2) { g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k / 0.2; g.fillStyle = '#fff6c8'; g.beginPath(); g.arc(110, 170, 60, 0, 6.28); g.fill(); g.restore(); }
         TG2.t(g, L2('外觀', 'Aussehen'), 110, 40, 13, '#ffe9a0', '#2a0410');
-        const A = Math.min(10, Math.floor(t / 0.45)); g.fillStyle = 'rgba(40,6,16,.9)'; g.beginPath(); g.roundRect(196, 64, 104, 150, 12); g.fill(); g.strokeStyle = 'rgba(255,90,110,.7)'; g.lineWidth = 1.5; g.stroke();
+        const A = Math.min(10, Math.floor(t / 0.45)); g.fillStyle = 'rgba(92,64,48,.9)'; g.beginPath(); g.roundRect(196, 64, 104, 150, 12); g.fill(); g.strokeStyle = 'rgba(255,90,110,.7)'; g.lineWidth = 1.5; g.stroke();
         TG2.t(g, L2('天劫', 'Aufstieg'), 248, 82, 12, '#ff9aa8'); TG2.t(g, `${A}/10`, 248, 112, 26, '#fff1cf', '#5a0a1a');
         for (let i = 0; i < 10; i++) { const x = 210 + (i % 5) * 19, y = 146 + Math.floor(i / 5) * 18; g.fillStyle = i < A ? '#ff5a6e' : 'rgba(255,255,255,.12)'; g.beginPath(); g.moveTo(x, y - 7); g.quadraticCurveTo(x + 6, y, x, y + 6); g.quadraticCurveTo(x - 6, y, x, y - 7); g.fill(); }
         TG2.t(g, `${L2('獎勵', 'Belohnung')} +${A * 10}%`, 248, 200, 10.5, '#ffe27a');
@@ -10268,32 +10425,33 @@ const TUTS = {
     { h: ['香油錢・香火', 'Opfergeld & Weihrauch'], t: ['每一輪都帶回<b>香油錢</b>。修廟要香油錢，也要夠多的<b>香火</b>：香火＝<b>所有神明等級加起來</b>。', 'Jeder Lauf bringt <b>Opfergeld</b>. Ein Ausbau kostet Opfergeld und braucht genug <b>Weihrauch</b> – das ist die <b>Summe aller Götter-Stufen</b>.'],
       P: 4.4, d(g, t) {
         const k = clamp(t / 2.4, 0, 1), cred = Math.round(ease(k) * 240), built = t > 2.9;
-        g.save(); g.translate(0, 18); g.scale(0.62, 0.62); g.translate(98, 92); drawTempleScene(g, { U: tplU(built ? 4 : 2), L: built ? 4 : 2, t }); g.restore();
+        g.save(); g.translate(0, 40); g.scale(0.8, 0.8); drawTempleScene(g, { U: tplU(built ? 4 : 2), L: built ? 4 : 2, t }); g.restore();
         for (let i = 0; i < 8; i++) { const kk = (t * 0.9 + i * 0.13) % 1; if (t > 2.6) break; g.globalAlpha = Math.sin(kk * Math.PI); g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(lerp(40 + i * 30, 160, kk), lerp(272, 200, kk) - Math.sin(kk * Math.PI) * 30, 4, 0, 6.28); g.fill(); g.strokeStyle = '#a8740a'; g.lineWidth = 1; g.stroke(); g.globalAlpha = 1; }
-        const box = (x, lbl, val, col) => { g.fillStyle = 'rgba(14,6,26,.9)'; g.beginPath(); g.roundRect(x, 22, 96, 38, 10); g.fill(); g.strokeStyle = col; g.lineWidth = 1.5; g.stroke(); TG2.t(g, val, x + 48, 36, 15, col); TG2.t(g, lbl, x + 48, 52, 8.5, '#d9c8e6'); };
+        const box = (x, lbl, val, col) => { g.fillStyle = 'rgba(92,64,48,.9)'; g.beginPath(); g.roundRect(x, 22, 96, 38, 10); g.fill(); g.strokeStyle = col; g.lineWidth = 1.5; g.stroke(); TG2.t(g, val, x + 48, 36, 15, col); TG2.t(g, lbl, x + 48, 52, 8.5, '#d9c8e6'); };
         box(40, L2('香油錢', 'Opfergeld'), `● ${cred}`, '#ffd23f'); box(184, L2('香火・神明等級', 'Weihrauch · Stufen'), `香 ${Math.min(9, 1 + Math.floor(t * 2))}`, '#ff9a5a');
         if (built) { tPop(g, L2('修好了！', 'Ausgebaut!'), 160, 120, (t - 2.9) / 1.4, '#7dffb0', 18); }
       } },
     { h: ['你的廟會一直長大', 'Dein Tempel wächst'], t: ['從<b>路邊小祠</b>一路修到<b>天下第一廟</b>：八十多次修建，每一次都看得到。朋友也能來參觀！', 'Vom <b>Straßenschrein</b> bis zum <b>Ersten Tempel des Landes</b>: über 80 Ausbauten – jeder ist zu sehen. Freunde können ihn besuchen!'],
       P: 7.4, d(g, t) {
         const mx = templeMax(), L = Math.min(mx, Math.round(Math.pow(clamp(t / 6, 0, 1), 1.15) * mx)), S = tplStage(L), prevS = tplStage(Math.max(0, Math.round(Math.pow(clamp((t - 0.25) / 6, 0, 1), 1.15) * mx)));
-        g.save(); g.translate(0, 6); g.scale(0.8, 0.8); g.translate(0, 34); drawTempleScene(g, { U: tplU(L), L, t }); g.restore();
-        if (S !== prevS) { g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = 'rgba(255,230,160,.35)'; g.fillRect(14, 14, 292, 252); g.restore(); }
-        g.fillStyle = 'rgba(14,6,26,.88)'; g.beginPath(); g.roundRect(60, 16, 200, 40, 12); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.5; g.stroke();
+        g.save(); g.translate(0, 40); g.scale(0.8, 0.8); drawTempleScene(g, { U: tplU(L), L, t }); g.restore(); // same ground line as the step before
+        if (S !== prevS) TUTFX.stageT = t; // a new stage: a few sparkles over the temple (no full-screen tint)
+        { const k = (t - (TUTFX.stageT ?? -9)) / 0.9; if (k >= 0 && k < 1) for (let i = 0; i < 10; i++) { const a = i * 0.63 + 0.4, r = 30 + k * 70, x = 160 + Math.cos(a) * r * 1.3, y = 165 + Math.sin(a) * r * 0.6, s = (1 - k) * 5; g.fillStyle = `rgba(255,236,170,${1 - k})`; g.beginPath(); g.moveTo(x, y - s); g.lineTo(x + s * 0.3, y - s * 0.3); g.lineTo(x + s, y); g.lineTo(x + s * 0.3, y + s * 0.3); g.lineTo(x, y + s); g.lineTo(x - s * 0.3, y + s * 0.3); g.lineTo(x - s, y); g.lineTo(x - s * 0.3, y - s * 0.3); g.fill(); } }
+        g.fillStyle = 'rgba(92,64,48,.88)'; g.beginPath(); g.roundRect(60, 16, 200, 40, 12); g.fill(); g.strokeStyle = '#f5c542'; g.lineWidth = 1.5; g.stroke();
         TG2.t(g, L2(...tplStageName(S)), 160, 31, 13, '#ffe27a'); TG2.t(g, L2(`修建 ${L}/${mx}`, `Ausbau ${L}/${mx}`), 160, 47, 9, '#d9c8e6');
         for (let i = 0; i < 9; i++) { g.fillStyle = i <= S ? '#ffd23f' : 'rgba(255,255,255,.18)'; g.beginPath(); g.arc(96 + i * 16, 266, i === S ? 4.5 : 3, 0, 6.28); g.fill(); }
       } },
     { h: ['修建＝戰鬥加成', 'Ausbau = Kampf-Boni'], t: ['每一次修建都是<b>永久的加成</b>：更多血、更多金、開局更強……<b>廟飾</b>只改外觀。還可以<b>拍照</b>分享！', 'Jeder Ausbau ist ein <b>dauerhafter Bonus</b>: mehr Leben, mehr Münzen, ein stärkerer Start … <b>Schmuck</b> ändert nur das Aussehen. Und du kannst <b>Fotos</b> machen!'],
       P: 5, d(g, t) {
         const us = UPGS.slice(0, 4);
-        us.forEach((u, i) => { const k = clamp((t - 0.3 - i * 0.55) / 0.35, 0, 1); if (!k) return; const y = 34 + i * 40; g.globalAlpha = k; g.fillStyle = 'rgba(30,10,40,.92)'; g.beginPath(); g.roundRect(18 + (1 - k) * 30, y, 170, 32, 8); g.fill(); g.strokeStyle = 'rgba(245,197,66,.55)'; g.lineWidth = 1.2; g.stroke();
+        us.forEach((u, i) => { const k = clamp((t - 0.3 - i * 0.55) / 0.35, 0, 1); if (!k) return; const y = 34 + i * 40; g.globalAlpha = k; g.fillStyle = 'rgba(92,64,48,.92)'; g.beginPath(); g.roundRect(18 + (1 - k) * 30, y, 170, 32, 8); g.fill(); g.strokeStyle = 'rgba(245,197,66,.55)'; g.lineWidth = 1.2; g.stroke();
           TG2.t(g, u.glyph, 36 + (1 - k) * 30, y + 16, 14, '#ffd23f'); g.font = `900 9.5px ${FONT}`; g.textAlign = 'left'; g.fillStyle = '#fff1cf'; g.fillText(nm(u), 52 + (1 - k) * 30, y + 11); g.fillStyle = '#7dffb0'; g.font = `800 8.5px ${FONT}`; let tx = L2(...(u.step || u.mx === 1 ? u.t(1) : u.t(upgVal(u, 1)))); while (tx.length > 4 && g.measureText(tx).width > 128) tx = tx.slice(0, -2) + '…'; g.fillText(tx, 52 + (1 - k) * 30, y + 24); g.textAlign = 'center'; g.globalAlpha = 1; });
         const ph = clamp((t - 2.8) / 0.4, 0, 1); if (ph > 0) { g.save(); g.translate(250, 150); g.rotate(0.08 - 0.06 * ph); g.globalAlpha = ph; g.fillStyle = '#fff8ec'; g.fillRect(-56, -70, 112, 136); g.save(); g.beginPath(); g.rect(-50, -64, 100, 100); g.clip(); g.translate(-50, -64); g.scale(0.25, 0.333); drawTempleScene(g, { U: tplU(40), L: 40, t }); g.restore(); TG2.t(g, '神彈宮', 0, 52, 10, '#5a1018'); g.restore();
-          if (t < 3.3) { g.save(); g.globalAlpha = 1 - (t - 2.8) / 0.5; g.fillStyle = '#fff'; g.fillRect(14, 14, 292, 252); g.restore(); } }
+          if (t < 3.1) { g.save(); g.globalAlpha = 0.55 * (1 - (t - 2.8) / 0.3); g.fillStyle = '#fff'; g.fillRect(14, 14, 292, 252); g.restore(); } }
       } },
   ] },
 };
-let TUT = null;
+let TUT = null; const TUTFX = {};
 const tutSeen = k => !!store.get('tuts', {})[k] || (k === 'fight' && !!store.get('tutDone'));
 function markTut(k) { const s = store.get('tuts', {}); s[k] = 1; store.set('tuts', s); if (k === 'fight') store.set('tutDone', 1); }
 function tutOnce(k) { if (tutSeen(k) || TUT || window.__bot) return false; openTut(k); return true; } // the contextual first-time trigger
@@ -11329,11 +11487,12 @@ const T3V = (() => {
     return true;
   }
   function sync(force) {
-    const per = period(), sel = curSel(), ts = JSON.stringify(levels()), sig = ts + JSON.stringify(sel) + per + V.bg + (V.mode === 'photo' ? heroKey() : '');
+    const Gst = V.guest, lv = Gst ? Gst.U : levels(), bg = (Gst && Gst.bg) || V.bg; // a friend's temple: their levels, decorations and scenery
+    const per = period(), sel = Gst ? Gst.sel : curSel(), ts = JSON.stringify(lv), sig = ts + JSON.stringify(sel) + per + bg + (Gst ? '|guest' : '') + (V.mode === 'photo' ? heroKey() : '');
     if (!force && sig === V.sig) return false;
     const C = tcResolve(sel), first = !V.R;
-    const R = T3T.build(levels(), templeLevel(), C, { period: per, sky: skyK(per, C), city: farPal(V.bg, per), bg: V.bg, hero: V.mode === 'photo' && PH.pose !== 'none' ? { key: heroKey(), src: () => T3X.D.hero(godLook(PH.god), 'stand') } : null });
-    V.api.setScene(R.batches); V.tags = V.api.tags(); V.R = R; V.per = per; V.C = C; V.sig = sig; V.tsig = ts;
+    const R = T3T.build(lv, Gst ? Gst.L : templeLevel(), C, { period: per, sky: skyK(per, C), city: farPal(bg, per), bg, hero: V.mode === 'photo' && PH.pose !== 'none' ? { key: heroKey(), src: () => T3X.D.hero(godLook(PH.god), 'stand') } : null });
+    V.api.setScene(R.batches); V.tags = V.api.tags(); V.R = R; V.per = per; V.C = C; V.sig = sig; V.tsig = Gst ? '' : ts; V.bgNow = bg;
     if (first) { V.cam.zoom = 1; }
     return true;
   }
@@ -11344,7 +11503,7 @@ const T3V = (() => {
   function camState(asp, now) {
     const c = V.cam, f = V.R.focus; let at = f.at.slice(), dist = f.dist * c.zoom;
     if (V.mode === 'photo') { dist *= 0.8; at[1] -= 0.5; at[2] += 1; }
-    if (V.mode === 'title') { const T = V.tf || {}, rx = Math.cos(c.yaw), rz = -Math.sin(c.yaw); dist *= T.z || 1; at[0] -= rx * dist * (T.sx || 0); at[2] -= rz * dist * (T.sx || 0); at[1] += dist * (T.sy || 0); }
+    if (V.mode === 'title' || V.mode === 'guest') { const T = V.tf || {}, rx = Math.cos(c.yaw), rz = -Math.sin(c.yaw); dist *= T.z || 1; at[0] -= rx * dist * (T.sx || 0); at[2] -= rz * dist * (T.sx || 0); at[1] += dist * (T.sy || 0); }
     if (c.fly) { const k = (now - c.fly.t0) / c.fly.dur; if (k >= 1) c.fly = null; else { const w = Math.sin(Math.min(1, k * 1.6) * Math.PI / 2) * (k > 0.7 ? 1 - (k - 0.7) / 0.3 : 1), e = w * w * (3 - 2 * w); at = at.map((v, i) => v + (c.fly.p[i] - v) * e * 0.85); dist += (c.fly.dist - dist) * e; } }
     const hf = 2 * Math.atan(Math.tan(0.33) * 4 / 3), want = 2 * Math.atan(Math.tan(hf / 2) / asp), fov = Math.min(1.1, want);
     if (want > fov) dist *= Math.min(1.28, Math.tan(hf / 2) / (Math.tan(fov / 2) * asp)); // narrow portrait screens: step back instead of a fish-eye
@@ -11354,7 +11513,7 @@ const T3V = (() => {
   function stepCam(dt, now) {
     const c = V.cam, idle = now - c.lastIn > 6 && !V.drag && V.mode !== 'photo';
     if (!V.drag) { c.tyaw += c.vy * dt; c.vy *= Math.exp(-dt * 3.5); }
-    if (idle) { const base = V.mode === 'title' ? -0.2 + Math.sin(now * 0.16) * 0.13 : -0.26 + Math.sin(now * 0.21) * 0.18; c.tyaw += (base - c.tyaw) * (1 - Math.exp(-dt * 0.5)); }
+    if (idle) { const base = V.mode === 'title' || V.mode === 'guest' ? -0.2 + Math.sin(now * 0.16) * 0.13 : -0.26 + Math.sin(now * 0.21) * 0.18; c.tyaw += (base - c.tyaw) * (1 - Math.exp(-dt * 0.5)); }
     c.tyaw = clamp(c.tyaw, -YMAX, YMAX); c.tpitch = clamp(c.tpitch, PMIN, PMAX);
     c.yaw += (c.tyaw - c.yaw) * (1 - Math.exp(-dt * 10)); c.pitch += (c.tpitch - c.pitch) * (1 - Math.exp(-dt * 10));
   }
@@ -11426,11 +11585,11 @@ const T3V = (() => {
       cand.sort((a, b) => b.pr - a.pr);
       for (const l of cand.slice(0, 8)) { const fl = 1 + Math.sin(now * 9 + l.p[0] * 3) * 0.035; pts.push({ p: l.p, c: l.c.map(v => v * T.lightK * fl), r: l.r }); }
     }
-    return { sun: T.sun, sunC: T.sunC, sky: T.sky, gnd: T.gnd, amb: T.amb, fog: T.fog * (V.bg === 'mountain' ? (V.per === 'day' ? 2.6 : 1.6) : V.bg === 'city' ? 1.15 : 1), fogC: T.fogC, emis: T.emis, expo: T.expo, clear: T.fogC, pts, sprK: V.per === 'day' ? 0.95 : V.per === 'dusk' ? 0.86 : 0.74, shadowAt: R.focus.at, shadowR: R.S >= 4 ? 25 : R.S >= 2 ? 19 : 12 };
+    return { sun: T.sun, sunC: T.sunC, sky: T.sky, gnd: T.gnd, amb: T.amb, fog: T.fog * ((V.bgNow || V.bg) === 'mountain' ? (V.per === 'day' ? 2.6 : 1.6) : (V.bgNow || V.bg) === 'city' ? 1.15 : 1), fogC: T.fogC, emis: T.emis, expo: T.expo, clear: T.fogC, pts, sprK: V.per === 'day' ? 0.95 : V.per === 'dusk' ? 0.86 : 0.74, shadowAt: R.focus.at, shadowR: R.S >= 4 ? 25 : R.S >= 2 ? 19 : 12 };
   }
   /* ---------- the frame ---------- */
   function resize() {
-    const cv = V.cv, dpr = Math.min(V.mode === 'title' ? Math.min(V.tdpr || 1.4, Math.sqrt(640000 / Math.max(1, cv.clientWidth * cv.clientHeight))) : V.mode === 'embed' ? 1.75 : 2, window.devicePixelRatio || 1), w = Math.max(2, Math.round(cv.clientWidth * dpr)), h = Math.max(2, Math.round(cv.clientHeight * dpr));
+    const cv = V.cv, dpr = Math.min(V.mode === 'title' || V.mode === 'guest' ? Math.min(V.tdpr || 1.4, Math.sqrt(640000 / Math.max(1, cv.clientWidth * cv.clientHeight))) : V.mode === 'embed' ? 1.75 : 2, window.devicePixelRatio || 1), w = Math.max(2, Math.round(cv.clientWidth * dpr)), h = Math.max(2, Math.round(cv.clientHeight * dpr));
     if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; if (V.mode === 'photo') drawOverlay(); }
   }
   function frame() {
@@ -11456,16 +11615,31 @@ const T3V = (() => {
 
   /* ================= 3D title: the same canvas, moved behind the main menu (one WebGL context for both screens) ================= */
   function toTitle(host, before) {
-    if (!init() || V.mode === 'photo') return false;
+    if (!init() || V.mode === 'photo') return false; if (V.mode === 'guest') hideGuest();
     if ($('t3Box').classList.contains('full')) setFull(false);
     if (V.mode !== 'title') { V.mode = 'title'; host.insertBefore(V.cv, before || null); V.cv.style.cssText = 'position:absolute;left:0;top:0;z-index:0;pointer-events:none;display:block';
       Object.assign(V.cam, { yaw: -0.2, tyaw: -0.2, pitch: 0.2, tpitch: 0.2, zoom: 1, vy: 0, fly: null }); V.last = 0; }
     return true;
   }
   function toEmbed() {
+    if (V.mode === 'guest') { hideGuest(); return; }
     if (V.mode !== 'title') return; V.mode = 'embed'; const b = $('t3Box'); b.insertBefore(V.cv, b.firstChild); V.cv.style.cssText = '';
     Object.assign(V.cam, { yaw: -0.26, tyaw: -0.26, pitch: 0.26, tpitch: 0.26, zoom: 1, vy: 0, fly: null }); V.last = 0;
   }
+  /* a friend's temple, shown with the same canvas (touch to turn it); G = { U, sel, L, bg } */
+  function showGuest(host, before, G) {
+    if (!init() || V.mode === 'photo') return false;
+    if ($('t3Box').classList.contains('full')) setFull(false);
+    V.guest = G; V.mode = 'guest'; host.insertBefore(V.cv, before || null); V.sig = '';
+    V.cv.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;display:block;touch-action:none';
+    Object.assign(V.cam, { yaw: -0.2, tyaw: -0.2, pitch: 0.22, tpitch: 0.22, zoom: 1, vy: 0, fly: null, lastIn: -99 }); V.last = 0;
+    return true;
+  }
+  function hideGuest() {
+    if (V.mode !== 'guest') return; V.guest = null; V.mode = 'embed'; V.sig = ''; const b = $('t3Box'); b.insertBefore(V.cv, b.firstChild); V.cv.style.cssText = '';
+    Object.assign(V.cam, { yaw: -0.26, tyaw: -0.26, pitch: 0.26, tpitch: 0.26, zoom: 1, vy: 0, fly: null }); V.last = 0;
+  }
+  function guestFrame(tf) { if (V.mode !== 'guest') return false; V.tf = tf; frame(); return !!V.R && V.sig.endsWith('|guest'); }
   function titleFrame(w, h, tf) { if (V.mode !== 'title') return false; const cs = V.cv.style, W = w + 'px', H = h + 'px'; if (cs.width !== W) cs.width = W; if (cs.height !== H) cs.height = H; V.tf = tf; frame(); return !!V.R; }
   /* where a world point lands on the title canvas (CSS px), e.g. to put the temple's name plate under it */
   function project(p) { if (!V.VP || !V.cv) return null; const r = { width: V.cv.clientWidth, height: V.cv.clientHeight }; return projectCSS(p, r); }
@@ -11595,7 +11769,7 @@ const T3V = (() => {
     window.addEventListener('resize', () => { if (!$('ovPhoto').hidden) layoutPhoto(); });
   }
   bindPhoto();
-  return { init, frame, burst, sync, get ok() { return V.ok; }, V, LOOKS, TOD, openPhoto, closePhoto, compose, setFull, photoState: () => PH, toTitle, toEmbed, titleFrame, project, period };
+  return { init, frame, burst, sync, get ok() { return V.ok; }, V, LOOKS, TOD, openPhoto, closePhoto, compose, setFull, photoState: () => PH, toTitle, toEmbed, titleFrame, project, period, showGuest, hideGuest, guestFrame };
 })();
 
 /* ================= 開廟紅包: the welcome hongbao on first start ================= */
@@ -11620,10 +11794,11 @@ const GIFT = (() => {
       CRED += AMT; saveWallet(); store.set('gift888', 1);
       let n = 0; const t0 = performance.now(); const tick = () => { const k = Math.min(1, (performance.now() - t0) / 1300), v = Math.round(AMT * (1 - Math.pow(1 - k, 3))); if (v !== n) { n = v; $('giftN').textContent = fmt(n); } if (k < 1) { if (Math.random() < 0.35) SFX.coin && SFX.coin(); requestAnimationFrame(tick); } else { SFX.win && SFX.win(); } }; setTimeout(tick, 450);
       $('giftSub').innerHTML = `${L2('夠你馬上修好 4–5 樣東西！', 'Genug für 4–5 Bauten am Tempel!')}<br><small>${L2('香油錢 +888', '+888 Opfergeld')}</small>`;
-      $('giftGo').innerHTML = `${L2('去修廟', 'Zum Tempel')}<small>${L2('Zum Tempel', '去修廟')}</small>`;
+      $('giftGo').innerHTML = `${L2('收好了', 'Einstecken')}<small>${L2('Einstecken', '收好了')}</small>`;
     }, 480);
   }
-  function close() { on = false; hide('ovGift'); if (typeof openTemple === 'function') { openTemple(); setTimeout(() => toast(L2('<b>點紅色的價錢按鈕，就能修建！</b><br>每修一樣，廟就長大一點。', '<b>Tippe auf die roten Preis-Knöpfe zum Bauen!</b><br>Mit jedem Bau wächst dein Tempel.'), 4200), 700); } }
+  // back to the title, not into the temple: the first thing a new player does is play (fight tutorial on 開始); the temple tutorial waits for their own first tap on 廟宇
+  function close() { on = false; hide('ovGift'); if (typeof renderTitle === 'function') renderTitle(); setTimeout(() => toast(L2('<b>香油錢收好了！</b><br>先按「開始」玩一輪，之後可以到「廟宇」修廟。', '<b>Opfergeld eingesteckt!</b><br>Spiel zuerst eine Runde – danach kannst du unter „Tempel“ ausbauen.'), 4200), 400); }
   function loop(ts) {
     if (!on) return; const c = $('giftCv'), dpr = Math.min(2, devicePixelRatio || 1); if (c.width !== Math.round(innerWidth * dpr)) { c.width = Math.round(innerWidth * dpr); c.height = Math.round(innerHeight * dpr); }
     const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, innerWidth, innerHeight); const dt = 1 / 60;
