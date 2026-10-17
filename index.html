@@ -321,7 +321,8 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .moregrid i{font-style:normal;margin-right:4px}
 .logo.chap{font-size:72px}
 /* ---------- v8: route ---------- */
-.route{display:flex;align-items:center;gap:0;width:100%;max-width:380px;justify-content:center;font-size:12px}
+.route{display:flex;align-items:center;flex-wrap:wrap;gap:4px 3px;width:100%;max-width:380px;justify-content:center;font-size:12px}
+.route .rch{flex:1 1 100%;text-align:center;margin:0 0 1px}.route .rn{width:22px;height:22px;font-size:11px}.route .rn.cur{transform:scale(1.15)}.route .rn.unk{width:9px;height:9px;border-color:rgba(255,255,255,.25);background:none;margin:0 2px}
 .route i{flex:1;max-width:14px;height:2px;background:rgba(245,197,66,.35)}
 .route .rch{font-weight:900;color:var(--gold);margin-right:8px;white-space:nowrap}
 .rn{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:12px;color:var(--nc);background:rgba(14,6,26,.8);border:1.5px solid var(--nc)}
@@ -446,7 +447,7 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .shelf{appearance:none;font:inherit;color:var(--paper);display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 3px 5px;border-radius:12px;border:1.5px solid rgba(245,197,66,.3);background:rgba(0,0,0,.3);cursor:pointer;min-width:0}
 .shelf .sn{font-size:11px;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .shelf .pr{font-size:13px;font-weight:900;color:var(--gold)}.shelf.poor .pr{color:#ff6b7d}.shelf.sold{opacity:.3}
-.kbag{display:flex;gap:6px;width:100%;touch-action:none}
+.kbag{display:flex;flex-direction:column;gap:0;width:100%}
 .ktile{appearance:none;font:inherit;color:var(--paper);position:relative;flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 0 7px;border-radius:12px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);cursor:grab;transition:transform .12s}
 .ktile.sel{border-color:var(--gold);box-shadow:0 0 16px rgba(245,197,66,.6);transform:translateY(-3px)}
 .ktile.tgt{border-color:#ffd23f;box-shadow:0 0 14px rgba(255,210,63,.6);animation:pulse .7s infinite alternate}
@@ -471,7 +472,7 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .rsub .got{display:inline-flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);background:rgba(255,255,255,.06);border-radius:999px;padding:4px 10px}
 .rsub .note{width:100%;font-size:12.5px;color:#ffe9a8}
 .rbag{appearance:none;font:inherit;color:var(--paper);width:100%;padding:10px 8px;border-radius:14px;border:1px solid rgba(245,197,66,.3);background:rgba(0,0,0,.3);cursor:pointer;display:flex;flex-direction:column;gap:6px;align-items:center}
-.bprev{display:flex;align-items:center;justify-content:center;gap:2px}.bprev .gap{width:12px}
+.bprev{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:3px;max-width:100%}.bprev .gap{width:12px}.bprev .bic{width:26px;height:26px;flex:none}.bprev .bic img{width:100%;height:100%}.bprev small{font-size:11px;color:var(--muted);margin-left:3px}
 .bprev .pb{position:static;width:18px;height:18px;font-size:10px;margin:0 -1px}
 #rKit{position:relative}#rKit .dot{top:-5px;right:-5px}
 .ov.chest .panel{gap:14px}
@@ -645,7 +646,8 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .ttile.sm{width:34px;height:34px;font-size:18px;border-radius:8px}
 .ctile{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:20px;color:var(--cc);background:#1a0a20;box-shadow:0 0 0 2px var(--cc)}
 .ctile.sm{width:30px;height:30px;font-size:15px}
-.typetag{font-size:10px;font-weight:900;padding:0 6px;border-radius:5px;color:#fff;background:var(--tc)}
+.typetag{font-size:10px;font-weight:900;padding:0 6px;border-radius:5px;color:#fff;background:var(--tc)}.typetag.inst{background:#8f1424;color:#ffe9a0;box-shadow:inset 0 0 0 1px #ffd23f}
+.mcard .inst{position:absolute;top:21px;left:50%;transform:translateX(-50%);z-index:2;font-size:7.5px;font-weight:900;letter-spacing:.03em;padding:0 4px;border-radius:4px;background:#8f1424;color:#ffe9a0;box-shadow:0 0 0 1px #ffd23f;white-space:nowrap}
 .dcard .fx{display:flex;flex-direction:column;gap:2px;margin-top:3px}
 .fxl{display:flex;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;color:#e8dcf0}
 .fxl img{width:18px;height:18px;flex:none}
@@ -711,6 +713,8 @@ h2{margin:0;font-size:30px;font-weight:900;color:var(--gold);letter-spacing:.08e
 .lbslot{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 6px;border-radius:14px;border:2px solid rgba(255,255,255,.12);background:rgba(20,8,30,.7);text-align:center}.lbslot.me{border-color:rgba(245,197,66,.5)}.lbslot.ready{border-color:#2ec46a;box-shadow:0 0 14px rgba(46,196,106,.35)}
 .lbslot b small{font-size:10px;color:#ffd23f}.lbslot .muted{font-size:11px}.lbco{font-size:10.5px;color:#9fe8b0;line-height:1.3}.lbrd{font-size:12px;font-weight:900;color:#c9b8d9}.lbslot.ready .lbrd{color:#2ec46a}
 .kgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;width:100%}
+.kgh{display:flex;align-items:center;gap:6px;width:100%;margin:8px 0 4px;font-size:12px;font-weight:900;color:var(--tc)}.kgh:first-child{margin-top:0}.kgh i{width:10px;height:10px;border-radius:3px;background:var(--tc)}.kgh small{font-size:11px;color:var(--muted);font-weight:700}.kgh::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 50%,transparent),transparent)}
+.mcard .stk{position:absolute;top:2px;right:3px;z-index:2;font-size:10px;font-weight:900;padding:0 4px;border-radius:6px;background:#f5c542;color:#2a0410}
 .mcard{appearance:none;font:inherit;color:var(--paper);position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px 5px;border-radius:10px;border:2px solid var(--tc,var(--rc,rgba(255,255,255,.2)));background:linear-gradient(#2c1438,#140a1e);cursor:pointer;min-width:0}
 .mcard img{width:34px;height:34px;pointer-events:none}
 .mcard b{font-size:10px;line-height:1.15;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -883,6 +887,26 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .gdbody .tpinfo .gpill{margin-top:8px;width:100%;font-size:13px;padding:8px}
 .gdbody .gsk{font-size:12px;color:#ffd86a;font-weight:800}
 .gods .dock .row{display:flex;gap:8px;width:100%}.gods .dock .row .btn{flex:1;min-width:0}
+/* ---------- the chapter map ---------- */
+.ov.map{padding:0;gap:0;background:radial-gradient(ellipse at 50% 30%,#2a0c26,#0e061a 75%);overflow:hidden}
+.mpwrap0{display:flex;flex-direction:column;height:100%;width:100%;max-width:460px;margin:0 auto;box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px calc(env(safe-area-inset-bottom,0px) + 10px)}
+.mphead{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mpt{display:flex;flex-direction:column;min-width:0}.mpt b{font-size:20px;font-weight:900;color:var(--gold);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mpt span{font-size:12px;color:var(--muted)}
+.mpst{flex:none;display:flex;gap:6px;font-size:13px;font-weight:900}.mpst span{padding:4px 9px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid rgba(245,197,66,.3);color:#fff1cf;white-space:nowrap}.mpst .coins{color:#ffd23f}
+.mpnotes{flex:none;display:flex;flex-direction:column;gap:3px;margin-top:6px}.mpnotes:empty{display:none}.mpnotes .note{font-size:12px;line-height:1.35;color:#ffe9a0;padding:5px 9px;border-radius:10px;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.25)}.mpnotes .note.cz{color:#ffb0bc;background:rgba(255,60,90,.1);border-color:rgba(255,90,110,.4)}
+.mpscroll{flex:1 1 auto;min-height:0;overflow-y:auto;margin:8px -12px 0;padding:0 12px;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent);-webkit-mask-image:linear-gradient(transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+#mpSvg{display:block;width:100%;height:auto;margin:0 auto;max-width:400px;font-family:var(--font)}
+#mpSvg .nd{cursor:default}#mpSvg .nd.go{cursor:pointer}
+#mpSvg .nd.go .pulse{animation:mpPulse 1.3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes mpPulse{50%{transform:scale(1.18);opacity:.35}}
+#mpSvg .ed.next{stroke-dasharray:6 5;animation:mpDash 1s linear infinite}@keyframes mpDash{to{stroke-dashoffset:-11}}
+.mpinfo{flex:none;margin-top:8px;padding:9px 11px;border-radius:14px;background:rgba(0,0,0,.4);border:1.5px solid rgba(245,197,66,.3);min-height:58px;text-align:left}
+.mpinfo .sel{display:flex;align-items:center;gap:10px}.mpinfo .sel .g{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:21px;font-weight:900;color:var(--nc);background:#1a0410;border:2px solid var(--nc);box-shadow:0 0 12px color-mix(in srgb,var(--nc) 45%,transparent)}
+.mpinfo .sel b{font-size:16px;color:var(--nc)}.mpinfo .sel div{display:flex;flex-direction:column;gap:2px}.mpinfo .sel small{font-size:12px;line-height:1.35;color:#eadcf2}.mpinfo .sel small.cz{color:#ff9aa8;font-weight:800}
+.mpinfo .hint{font-size:12.5px;font-weight:800;color:#ffe9a0;margin-bottom:5px}
+.mpleg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 10px}.mpleg span{display:flex;align-items:center;gap:6px;font-size:11px;color:#d9c8e6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpleg i{flex:none;font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:900;color:var(--nc);border:1.5px solid var(--nc);background:#1a0410}
+.mpbtns{flex:none;display:flex;gap:8px;margin-top:8px}.mpbtns .btn{margin:0}.mpbtns #mpBag{flex:1 1 0;min-width:0;font-size:14px;padding:10px 6px}.mpbtns #mpGo{flex:2 1 0;min-width:0;font-size:18px}
 /* ---------- new run: mode, difficulty, ascension ---------- */
 .nrgod{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.3);border:1px solid rgba(245,197,66,.3);text-align:left}
 .nrgod .gg{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:21px;font-weight:900;color:#fff;background:var(--gc);box-shadow:0 0 0 2px rgba(255,255,255,.3)}
@@ -895,6 +919,15 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .nrm b{font-size:14px}.nrm small{font-size:11px;line-height:1.3;color:var(--muted)}
 .nrm.on{border-color:var(--gold);background:rgba(245,197,66,.12);box-shadow:0 0 14px rgba(245,197,66,.35)}
 .nrdiff{display:flex;flex-direction:column;gap:6px;width:100%}
+.nrds{display:flex;align-items:center;gap:8px;padding:8px;border-radius:16px;border:2px solid var(--dc);background:rgba(0,0,0,.3);box-shadow:0 0 14px color-mix(in srgb,var(--dc) 35%,transparent)}
+.nrds.lock{border-color:rgba(255,255,255,.2);box-shadow:none}
+.nrar{appearance:none;flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(245,197,66,.6);background:rgba(14,6,26,.8);color:#ffe9a0;font:inherit;font-size:26px;font-weight:900;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px}.nrar:disabled{opacity:.25}
+.nrdc{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:10px}
+.nrdc .dg{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:17px;font-weight:900;color:#1a0610;background:var(--dc);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}.nrds.lock .dg{background:#3a2c44;color:#9a8aa8}
+.nrdc .db{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}.nrdc .db b{font-size:17px;color:var(--dc);white-space:nowrap}.nrds.lock .nrdc .db b{color:#b8a8c4}.nrdc .db>span{font-size:11.5px;color:var(--muted)}
+.nrdc .fl{display:flex;gap:2px}.nrdc .fl i{width:12px;height:5px;border-radius:2px;background:rgba(255,255,255,.14)}.nrdc .fl i.on{background:var(--dc);box-shadow:0 0 5px var(--dc)}
+.nrdinfo{display:flex;flex-wrap:wrap;justify-content:center;gap:5px}.nrdinfo span{font-size:11.5px;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.07);color:#e8dcf0;white-space:nowrap}.nrdinfo span b{color:#fff1cf}.nrdinfo span.rw{background:rgba(245,197,66,.16);color:#ffe27a}.nrdinfo span.rw b{color:#ffe27a}
+.nrdinfo .lk{font-size:12px;color:#ff9a8a;font-weight:800;text-align:center}
 .nrd{appearance:none;font:inherit;color:#f3e6c8;white-space:normal;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;border:2px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28);cursor:pointer;text-align:left;position:relative}
 .nrd .dg{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:17px;font-weight:900;color:#1a0610;background:var(--dc);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
 .nrd .db{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
@@ -998,6 +1031,11 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .fzchip{display:flex;align-items:center;gap:6px;max-width:100%;padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.06);border:1.5px solid rgba(192,138,255,.4);color:#fff1cf;font-size:12px;text-align:left}
 .fzchip img{width:18px;height:18px;flex:none}.fzchip.on{background:rgba(192,138,255,.25);border-color:#e4c8ff;box-shadow:0 0 12px rgba(192,138,255,.5)}
 .fzresh{font-size:12px;font-weight:900;color:#c08aff;margin:4px 0 4px;letter-spacing:.06em}
+.fzlook{flex:none;padding:10px 14px 4px;border-top:1px solid rgba(192,138,255,.35);background:rgba(30,12,48,.97);box-shadow:0 -8px 20px rgba(0,0,0,.4);max-height:44vh;overflow-y:auto}
+.fzlook .dcard{margin:0}.fzlook .lkh{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:900;color:#c08aff;letter-spacing:.06em;margin-bottom:5px}.fzlook .lkh button{appearance:none;border:0;background:none;color:#c9b8d9;font:inherit;font-size:16px;cursor:pointer;padding:0 4px}
+.fzlook .lka{display:flex;gap:6px;margin-top:8px}.fzlook .lka .btn{flex:1;min-width:0;margin:0;font-size:14px;padding:9px 6px}.fzlook .why{font-size:12px;color:#ff9aa8;font-weight:800;margin-top:6px}
+.fzdone{display:block;font-size:22px;color:#e0b8ff;text-shadow:0 0 16px rgba(192,138,255,.8)}.fzres .new{font-size:12.5px;font-weight:900;color:#7dffb0;margin:6px 0 2px}
+.fzball.ash span{font-size:28px;filter:grayscale(.3)}
 #fzRes .dcard{border-color:#c08aff;box-shadow:0 0 18px rgba(192,138,255,.3);animation:fzin .35s cubic-bezier(.2,1.5,.4,1)}
 @keyframes fzin{from{transform:scale(.92);opacity:.4}to{transform:none;opacity:1}}
 .fzbagh{font-size:12px;font-weight:900;color:#c9b8d9;margin:12px 0 6px}
@@ -1328,6 +1366,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
       <div id="fzRes"></div>
       <div id="fzBag"></div>
     </div>
+    <div class="fzlook" id="fzLook" hidden></div>
     <div class="fzbtns"><button class="btn ghost" id="fzCancel"></button><button class="btn purple" id="fzGo"></button></div>
   </div>
   <div class="fzflash"></div>
@@ -1338,11 +1377,11 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
     <div class="khead" id="kHead"></div>
     <div class="kstat" id="kStat"></div>
     <div class="kshelfwrap" id="kShelfWrap"><div class="klbl" data-t="shelfLbl"></div><div class="kshelf" id="kShelf"></div></div>
+    <div class="klbl"><span data-t="bagLbl"></span><span class="muted" data-t="bagOrder"></span></div>
+    <div class="kbag" id="kBag"></div>
     <div class="klbl" id="kLblA"><span data-t="altarLbl"></span><span class="muted" data-t="altarSub"></span></div>
     <div id="kChain"></div>
     <div class="kpouch" id="kPouch"></div>
-    <div class="klbl"><span data-t="bagLbl"></span><span class="muted" data-t="bagOrder"></span></div>
-    <div class="kbag" id="kBag"></div>
     <div class="dock kdock"><div class="kinfo" id="kInfo"></div><div class="kacts" id="kActs"></div><button class="btn red big" id="kDone"></button></div>
   </div>
 </div>
@@ -1370,6 +1409,16 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
     <div class="row"><button class="btn ghost" id="rKit"><span data-t="bagLbl"></span><b class="dot" id="rKitDot" hidden></b></button></div>
     <div class="dock"><div class="rfork" id="rFork" hidden></div>
     <button class="btn red big" id="rGo"></button></div>
+  </div>
+</div>
+
+<div id="ovMap" class="ov map" hidden>
+  <div class="mpwrap0">
+    <div class="mphead"><div class="mpt"><b id="mpH"></b><span id="mpS"></span></div><div class="mpst" id="mpSt"></div></div>
+    <div class="mpnotes" id="mpNotes"></div>
+    <div class="mpscroll" id="mpScroll"><svg id="mpSvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div class="mpinfo" id="mpInfo"></div>
+    <div class="mpbtns"><button class="btn ghost" id="mpBag"></button><button class="btn red" id="mpGo" disabled></button></div>
   </div>
 </div>
 
@@ -2632,7 +2681,7 @@ const RULES = [
   ['煞與還願', 'Flüche & Gelübde', '厲鬼和頭目會帶「煞」（路線上看得到）。打倒頭目後可以還願：三選一，好處很大但有代價。', 'Elite und Bosse bringen einen Fluch mit (auf der Route sichtbar). Nach jedem Boss: ein Gelübde – großer Vorteil mit Preis.'],
   ['修為・天賦樹', 'Kultivierung & Talente', '每位神明自己累積修為。天賦樹會解鎖新的法寶和法器，放進這位神明的寶庫。', 'Jede Gottheit sammelt eigene Kultivierung. Ihr Talentbaum schaltet neue Kugeln und Talismane für ihren Pool frei.'],
   ['道（流派）', 'Pfade', '每顆法寶和法器都屬於一兩條道（火、連、福、財、護、力、球、夢）。同一條道有 3 件就覺醒、6 件大成，給你一直有效的好處。詳見「道」分頁。', 'Jede Kugel und jeder Talisman gehört zu ein bis zwei Pfaden (Feuer, Kette, Glück, Reichtum, Schutz, Kraft, Kugelregen, Traum). 3 verschiedene Stücke erwecken einen Pfad, 6 meistern ihn – ein Bonus für den ganzen Lauf. Mehr im Reiter „Pfade“.'],
-  ['岔路', 'Weggabelungen', '打完一些妖怪後可以選路：厲鬼比較危險，但有法器和兩倍的金；普通妖怪比較安全；奇遇什麼都可能發生。', 'Nach manchen Kämpfen wählst du den Weg: Elite ist gefährlicher, gibt aber Talismane und doppelt Münzen; ein normaler Kampf ist sicherer; ein Ereignis kann alles sein.'],
+  ['地圖', 'Die Karte', '每一章是一張地圖，有好幾條路，最上面是頭目。每一站都只做一件事：戰＝妖怪、厲＝厲鬼（危險，但有法器和兩倍的金）、？＝奇遇、市＝夜市（買東西、花錢送走法寶）、廟＝休息或開光、煉＝煉丹爐（免費煉丹）。自己決定要走哪條路。', 'Jedes Kapitel ist eine Karte mit mehreren Wegen, oben wartet der Boss. Jede Station hat genau eine Aufgabe: 戰 Kampf, 厲 Elite (gefährlich, dafür Talisman und doppelte Münzen), ？ Ereignis, 市 Nachtmarkt (kaufen, Kugeln gegen Münzen entfernen), 廟 Tempel (ausruhen oder weihen), 煉 Schmiede (gratis verschmelzen). Du entscheidest, welchen Weg du gehst.'],
   ['彈珠台的機關', 'Das Brett', '台上有大鼓（會把球彈開，+3 功德）、八卦輪（轉動的八卦盤，把球打到旁邊，+2）和底部兩邊的彈弓（掉下來的球會被彈回去兩次，+4）。每打 10 次神力 +1。', 'Auf dem Brett stehen Trommeln (schleudern die Kugel weg, +3 Verdienst), Bagua-Räder (drehende Bagua-Scheiben, schlagen sie zur Seite, +2) und unten zwei Schleudern (werfen eine fallende Kugel zweimal zurück, +4). Alle 10 Treffer gibt es +1 Segen.'],
   ['特別的法器', 'Besondere Talismane', '有時候法器會發光：金箔 +25 功德、彩繪 +4 神力、琉璃神力 ×1.5，最稀有的虛影不佔法器台的位子。', 'Manchmal glänzt ein Talisman: Goldfolie +25 Verdienst, Bemalt +4 Segen, Glasur Segen ×1,5 – und ganz selten Geisterhaft: belegt keinen Altarplatz.'],
 ];
@@ -3255,7 +3304,9 @@ function drawCard(b, x, y, w, h, o = {}) { // a ball as a card in the hand: fram
   if (d.rar >= 2) { X.strokeStyle = lrCol(d.rar); X.lineWidth = 1; rrPath(x + 2.5, y + 2.5, w - 5, h - 5, 6); X.stroke(); }
   // type tag top-right
   rr(x + w - 19, y + 3, 16, 13, 4, tcol); txt(L2(BT[d.t].zh, BT[d.t].de[0]), x + w - 11, y + 10, 9, d.t === 'pow' ? '#3a2000' : '#fff');
-  drawShape(d.sh, x + w / 2, y + 30, 12, d.col, d.glyph, TIME);
+  const instant = isCast(d) && cardOK(d); // not shot: a paper charm that burns when you use it
+  if (instant) { drawTalisman(x + w / 2, y + 27, d, TIME); rr(x + w / 2 - 19, y + 37, 38, 10, 5, '#8f1424'); X.strokeStyle = '#ffd23f'; X.lineWidth = 0.8; rrPath(x + w / 2 - 19, y + 37, 38, 10, 5); X.stroke(); txt(L2('即時施放', 'SOFORT'), x + w / 2, y + 42.3, LANG === 'de' ? 7 : 6.5, '#ffe9a0'); }
+  else drawShape(d.sh, x + w / 2, y + 30, 12, d.col, d.glyph, TIME);
   if (b.up) { X.save(); X.globalCompositeOperation = 'lighter'; circ(x + w / 2, y + 30, 16, 'rgba(125,255,176,.18)'); X.restore(); }
   pfOf(b.id).forEach((k, i) => { const P = PFADE[k], py = y + 24 + i * 12; circ(x + 7, py, 5, '#1a0410'); X.strokeStyle = P.col; X.lineWidth = 1; X.beginPath(); X.arc(x + 7, py, 5, 0, 6.28); X.stroke(); txt(P.g, x + 7, py + 0.5, 6.5, P.col); });
   if (b.gp) { rr(x + w - 20, y + 20, 18, 11, 5, '#3a2a08'); txt(`+${b.gp}`, x + w - 11, y + 25.5, 8, '#ffe9a0'); }
@@ -3280,7 +3331,15 @@ function drawCard(b, x, y, w, h, o = {}) { // a ball as a card in the hand: fram
   if (bs.length) { rr(x + 3, yy - 8, w - 6, 16, 6, 'rgba(0,0,0,.35)'); }
   bs.forEach((f, i) => { drawIcon(f.ic, xx + 6, yy, 5.2, f.col); if (f.badge) txt(f.badge, xx + 12, yy + 0.5, 9, '#fff', { a: 'left', stroke: '#1a0a14', sw: 2.5 }); xx += ws[i]; });
   if (d.exhaust || d.ethereal) drawIcon('exhaust', x + w - 8, y + 40, 4, '#c9b8d9');
-  if (d.t === 'skl' && d.cast) drawIcon('bolt', x + 8, y + 40, 4.2, '#9fe8ff');
+  X.restore();
+}
+function drawTalisman(cx, cy, d, t) { // 符: yellow paper, red ink, a small flame on top
+  const w = 17, h = 24; X.save(); X.translate(cx, cy); X.rotate(Math.sin(t * 2 + cx) * 0.06);
+  X.save(); X.globalCompositeOperation = 'lighter'; circ(0, 0, 16, 'rgba(255,200,90,.16)'); X.restore();
+  rr(-w / 2, -h / 2, w, h, 2, '#f3d37a'); X.fillStyle = 'rgba(160,90,20,.25)'; X.fillRect(-w / 2, h / 2 - 3, w, 3);
+  X.strokeStyle = '#c4161c'; X.lineWidth = 0.9; X.strokeRect(-w / 2 + 2, -h / 2 + 2, w - 4, h - 4);
+  txt(d.glyph, 0, 0.5, 11, '#b3121e');
+  const fl = 3.2 + Math.sin(t * 9 + cx) * 1.1; X.save(); X.globalCompositeOperation = 'lighter'; X.fillStyle = 'rgba(255,140,40,.95)'; X.beginPath(); X.moveTo(-3.5, -h / 2 + 0.5); X.quadraticCurveTo(0, -h / 2 - fl * 2.3, 3.5, -h / 2 + 0.5); X.fill(); X.fillStyle = 'rgba(255,240,180,.9)'; X.beginPath(); X.moveTo(-1.5, -h / 2 + 0.5); X.quadraticCurveTo(0, -h / 2 - fl * 1.2, 1.5, -h / 2 + 0.5); X.fill(); X.restore();
   X.restore();
 }
 /* Balatro editions: a moving sheen in the edition's colour and a tiny badge */
@@ -4448,11 +4507,54 @@ const ROUTE_T = {
   b: { g: '戰', col: '#e8e0f0', zh: '妖怪', de: 'Kampf' }, e: { g: '厲', col: '#ff4a5a', zh: '厲鬼', de: 'Elite' },
   m: { g: '市', col: '#ffd23f', zh: '夜市', de: 'Markt' }, q: { g: '？', col: '#c08aff', zh: '奇遇', de: 'Ereignis' },
   r: { g: '廟', col: '#7dffb0', zh: '廟', de: 'Tempel' }, boss: { g: '王', col: '#ff2a3a', zh: '頭目', de: 'Boss' },
+  f: { g: '煉', col: '#c08aff', zh: '煉丹爐', de: 'Schmiede' },
 };
+/* what each kind of stop is for (map legend and node info): every stop does exactly one job */
+const ROUTE_D = {
+  b: ['普通妖怪。打贏可以挑一顆法寶，還有金。', 'Normale Dämonen. Danach: eine Kugel aussuchen + Münzen.'],
+  e: ['厲鬼：比較危險。打贏有法器、寶箱和兩倍的金。', 'Gefährlich! Dafür Talisman, Truhe und doppelte Münzen.'],
+  q: ['奇遇：可能是禮物、交易，也可能是陷阱。', 'Etwas Seltsames: Geschenk, Handel – oder eine Falle.'],
+  m: ['夜市：買法寶、法器、補給；也可以花錢送走法寶。', 'Kugeln, Talismane & Vorräte kaufen · Kugeln gegen Münzen entfernen.'],
+  r: ['廟：休息回血，或替一顆法寶開光（升級）。', 'Ausruhen (+30 % Leben) – oder eine Kugel weihen (verbessern).'],
+  f: ['煉丹爐：免費把一顆球的效果煉進另一顆。', 'Gratis: einen Effekt von einer Kugel auf eine andere übertragen.'],
+  boss: ['頭目：這一章的主人。', 'Der Herr dieses Kapitels.'],
+};
+/* ---------- the chapter map (Slay the Spire): 12 floors, several roads, you choose where to go ---------- */
+const MAP_ROWS = 12;
+const mapOn = (r = run) => !!(r && r.mapv && !r.weekly && !r.coop && r.ch < 3);
+function genMap(r, ch) {
+  return withSeed((r.mseed || 1) + ch * 7717 + (r.loop || 0) * 3301, () => {
+    const C = 4, N = MAP_ROWS, used = [...Array(N - 1)].map(() => new Set()), edges = new Set();
+    const starts = shuffle([0, 1, 2, 3]).slice(0, 3); starts.push(ri(0, C - 1));
+    for (const c0 of starts) { let c = c0;
+      for (let f = 0; f < N - 1; f++) { used[f].add(c); if (f === N - 2) break;
+        let nc = Math.max(0, Math.min(C - 1, c + ri(-1, 1)));
+        if (nc === c + 1 && edges.has(`${f}:${c + 1}>${c}`)) nc = c; if (nc === c - 1 && edges.has(`${f}:${c - 1}>${c}`)) nc = c; // roads never cross
+        edges.add(`${f}:${c}>${nc}`); c = nc; } }
+    const R = used.map(set => [...set].sort((a, b) => a - b).map(c => ({ c, t: null, next: [], j: Math.random() * 2 - 1 })));
+    R.push([{ c: 1.5, t: 'boss', next: [], j: 0 }]);
+    for (const e of edges) { const [f, ab] = e.split(':'), [a, b] = ab.split('>').map(Number), fi = +f, from = R[fi].findIndex(n => n.c === a), to = R[fi + 1].findIndex(n => n.c === b); if (!R[fi][from].next.includes(to)) R[fi][from].next.push(to); }
+    R[N - 2].forEach(n => { n.next = [0]; });
+    const parents = (f, i) => (f ? R[f - 1].filter(p => p.next.includes(i)) : []), special = 'emrf';
+    for (let f = 0; f < N - 1; f++) R[f].forEach((n, i) => {
+      if (f === 0) { n.t = (r.asc || 0) >= 9 ? 'e' : 'b'; return; }
+      if (f === N - 2) { n.t = 'r'; return; } // a temple right before the boss
+      const W = { b: 44, q: 22, e: f >= 3 ? 14 : 0, m: f >= 2 && f <= 8 ? 10 : 0, r: f >= 4 && f <= 8 ? 6 : 0, f: f >= 2 && f <= 8 ? 8 : 0 }, P = parents(f, i).map(p => p.t);
+      for (let k = 0; k < 12; k++) { let x = Math.random() * Object.values(W).reduce((a, b) => a + b, 0), t = 'b'; for (const q in W) { if (x < W[q]) { t = q; break; } x -= W[q]; } if (special.includes(t) && P.includes(t)) continue; n.t = t; break; }
+      if (!n.t) n.t = 'b';
+    });
+    const ensure = (t, f0, f1) => { if (R.some((row, f) => f >= f0 && f <= f1 && row.some(n => n.t === t))) return; const c = []; R.forEach((row, f) => { if (f >= f0 && f <= f1) row.forEach(n => { if (n.t === 'b') c.push(n); }); }); if (c.length) pick(c).t = t; };
+    ensure('m', 3, 8); ensure('f', 2, 8); ensure('e', 3, 9); ensure('q', 1, 8);
+    return R;
+  });
+}
+const mapOf = (r = run) => { r.map = r.map || {}; const k = r.ch + '-' + (r.loop || 0); return r.map[k] || (r.map[k] = genMap(r, r.ch)); };
+const pathOf = (r = run) => { r.path = r.path || {}; const k = r.ch + '-' + (r.loop || 0); return r.path[k] || (r.path[k] = []); };
+const mapReach = (r, f) => { const M = mapOf(r), P = pathOf(r); if (f <= 0 || P[f - 1] == null) return M[f].map((_, i) => i); return M[f - 1][P[f - 1]].next.slice(); };
 /* forks (Slay the Spire map): after a fight you choose the next stage – safe or risky */
 const FORKS = { 1: ['q', 'b'], 3: ['e', 'b'], 7: ['q', 'e'] };
-const hasForks = r => !r.weekly && !r.coop && r.ch < 3;
-const routeOf = r => { const base = r.weekly ? WEEK_ROUTE : r.ch >= 3 ? ['boss'] : (r.asc || 0) >= 9 ? ['e'].concat(ROUTE.slice(1)) : ROUTE; if (!hasForks(r)) return base; const R = base.slice(); for (const st in FORKS) { const c = r.fk && r.fk[r.ch + '-' + st]; if (c) R[st] = c; } return R; };
+const hasForks = r => !r.weekly && !r.coop && r.ch < 3 && !r.mapv;
+const routeOf = r => { if (mapOn(r)) { const M = mapOf(r), P = pathOf(r); return M.map((row, f) => (P[f] != null ? row[P[f]].t : row.length === 1 ? row[0].t : null)); } const base = r.weekly ? WEEK_ROUTE : r.ch >= 3 ? ['boss'] : (r.asc || 0) >= 9 ? ['e'].concat(ROUTE.slice(1)) : ROUTE; if (!hasForks(r)) return base; const R = base.slice(); for (const st in FORKS) { const c = r.fk && r.fk[r.ch + '-' + st]; if (c) R[st] = c; } return R; };
 const forkAt = (r, st) => (hasForks(r) && FORKS[st] ? FORKS[st] : null);
 const stageType = (r = run) => routeOf(r)[r.st];
 
@@ -4462,7 +4564,7 @@ function newRun(hero = 'taizi', diff = 1, opt = {}) {
   const h = HEROES[hero], P = godPerks(hero), asc = opt.weekly || opt.coop ? 0 : ascOf(hero).sel || 0;
   const hpMax = 72 + tv('hp') + (P.hp || 0) - (asc >= 3 ? 10 : 0) + (typeof todayBuffHp === 'function' ? todayBuffHp() : 0);
   run = { v: 21, hero, diff, asc, xpEarned: 0, hp: hpMax, maxhp: hpMax, coins: 20 + tv('coin') + (P.gold || 0), bag: [], altar: [], tc: {}, cons: [], pegLv: { n: 1, red: 1 + (P.red || 0) + tv('pagoda'), gold: 1 + (P.gold_ || 0), bomb: 1 + (P.bomb || 0) },
-    ch: 0, st: 0, floorsTotal: 0, bosses: 0, loop: 0, kills: 0, bestHit: 0, won: false, removeN: 0, shotN: 0, e1: P.e1 || 0, pk: P,
+    ch: 0, st: 0, mapv: 1, mseed: Math.floor(Math.random() * 1e9), floorsTotal: 0, bosses: 0, loop: 0, kills: 0, bestHit: 0, won: false, removeN: 0, shotN: 0, e1: P.e1 || 0, pk: P,
     reviveLeft: upg('revive') ? 1 : 0, revivePct: tv('revive') || 40, credEarned: 0, bagsEarned: 0, vows: [], cz: {}, nb: null, newT: null };
   for (let i = 0; i < 4; i++) run.bag.push(mkBall('nianzhu'));
   for (let i = 0; i < 4; i++) run.bag.push(mkBall('hufu'));
@@ -4481,11 +4583,12 @@ function recordBest() {
   if (sc > b.s) { b.s = sc; b.label = stageLabel(); } b.hit = Math.max(b.hit || 0, run.bestHit); store.set('best', b);
 }
 function enterStage() {
+  if (mapOn() && pathOf()[run.st] == null) return openMap({}); // first choose where to go
   const ty = stageType();
   if (run.weekly) { const c = weekCh(run.st); if (c !== run.ch) { run.ch = c; buildBackdrops(); } } else recordBest();
   saveRun();
   if (ty === 'b' || ty === 'e' || ty === 'boss') { const k = ty === 'b' ? 'battle' : ty === 'e' ? 'elite' : 'boss'; if (coopOn()) coopArrive(k); else startBattle(k); }
-  else { B = makeDemo(); setSong('calm'); if (ty === 'm') openMarket(() => advance()); else if (ty === 'r') openRest(() => advance()); else openEvent(); }
+  else { B = makeDemo(); setSong('calm'); if (ty === 'm') openMarket(() => advance()); else if (ty === 'r') openRest(() => advance()); else if (ty === 'f') openForge(() => advance()); else openEvent(); }
 }
 function advance() {
   const ty = stageType(); run.floorsTotal++; run.st++; gainXP(4);
@@ -4843,7 +4946,8 @@ function fire() {
   if (cast) { // instant: no flight
     if (d.nextCrit) B.nextCrit = true;
     if (S.shield) gainShield(S.shield);
-    B.shot = null; burst(LAUNCH.x, LAUNCH.y + 10, 16, d.col, 200, 'paper'); SFX.sheng(); princeJump = 1;
+    B.shot = null; burst(LAUNCH.x, LAUNCH.y + 10, 16, d.col, 200, 'paper'); burst(LAUNCH.x, LAUNCH.y + 10, 10, '#ffb347', 160); SFX.sheng(); princeJump = 1;
+    floatText(LAUNCH.x, LAUNCH.y - 26, `✦ ${ballNm(b)}`, '#ffe9a0', 16); // the charm burns: it was used, not shot
     FX.push({ type: 'ring', x: 62, y: GROUND - 40, r: 50, life: 0.45, max: 0.45, col: d.col });
     afterPlay(); return;
   }
@@ -5358,6 +5462,17 @@ function addStatusBalls(e, id, n) { // a demon stuffs junk into your pile
   }
   floatText(e.x, e.y - HTOP[e.def.art] * e.def.sz - 30, `+${nm(BALLS[id])}×${n}`, BALLS[id].col, 14); SFX.zap();
 }
+/* how a demon moves while it acts: attack = lunge, guard = crouch behind a shield, buff = swell with a red aura, cast = wind up and hurl a hex */
+function actKind(e) {
+  if (e.stun) return 'stun'; if (intentDmg(e)) return 'atk'; const ts = intentOf(e).map(m => m.t);
+  if (ts.includes('b')) return 'guard'; if (ts.includes('u') || ts.includes('r')) return 'buff'; if (ts.includes('h')) return 'heal';
+  if (ts.some(t => 'wvfpczg$'.includes(t))) return 'cast'; if (ts.includes('s')) return 'summon'; if (ts.includes('x')) return 'sleep'; return 'idle';
+}
+function castFX(e) { // the hex flies from the demon's hand to you
+  const m = intentOf(e).find(q => 'wvfpczg$'.includes(q.t)); if (!m) return; const sz = e.def.sz;
+  const col = { w: ST.weak.col, v: ST.vuln.col, f: ST.frail.col, p: ST.poison.col, z: '#c08aff', g: '#c9b8d9', $: '#ffd23f' }[m.t] || (m.id && BALLS[m.id] ? BALLS[m.id].col : '#b06cff');
+  FX.push({ type: 'hex', x: e.x - 30 * sz, y: e.y - 52 * sz, tx: m.t === '$' ? 186 : 66, ty: m.t === '$' ? 26 : GROUND - 55, life: 0.26, max: 0.26, col }); SFX.zap();
+}
 function enemyAct(e) { // one demon performs its whole intent
   const top = e.y - HTOP[e.def.art] * e.def.sz;
   if (e.stun) { e.stun = 0; floatText(e.x, top - 20, L2('暈頭轉向', 'Benommen'), '#c9b8d9', 14); return; }
@@ -5367,12 +5482,12 @@ function enemyAct(e) { // one demon performs its whole intent
     if (other && 'amwvfpc$zg'.includes(m.t)) continue;
     if (m.t === 'a') hurtPlayer(e, atkVal(e, m));
     else if (m.t === 'm') for (let k = 0; k < m.k; k++) later(k * 0.16, () => !e.dead && run.hp > 0 && hurtPlayer(e, atkVal(e, m), true));
-    else if (m.t === 'b') { const v = Math.round(m.v * e.hm); e.block += v; floatText(e.x, top - 14, `${t('shieldUp')} +${fmtBig(v)}`, '#9fd3ff', 13); SFX.shieldUp(); }
-    else if (m.t === 'u') { const v = Math.max(1, Math.round(m.v * e.am)); e.str += v; floatText(e.x, top - 30, L2(`變強 +${v}`, `Stärker +${v}`), '#ff5a3a', 14); SFX.hit(false); }
-    else if (m.t === 'r') { e.st.ritual = (e.st.ritual || 0) + m.v; e.ritJust = 1; floatText(e.x, top - 30, `${stName('ritual')} ${m.v}`, ST.ritual.col, 15); SFX.zap(); }
+    else if (m.t === 'b') { const v = Math.round(m.v * e.hm); e.block += v; floatText(e.x, top - 14, `${t('shieldUp')} +${fmtBig(v)}`, '#9fd3ff', 13); SFX.shieldUp(); FX.push({ type: 'ring', x: e.x - 20 * e.def.sz, y: e.y - 45 * e.def.sz, r: 50 * e.def.sz, life: 0.4, max: 0.4, col: '#9fd3ff' }); }
+    else if (m.t === 'u') { const v = Math.max(1, Math.round(m.v * e.am)); e.str += v; floatText(e.x, top - 30, L2(`變強 +${v}`, `Stärker +${v}`), '#ff5a3a', 14); SFX.hit(false); FX.push({ type: 'rise', x: e.x, y: e.y - 20, h: HTOP[e.def.art] * e.def.sz, life: 0.9, max: 0.9, col: '#ff5a3a' }); shake(2); }
+    else if (m.t === 'r') { e.st.ritual = (e.st.ritual || 0) + m.v; e.ritJust = 1; floatText(e.x, top - 30, `${stName('ritual')} ${m.v}`, ST.ritual.col, 15); SFX.zap(); FX.push({ type: 'rise', x: e.x, y: e.y - 20, h: HTOP[e.def.art] * e.def.sz, life: 0.9, max: 0.9, col: ST.ritual.col }); }
     else if (m.t === 'w' || m.t === 'v' || m.t === 'f' || m.t === 'p') debuffPlayer({ w: 'weak', v: 'vuln', f: 'frail', p: 'poison' }[m.t], m.v);
-    else if (m.t === 'h') { const v = Math.round(m.v * e.hm); e.hp = Math.min(e.maxhp, e.hp + v); floatText(e.x, top - 30, `+${fmtBig(v)}`, '#7dffb0', 14); }
-    else if (m.t === 's' && e.def.summon && !coopGuest() && B.enemies.filter(x => !x.dead).length < 4) { const s = mkEnemy(e.def.summon, e.hm * 0.95, e.am); s.uid = 's' + (B.sumN = (B.sumN || 0) + 1); s.x = e.x; s.spawn = 1; B.enemies.unshift(s); floatText(e.x, 70, t('summon'), '#ff8fb0', 15); SFX.zap(); }
+    else if (m.t === 'h') { const v = Math.round(m.v * e.hm); e.hp = Math.min(e.maxhp, e.hp + v); floatText(e.x, top - 30, `+${fmtBig(v)}`, '#7dffb0', 14); FX.push({ type: 'rise', x: e.x, y: e.y - 20, h: HTOP[e.def.art] * e.def.sz, life: 0.9, max: 0.9, col: '#7dffb0', plus: 1 }); }
+    else if (m.t === 's' && e.def.summon && !coopGuest() && B.enemies.filter(x => !x.dead).length < 4) { const s = mkEnemy(e.def.summon, e.hm * 0.95, e.am); s.uid = 's' + (B.sumN = (B.sumN || 0) + 1); s.x = e.x; s.spawn = 1; B.enemies.unshift(s); floatText(e.x, 70, t('summon'), '#ff8fb0', 15); SFX.zap(); FX.push({ type: 'ring', x: e.x, y: e.y - 4, r: 46, life: 0.5, max: 0.5, col: '#ff8fb0' }); }
     else if (m.t === '$' && run.coins > 0) { const s = Math.min(run.coins, m.v); run.coins -= s; floatText(186, 22, `-${s}`, '#ffd23f', 14); }
     else if (m.t === 'c') addStatusBalls(e, m.id, m.v);
     else if (m.t === 'z') { B.sealN += m.v; floatText(e.x, top - 30, L2(`封印 ${m.v} 顆福釘`, `Versiegelt ${m.v} Glücksstifte`), '#c08aff', 13); }
@@ -5397,10 +5512,15 @@ function updateEnemy(dt) {
       e.hp -= p; e.flash = 1; dmgNumber(e.x, e.y - 70, p); floatText(e.x, e.y - 100, stName('poison'), ST.poison.col, 14);
       if (e.hp <= 0) { e.hp = 0; killEnemy(e); B.eqI++; B.eqT = 0; return; }
     }
-    e.lunge = Math.sin(clamp(k, 0, 1) * Math.PI) * (intentDmg(e) ? 1 : 0.3);
-    if (!e.struck && k >= 0.5) { e.struck = true; enemyAct(e); }
+    if (e.actK == null) { e.actK = actKind(e); e.castFired = false; }
+    const K = e.actK, kk = clamp(k, 0, 1), ph = Math.sin(kk * Math.PI);
+    e.lunge = K === 'atk' ? ph : K === 'guard' ? -0.14 * ph : K === 'cast' ? (kk < 0.3 ? -0.22 * kk / 0.3 : kk < 0.5 ? -0.22 + 0.6 * (kk - 0.3) / 0.2 : 0.38 * (1 - (kk - 0.5) / 0.5)) : 0;
+    e.pump = K === 'buff' ? ph : K === 'heal' || K === 'summon' ? 0.55 * ph : 0; e.guardA = K === 'guard' ? Math.min(1, kk * 2.5) * (kk > 0.8 ? (1 - kk) / 0.2 : 1) : 0;
+    e.castA = K === 'cast' ? (kk < 0.5 ? kk / 0.5 : Math.max(0, 1 - (kk - 0.5) / 0.3)) : 0;
+    if (K === 'cast' && !e.castFired && kk >= 0.48) { e.castFired = true; castFX(e); }
+    if (!e.struck && k >= (K === 'cast' ? 0.92 : 0.5)) { e.struck = true; enemyAct(e); }
     if (k >= 1 && !(B.timers && B.timers.length)) {
-      e.lunge = 0; e.struck = false; e.poisoned = false; e.burned = false;
+      e.lunge = 0; e.pump = 0; e.guardA = 0; e.castA = 0; e.actK = null; e.struck = false; e.poisoned = false; e.burned = false;
       if (e.st.ritual && !e.ritJust) { e.str += e.st.ritual; floatText(e.x, e.y - HTOP[e.def.art] * e.def.sz - 30, `${stName('ritual')}：${L2('氣', 'Kraft')} +${e.st.ritual}`, ST.ritual.col, 13); }
       e.ritJust = 0; B.eqI++; B.eqT = 0;
     }
@@ -5740,9 +5860,18 @@ function renderEnemy(e) {
   if (!e.dead && (e.elite || e.enraged)) { X.save(); X.globalCompositeOperation = 'lighter'; const g = X.createRadialGradient(0, -45 * sz, 5, 0, -45 * sz, 60 * sz); g.addColorStop(0, `rgba(255,${e.enraged ? 40 : 90},60,${0.35 + Math.sin(TIME * 5) * 0.1})`); g.addColorStop(1, 'rgba(0,0,0,0)'); X.fillStyle = g; X.fillRect(-70 * sz, -120 * sz, 140 * sz, 130 * sz); X.restore(); }
   if (e.dead) { X.globalAlpha = 1 - e.deathT / 0.8; X.translate(0, -e.deathT * 40); X.rotate(e.deathT * 0.7); }
   if (e.spawn > 0) X.globalAlpha *= 1 - e.spawn;
-  X.scale(sz * (1 + sq * 0.2), sz * (1 - sq * 0.16));
+  const pu = e.pump || 0, ga = e.guardA || 0, ca = e.castA || 0;
+  if (pu > 0.02) { X.save(); X.globalCompositeOperation = 'lighter'; const buffC = e.actK === 'heal' ? '125,255,176' : e.actK === 'summon' ? '255,143,176' : '255,80,50', g = X.createRadialGradient(0, -45 * sz, 6, 0, -45 * sz, 70 * sz); g.addColorStop(0, `rgba(${buffC},${0.45 * pu})`); g.addColorStop(1, `rgba(${buffC},0)`); X.fillStyle = g; X.fillRect(-80 * sz, -120 * sz, 160 * sz, 130 * sz); X.restore(); }
+  if (ca > 0.02) { X.save(); X.globalCompositeOperation = 'lighter'; const hx = -30 * sz, hy = -52 * sz; circ(hx, hy, (8 + 10 * ca) * sz, `rgba(190,110,255,${0.35 * ca})`); circ(hx, hy, 4 * sz * ca, `rgba(255,230,255,${0.9 * ca})`); X.restore(); }
+  X.scale(sz * (1 + sq * 0.2 + pu * 0.12 + ga * 0.05), sz * (1 - sq * 0.16 + pu * 0.16 - ga * 0.09)); // swell when it powers up, crouch behind the shield
   drawEnemyArt(e, TIME);
   X.restore();
+  if (ga > 0.02) { // a shield of light raised towards you
+    X.save(); X.globalCompositeOperation = 'lighter'; const cx = e.x + lx - 22 * sz, cy = e.y - 44 * sz, rx = 26 * sz * (0.4 + 0.6 * ga), ry = 54 * sz;
+    X.fillStyle = `rgba(110,180,255,${0.2 * ga})`; X.beginPath(); X.ellipse(cx, cy, rx, ry, 0, Math.PI / 2, Math.PI * 1.5); X.closePath(); X.fill();
+    X.strokeStyle = `rgba(185,225,255,${0.9 * ga})`; X.lineWidth = 3; X.beginPath(); X.ellipse(cx, cy, rx, ry, 0, Math.PI / 2, Math.PI * 1.5); X.stroke();
+    X.strokeStyle = `rgba(185,225,255,${0.35 * ga})`; X.lineWidth = 1.2; for (let i = -2; i <= 2; i++) { const yy = cy + i * ry * 0.34, w = rx * Math.sqrt(Math.max(0, 1 - (i * 0.34) ** 2)); X.beginPath(); X.moveTo(cx - w, yy); X.lineTo(cx, yy); X.stroke(); }
+    X.restore(); }
   if (e.flash > 0) { X.save(); X.globalCompositeOperation = 'lighter'; ell(e.x + lx, e.y - 45 * sz, 30 * sz, 44 * sz, `rgba(255,255,255,${e.flash * 0.55})`); X.restore(); }
   if (!e.dead && e.st.burn) renderEnemyFire(e, lx);
   if (e.dead || B.demo) return;
@@ -5877,7 +6006,7 @@ function renderInfoStrip() {
   if (!cardOK(d)) hint = L2('不能打出', 'nicht spielbar');
   else if (!finaleOK(d)) hint = L2('抽牌堆要先抽完', 'Nachziehstapel erst leeren');
   else if (costOf(b) > B.energy) hint = L2(`香不夠（要 ${costOf(b)}）`, `zu wenig Energie (${costOf(b)})`);
-  else if (isCast(d)) hint = L2('再點一下施放', 'nochmal tippen = wirken');
+  else if (isCast(d)) hint = L2('即時：不用發射・再點一下施放', 'Sofort-Karte: kein Schuss · nochmal tippen');
   else hint = L2('往上拖、瞄準、放開', 'ziehen, zielen, loslassen');
   const maxW = W - 44, sep = L2('・', ' · ');
   let lines = [parts.join(sep) || BT[d.t].d[LANG === 'de' ? 1 : 0]], fs = 9; X.font = `900 ${fs}px ${FONT}`;
@@ -5967,6 +6096,13 @@ function renderFX() {
       X.globalAlpha = Math.min(1, a * 2); txt(String(f.n), x, y, s, f.full ? '#bff5e0' : '#ff8a8a', { stroke: '#1a0410', sw: 4 });
       if (f.full && k > 0.45) { X.strokeStyle = '#7dffc8'; X.lineWidth = 3; X.beginPath(); X.moveTo(x - s * 0.7, y + 2); X.lineTo(x + s * 0.7, y - 2); X.stroke(); } }
     else if (f.type === 'bolt') { X.globalAlpha = a; X.strokeStyle = f.col; X.lineWidth = 2.5; X.shadowColor = '#7fc8ff'; X.shadowBlur = 10; X.beginPath(); X.moveTo(f.pts[0], f.pts[1]); for (let i = 2; i < f.pts.length; i += 2) X.lineTo(f.pts[i], f.pts[i + 1]); X.stroke(); X.shadowBlur = 0; }
+    else if (f.type === 'hex') { const k = easeOut(1 - a), x = lerp(f.x, f.tx, k), y = lerp(f.y, f.ty, k) - Math.sin(k * Math.PI) * 46; X.save(); X.globalCompositeOperation = 'lighter';
+      for (let i = 4; i >= 1; i--) { const k2 = Math.max(0, k - i * 0.07), x2 = lerp(f.x, f.tx, k2), y2 = lerp(f.y, f.ty, k2) - Math.sin(k2 * Math.PI) * 46; X.globalAlpha = 0.18 * (5 - i) / 4; circ(x2, y2, 7 - i, f.col); }
+      X.globalAlpha = 1; circ(x, y, 11, f.col + '66'); circ(x, y, 6.5, f.col); circ(x, y, 3, '#fff'); X.restore(); }
+    else if (f.type === 'rise') { const k = 1 - a; X.save(); X.globalCompositeOperation = 'lighter'; X.strokeStyle = f.col; X.fillStyle = f.col; X.lineWidth = 3; X.lineCap = 'round';
+      for (let i = 0; i < 3; i++) { const kk = (k * 1.4 + i * 0.22) % 1, y = f.y - kk * (f.h + 30), x = f.x + (i - 1) * 18; X.globalAlpha = Math.sin(kk * Math.PI) * a;
+        if (f.plus) { X.beginPath(); X.moveTo(x - 5, y); X.lineTo(x + 5, y); X.moveTo(x, y - 5); X.lineTo(x, y + 5); X.stroke(); } else { X.beginPath(); X.moveTo(x - 7, y + 4); X.lineTo(x, y - 3); X.lineTo(x + 7, y + 4); X.stroke(); } }
+      X.restore(); }
     else if (f.type === 'ember') { const k = easeOut(1 - a), x = lerp(f.x, f.tx, k), y = lerp(f.y, f.ty, k) - Math.sin(k * Math.PI) * 60; X.globalAlpha = Math.min(1, a * 2); X.save(); X.globalCompositeOperation = 'lighter'; circ(x, y, 5, 'rgba(255,120,40,.6)'); circ(x, y, 2.5, '#ffe9a0'); X.restore(); }
     else if (f.type === 'wave') { const k = 1 - a, y = lerp(f.y0, f.y1 - 30, easeOut(k)); X.globalAlpha = a; X.save(); X.globalCompositeOperation = 'lighter'; const g = X.createLinearGradient(0, y, 0, y + 50); g.addColorStop(0, 'rgba(200,245,255,.8)'); g.addColorStop(1, 'rgba(60,170,255,0)'); X.fillStyle = g; X.beginPath(); X.moveTo(BD.l, y + 50); for (let x = BD.l; x <= BD.r; x += 8) X.lineTo(x, y + Math.sin(x * 0.05 + TIME * 8) * 8); X.lineTo(BD.r, y + 50); X.closePath(); X.fill(); X.restore(); }
   }
@@ -6120,6 +6256,7 @@ cv.addEventListener('pointerup', e => {
   if (p.y > LAUNCH.y - 10 && p.y < HAND_Y - 4) { B.aim = p; if (B.sel >= 0 && !canPlay(B.sel)) toast(cardWhyNot(handBall(B.sel)), 1400); else fire(); }
   else if (PD && PD.card >= 0 && !PD.moved) { // tap on a card: first tap = info, second tap on a cast ball = cast it
     const b = handBall(PD.card);
+    if (b && !PD.was && isCast(bdef(b)) && cardOK(bdef(b))) { const seen = store.get('tips', {}); if (!seen.cast1) { seen.cast1 = 1; store.set('tips', seen); toast(L2('<b>即時施放</b>（符紙）：這種法寶<b>不會發射</b>，再點一下就馬上生效——護體、香、氣……用完就燒掉。', '<b>Sofort-Karte</b> (Talisman): wird <b>nicht geschossen</b>. Nochmal tippen – sie wirkt sofort (Schild, Energie, Kraft …) und verbrennt.'), 5200); } }
     if (b && PD.was && isCast(bdef(b))) { if (canPlay(PD.card)) { B.sel = PD.card; fire(); } else toast(cardWhyNot(b), 1400); }
   }
   PD = null;
@@ -6742,6 +6879,7 @@ function applyLang() {
   if (!$('ovKit').hidden && KIT) renderKit();
   if (!$('ovMk').hidden && MK) renderMk();
   if (!$('ovRoad').hidden && run && run.pend) openRoad(run.pend.info || {});
+  if (!$('ovMap').hidden && MP) renderMap();
   if (!$('ovTemple').hidden) renderTemple();
   if (!$('ovStore').hidden) renderStore();
   if (!$('ovRank').hidden) renderRank(null, false);
@@ -6779,24 +6917,25 @@ function pfPanelHTML() { // the paths of this run with their progress and bonus
 }
 const godTag = g => (g ? `<span class="godtag" style="--gc:${HEROES[g].col}">${nm(HEROES[g])}</span>` : '');
 const typeTag = t => `<span class="typetag" style="--tc:${BT_COL[t]}">${L2(BT[t].zh, BT[t].de)}</span>`;
+const instTag = d => (isCast(d) && cardOK(d) ? `<span class="typetag inst">${L2('即時・不發射', 'Sofort · kein Schuss')}</span>` : ''); // charms that act on the spot
 const fxHTML = (d, base) => { const old = base ? new Set(ballFx(base).map(f => L2(f.zh, f.de))) : null; return ballFx(d).map(f => { const s = L2(f.zh, f.de), chg = old && !old.has(s); return `<div class="fxl${chg ? ' chg' : ''}"><img src="${kwIconURL(f.ic, f.col)}" alt=""><span>${chg ? '▲ ' : ''}${s}</span></div>`; }).join(''); }; // with a base: what an upgrade changes is marked
 function ballRowHTML(id, up, showUp) { // a ball as a row: icon, cost, type, name, effects with pictograms
   const d = bdefId(id, up), U = showUp && !up && BALLS[id].up ? bdefId(id, 1) : null;
-  return `${ballIconId(id, up, 'big')}<div class="db"><div class="ln">${costHTML(d.xCost ? 'X' : d.cost)}${typeTag(d.t)}<b style="color:${up ? '#7dffb0' : lrCol(d.rar)}">${nm(d)}${up ? '+' : ''}</b>${godTag(d.god)}<span class="rartag" style="--rc:${lrCol(d.rar)}">${lrName(d.rar)}</span></div>
+  return `${ballIconId(id, up, 'big')}<div class="db"><div class="ln">${costHTML(d.xCost ? 'X' : d.cost)}${typeTag(d.t)}${instTag(d)}<b style="color:${up ? '#7dffb0' : lrCol(d.rar)}">${nm(d)}${up ? '+' : ''}</b>${godTag(d.god)}<span class="rartag" style="--rc:${lrCol(d.rar)}">${lrName(d.rar)}</span></div>
     ${pfOf(id).length ? `<div class="pfl">${pfChips(id)}</div>` : ''}<div class="fx">${fxHTML(d)}</div>${U ? `<div class="upv"><b>${L2('開光後', 'Verbessert')}${U.cost !== d.cost ? `・${L2('香', 'Energie')} ${d.cost} → ${U.cost}` : ''}</b>${fxHTML(U, d)}</div>` : ''}</div>`;
 }
 const talTile = (id, cls = '') => { const d = TALIS[id], ed = talEdition(id); return `<span class="ttile art r${d.rar} ${cls}${ed ? ' ed-' + ed : ''}" style="--rc:${lrCol(d.rar)}"><img src="${talURL(id)}" alt="${d.g}">${ed ? `<em class="edb" style="--ec:${EDITIONS[ed].col}">${EDITIONS[ed].g}</em>` : ''}</span>`; };
 function talRowHTML(id) { const d = TALIS[id], ed = talEdition(id); return `${talTile(id)}<div class="db"><div class="ln"><b style="color:${lrCol(d.rar)}">${nm(d)}</b>${godTag(d.god)}<span class="rartag" style="--rc:${lrCol(d.rar)}">${lrName(d.rar)}</span></div>${pfOf(id).length ? `<div class="pfl">${pfChips(id)}</div>` : ''}<div class="tx">${talDesc(id)}</div>${ed ? `<div class="edl" style="--ec:${EDITIONS[ed].col}"><b>${EDITIONS[ed].g} ${nm(EDITIONS[ed])}</b>　${L2(...EDITIONS[ed].d)}</div>` : ''}${d.c && run && tc(id) ? `<div class="tx sub">${L2('目前', 'Aktuell')}：${counterText(id)}</div>` : ''}</div>`; }
 const consTile = (id, cls = '') => `<span class="ctile ${cls}" style="--cc:${CONS[id].col}">${CONS[id].g}</span>`;
 function consRowHTML(id) { const c = CONS[id]; return `${consTile(id)}<div class="db"><div class="ln"><b style="color:${c.col}">${nm(c)}</b></div><div class="tx">${L2(...c.txt)}</div></div>`; }
-function mcardHTML(b) { const c = ballCost(b), n = ballNm(b); return `<span class="co${c ? '' : ' z'}">${c == null ? '✕' : c}</span>${ballImg(b.id)}${fzBadges(b)}${pfOf(b.id).length ? `<span class="pfd">${pfOf(b.id).map(k => `<i style="--pc:${PFADE[k].col}">${PFADE[k].g}</i>`).join('')}</span>` : ''}${b.gp ? `<span class="gpb">+${b.gp}</span>` : ''}<b class="${longWord(n)}">${n}</b>`; }
+function mcardHTML(b) { const c = ballCost(b), n = ballNm(b), dd = bdef(b); return `<span class="co${c ? '' : ' z'}">${c == null ? '✕' : c}</span>${isCast(dd) && cardOK(dd) ? `<span class="inst">${L2('即時', 'SOFORT')}</span>` : ''}${ballImg(b.id)}${fzBadges(b)}${pfOf(b.id).length ? `<span class="pfd">${pfOf(b.id).map(k => `<i style="--pc:${PFADE[k].col}">${PFADE[k].g}</i>`).join('')}</span>` : ''}${b.gp ? `<span class="gpb">+${b.gp}</span>` : ''}<b class="${longWord(n)}">${n}</b>`; }
 /* fused balls: little glyph badges of the effects they carry */
 const fzBadges = b => (b && b.fz && b.fz.length ? `<span class="fzb">${b.fz.map(id => `<i style="--fc:${BALLS[id].col}">${BALLS[id].glyph}</i>`).join('')}</span>` : '');
 const ballIconB = (b, cls = '') => ballIconId(b.id, b.up, cls).replace(/<\/span>$/, fzBadges(b) + '</span>');
 function ballRowB(b, showUp) { // a ball instance (it may carry fused effects or have grown)
   if (!b.fx && !b.gp) return ballRowHTML(b.id, b.up, showUp);
   const d = bdef(b), base = bdefId(b.id, b.up), fz = b.fz || [];
-  return `${ballIconB(b, 'big')}<div class="db"><div class="ln">${costHTML(d.xCost ? 'X' : d.cost)}${typeTag(d.t)}<b style="color:${fz.length ? '#d9a3ff' : b.up ? '#7dffb0' : lrCol(d.rar)}">${ballNm(b)}</b>${godTag(d.god)}${fz.length ? `<span class="rartag" style="--rc:#c08aff">${L2('煉', 'Fusion')} ${fz.length}/${FZ_MAX}</span>` : ''}</div>${pfOf(b.id).length ? `<div class="pfl">${pfChips(b.id)}</div>` : ''}<div class="fx">${fxHTML(d, base)}</div>${fz.length ? `<div class="tx sub">${L2('帶著', 'Trägt')}: ${fz.map(id => nm(BALLS[id])).join(' · ')}</div>` : ''}${b.gp ? `<div class="grown">${L2(`行者杖：每顆釘永久 +${b.gp}`, `Pilgerstab: dauerhaft +${b.gp} pro Stift`)}</div>` : ''}</div>`;
+  return `${ballIconB(b, 'big')}<div class="db"><div class="ln">${costHTML(d.xCost ? 'X' : d.cost)}${typeTag(d.t)}${instTag(d)}<b style="color:${fz.length ? '#d9a3ff' : b.up ? '#7dffb0' : lrCol(d.rar)}">${ballNm(b)}</b>${godTag(d.god)}${fz.length ? `<span class="rartag" style="--rc:#c08aff">${L2('煉', 'Fusion')} ${fz.length}/${FZ_MAX}</span>` : ''}</div>${pfOf(b.id).length ? `<div class="pfl">${pfChips(b.id)}</div>` : ''}<div class="fx">${fxHTML(d, base)}</div>${fz.length ? `<div class="tx sub">${L2('帶著', 'Trägt')}: ${fz.map(id => nm(BALLS[id])).join(' · ')}</div>` : ''}${b.gp ? `<div class="grown">${L2(`行者杖：每顆釘永久 +${b.gp}`, `Pilgerstab: dauerhaft +${b.gp} pro Stift`)}</div>` : ''}</div>`;
 }
 function altarHTML(selT, selC) {
   let h = '<div class="altar">';
@@ -6808,6 +6947,13 @@ function altarHTML(selT, selC) {
 const pegRowHTML = () => `<div class="pegrow">${Object.keys(PEGT).map(k => `<span style="color:${PEGT[k].col}">${PEGT[k].g} ${nm(PEGT[k])} <b>Lv${run.pegLv[k]}</b></span>`).join('')}</div>`;
 const T_ORD = { atk: 0, skl: 1, pow: 2, cur: 3 };
 const sortedBag = () => run.bag.slice().sort((a, b) => T_ORD[BALLS[a.id].t] - T_ORD[BALLS[b.id].t] || BALLS[b.id].rar - BALLS[a.id].rar || (BALLS[a.id].god ? 0 : 1) - (BALLS[b.id].god ? 0 : 1) || a.id.localeCompare(b.id) || (b.up || 0) - (a.up || 0));
+/* the bag as a tidy overview: one section per type, identical balls stacked (×4) */
+function bagGroupHTML(sel) {
+  const groups = {}; for (const b of sortedBag()) { const d = BALLS[b.id], k = `${b.id}|${b.up || 0}|${JSON.stringify(b.fx || '')}|${(b.fz || []).join()}|${b.gp || 0}`; (groups[d.t] = groups[d.t] || {}); (groups[d.t][k] = groups[d.t][k] || []).push(b); }
+  return ['atk', 'skl', 'pow', 'cur'].filter(t => groups[t]).map(t => { const G = Object.values(groups[t]), n = G.reduce((a, g) => a + g.length, 0);
+    return `<div class="kgh" style="--tc:${BT_COL[t]}"><i></i>${L2(BT[t].zh, BT[t].de)}<small>${n}</small></div><div class="kgrid">` + G.map(g => { const b = g[0], d = BALLS[b.id], on = g.some(x => x.uid === sel);
+      return `<button class="mcard t-${d.t}${d.god ? ' god' : ''}${b.up ? ' up' : ''}${on ? ' sel' : ''}" data-u="${b.uid}" style="--rc:${lrCol(d.rar)};--tc:${BT_COL[d.t]}${d.god ? `;--gc:${HEROES[d.god].col}` : ''}">${mcardHTML(b)}${g.length > 1 ? `<span class="stk">×${g.length}</span>` : ''}</button>`; }).join('') + '</div>'; }).join('');
+}
 function bagGridHTML(sel, tgt, filter) { return `<div class="kgrid">${sortedBag().map(b => { const d = BALLS[b.id], off = filter && !filter(b); return `<button class="mcard t-${d.t}${d.god ? ' god' : ''}${b.up ? ' up' : ''}${sel === b.uid ? ' sel' : ''}${tgt && !off ? ' tgt' : ''}${off ? ' off' : ''}" data-u="${b.uid}" style="--rc:${lrCol(d.rar)};--tc:${BT_COL[d.t]}${d.god ? `;--gc:${HEROES[d.god].col}` : ''}">${mcardHTML(b)}</button>`; }).join('')}</div>`; }
 
 /* ---------- generic question dialog ---------- */
@@ -6816,7 +6962,7 @@ function ask(g, h, html, opts) {
   ASKP = paused; paused = true;
   $('askG').textContent = g; $('askH').textContent = h; $('askT').innerHTML = html; $('askT').hidden = !html;
   const box = $('askOpts'); box.innerHTML = '';
-  opts.forEach(o => { const b = document.createElement('button'); b.className = 'btn ' + (o.cls || 'ghost'); b.innerHTML = o.label; b.disabled = !!o.disabled; b.onclick = () => { hide('ovAsk'); paused = ASKP; if (o.fn) o.fn(); }; box.appendChild(b); });
+  opts.filter(Boolean).forEach(o => { const b = document.createElement('button'); b.className = 'btn ' + (o.cls || 'ghost'); b.innerHTML = o.label; b.disabled = !!o.disabled; b.onclick = () => { hide('ovAsk'); paused = ASKP; if (o.fn) o.fn(); }; box.appendChild(b); });
   show('ovAsk');
 }
 function consPrompt(i, after) {
@@ -6895,7 +7041,7 @@ function renderKit() {
   $('kHead').innerHTML = pk ? `<b>${K.title}</b>` : `<b>${L2('法寶袋', 'Beutel')}</b><span class="muted">　${run.bag.length} ${L2('顆', 'Kugeln')}</span>`;
   $('kStat').innerHTML = `<span>♥ ${run.hp}/${run.maxhp}</span><span class="coins">● ${fmt(run.coins)}</span>`;
   $('kShelfWrap').hidden = true;
-  $('kBag').innerHTML = bagGridHTML(K.sel, pk, pk ? K.filter : null);
+  $('kBag').innerHTML = pk ? bagGridHTML(K.sel, pk, K.filter) : bagGroupHTML(K.sel);
   $('kChain').innerHTML = pk ? '' : altarHTML(K.selT, K.selC); $('kLblA').hidden = pk;
   $('kPouch').innerHTML = pk ? '' : pegRowHTML() + pfPanelHTML();
   // info + actions
@@ -6961,7 +7107,7 @@ function renderMk() {
   $('mkHp').textContent = `♥ ${run.hp}/${run.maxhp}`;
   const cEl = $('mkCoin'); cEl.innerHTML = cnH(run.coins);
   if (M.coins !== run.coins) { const d = run.coins - M.coins; M.coins = run.coins; cEl.classList.remove('bump'); void cEl.offsetWidth; cEl.classList.add('bump'); const f = document.createElement('span'); f.className = 'mkfly'; f.style.color = d < 0 ? '#ff8fa3' : '#7dffb0'; f.textContent = (d > 0 ? '+' : '−') + Math.abs(d); cEl.appendChild(f); }
-  const tabs = [['buy', L2('買東西', 'Kaufen'), ''], ['rem', L2('送走法寶', 'Entfernen'), cnH(removePrice())], ['fuse', L2('煉丹', 'Schmiede'), cnH(fusePrice())], ['mine', L2('我的東西', 'Inventar'), `${run.bag.length} ${L2('顆', 'Kugeln')}`]];
+  const tabs = [['buy', L2('買東西', 'Kaufen'), ''], ['rem', L2('送走法寶', 'Entfernen'), cnH(removePrice())], ['fuse', L2('煉丹', 'Schmiede'), cnH(fusePrice())], ['mine', L2('我的東西', 'Inventar'), `${run.bag.length} ${L2('顆', 'Kugeln')}`]].filter(t => !(mapOn() && t[0] === 'fuse')); // on the map the forge does the fusing
   $('mkTabs').innerHTML = tabs.map(([k, a, b]) => `<button data-tab="${k}" class="${M.tab === k ? 'on' : ''}">${a}${b ? `<small>${b}</small>` : ''}</button>`).join('');
   const body = $('mkBody'); let h = '';
   if (M.tab === 'buy') {
@@ -7076,6 +7222,7 @@ $('mkFoot').addEventListener('click', e => {
 /* ---------- route strip ---------- */
 function routeHTML() {
   const R = routeOf(run);
+  if (mapOn()) return `<span class="rch">${chName()} · ${L2(`第 ${run.st + 1}/${R.length} 站`, `Etappe ${run.st + 1}/${R.length}`)}</span>` + R.map((k, i) => (k ? `<span class="rn ${i < run.st ? 'done' : i === run.st ? 'cur' : ''}" style="--nc:${ROUTE_T[k].col}">${ROUTE_T[k].g}</span>` : `<span class="rn unk"></span>`)).join('');
   return `<span class="rch">${run.weekly ? L2("遶境", "Prozession") : chName()}</span>` + R.map((k, i) => { const F = forkAt(run, i), open = F && i > run.st && !(run.fk && run.fk[run.ch + '-' + i]);
     return open ? `<span class="rn fork" style="--nc:#ffe9a0">${F.map(f => ROUTE_T[f].g).join('')}</span>` : `<span class="rn ${i < run.st ? 'done' : i === run.st ? 'cur' : ''}" style="--nc:${ROUTE_T[k].col}">${ROUTE_T[k].g}${i >= run.st && cursesAt(run.ch, i).length ? `<b class="cz">${L2('煞', '☠')}</b>` : ''}</span>`; }).join('<i></i>');
 }
@@ -7083,6 +7230,7 @@ function routeHTML() {
 /* ---------- interlude between stages ---------- */
 function openRoad(info = {}) {
   run.pend = { type: 'road', info }; saveRun();
+  if (mapOn() && run.st + 1 < routeOf(run).length) return openMap({ road: true, info }); // after a fight: choose the next stop on the map
   const R = routeOf(run), nx = run.st + 1 < R.length ? ROUTE_T[R[run.st + 1]] : null;
   $('rRoute').innerHTML = routeHTML();
   $('rH').textContent = info.title || t('win');
@@ -7105,6 +7253,51 @@ $('rFork').addEventListener('click', e => { const b = e.target.closest('[data-fk
 $('rKit').onclick = () => { hide('ovRoad'); openBagView(() => openRoad(run.pend ? run.pend.info : {})); };
 $('rBag').onclick = () => $('rKit').click();
 
+/* ---------- the chapter map: tap a glowing stop, read what happens there, go ---------- */
+let MP = null;
+function openMap(cfg) {
+  const f = cfg.road ? run.st + 1 : run.st;
+  MP = Object.assign({}, cfg, { f, sel: null }); const R = mapReach(run, f); if (R.length === 1) MP.sel = R[0];
+  B = B && !B.demo ? B : makeDemo(); paused = true; renderMap(); show('ovMap');
+  requestAnimationFrame(() => { const sc = $('mpScroll'), el = $('mpSvg').querySelector('.nd.go'); if (el) { const r = el.getBoundingClientRect(), r0 = sc.getBoundingClientRect(); sc.scrollTop += r.top - r0.top - sc.clientHeight * 0.62; } });
+}
+function renderMap() {
+  const M = mapOf(run), P = pathOf(run), f = MP.f, N = M.length, reach = mapReach(run, f), info = MP.info || {};
+  $('mpH').textContent = MP.road ? (info.title || t('win')) : f === 0 ? L2('選一條路', 'Wähle deinen Weg') : L2('下一站去哪？', 'Wohin als Nächstes?');
+  $('mpS').textContent = `${chName()} · ${L2(`第 ${f + 1}/${N} 站`, `Etappe ${f + 1}/${N}`)}`;
+  $('mpSt').innerHTML = `<span>♥ ${run.hp}/${run.maxhp}</span><span class="coins">● ${fmt(run.coins)}</span>`;
+  $('mpNotes').innerHTML = (info.notes || []).map(n => `<div class="note">${n}</div>`).join('');
+  // the drawing: floor 0 at the bottom, the boss on top
+  const W = 340, rowH = 62, top = 46, H = top + (N - 1) * rowH + 40, X0 = c => 52 + c * 78, pos = (fl, n) => [fl === N - 1 ? W / 2 : X0(n.c) + n.j * 9, top + (N - 1 - fl) * rowH + (fl === N - 1 ? 0 : n.j * 5)];
+  let ed = '', nd = '';
+  for (let fl = 0; fl < N - 1; fl++) M[fl].forEach((n, i) => { const [x1, y1] = pos(fl, n);
+    for (const j of n.next) { const [x2, y2] = pos(fl + 1, M[fl + 1][j]), taken = P[fl] === i && P[fl + 1] === j, next = fl === f - 1 && P[fl] === i && reach.includes(j), sel = next && MP.sel === j;
+      ed += `<line class="ed${next ? ' next' : ''}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${taken ? '#f5c542' : sel ? '#fff1cf' : next ? '#ffe9a0' : 'rgba(245,197,66,.22)'}" stroke-width="${taken ? 3.5 : next ? 2.5 : 1.6}" ${taken || next ? '' : 'stroke-dasharray="2 5"'} stroke-linecap="round"/>`; } });
+  M.forEach((row, fl) => row.forEach((n, i) => {
+    const [x, y] = pos(fl, n), T = ROUTE_T[n.t], boss = n.t === 'boss', r = boss ? 25 : 16, done = P[fl] === i && fl < f, past = fl < f && P[fl] !== i, go = fl === f && reach.includes(i), sel = go && MP.sel === i;
+    const cz = (n.t === 'e' || boss) && fl >= f ? cursesAt(run.ch, fl, n.t) : [], here = MP.road && fl === f - 1 && P[fl] === i;
+    nd += `<g class="nd${go ? ' go' : ''}" data-i="${i}" data-f="${fl}" opacity="${past ? 0.28 : fl > f && !boss ? 0.78 : 1}">`
+      + (go ? `<circle class="pulse" cx="${x}" cy="${y}" r="${r + 6}" fill="none" stroke="${T.col}" stroke-width="2.5"/>` : '')
+      + (sel ? `<circle cx="${x}" cy="${y}" r="${r + 9}" fill="none" stroke="#fff1cf" stroke-width="2.5"/>` : '')
+      + `<circle cx="${x}" cy="${y}" r="${sel ? r + 3 : r}" fill="${done ? T.col : '#1a0812'}" stroke="${T.col}" stroke-width="${go ? 3 : 2}"/>`
+      + `<text x="${x}" y="${y + 0.5}" text-anchor="middle" dominant-baseline="central" font-size="${boss ? 24 : 15}" font-weight="900" fill="${done ? '#1a0410' : T.col}">${T.g}</text>`
+      + (done ? `<circle cx="${x + r - 3}" cy="${y - r + 3}" r="6" fill="#1a0410" stroke="#7dffb0" stroke-width="1.5"/><text x="${x + r - 3}" y="${y - r + 3.5}" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="900" fill="#7dffb0">✓</text>` : '')
+      + (cz.length ? `<rect x="${x + r - 8}" y="${y - r - 7}" width="16" height="12" rx="4" fill="#b3001e"/><text x="${x + r}" y="${y - r - 0.5}" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="#ffd0d8">煞</text>` : '')
+      + (here ? `<text x="${x - r - 10}" y="${y + 1}" text-anchor="middle" dominant-baseline="central" font-size="13">📍</text>` : '')
+      + `</g>`; }));
+  const svg = $('mpSvg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.innerHTML = ed + nd;
+  // what is selected, or the legend
+  const ib = $('mpInfo');
+  if (MP.sel != null) { const n = M[f][MP.sel], T = ROUTE_T[n.t], cz = n.t === 'e' || n.t === 'boss' ? cursesAt(run.ch, f, n.t) : [];
+    ib.innerHTML = `<div class="sel" style="--nc:${T.col}"><span class="g">${T.g}</span><div><b>${L2(T.zh, T.de)}</b><small>${L2(...ROUTE_D[n.t])}</small>${cz.length ? `<small class="cz">${L2('煞', 'Fluch')}：${cz.map(id => `${nm(CURSES[id])} – ${curseDesc(id)}`).join('・')}</small>` : ''}</div></div>`; }
+  else ib.innerHTML = `<div class="hint">${L2('點一個發光的地方', 'Tippe auf ein leuchtendes Feld')}</div><div class="mpleg">${['b', 'e', 'q', 'm', 'r', 'f'].map(k => `<span style="--nc:${ROUTE_T[k].col}"><i>${ROUTE_T[k].g}</i>${L2(ROUTE_T[k].zh, ROUTE_T[k].de)}</span>`).join('')}</div>`;
+  $('mpBag').innerHTML = `${L2('法寶袋', 'Beutel')} · ${run.bag.length}`;
+  const go = $('mpGo'); go.disabled = MP.sel == null; go.innerHTML = MP.sel == null ? L2('先選一站', 'Feld wählen') : `${L2('出發', 'Los')}：${L2(ROUTE_T[M[f][MP.sel].t].zh, ROUTE_T[M[f][MP.sel].t].de)} ▶`;
+}
+$('mpSvg').addEventListener('click', e => { const g = e.target.closest('.nd.go'); if (!g || !MP) return; const i = +g.dataset.i; if (MP.sel === i) { $('mpGo').click(); return; } MP.sel = i; SFX.wood(); renderMap(); });
+$('mpGo').onclick = () => { if (!MP || MP.sel == null) return; const C = MP; pathOf(run)[C.f] = C.sel; MP = null; hide('ovMap'); paused = false; SFX.sheng(); saveRun(); if (C.road) { run.pend = null; advance(); } else enterStage(); };
+$('mpBag').onclick = () => { if (!MP) return; const C = MP; hide('ovMap'); openBagView(() => openMap(C)); };
+
 function chapterCard() {
   const C = CHAPTERS[Math.min(run.ch, CHAPTERS.length - 1)];
   $('chapH').textContent = nm(C); $('chapN').textContent = run.ch >= 3 ? L2('最終章', 'Finale') : L2(`第 ${'一二三'[run.ch]} 章`, `Kapitel ${run.ch + 1}`);
@@ -7114,6 +7307,14 @@ function chapterCard() {
 }
 $('bChapGo').onclick = () => { hide('ovChap'); enterStage(); };
 
+/* ---------- 煉丹爐 forge stop on the map: one free fusion ---------- */
+function openForge(done) {
+  run.pend = { type: 'forge' }; saveRun();
+  const fin = () => { run.pend = null; saveRun(); done(); };
+  if (!fuseAny()) { ask('煉', L2('煉丹爐', 'Schmiede'), L2('袋子裡還沒有能煉的組合。爐主塞給你一點盤纏。', 'In deinem Beutel passt noch nichts zusammen. Der Schmied gibt dir etwas Reisegeld.'), [{ label: `${L2('收下', 'Nehmen')} ● 30`, cls: 'gold', fn: () => { gainCoins(30); fin(); } }]); return; }
+  openFuse({ title: L2('煉丹爐', 'Schmiede'), sub: L2('免費煉一次：把一顆球的效果煉進另一顆', 'Eine Fusion gratis: ein Effekt wandert von einer Kugel auf eine andere'), done: fin,
+    cancel: () => ask('煉', L2('不煉了？', 'Ohne Verschmelzen weiter?'), L2('這一站就這樣過去了。', 'Diese Station ist dann vorbei.'), [{ label: L2('回到爐子', 'Zurück zur Schmiede'), cls: 'purple', fn: () => openForge(done) }, { label: L2('繼續上路', 'Weiterziehen'), fn: fin }]) });
+}
 /* ---------- 廟 rest site: heal, upgrade a ball (+) or remove one ---------- */
 function openRest(done) {
   run.pend = { type: 'rest' }; saveRun();
@@ -7122,8 +7323,8 @@ function openRest(done) {
   ask('廟', L2('廟・歇腳', 'Tempel · Rast'), L2('香火裊裊。神明面前，只能做一件事：', 'Räucherwerk steigt auf. Vor den Göttern darfst du eine Sache tun:') + `<div class="restst">♥ ${run.hp}/${run.maxhp}　${run.bag.length} ${L2('顆法寶', 'Kugeln')}</div>`, [
     { label: `${L2('休息', 'Ausruhen')}<small>${L2(`回 ${healN} 血`, `+${healN} Leben`)}</small>`, cls: 'red', fn: () => { run.hp = Math.min(run.maxhp, run.hp + healN); SFX.sheng(); toast(L2(`休息好了：+${healN} 血`, `Ausgeruht: +${healN} Leben`), 1800); fin(); } },
     { label: `${L2('開光', 'Weihen')}<small>${L2('一顆法寶升級（＋）', 'eine Kugel verbessern (+)')}</small>`, cls: 'gold', disabled: !canUp, fn: () => pickBall(L2('開光：選一顆升級', 'Weihen: welche Kugel?'), L2('發光的可以升級。點一顆看升級後的樣子。', 'Leuchtende Kugeln lassen sich verbessern. Antippen zeigt die verbesserte Version.'), b => { b.up = 1; SFX.sheng(); SFX.suona([[12, 0.12], [14, 0.12], [17, 0.4]]); toast(`<b>${ballNm(b)}</b><br>${ballTxt(b)}`, 3000); setTimeout(fin, 40); return true; }, canUpgrade, back) },
-    { label: `${L2('煉丹', 'Verschmelzen')}<small>${L2('把一顆球的效果煉進另一顆', 'einen Effekt auf eine andere Kugel übertragen')}</small>`, cls: 'purple', disabled: !fuseAny(), fn: () => openFuse({ title: L2('廟・煉丹爐', 'Tempel · Seelenschmiede'), done: () => fin(), cancel: back }) },
-    { label: `${L2('送神', 'Entfernen')}<small>${L2('拿掉一顆法寶', 'eine Kugel aus dem Beutel')}</small>`, disabled: run.bag.length <= 4, fn: () => pickBall(L2('送神：選一顆拿掉', 'Entfernen: welche Kugel?'), L2('袋子越精，好球越常上手。', 'Je schlanker der Beutel, desto öfter kommen die guten Kugeln.'), b => { run.bag = run.bag.filter(x => x !== b); SFX.sheng(); toast(L2('送神完成', 'Entfernt'), 1600); setTimeout(fin, 40); return true; }, null, back) },
+    mapOn() ? null : { label: `${L2('煉丹', 'Verschmelzen')}<small>${L2('把一顆球的效果煉進另一顆', 'einen Effekt auf eine andere Kugel übertragen')}</small>`, cls: 'purple', disabled: !fuseAny(), fn: () => openFuse({ title: L2('廟・煉丹爐', 'Tempel · Seelenschmiede'), done: () => fin(), cancel: back }) },
+    mapOn() ? null : { label: `${L2('送神', 'Entfernen')}<small>${L2('拿掉一顆法寶', 'eine Kugel aus dem Beutel')}</small>`, disabled: run.bag.length <= 4, fn: () => pickBall(L2('送神：選一顆拿掉', 'Entfernen: welche Kugel?'), L2('袋子越精，好球越常上手。', 'Je schlanker der Beutel, desto öfter kommen die guten Kugeln.'), b => { run.bag = run.bag.filter(x => x !== b); SFX.sheng(); toast(L2('送神完成', 'Entfernt'), 1600); setTimeout(fin, 40); return true; }, null, back) },
   ]);
 }
 
@@ -7534,7 +7735,8 @@ function goNewRun() {
 $('bStart').onclick = () => { auInit(); auResume(); musicStart(); if (store.get('run21', null)) contRun(); else openNewRun(); };
 $('bNewRun').onclick = () => { auInit(); auResume(); musicStart(); openNewRun(); };
 /* ---------- 新的一輪: alone or with friends, difficulty (locked ones shown too), ascension ---------- */
-function openNewRun() {
+let NRV = null; // the difficulty shown in the new-run screen (may be a locked one)
+function openNewRun() { NRV = null;
   const id = TITLE_HERO || (LOOK || LOOK_DEF).hero;
   if (HEROES[id].soon || !ownsHero(id) || !store.get('tutDone')) { hide('ovNewRun'); goNewRun(); return; } // locked god → unlock first; very first run → straight into the tutorial
   hide('ovTitle'); renderNewRun(); show('ovNewRun'); $('ovNewRun').scrollTop = 0;
@@ -7549,19 +7751,23 @@ function renderNewRun() {
   $('nrMode').innerHTML = [['solo', '獨', '獨自除妖', 'Allein', '自己一個人，隨時可以暫停。', 'Nur du – jederzeit pausieren und später weiterspielen.'], ['team', '同', '好友同遊', 'Mit Freunden', '2–4 位神明走同一條路，各拿各的寶。', '2–4 Götter, gleiche Route & Dämonen, jeder bekommt eigene Beute.']]
     .map(([k, g, z, d, sz, sd]) => `<button class="nrm ${k}${(k === 'team') === team ? ' on' : ''}" data-m="${k}"><span class="gg">${g}</span><b>${L2(z, d)}</b><small>${L2(sz, sd)}</small></button>`).join('');
   $('nrSecDiff').textContent = L2('難度', 'SCHWIERIGKEIT');
-  $('nrDiff').innerHTML = DIFFS.map((D, i) => { const lock = i > dm, on = i === SEL_DIFF, pips = DIFFS.map((_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('');
-    const how = i === dm + 1 ? L2(`在「${DIFFS[i - 1].zh}」打完第 2 章就解鎖`, `Freischalten: Kapitel 2 auf „${DIFFS[i - 1].de}“ schaffen`) : L2(`先解鎖「${DIFFS[i - 1] ? DIFFS[i - 1].zh : ''}」`, `Erst „${DIFFS[i - 1] ? DIFFS[i - 1].de : ''}“ freischalten`);
-    return `<button class="nrd${on ? ' on' : ''}${lock ? ' lock' : ''}" data-d="${i}" style="--dc:${D.col}"><span class="dg">${lock ? '🔒' : D.zh}</span><div class="db"><div class="dn"><b>${L2(D.zh, D.de)}</b><span>${L2(D.szh, D.sde)}</span><span class="fl">${pips}</span></div>`
-      + (lock ? `<div class="lk">🔒 ${how}</div>` : `<div class="ds"><span>${L2('妖怪血量', 'Dämonen-Leben')} ${pc(D.hp)}</span><span>${L2('妖怪攻擊', 'Angriff')} ${pc(D.atk)}</span><span class="rw">${L2('獎勵', 'Belohnung')} ×${xs(D.rew)}</span></div>`) + `</div></button>`; }).join('');
+  // difficulty: one row, ‹ › to browse; locked levels can be looked at too
+  if (NRV == null || NRV > DIFFS.length - 1) NRV = SEL_DIFF;
+  const i = NRV, D = DIFFS[i], lock = i > dm, pips = DIFFS.map((_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('');
+  const how = i === dm + 1 ? L2(`在「${DIFFS[i - 1].zh}」打完第 2 章就解鎖`, `Freischalten: Kapitel 2 auf „${DIFFS[i - 1].de}“ schaffen`) : lock ? L2(`先解鎖「${DIFFS[i - 1].zh}」`, `Erst „${DIFFS[i - 1].de}“ freischalten`) : '';
+  $('nrDiff').innerHTML = `<div class="nrds${lock ? ' lock' : ''}" style="--dc:${D.col}"><button class="nrar" data-dd="-1" ${i ? '' : 'disabled'} aria-label="leichter">‹</button>`
+    + `<div class="nrdc"><span class="dg">${lock ? '🔒' : D.zh}</span><div class="db"><b>${L2(D.zh, D.de)}</b><span>${L2(D.szh, D.sde)}</span><span class="fl">${pips}</span></div></div>`
+    + `<button class="nrar" data-dd="1" ${i < DIFFS.length - 1 ? '' : 'disabled'} aria-label="schwerer">›</button></div>`
+    + `<div class="nrdinfo${lock ? ' lock' : ''}" style="--dc:${D.col}">` + (lock ? `<div class="lk">🔒 ${how}</div>` : `<span>${L2('妖怪血量', 'Dämonen-Leben')} <b>${pc(D.hp)}</b></span><span>${L2('妖怪攻擊', 'Angriff')} <b>${pc(D.atk)}</b></span><span class="rw">${L2('獎勵', 'Belohnung')} <b>×${xs(D.rew)}</b></span>`) + `</div>`;
   $('nrAsc').innerHTML = !team && A.max ? `<div class="nra"><div class="ah"><b>${L2('天劫', 'Aufstieg')}</b><div class="stp"><button data-asc="-1" ${A.sel ? '' : 'disabled'}>−</button><span>${A.sel}/${A.max}</span><button data-asc="1" ${A.sel < A.max ? '' : 'disabled'}>＋</button></div></div>`
     + `<ul>${A.sel ? [...Array(A.sel)].map((_, i) => `<li>${L2(...ASC[i + 1])}</li>`).join('') : `<li>${L2('關閉：照平常打', 'Aus – ganz normal spielen')}</li>`}</ul>${A.sel ? `<div class="rw">${L2(`修為、香油錢 +${A.sel * 10}%`, `Kultivierung & Opfergeld +${A.sel * 10} %`)}</div>` : ''}</div>` : '';
   const w = $('nrWarn'); w.hidden = !(save && !team); if (save) w.innerHTML = `⚠ ${L2('你現在的這一輪會結束：', 'Dein laufender Lauf wird dabei beendet:')} <b>${nm(HEROES[save.hero])} · ${stageLabel(save)}</b>`;
-  $('bNrGo').innerHTML = team ? `${L2('開大廳', 'Lobby öffnen')}<small>${L2('邀請好友一起除妖', 'Freunde einladen')}</small>` : t('start');
+  $('bNrGo').disabled = NRV > dm; $('bNrGo').innerHTML = NRV > dm ? L2('🔒 這個難度還沒解鎖', '🔒 Stufe noch gesperrt') : team ? `${L2('開大廳', 'Lobby öffnen')}<small>${L2('邀請好友一起除妖', 'Freunde einladen')}</small>` : t('start');
 }
 $('ovNewRun').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b || b.disabled) return; const id = TITLE_HERO || (LOOK || LOOK_DEF).hero;
   if (b.dataset.m) { store.set('nrMode', b.dataset.m); SFX.wood(); renderNewRun(); return; }
-  if (b.dataset.d) { const d = +b.dataset.d; if (d > diffMax()) { SFX.nudge && SFX.nudge(); b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); return; } SEL_DIFF = d; store.set('diff', d); SFX.wood(); renderNewRun(); return; }
+  if (b.dataset.dd) { NRV = Math.max(0, Math.min(DIFFS.length - 1, NRV + +b.dataset.dd)); if (NRV <= diffMax()) { SEL_DIFF = NRV; store.set('diff', NRV); } SFX.wood(); renderNewRun(); return; }
   if (b.dataset.asc) { const A = ascOf(id); A.sel = Math.max(0, Math.min(A.max, A.sel + +b.dataset.asc)); saveGods(); SFX.wood(); renderNewRun(); return; }
   if (b.id === 'nrGodSw') { hide('ovNewRun'); openGods(null, { pick: true, back: openNewRun, backOnPick: true }); SFX.wood(); return; }
   if (b.id === 'bNrX') { hide('ovNewRun'); showTitle(); return; }
@@ -7583,7 +7789,7 @@ function contRun(saved) {
   const r = saved || store.get('run21', null); if (!r) return goNewRun();
   syncAltarMax(); run = r; run.vows = run.vows || []; run.cz = run.cz || {}; run.tc = run.tc || {}; UID = 1 + Math.max(0, ...run.bag.map(b => b.uid)); buildBackdrops(); hide('ovTitle'); TITLE_HERO = null;
   const P = run.pend; if (P) { B = makeDemo(); setSong('calm');
-    if (P.type === 'reward') return nextReward(); if (P.type === 'road') return openRoad(P.info || {}); if (P.type === 'market') return openMarket(() => advance(), P.shelf); if (P.type === 'rest') return openRest(() => advance());
+    if (P.type === 'reward') return nextReward(); if (P.type === 'road') return openRoad(P.info || {}); if (P.type === 'market') return openMarket(() => advance(), P.shelf); if (P.type === 'rest') return openRest(() => advance()); if (P.type === 'forge') return openForge(() => advance());
     if (P.type === 'gift') return openPick({ kind: 'gift', offers: P.offers, title: L2('開局禮物', 'Startgeschenk'), sub: L2('選一樣帶上路', 'Wähle eins für unterwegs'), then: () => { run.pend = null; saveRun(); enterStage(); } }); }
   enterStage();
 }
@@ -8122,7 +8328,7 @@ const TUT_STEPS = [
       if (q === 2) { const x = 40 + ((u * 600) % 240); TG2.ball(g, x, 160, null); g.fillStyle = 'rgba(255,110,40,.6)'; g.beginPath(); g.arc(x, 152, 9, 0, 6.28); g.fill(); for (let i = 0; i < 5; i++) { TG2.peg(g, 70 + i * 45, 210, false); if (u * 5 > i) { g.fillStyle = '#ff6a1a'; g.beginPath(); g.moveTo(70 + i * 45, 192); g.quadraticCurveTo(78 + i * 45, 204, 70 + i * 45, 210); g.quadraticCurveTo(62 + i * 45, 204, 70 + i * 45, 192); g.fill(); } } TG2.t(g, L2('燒起來的釘每回合燒妖怪', 'Brennende Stifte versengen Dämonen'), 160, 125, 12, '#ff8c42'); }
       if (q === 3) { g.save(); g.translate(160, 170); g.rotate(Math.PI / 4); g.fillStyle = '#1f9a54'; g.fillRect(-11, -11, 22, 22); g.restore(); TG2.t(g, '義', 160, 170.5, 11, '#fff'); TG2.t(g, `${L2('義', 'Treue')} ${1 + Math.floor(u * 4)}`, 160, 125, 16, '#2ec46a', '#1a0410'); TG2.t(g, L2('之後每顆釘 +義', 'danach +Treue pro Stift'), 160, 220, 12, '#9fffc0'); }
     } },
-  { h: ['一路打到鬼王', 'Bis zum Geisterkönig'], t: ['每章十二關：戰鬥、奇遇、夜市、厲鬼、<b>廟</b>（休息、升級、送神）、頭目。每一章妖怪<b>強好幾倍</b>，你的組合也要跟上。打完回到廟裡：用修為<b>解鎖新法寶、法器</b>，捐香油錢修廟！', 'Jedes Kapitel hat zwölf Etappen: Kampf, Ereignis, Markt, Elite, <b>Tempel</b> (Rast, Verbessern, Entfernen), Boss. Jedes Kapitel sind die Dämonen <b>um ein Vielfaches stärker</b> – dein Aufbau muss mitwachsen. Danach im Tempel: mit Kultivierung <b>neue Kugeln und Talismane</b> freischalten, den Tempel ausbauen!'],
+  { h: ['一路打到鬼王', 'Bis zum Geisterkönig'], t: ['每章是一張<b>地圖</b>：自己選路——戰鬥、奇遇、夜市、厲鬼、<b>廟</b>（休息、開光）、<b>煉丹爐</b>，最上面是頭目。每一章妖怪<b>強好幾倍</b>，你的組合也要跟上。打完回到廟裡：用修為<b>解鎖新法寶、法器</b>，捐香油錢修廟！', 'Jedes Kapitel ist eine <b>Karte</b>: Du wählst deinen Weg – Kampf, Ereignis, Markt, Elite, <b>Tempel</b> (Rast, Weihen), <b>Schmiede</b> – oben wartet der Boss. Jedes Kapitel sind die Dämonen <b>um ein Vielfaches stärker</b> – dein Aufbau muss mitwachsen. Danach im Tempel: mit Kultivierung <b>neue Kugeln und Talismane</b> freischalten, den Tempel ausbauen!'],
     P: 4, d(g, t) {
       const R = ROUTE, cur = Math.floor(t / 0.35) % R.length;
       R.forEach((k, i) => { const x = 20 + i * 25.5, y = 70, T = ROUTE_T[k]; g.fillStyle = 'rgba(14,6,26,.9)'; g.strokeStyle = T.col; g.lineWidth = i === cur ? 3 : 1.5; g.beginPath(); g.arc(x, y, 11, 0, 6.28); g.fill(); g.stroke(); TG2.t(g, T.g, x, y + 0.5, 10, T.col);
@@ -8189,13 +8395,21 @@ function fusePreview(a, b, k) { const t = copyInst(a), dd = bdef(b); t.fx = Obje
 function renderFuse() {
   const F = FZ, A = run.bag.find(x => x.uid === F.a), Bd = run.bag.find(x => x.uid === F.b);
   $('fzH').textContent = F.title || L2('煉丹爐', 'Seelenschmiede');
-  $('fzS').innerHTML = F.price ? `${L2('價錢', 'Preis')} ${cnH(F.price)}　·　${L2('你有', 'Du hast')} ${cnH(run.coins)}` : L2('一次免費煉丹', 'Eine Fusion gratis');
+  $('fzS').innerHTML = F.price ? `${L2('價錢', 'Preis')} ${cnH(F.price)}　·　${L2('你有', 'Du hast')} ${cnH(run.coins)}` : F.sub || L2('一次免費煉丹', 'Eine Fusion gratis');
   const slot = (b, lbl, empty) => b ? `<div class="fzball">${ballIconB(b, 'big')}<b>${ballNm(b)}</b><small>${lbl}</small></div>` : `<div class="fzball empty"><span>?</span><small>${empty}</small></div>`;
+  if (F.result) { // done: show what the new ball does
+    const R = run.bag.find(x => x.uid === F.result);
+    $('fzA').innerHTML = R ? slot(R, L2('煉成', 'Ergebnis')) : ''; $('fzB').innerHTML = `<div class="fzball ash"><span>🔥</span><b>${F.donorNm || ''}</b><small>${L2('燒掉了', 'verbrannt')}</small></div>`; $('fzPot').className = 'fzpot hot';
+    $('fzStep').innerHTML = `<b class="fzdone">✦ ${L2('煉成了！', 'Geschmiedet!')}</b><div class="fzrule">${L2('新的效果用 ▲ 標出來。', 'Neue Wirkung ist mit ▲ markiert.')}</div>`;
+    $('fzFx').innerHTML = ''; $('fzRes').innerHTML = R ? `<div class="fzresh">${L2('現在這顆球會', 'So wirkt die Kugel jetzt')}</div><div class="dcard on fzres" style="cursor:default">${ballRowB(R)}</div>` : '';
+    $('fzBag').innerHTML = ''; $('fzLook').hidden = true; $('fzCancel').hidden = true; $('fzGo').disabled = false; $('fzGo').innerHTML = `${L2('好', 'Weiter')} ▶`; return;
+  }
+  $('fzCancel').hidden = false;
   $('fzA').innerHTML = slot(A, L2('承載', 'Träger'), L2('選要變強的球', 'Kugel, die stärker wird'));
   $('fzB').innerHTML = slot(Bd, L2('獻祭', 'Spender · verbrennt'), L2('選要獻出效果的球', 'Kugel, die ihren Effekt opfert'));
   $('fzPot').className = 'fzpot' + (A && Bd ? ' hot' : A || Bd ? ' warm' : '');
   const step = !A ? 1 : !Bd ? 2 : 3;
-  $('fzStep').innerHTML = [L2('① 選一顆要變強的球（承載）', '① Wähle die Kugel, die stärker werden soll (Träger)'), L2('② 選一顆獻出效果的球——它會在爐裡燒掉', '② Wähle die Spender-Kugel – sie verbrennt im Ofen'), L2('③ 選一個要煉進去的效果', '③ Wähle den Effekt, der übertragen wird')][step - 1]
+  $('fzStep').innerHTML = [L2('① 點一顆球看看它做什麼，再把它放進「承載」', '① Tippe eine Kugel an, lies ihre Wirkung – dann als Träger einsetzen'), L2('② 再選一顆獻出效果的球——它會在爐裡燒掉', '② Jetzt die Spender-Kugel wählen – sie verbrennt im Ofen'), L2('③ 選一個要煉進去的效果，看下面的結果', '③ Effekt wählen, unten siehst du das Ergebnis')][step - 1]
     + `<div class="fzrule">${L2(`每顆球最多帶 ${FZ_MAX} 個外來效果（兩層夢）。香取兩顆中比較貴的。`, `Jede Kugel trägt höchstens ${FZ_MAX} fremde Effekte (zwei Traumebenen). Energie: die teurere der beiden.`)}</div>`;
   let fx = '', res = '';
   if (A && Bd) {
@@ -8204,31 +8418,43 @@ function renderFuse() {
     const P = fusePreview(A, Bd, F.k); res = `<div class="fzresh">${L2('煉成之後', 'Ergebnis')}</div><div class="dcard on" style="cursor:default">${ballRowB(P)}</div>`;
   }
   $('fzFx').innerHTML = fx; $('fzRes').innerHTML = res;
-  $('fzBag').innerHTML = `<div class="fzbagh">${L2('你的袋子', 'Dein Beutel')} · ${run.bag.length}</div>` + bagGridHTML(null, true, b => (step === 1 ? fuseBaseOK(b) : b.uid === F.a || b.uid === F.b || fuseDonorOK(b, A))).replace('class="kgrid"', 'class="kgrid k4"');
+  $('fzBag').innerHTML = `<div class="fzbagh">${L2('你的袋子・點一下看效果', 'Dein Beutel · antippen = Wirkung lesen')} · ${run.bag.length}</div>` + bagGridHTML(F.look, true, b => (step === 1 ? fuseBaseOK(b) : b.uid === F.a || b.uid === F.b || fuseDonorOK(b, A))).replace('class="kgrid"', 'class="kgrid k4"');
   for (const [u, c] of [[F.a, 'fzA'], [F.b, 'fzB']]) { const el = $('fzBag').querySelector(`.mcard[data-u="${u}"]`); if (el) el.classList.add(c, 'sel'); }
+  // the ball you are looking at: its effects, and what you can do with it
+  const lk = F.look != null ? run.bag.find(x => x.uid === F.look) : null, lb = $('fzLook'); lb.hidden = !lk;
+  if (lk) {
+    let acts = '', why = '';
+    if (lk.uid === F.a) acts = `<button class="btn ghost" data-fz="outA">${L2('拿出來', 'Herausnehmen')}</button>`;
+    else if (lk.uid === F.b) acts = `<button class="btn ghost" data-fz="outB">${L2('拿出來', 'Herausnehmen')}</button>`;
+    else if (!A) { if (fuseBaseOK(lk)) acts = `<button class="btn purple" data-fz="a">${L2('放進「承載」', 'Als Träger einsetzen')}</button>`; else why = (lk.fz || []).length >= FZ_MAX ? L2('這顆已經帶滿兩層夢了', 'Diese Kugel trägt schon zwei fremde Effekte') : L2('這顆不能當承載', 'Diese Kugel kann nichts tragen'); }
+    else { if (fuseDonorOK(lk, A)) acts = `<button class="btn purple" data-fz="b">${Bd ? L2('換成這顆當獻祭', 'Als Spender tauschen') : L2('放進「獻祭」', 'Als Spender einsetzen')}</button>`; else why = L2('這顆沒有可以煉進去的效果', 'Diese Kugel hat keinen übertragbaren Effekt'); }
+    lb.innerHTML = `<div class="lkh"><span>${lk.uid === F.a ? L2('承載', 'TRÄGER') : lk.uid === F.b ? L2('獻祭', 'SPENDER') : L2('看一看', 'ANSEHEN')}</span><button data-fz="x" aria-label="close">✕</button></div><div class="dcard on" style="cursor:default">${ballRowB(lk)}</div>${why ? `<div class="why">${why}</div>` : ''}${acts ? `<div class="lka">${acts}</div>` : ''}`;
+  }
   const poor = F.price && run.coins < F.price;
   $('fzGo').disabled = !(A && Bd && F.k) || poor; $('fzGo').innerHTML = poor ? L2(`還差 ${cnH(F.price - run.coins)}`, `Dir fehlen ${cnH(F.price - run.coins)}`) : `${L2('煉！', 'Verschmelzen!')}${F.price ? ' ' + cnH(F.price) : ''}`;
   $('fzCancel').textContent = t('cancel');
 }
 function closeFuse(ok) { const F = FZ; hide('ovFuse'); FZ = null; paused = F ? F.wasP : false; if (!F) return; if (ok) { if (F.done) F.done(); } else if (F.cancel) setTimeout(F.cancel, 30); }
-$('fzBag').addEventListener('click', e => {
-  const el = e.target.closest('.mcard'); if (!el || !FZ) return; const u = +el.dataset.u, b = run.bag.find(x => x.uid === u), A = run.bag.find(x => x.uid === FZ.a);
-  if (u === FZ.a) { FZ.a = FZ.b = null; FZ.k = null; } else if (u === FZ.b) { FZ.b = null; FZ.k = null; }
-  else if (!FZ.a) { if (!fuseBaseOK(b)) { toast((b.fz || []).length >= FZ_MAX ? L2('這顆已經帶滿兩層夢了', 'Diese Kugel trägt schon zwei fremde Effekte') : L2('這顆不能當承載', 'Diese Kugel kann nichts tragen'), 1500); return; } FZ.a = u; }
-  else { if (!fuseDonorOK(b, A)) { toast(L2('這顆沒有可以煉的效果', 'Diese Kugel hat keinen übertragbaren Effekt'), 1500); return; } FZ.b = u; FZ.k = null; }
-  SFX.wood(); renderFuse();
+$('fzBag').addEventListener('click', e => { const el = e.target.closest('.mcard'); if (!el || !FZ) return; const u = +el.dataset.u; FZ.look = FZ.look === u ? null : u; SFX.wood(); renderFuse(); });
+$('fzLook').addEventListener('click', e => {
+  const b = e.target.closest('[data-fz]'); if (!b || !FZ) return; const a = b.dataset.fz, u = FZ.look;
+  if (a === 'x') FZ.look = null; else if (a === 'outA') { FZ.a = FZ.b = null; FZ.k = null; } else if (a === 'outB') { FZ.b = null; FZ.k = null; }
+  else if (a === 'a') { FZ.a = u; FZ.look = null; } else if (a === 'b') { FZ.b = u; FZ.k = null; FZ.look = null; }
+  SFX.wood(); renderFuse(); if (a === 'a' || a === 'b') $('fzBody').scrollTop = 0;
 });
 $('fzFx').addEventListener('click', e => { const c = e.target.closest('.fzchip'); if (!c || !FZ) return; FZ.k = c.dataset.k; SFX.wood(); renderFuse(); });
-$('fzA').onclick = () => { if (FZ && FZ.a) { FZ.a = FZ.b = null; renderFuse(); } };
-$('fzB').onclick = () => { if (FZ && FZ.b) { FZ.b = null; renderFuse(); } };
-$('fzCancel').onclick = $('fzX').onclick = () => closeFuse(false);
+$('fzA').onclick = () => { if (FZ && FZ.a && !FZ.result) { FZ.look = FZ.a; renderFuse(); } };
+$('fzB').onclick = () => { if (FZ && FZ.b && !FZ.result) { FZ.look = FZ.b; renderFuse(); } };
+$('fzCancel').onclick = $('fzX').onclick = () => { if (FZ && FZ.result) closeFuse(true); else closeFuse(false); };
 $('fzGo').onclick = () => {
-  const F = FZ; if (!F) return; const A = run.bag.find(x => x.uid === F.a), Bd = run.bag.find(x => x.uid === F.b); if (!A || !Bd || !F.k || (F.price && run.coins < F.price)) return;
+  const F = FZ; if (!F) return; if (F.result) { closeFuse(true); return; }
+  const A = run.bag.find(x => x.uid === F.a), Bd = run.bag.find(x => x.uid === F.b); if (!A || !Bd || !F.k || (F.price && run.coins < F.price)) return;
   if (F.price) run.coins -= F.price;
-  fuseBalls(A, Bd, F.k); if (F.onFuse) F.onFuse();
-  $('fzGo').disabled = true; const w = $('ovFuse'); w.classList.add('blast'); SFX.suona([[7, 0.12], [10, 0.12], [14, 0.12], [19, 0.5]]); SFX.sheng();
-  setTimeout(() => { w.classList.remove('blast'); toast(`<b style="color:#d9a3ff">${ballNm(A)}</b> ${L2('煉成了！', 'ist geschmiedet!')}<br>${ballTxt(A)}`, 3600); saveRun(); closeFuse(true); }, 1150);
+  F.donorNm = ballNm(Bd); fuseBalls(A, Bd, F.k); if (F.onFuse) F.onFuse(); saveRun();
+  $('fzGo').disabled = true; F.look = null; $('fzLook').hidden = true; const w = $('ovFuse'); w.classList.add('blast'); SFX.suona([[7, 0.12], [10, 0.12], [14, 0.12], [19, 0.5]]); SFX.sheng();
+  setTimeout(() => { w.classList.remove('blast'); if (FZ !== F) return; F.result = A.uid; renderFuse(); $('fzBody').scrollTop = 0; }, 1150);
 };
+
 /* ================= 每週遶境: the weekly run — same route, demons, boards and curse for everyone; one try per week and mode =================
    Progress is measured in stages: each 厲鬼 (mini-boss) beaten unlocks a reward tier, the 頭目 the last one.
    Playing together pays more (duo ×1.5, quartet ×2 later). */
