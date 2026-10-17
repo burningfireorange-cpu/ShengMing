@@ -858,7 +858,13 @@ body:has(#ovMk:not([hidden])) #toast{top:auto;bottom:calc(env(safe-area-inset-bo
 .ov.title .tlogo2{text-shadow:0 3px 0 #6a0a14,0 0 26px rgba(255,170,80,.45)}
 .tscene{flex:1 1 auto;min-height:190px;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .tcaps{flex:none;width:100%;height:38px;margin-top:-6px}
-@media (max-height:640px){.ov.title .tscene{min-height:130px}.ov.title .logo.tlogo2{font-size:30px}.ov.title .tbot{gap:6px}.tplay #bStart{font-size:19px;padding-top:9px;padding-bottom:9px}.ov.title .wkbtn{padding:6px 12px}}
+/* compact bottom menu (~15% lower): the picture of god & temple gets the room */
+#ovTitle .tbot{gap:6px}
+#ovTitle .tplay #bStart{padding-top:11px;padding-bottom:11px;font-size:20px}#ovTitle .tplay #bStart small{font-size:11px}
+#ovTitle .tplay .nrbtn{padding-top:6px;padding-bottom:6px;font-size:14px}
+#ovTitle .wkbtn{padding:5px 12px;margin-top:0}#ovTitle .wkbtn .wkic{width:26px;height:26px;font-size:14px}#ovTitle .wkbtn .wkt2 b{font-size:15px}#ovTitle .wkbtn small{font-size:10.5px}
+#ovTitle .tnav{margin-top:0;padding:3px 4px}#ovTitle .tnav button{padding:2px 0;gap:1px}#ovTitle .tnav i{width:30px;height:30px;font-size:15px;border-radius:9px}#ovTitle .tnav span{font-size:10.5px}#ovTitle .tnav .ndot{right:calc(50% - 20px)}
+@media (max-height:640px){.ov.title .tscene{min-height:130px}.ov.title .logo.tlogo2{font-size:30px}#ovTitle .tbot{gap:5px}#ovTitle .tplay #bStart{font-size:18px;padding-top:8px;padding-bottom:8px}#ovTitle .wkbtn{padding:4px 12px}}
 @media (max-width:350px){.tplay #bStart{font-size:18px;letter-spacing:.02em}}
 .tcap{appearance:none;position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0;padding:2px 8px;border:0;background:none;font:inherit;color:#fff1cf;cursor:pointer;line-height:1.15;white-space:nowrap;text-shadow:0 1px 0 #000,0 0 8px rgba(0,0,0,.9)}
 .tcap b{font-size:14px;font-weight:900}.tcap small{font-size:10.5px;font-weight:700;color:#d9c6e6}
@@ -1506,6 +1512,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
       <button class="btn ghost" id="bMoreAch">成就 · Erfolge</button>
       <button class="btn ghost" id="bMoreName">名號 · Name</button>
       <button class="btn ghost" id="bMoreTut">教學 · Tutorial</button>
+      <button class="btn ghost" id="bMore3d"></button>
       <button class="btn ghost" id="bLang">中文 ⇄ Deutsch</button>
       <button class="btn ghost" id="bSnd"></button>
       <button class="btn ghost" id="bMus"></button>
@@ -1586,7 +1593,7 @@ html[lang=de] #fzBag .mcard.fzA::after{content:'Träger'}html[lang=de] #fzBag .m
       <div class="t3box" id="t3Box" hidden>
         <canvas id="t3Cv"></canvas>
         <div class="t3hint" id="t3Hint">⟲ 左右拖曳轉一轉 · Ziehen zum Drehen</div>
-        <div class="t3ui top"><button class="t3c" id="t3Tod"></button><span class="t3sp"></span><button class="t3c ic" id="t3Full" aria-label="Vollbild">⛶</button></div>
+        <div class="t3ui top"><button class="t3c" id="t3Tod"></button><button class="t3c" id="t3Bg"></button><span class="t3sp"></span><button class="t3c ic" id="t3Full" aria-label="Vollbild">⛶</button></div>
         <div class="t3ui"><span class="t3sp"></span><button class="t3c ph" id="t3Photo"><i>📷</i><span>拍照 · Foto</span></button></div>
         <button class="t3c ic t3x" id="t3FullX" aria-label="close" hidden>✕</button>
       </div>
@@ -7679,14 +7686,36 @@ function showTitle() {
   if (!TITLE_HERO) TITLE_HERO = (LOOK || LOOK_DEF).hero; if (!HEROES[TITLE_HERO] || HEROES[TITLE_HERO].soon) TITLE_HERO = 'taizi'; setTitleHero(TITLE_HERO);
   applyLang(); show('ovTitle'); titleSceneStart();
 }
-/* the title shows your own temple with your god standing in front of it — full width, behind the whole menu; the ground ends on the bottom edge of #tScene */
-const TSC = { on: false, jump: 0, fr: 0, m: null };
-function titleSceneStart() { if (!TSC.on) { TSC.on = true; requestAnimationFrame(titleSceneLoop); } }
+/* the title shows your own temple with your god standing in front of it — full width, behind the whole menu; the ground ends on the bottom edge of #tScene.
+   With WebGL the temple is the real 3D one (same canvas as the temple screen, slow camera sway, same time of day & scenery);
+   the 2D picture shows at once and cross-fades into 3D, and slow devices fall back to 2D on their own. */
+const TSC = { on: false, jump: 0, fr: 0, m: null, d3: 0, k3: 0, wait: 0, ft: [], tl: 0, gc: null };
+const t3TitlePref = () => store.get('t3title', 'on'); // on | off | slow (auto-off) | force (no speed check)
+const t3v = () => { try { return T3V; } catch (e) { return null; } }; // t3dui.js loads after this file
+function titleSceneStart() { if (!TSC.on) { TSC.on = true; requestAnimationFrame(titleSceneLoop); } title3dTry(); }
+function title3dTry() {
+  if (TSC.dead || !/^(on|force)$/.test(t3TitlePref()) || !t3v() || (T3V.V.tried && !T3V.ok) || TSC.wait) return;
+  if (TSC.d3 && T3V.V.mode === 'title') return;
+  const go = () => { TSC.wait = 0; if ($('ovTitle').hidden) return; const warm = T3V.ok && !!T3V.V.R; let ok = false; try { ok = T3V.toTitle($('ovTitle'), $('tSceneCv')); } catch (e) { console.warn(e); }
+    if (ok) { TSC.d3 = 1; TSC.k3 = warm ? 1 : 0; TSC.ft = []; TSC.tl = 0; } }; // back from another screen: straight into 3D, no 2D flash
+  if (T3V.ok) go(); else TSC.wait = setTimeout(go, 380); // the very first time: let the 2D title paint first
+}
+function title3dOff(why) { TSC.d3 = 0; TSC.k3 = 0; try { T3V.toEmbed(); } catch (e) {} if (why) store.set('t3title', why); }
 function titleLayout() {
   const ov = $('ovTitle'), sc = $('tScene'), W = ov.clientWidth || 390, yB = sc.offsetTop + sc.offsetHeight, S = tplStage(templeLevel());
   const cw = [285, 300, 320, 335, 350, 365, 385, 400, 400][Math.min(8, S)], s = Math.max(W / 400, Math.min(W / cw, yB / 250)); // small shrine: zoom in; big temple: show it all
   const cx = Math.min(200, 30 + 400 * (W / s / 400) / 2); // keep the god's side of the picture in view
   return { W, yB, H: yB + 44, s, ox: W / 2 - cx * s, oy: yB - 300 * s };
+}
+/* where the god stands: 2D = on the scene's forecourt; 3D = big in the left foreground */
+function titleGodAt(M, d3) {
+  if (!d3) return { x: M.ox + 92 * M.s, y: M.oy + 296 * M.s, s: 1.1 * M.s };
+  const s = Math.max(1.05, Math.min(M.W / 275, (M.yB - 120) / 290)); return { x: Math.max(64 * s, M.W * 0.21), y: M.yB - 10, s };
+}
+function titleSpeed(dtMs) { // median frame gap over ~2 s; too slow → lower resolution once, then 2D
+  if (t3TitlePref() === 'force') return; if (dtMs > 400) { TSC.ft = []; return; } TSC.ft.push(dtMs); if (TSC.ft.length < 48) return;
+  const m = TSC.ft.slice(8).sort((a, b) => a - b)[20]; TSC.ft = [];
+  if (m > 52) { if ((T3V.V.tdpr || 1.4) > 1.01) T3V.V.tdpr = 1; else title3dOff('slow'); }
 }
 function titleSceneLoop() {
   if ($('ovTitle').hidden) { TSC.on = false; return; }
@@ -7696,27 +7725,47 @@ function titleSceneLoop() {
   const pw = Math.round(M.W * dpr), ph = Math.round(M.H * dpr);
   if (c.width !== pw || c.height !== ph) { c.width = pw; c.height = ph; c.style.width = M.W + 'px'; c.style.height = M.H + 'px'; }
   const g = c.getContext('2d'); TSC.m = M;
-  g.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const SK = tcResolve(TCOS.sel).sky || ['#120726', '#3b1150', '#7a2050'];
-  g.fillStyle = SK[0]; g.fillRect(0, 0, M.W, M.H);
-  if (M.oy > 0) for (let i = 0; i < 60; i++) { const x = (i * 97.3) % M.W, y = (i * 61.7) % M.oy; g.fillStyle = `rgba(255,240,210,${0.2 + 0.35 * Math.abs(Math.sin(now * 1.1 + i))})`; g.fillRect(x, y, 1.3, 1.3); } // the sky goes on above the picture
-  g.setTransform(dpr * M.s, 0, 0, dpr * M.s, dpr * M.ox, dpr * M.oy);
-  drawTempleScene(g, { U: TEMPLE, L: templeLevel(), t: now });
+  let d3 = false;
+  if (TSC.d3 && T3V.V.mode === 'title') {
+    const ar = clamp((M.W / M.H - 0.62) / 0.7, 0, 1), tf = Object.assign({ sx: 0.1 - ar * 0.04, sy: 0.13 - ar * 0.11, z: 0.66 + ar * 0.42 }, window.TF_DBG || {}); // phone: close & low; wide screens: step back
+    try { d3 = T3V.titleFrame(M.W, M.H, tf); } catch (e) { console.error(e); TSC.dead = 1; title3dOff(''); }
+    const t = performance.now(), dtm = TSC.tl ? t - TSC.tl : 0; if (d3 && dtm) titleSpeed(dtm); TSC.tl = t;
+    if (d3) TSC.k3 = Math.min(1, TSC.k3 + Math.min(0.25, dtm / 600)); // ~0.6 s cross-fade, whatever the frame rate
+  } else { TSC.k3 = 0; title3dTry(); }
+  const k3 = d3 ? TSC.k3 * TSC.k3 * (3 - 2 * TSC.k3) : 0;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, M.W, M.H);
+  if (k3 < 1) { // the 2D picture (and the cross-fade into 3D)
+    g.globalAlpha = 1 - k3;
+    const SK = tcResolve(TCOS.sel).sky || ['#120726', '#3b1150', '#7a2050'];
+    g.fillStyle = SK[0]; g.fillRect(0, 0, M.W, M.H);
+    if (M.oy > 0) for (let i = 0; i < 60; i++) { const x = (i * 97.3) % M.W, y = (i * 61.7) % M.oy; g.fillStyle = `rgba(255,240,210,${0.2 + 0.35 * Math.abs(Math.sin(now * 1.1 + i))})`; g.fillRect(x, y, 1.3, 1.3); } // the sky goes on above the picture
+    g.setTransform(dpr * M.s, 0, 0, dpr * M.s, dpr * M.ox, dpr * M.oy);
+    drawTempleScene(g, { U: TEMPLE, L: templeLevel(), t: now });
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.globalAlpha = 1;
+  }
+  // the god: drawn on its own little layer so it can take the 3D light (night blue, dusk warm)
   TSC.jump = Math.max(0, TSC.jump - 1 / 15);
-  const keep = X; X = g; g.save(); g.translate(92, 296); g.scale(1.1, 1.1);
-  g.save(); g.globalCompositeOperation = 'lighter'; tC(g, 0, -50, 46, `rgba(255,200,110,${0.1 + Math.sin(now * 2) * 0.03})`); g.restore();
+  const A = titleGodAt(M, false), Bp = titleGodAt(M, true), G = k3 > 0 ? { x: A.x + (Bp.x - A.x) * k3, y: A.y + (Bp.y - A.y) * k3, s: A.s + (Bp.s - A.s) * k3 } : A; TSC.god = G;
+  const gc = TSC.gc || (TSC.gc = document.createElement('canvas')), bw = 160, bh = 200, gw2 = Math.ceil(bw * G.s * dpr), gh2 = Math.ceil(bh * G.s * dpr);
+  if (gc.width !== gw2 || gc.height !== gh2) { gc.width = gw2; gc.height = gh2; }
+  const q = gc.getContext('2d'); q.setTransform(1, 0, 0, 1, 0, 0); q.clearRect(0, 0, gw2, gh2); q.setTransform(dpr * G.s, 0, 0, dpr * G.s, dpr * G.s * bw / 2, dpr * G.s * (bh - 26));
+  const keep = X; X = q;
   try { drawHero(null, 0, 0, now, Math.sin(Math.min(1, TSC.jump) * Math.PI) * 18, 0, LKT || LK); } catch (e) {}
-  g.restore(); X = keep;
-  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  X = keep;
+  if (k3 > 0) { const per = T3V.period(), tint = per === 'night' ? 'rgba(46,34,120,.22)' : per === 'dusk' ? 'rgba(255,120,60,.13)' : ''; if (tint) { q.setTransform(1, 0, 0, 1, 0, 0); q.globalCompositeOperation = 'source-atop'; q.globalAlpha = k3; q.fillStyle = tint; q.fillRect(0, 0, gw2, gh2); q.globalCompositeOperation = 'source-over'; q.globalAlpha = 1; } }
+  g.save(); g.globalCompositeOperation = 'lighter'; const gr = g.createRadialGradient(G.x, G.y - 50 * G.s, 0, G.x, G.y - 50 * G.s, 58 * G.s); gr.addColorStop(0, `rgba(255,200,110,${0.16 + Math.sin(now * 2) * 0.04})`); gr.addColorStop(1, 'rgba(255,200,110,0)'); g.fillStyle = gr; g.fillRect(G.x - 60 * G.s, G.y - 110 * G.s, 120 * G.s, 120 * G.s); g.restore();
+  if (k3 > 0) { g.save(); g.globalAlpha = 0.45 * k3; g.fillStyle = '#000'; g.beginPath(); g.ellipse(G.x, G.y + 2 * G.s, 30 * G.s, 7 * G.s, 0, 0, 6.29); g.fill(); g.restore(); } // a soft contact shadow on the 3D ground
+  g.drawImage(gc, G.x - bw / 2 * G.s, G.y - (bh - 26) * G.s, bw * G.s, bh * G.s);
   const gt = g.createLinearGradient(0, 0, 0, 96); gt.addColorStop(0, 'rgba(14,6,26,.6)'); gt.addColorStop(1, 'rgba(14,6,26,0)'); g.fillStyle = gt; g.fillRect(0, 0, M.W, 96); // wallet & logo stay readable
   const gb = g.createLinearGradient(0, M.yB - 26, 0, M.H); gb.addColorStop(0, 'rgba(14,6,26,0)'); gb.addColorStop(0.45, 'rgba(14,6,26,.8)'); gb.addColorStop(1, '#0e061a'); g.fillStyle = gb; g.fillRect(0, M.yB - 26, M.W, M.H - M.yB + 26); // ground fades into the menu
   const eg = $('bSceneGod'), et = $('bSceneTpl'), gw = eg.offsetWidth / 2, tw = et.offsetWidth / 2, cap = (el, v) => { v = Math.round(v) + 'px'; if (el.style.left !== v) el.style.left = v; };
-  const gx = Math.max(gw + 6, M.ox + 92 * M.s), tx = Math.min(M.W - tw - 6, Math.max(M.ox + 214 * M.s, gx + gw + tw + 14)); // name plates under god and temple, never on top of each other
+  let tc = M.ox + 214 * M.s; if (k3 > 0) { const f = T3V.V.R && T3V.V.R.focus, p = f && T3V.project([f.at[0], 0, f.at[2]]); if (p) tc = tc + (p[0] - tc) * k3; }
+  const gx = Math.max(gw + 6, G.x), tx = Math.min(M.W - tw - 6, Math.max(tc, gx + gw + tw + 14)); // name plates under god and temple, never on top of each other
   cap(eg, gx); cap(et, tx);
 }
 const templeCanBuild = () => { const XH = xianghuo(); return UPGS.some(u => { const k = upg(u.id) + 1; return k <= u.mx && XH >= upgReq(u, k) && CRED >= upgCost(u, k); }); };
 const titleGod = () => { TSC.jump = 1; SFX.sheng(); setTimeout(() => { if (!$('ovTitle').hidden) openGods(); }, 170); };
-$('tScene').onclick = e => { const M = TSC.m; if (!M) return; const r = $('ovTitle').getBoundingClientRect(), x = (e.clientX - r.left - M.ox) / M.s; if (x < 150) titleGod(); else openTemple(); };
+$('tScene').onclick = e => { const G = TSC.god; if (!G) return; const r = $('ovTitle').getBoundingClientRect(), x = e.clientX - r.left; if (x < G.x + 58 * G.s) titleGod(); else openTemple(); };
 $('bSceneTpl').onclick = () => openTemple();
 $('bSceneGod').onclick = () => titleGod();
 $('bTitleGods').onclick = () => { auInit(); auResume(); openGods(); };
@@ -7864,7 +7913,10 @@ $('bTitleMore').onclick = () => { renderMore(); show('ovMore'); };
 function renderMore() {
   $('bSnd').textContent = t(AU.on ? 'sndOn' : 'sndOff'); $('bMus').textContent = t(AU.mus ? 'musOn' : 'musOff');
   $('bMoreBag').innerHTML = `${L2('福袋', 'Glückstaschen')} ×${BAGS}`;
+  const p3 = t3TitlePref(), on3 = p3 === 'on' || p3 === 'force'; $('bMore3d').innerHTML = on3 ? L2('首頁 3D：開', '3D-Startbild: An') : p3 === 'slow' ? L2('首頁 3D：關（太慢）', '3D-Startbild: Aus (zu langsam)') : L2('首頁 3D：關', '3D-Startbild: Aus');
+  $('bMore3d').hidden = !t3v() || (T3V.V.tried && !T3V.ok);
 }
+$('bMore3d').onclick = () => { const p3 = t3TitlePref(); if (p3 === 'on' || p3 === 'force') title3dOff('off'); else { store.set('t3title', p3 === 'slow' ? 'force' : 'on'); if (T3V.V) T3V.V.tdpr = 1.4; titleSceneStart(); } SFX.wood && SFX.wood(); renderMore(); };
 $('bMoreX').onclick = () => { hide('ovMore'); renderTitle(); };
 $('bMoreBag').onclick = () => { hide('ovMore'); openBag(); };
 $('bMoreCodex').onclick = () => { hide('ovMore'); openCodex(); };
@@ -8013,7 +8065,7 @@ function eventResult(res) {
 
 /* ---------- temple upgrades (廟宇修建) ---------- */
 let TPLA = { on: false, fx: null, parts: [], stage: 0 };
-function openTemple() { renderTemple(); hide('ovTitle'); show('ovTemple'); tutOnce('temple'); T3V.init(); TPLA.stage = tplStage(templeLevel()); if (!TPLA.on) { TPLA.on = true; requestAnimationFrame(templeLoop); } }
+function openTemple() { renderTemple(); hide('ovTitle'); show('ovTemple'); tutOnce('temple'); T3V.init(); T3V.toEmbed(); TPLA.stage = tplStage(templeLevel()); if (!TPLA.on) { TPLA.on = true; requestAnimationFrame(templeLoop); } }
 function templeLoop() {
   if ($('ovTemple').hidden) { TPLA.on = false; return; }
   if (T3V.ok) { try { T3V.frame(); } catch (e) { console.error(e); } requestAnimationFrame(templeLoop); return; }
@@ -10040,8 +10092,8 @@ const T3X = (() => {
       g.fillStyle = '#1f6f78'; g.fillRect(0, 0, w, h); g.fillStyle = '#f5c542'; g.fillRect(0, 0, w, 3); g.fillRect(0, h - 3, w, 3);
       for (let x = 16; x < w; x += 32) { g.fillStyle = 'rgba(245,197,66,.9)'; g.beginPath(); g.ellipse(x, 16, 10, 7, 0, 0, 6.28); g.fill(); g.fillStyle = '#2a4a9a'; g.beginPath(); g.ellipse(x, 16, 6, 4, 0, 0, 6.28); g.fill(); g.fillStyle = '#e8452c'; g.beginPath(); g.arc(x + 16, 16, 3.4, 0, 6.28); g.fill(); }
     }),
-    clere: () => cv(128, 64, (g, w, h) => { g.fillStyle = '#7a1818'; g.fillRect(0, 0, w, h); for (let x = 8; x < w; x += 32) { g.fillStyle = '#1f6f78'; g.fillRect(x, 14, 18, 36); g.strokeStyle = '#f5c542'; g.lineWidth = 2; g.strokeRect(x, 14, 18, 36); g.strokeStyle = 'rgba(245,197,66,.6)'; g.lineWidth = 1; for (let y = 20; y < 50; y += 6) { g.beginPath(); g.moveTo(x, y); g.lineTo(x + 18, y); g.stroke(); } } }),
-    winGlow: () => cv(128, 64, (g, w, h) => { g.fillStyle = '#4a0e0e'; g.fillRect(0, 0, w, h); for (let x = 6; x < w; x += 32) { const gr = g.createLinearGradient(0, 12, 0, 54); gr.addColorStop(0, '#ffe2a8'); gr.addColorStop(1, '#ff9a4a'); g.fillStyle = gr; g.fillRect(x, 12, 20, 42); g.strokeStyle = '#3a0a0a'; g.lineWidth = 2; for (let y = 18; y < 54; y += 7) { g.beginPath(); g.moveTo(x, y); g.lineTo(x + 20, y); g.stroke(); } g.beginPath(); g.moveTo(x + 10, 12); g.lineTo(x + 10, 54); g.stroke(); } }),
+    clere: (base = '#7a1818') => cv(128, 64, (g, w, h) => { g.fillStyle = base; g.fillRect(0, 0, w, h); for (let x = 8; x < w; x += 32) { g.fillStyle = '#1f6f78'; g.fillRect(x, 14, 18, 36); g.strokeStyle = '#f5c542'; g.lineWidth = 2; g.strokeRect(x, 14, 18, 36); g.strokeStyle = 'rgba(245,197,66,.6)'; g.lineWidth = 1; for (let y = 20; y < 50; y += 6) { g.beginPath(); g.moveTo(x, y); g.lineTo(x + 18, y); g.stroke(); } } }),
+    winGlow: (base = '#4a0e0e') => cv(128, 64, (g, w, h) => { g.fillStyle = base; g.fillRect(0, 0, w, h); for (let x = 6; x < w; x += 32) { const gr = g.createLinearGradient(0, 12, 0, 54); gr.addColorStop(0, '#ffe2a8'); gr.addColorStop(1, '#ff9a4a'); g.fillStyle = gr; g.fillRect(x, 12, 20, 42); g.strokeStyle = '#3a0a0a'; g.lineWidth = 2; for (let y = 18; y < 54; y += 7) { g.beginPath(); g.moveTo(x, y); g.lineTo(x + 20, y); g.stroke(); } g.beginPath(); g.moveTo(x + 10, 12); g.lineTo(x + 10, 54); g.stroke(); } }),
   };
   /* parametrised decals */
   const D = {
@@ -10144,6 +10196,7 @@ const T3T = (() => {
   const MT = { plaster: [0.92, 0, 0, 0], lac: [0.3, 0, 0, 0.6], tile: [0.42, 0, 0, 0.45], gold: [0.26, 1, 0.06, 0.4], bronze: [0.36, 0.9, 0, 0.2], stone: [0.85, 0, 0, 0.02], wood: [0.7, 0, 0, 0.05], cloth: [0.95, 0, 0, 0],
     glaze: [0.22, 0, 0.05, 0.9], lamp: [0.45, 0, 1.3, 0.4], neon: [0.4, 0, 2.4, 0], glow: [0.6, 0, 0.9, 0], fire: [0.9, 0, 2.2, 0], unlit: [1, 0, 0, -1], leaf: [0.85, 0, 0, 0], skin: [0.6, 0, 0.04, 0], cloud: [0.95, 0, 0.35, 0] };
   const SH = ['#2ec4a6', '#3a7bd5', '#f5c542', '#e8452c', '#7fd36a', '#ff8fb0'];
+  const mixHx = (a, b, k) => '#' + [0, 1, 2].map(i => { const x = parseInt(a.slice(1 + i * 2, 3 + i * 2), 16), y = parseInt(b.slice(1 + i * 2, 3 + i * 2), 16); return Math.round(x + (y - x) * k).toString(16).padStart(2, '0'); }).join(''); // hex in, hex out (the 3D colours are hex)
   const memo = new Map(), M_ = (k, f) => { let m = memo.get(k); if (!m) memo.set(k, (m = f())); return m; };
   /* a box with its real size (bottom at y = 0). fit = texture aspect → v spans the face height, u tiles with that aspect */
   function boxM(w, h, d, k = 1, fit = 0) {
@@ -10197,7 +10250,9 @@ const T3T = (() => {
     const catenary = (a, b, sag, n) => { const P = []; for (let i = 0; i <= n; i++) { const k = i / n; P.push([a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k - sag * 4 * k * (1 - k), a[2] + (b[2] - a[2]) * k]); } return P; };
     /* ---------- colours (廟飾) ---------- */
     const wallC = C.wall || TPL.red, roofC = C.roof ? C.roof[0] : gold ? TPL.tileG : TPL.tile, roofD = C.roof ? C.roof[1] : gold ? TPL.tileGL : TPL.tileL;
-    const ridgeC = gold ? '#c99a2a' : '#6a1e16', eaveC = gold ? '#8a5a10' : '#4a1a0e', colC = TPL.col, goldC = TPL.gold;
+    const ridgeC = gold ? '#c99a2a' : '#6a1e16', eaveC = gold ? '#8a5a10' : '#4a1a0e', colC = C.wall ? mixHx(C.wall, '#ffffff', 0.12) : TPL.col, goldC = TPL.gold; // plain columns follow the chosen wall colour
+    // a chosen wall colour also paints the clerestory and the glowing window band, so it shows on the halls, not only on the compound wall
+    const clereK = C.wall ? dtx('clere|' + C.wall, () => T3X.S.clere(mixHex(C.wall, '#000000', 0.25))) : 'clere', winK = C.wall ? dtx('winGlow|' + C.wall, () => T3X.S.winGlow(mixHex(C.wall, '#000000', 0.55))) : 'winGlow';
     const lanC = i => (C.lan === 'rainbow' ? T3X.hsl(i * 47 + 10) : C.lan || '#e02a2a');
     const dragC = C.dragon || ['#2ec4a6', '#f5c542', '#e8452c'];
 
@@ -10261,7 +10316,7 @@ const T3T = (() => {
       cyl(x, cy - 0.4 * s - 0.24 * s, z, 0.03 * s, 0.24 * s, goldC, MT.gold, 5);
       R.lan.push({ p: [x, cy, z], s, c });
     }
-    function lamps(x, yb, z, w, rows, ry = 0) { const k = dtx(`d:lamps|${C.lamp || ''}|${rows}`, () => T3X.D.lamps(C.lamp, rows)); box(x, yb - 0.05, z - 0.06, w + 0.16, rows * 0.36 + 0.14, 0.1, '#5a1a10', MT.wood, null, ry); quad(x, yb, z, w, rows * 0.36, ry, k, '#ffffff', MT.glow); R.lights.push({ p: [x, yb + rows * 0.18, z + 0.5], c: [1.4, 0.9, 0.5], r: 3, pr: 2 }); }
+    function lamps(x, yb, z, w, rows, ry = 0) { const k = dtx(`d:lamps|${C.lamp || ''}|${rows}`, () => T3X.D.lamps(C.lamp, rows)); box(x, yb - 0.05, z - 0.06, w + 0.16, rows * 0.36 + 0.14, 0.1, C.wall ? mixHx(C.wall, '#000000', 0.45) : '#5a1a10', MT.wood, null, ry); quad(x, yb, z, w, rows * 0.36, ry, k, '#ffffff', MT.glow); R.lights.push({ p: [x, yb + rows * 0.18, z + 0.5], c: [1.4, 0.9, 0.5], r: 3, pr: 2 }); }
     /* a front wall slab with real door openings (so the statue can stand inside the open centre door) */
     function facade(x0, x1, yb, yt, zf, depth, ops, col) {
       const xs = [x0, x1]; ops.forEach(q => xs.push(q.x - q.w / 2, q.x + q.w / 2)); xs.sort((a, b) => a - b);
@@ -10413,8 +10468,8 @@ const T3T = (() => {
     if (S === 0) { // 小祠 roadside shrine under a banyan
       hw = 2.1; wallTop = 2.3; frontZ = 0.9;
       box(0, 0, 0, 5.2, 0.25, 3.6, '#9a9aa6', MT.stone, 'stone');
-      box(0, 0.25, -0.55, 4.2, 2.05, 1.6, '#8a3a2a', MT.plaster, 'brick', 0, 0.6);
-      facade(-2.1, 2.1, 0.25, 2.3, 0.9, 0.65, [{ x: 0, w: 1.6, h: 1.55, kind: null }], '#8a3a2a');
+      box(0, 0.25, -0.55, 4.2, 2.05, 1.6, (C.wall || '#8a3a2a'), MT.plaster, 'brick', 0, 0.6);
+      facade(-2.1, 2.1, 0.25, 2.3, 0.9, 0.65, [{ x: 0, w: 1.6, h: 1.55, kind: null }], (C.wall || '#8a3a2a'));
       box(0, 1.85, 0.93, 2.6, 0.32, 0.06, '#c4161c', MT.lac); quad(0, 1.87, 0.97, 1.5, 0.28, 0, dtx('d:plq|福德祠|#c4161c', () => T3X.D.plaque('福德祠', '#c4161c', '#f5c542', '#c4161c')), '#ffffff', MT.glaze);
       // 土地公 in the niche
       const M0 = T(0, 0.27, 0.5); lathe([[0, 0.7], [0.14, 0.66], [0.26, 0.3], [0.3, 0], [0, 0]], 0, 0, 0, 1, '#c9a23a', MT.gold, 12, M0); sph(0, 0.82, 0, 0.14, 0.15, 0.14, '#e8c870', MT.gold, 12, M0); sph(0, 0.66, 0.1, 0.1, 0.12, 0.06, '#f0f0f0', MT.plaster, 8, M0);
@@ -10459,7 +10514,7 @@ const T3T = (() => {
       // roofs: two lower side roofs, a raised centre roof over a 鏤空 clerestory
       const sx = big ? 4.1 : 3.9, swd = big ? 2.65 : 2.4, ce = big ? 5.3 : 5.1;
       for (const e of [-1, 1]) roof(e * sx, wallTop + 0.12, -1.2, swd, 3.35, 1.3, { tail: 0.75, shards: big, gable: { x: hw - 0.2 - sx, d: 2.4, y: wallTop } });
-      box(0, wallTop, -1.1, 4.4, ce - wallTop + 0.1, 2.4, '#ffffff', MT.plaster, 'clere', 0, 1, 2);
+      box(0, wallTop, -1.1, 4.4, ce - wallTop + 0.1, 2.4, '#ffffff', MT.plaster, clereK, 0, 1, 2);
       roof(0, ce, -0.9, 3.3, 3.1, 1.8, { tail: 1.05, deco: big ? ['dragons', 'pagoda'] : ['dragons', 'pearl'] });
       for (const e of [-1, 1]) { lantern(e * 2.5, wallTop - 0.4, 2.3, 1, e + 1); lantern(e * 4.8, wallTop - 0.35, 2.3, 0.8, e + 4); if (big) lantern(e * 1.25, wallTop - 0.45, 2.3, 0.75, e + 7); }
       if (lv('redraw')) tag('redraw', () => {
@@ -10474,13 +10529,13 @@ const T3T = (() => {
       for (const x of [-2.4, 0, 2.4]) quad(x, 0.55, mz + 2.12, x ? 1.4 : 1.9, x ? 2.2 : 2.6, 0, dtx('d:door_nail', () => T3X.D.door('nail')), '#ffffff', MT.lac);
       for (const x of [-mw + 0.9, -3.8, 3.8, mw - 0.9]) column(x, mz + 2.75, 0.55, 4.3, 0.17, 0);
       box(0, 4.0, mz + 2.75, mw * 2 - 1.0, 0.36, 0.28, '#ffffff', MT.lac, 'beam', 0, 1, 8);
-      if (big) { roof(0, 4.75, mz - 0.4, mw, 3.55, 1.3, { tail: 0.7, noRidge: true }); box(0, 4.75, mz - 0.4, mw * 1.28, 1.7, 3.6, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.7 : v)), 'winGlow', 0, 1, 2); roof(0, 6.45, mz - 0.4, mw * 0.74, 2.85, 1.45, { tail: 0.9, deco: S >= 5 ? ['dragons', 'sanxian'] : ['dragons', 'pagoda'], gable: { x: mw * 0.64, d: 1.8, y: 6.45 } }); }
+      if (big) { roof(0, 4.75, mz - 0.4, mw, 3.55, 1.3, { tail: 0.7, noRidge: true }); box(0, 4.75, mz - 0.4, mw * 1.28, 1.7, 3.6, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.7 : v)), winK, 0, 1, 2); roof(0, 6.45, mz - 0.4, mw * 0.74, 2.85, 1.45, { tail: 0.9, deco: S >= 5 ? ['dragons', 'sanxian'] : ['dragons', 'pagoda'], gable: { x: mw * 0.64, d: 1.8, y: 6.45 } }); }
       else roof(0, 4.75, mz - 0.4, mw, 3.55, 1.6, { tail: 0.8, deco: ['pearl'], gable: { x: mw - 0.7, d: 2.5, y: 4.55 } });
       if (big) for (const e of [-1, 1]) { box(e * (hw - 0.9), 0.3, -4.1, 1.4, 2.7, 2.6, wallC, MT.plaster, 'plaster'); roof(e * (hw - 0.9), 3.0, -4.1, 1.45, 1.0, 0.7, { rot: PI / 2, tail: 0.5, shards: false, noRidge: true }); } // 廊 corridors
       if (S >= 4) { // 後殿 rear hall, higher
         const rz = -16.5; box(0, 0, rz, 13, 1.0, 6.6, '#9a9aa6', MT.stone, 'stone', 0, 0.7); box(0, 1.0, rz, 10.6, 4.4, 4.8, wallC, MT.plaster, 'plaster', 0, 0.8);
-        box(0, 3.0, rz + 2.42, 9.6, 1.2, 0.06, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.8 : v)), 'winGlow', 0, 1, 2);
-        roof(0, 5.4, rz, 6.4, 3.4, 1.4, { tail: 0.8, noRidge: true }); box(0, 5.4, rz, 7.4, 1.8, 3.4, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.7 : v)), 'winGlow', 0, 1, 2);
+        box(0, 3.0, rz + 2.42, 9.6, 1.2, 0.06, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.8 : v)), winK, 0, 1, 2);
+        roof(0, 5.4, rz, 6.4, 3.4, 1.4, { tail: 0.8, noRidge: true }); box(0, 5.4, rz, 7.4, 1.8, 3.4, '#ffffff', MT.glow.map((v, k) => (k === 2 ? 0.7 : v)), winK, 0, 1, 2);
         roof(0, 7.2, rz, 4.6, 2.7, 1.4, { tail: 1, deco: ['pearl', 'dragons'], gable: { x: 3.7, d: 1.7, y: 7.2 } });
       }
       // 鐘樓 / 鼓樓
@@ -10720,6 +10775,7 @@ const T3V = (() => {
   function camState(asp, now) {
     const c = V.cam, f = V.R.focus; let at = f.at.slice(), dist = f.dist * c.zoom;
     if (V.mode === 'photo') { dist *= 0.8; at[1] -= 0.5; at[2] += 1; }
+    if (V.mode === 'title') { const T = V.tf || {}, rx = Math.cos(c.yaw), rz = -Math.sin(c.yaw); dist *= T.z || 1; at[0] -= rx * dist * (T.sx || 0); at[2] -= rz * dist * (T.sx || 0); at[1] += dist * (T.sy || 0); }
     if (c.fly) { const k = (now - c.fly.t0) / c.fly.dur; if (k >= 1) c.fly = null; else { const w = Math.sin(Math.min(1, k * 1.6) * Math.PI / 2) * (k > 0.7 ? 1 - (k - 0.7) / 0.3 : 1), e = w * w * (3 - 2 * w); at = at.map((v, i) => v + (c.fly.p[i] - v) * e * 0.85); dist += (c.fly.dist - dist) * e; } }
     const hf = 2 * Math.atan(Math.tan(0.33) * 4 / 3), want = 2 * Math.atan(Math.tan(hf / 2) / asp), fov = Math.min(1.1, want);
     if (want > fov) dist *= Math.min(1.28, Math.tan(hf / 2) / (Math.tan(fov / 2) * asp)); // narrow portrait screens: step back instead of a fish-eye
@@ -10729,7 +10785,7 @@ const T3V = (() => {
   function stepCam(dt, now) {
     const c = V.cam, idle = now - c.lastIn > 6 && !V.drag && V.mode !== 'photo';
     if (!V.drag) { c.tyaw += c.vy * dt; c.vy *= Math.exp(-dt * 3.5); }
-    if (idle) { const base = -0.26 + Math.sin(now * 0.21) * 0.18; c.tyaw += (base - c.tyaw) * (1 - Math.exp(-dt * 0.5)); }
+    if (idle) { const base = V.mode === 'title' ? -0.2 + Math.sin(now * 0.16) * 0.13 : -0.26 + Math.sin(now * 0.21) * 0.18; c.tyaw += (base - c.tyaw) * (1 - Math.exp(-dt * 0.5)); }
     c.tyaw = clamp(c.tyaw, -YMAX, YMAX); c.tpitch = clamp(c.tpitch, PMIN, PMAX);
     c.yaw += (c.tyaw - c.yaw) * (1 - Math.exp(-dt * 10)); c.pitch += (c.tpitch - c.pitch) * (1 - Math.exp(-dt * 10));
   }
@@ -10805,7 +10861,7 @@ const T3V = (() => {
   }
   /* ---------- the frame ---------- */
   function resize() {
-    const cv = V.cv, dpr = Math.min(V.mode === 'embed' ? 1.75 : 2, window.devicePixelRatio || 1), w = Math.max(2, Math.round(cv.clientWidth * dpr)), h = Math.max(2, Math.round(cv.clientHeight * dpr));
+    const cv = V.cv, dpr = Math.min(V.mode === 'title' ? Math.min(V.tdpr || 1.4, Math.sqrt(640000 / Math.max(1, cv.clientWidth * cv.clientHeight))) : V.mode === 'embed' ? 1.75 : 2, window.devicePixelRatio || 1), w = Math.max(2, Math.round(cv.clientWidth * dpr)), h = Math.max(2, Math.round(cv.clientHeight * dpr));
     if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; if (V.mode === 'photo') drawOverlay(); }
   }
   function frame() {
@@ -10820,12 +10876,30 @@ const T3V = (() => {
   /* ---------- chips: look / time / fullscreen / photo ---------- */
   function chips() {
     const lb = () => { const per = period(), T = TOD[per]; $('t3Tod').innerHTML = `<i>${V.tod === 'auto' ? '◷' : T.ic}</i><span>${V.tod === 'auto' ? L2('自動', 'Auto') + '·' + L2(T.zh, T.de) : L2(T.zh, T.de)}</span>`; };
-    V.label = lb; lb();
+    const lbBg = () => { const b = BGS.find(x => x[0] === V.bg) || BGS[0]; if ($('t3Bg')) $('t3Bg').innerHTML = `<i>${b[3]}</i><span>${L2(b[1], b[2])}</span>`; };
+    V.label = () => { lb(); lbBg(); }; V.label();
     $('t3Tod').onclick = () => { const o = ['auto', 'day', 'dusk', 'night'], i = o.indexOf(V.tod); V.tod = o[(i + 1) % o.length]; store.set('t3tod', V.tod); SFX.wood && SFX.wood(); lb(); renderPhotoUI(); };
+    if ($('t3Bg')) $('t3Bg').onclick = () => { const i = BGS.findIndex(x => x[0] === V.bg); V.bg = BGS[(i + 1) % BGS.length][0]; store.set('t3bg', V.bg); SFX.wood && SFX.wood(); lbBg(); renderPhotoUI(); };
     $('t3Full').onclick = () => setFull(true); $('t3FullX').onclick = () => setFull(false);
     $('t3Photo').onclick = () => openPhoto();
   }
   function setFull(on) { const b = $('t3Box'); if (b.classList.contains('full') === !!on) return; b.classList.toggle('full', on); $('t3FullX').hidden = !on; V.mode = on ? 'full' : 'embed'; $('t3Full').hidden = on; SFX.wood && SFX.wood(); }
+
+  /* ================= 3D title: the same canvas, moved behind the main menu (one WebGL context for both screens) ================= */
+  function toTitle(host, before) {
+    if (!init() || V.mode === 'photo') return false;
+    if ($('t3Box').classList.contains('full')) setFull(false);
+    if (V.mode !== 'title') { V.mode = 'title'; host.insertBefore(V.cv, before || null); V.cv.style.cssText = 'position:absolute;left:0;top:0;z-index:0;pointer-events:none;display:block';
+      Object.assign(V.cam, { yaw: -0.2, tyaw: -0.2, pitch: 0.2, tpitch: 0.2, zoom: 1, vy: 0, fly: null }); V.last = 0; }
+    return true;
+  }
+  function toEmbed() {
+    if (V.mode !== 'title') return; V.mode = 'embed'; const b = $('t3Box'); b.insertBefore(V.cv, b.firstChild); V.cv.style.cssText = '';
+    Object.assign(V.cam, { yaw: -0.26, tyaw: -0.26, pitch: 0.26, tpitch: 0.26, zoom: 1, vy: 0, fly: null }); V.last = 0;
+  }
+  function titleFrame(w, h, tf) { if (V.mode !== 'title') return false; const cs = V.cv.style, W = w + 'px', H = h + 'px'; if (cs.width !== W) cs.width = W; if (cs.height !== H) cs.height = H; V.tf = tf; frame(); return !!V.R; }
+  /* where a world point lands on the title canvas (CSS px), e.g. to put the temple's name plate under it */
+  function project(p) { if (!V.VP || !V.cv) return null; const r = { width: V.cv.clientWidth, height: V.cv.clientHeight }; return projectCSS(p, r); }
 
   /* ================= photo mode ================= */
   const PH = Object.assign({ pose: 'stand', frame: 'polaroid', info: { name: 1, best: 1, god: 1, player: 0, date: 1 }, phrase: 1, tab: 'god', sizeK: 1, god: null }, store.get('t3photo', {}), { hp: null }); if (PH.pose !== 'none') PH.pose = 'stand';
@@ -10952,7 +11026,7 @@ const T3V = (() => {
     window.addEventListener('resize', () => { if (!$('ovPhoto').hidden) layoutPhoto(); });
   }
   bindPhoto();
-  return { init, frame, burst, sync, get ok() { return V.ok; }, V, LOOKS, TOD, openPhoto, closePhoto, compose, setFull, photoState: () => PH };
+  return { init, frame, burst, sync, get ok() { return V.ok; }, V, LOOKS, TOD, openPhoto, closePhoto, compose, setFull, photoState: () => PH, toTitle, toEmbed, titleFrame, project, period };
 })();
 
 /* ================= 開廟紅包: the welcome hongbao on first start ================= */
